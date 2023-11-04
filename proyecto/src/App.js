@@ -10,7 +10,7 @@ function App() {
           Confirmacion de que todos tienen acceso a React
         </p>
         <p>
-          Sahory:
+          Sahory: Confirmado
         </p>
         <p>
           Jesús: Confirmado
