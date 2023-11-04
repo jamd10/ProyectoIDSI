@@ -16,7 +16,7 @@ function App() {
           Jesús: Confirmado
         </p>
         <p>
-          Felix:
+          Felix: Confirmado
         </p>
         <p>
           Bonieth:
