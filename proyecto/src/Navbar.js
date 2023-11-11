@@ -69,7 +69,7 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <a className="nav-link menu-button" href="/carrito">
-                <i className="fa fa-shopping-cart" style={{ fontSize: '25px', color: '#23c01e' }}></i> L.0
+                <i className="fa fa-shopping-cart" style={{ fontSize: '35px', color: '#23c01e' }}></i> L.0
               </a>
             </li>
           </ul>

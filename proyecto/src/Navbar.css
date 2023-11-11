@@ -20,7 +20,7 @@
 
 .navbar-nav .nav-link {
   color: #000;
-  font-size: 25px; /* Aumenta el tamaño de la fuente */
+  font-size: 25px; 
   padding: 10px 15px;
   border-radius: 5px;
   transition: background-color 0.3s, color 0.3s;
@@ -37,7 +37,7 @@
 }
 
 .navbar-nav .nav-link i {
-  font-size: 22px; /* Aumenta el tamaño del icono */
+  font-size: 22px; 
 }
 
 .navbar-nav .nav-link:hover i {
