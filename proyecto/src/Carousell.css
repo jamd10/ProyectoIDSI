@@ -1,0 +1,42 @@
+/* Carousell.css */
+
+.carousel {
+  margin: 10px auto;
+  position: relative;
+}
+
+.carousel-item {
+  text-align: center;
+  display: none; /* Oculta todas las imágenes por defecto */
+}
+
+.carousel img {
+  width: 100%;
+  height: 400px;
+}
+
+@media (max-width: 768px) {
+  .carousel img {
+    height: 200px;
+  }
+}
+
+/* Botones */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.carousel-btn-prev {
+  left: 10px;
+}
+
+.carousel-btn-next {
+  right: 10px;
+}
