@@ -1,7 +1,8 @@
 import React from 'react';
 import Navbar from './Navbar';
 import Submenu from './Submenu';
-import Carousell from './Carousell'; 
+import Carousell from './Carousell';
+import Footer from './Footer';
 import 'font-awesome/css/font-awesome.min.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Navbar />
       <Submenu />
       <Carousell />
+      <Footer />
     </div>
   );
 }
