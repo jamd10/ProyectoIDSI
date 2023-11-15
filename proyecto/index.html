@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <title>Grupo + Limpio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="menu.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <link rel="icon" href="img/logo.png">
+</head>
+
+<body class="font-[Poppins] bg-white h-screen">
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+    </div>
+    <header class="bg-white">
+        <nav class="flex justify-between items-center w-[92%]  mx-auto">
+            <div>
+                <a href="index.html">
+                    <img class="w-32 cursor-pointer" src="img/logo.png" alt="Logo">
+                </a>
+            </div>
+            <div
+                class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5">
+                <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
+                    <li>
+                        <a class="menu-link" href="#">Inicio</a>
+                    </li>
+                    <li>
+                        <a class="menu-link" href="#">Mas Limpio</a>
+                    </li>
+                    <li>
+                        <a class="menu-link" href="#">Sobre Nosotros</a>
+                    </li>
+                    <li>
+                        <a class="menu-link" href="#">
+                            <ion-icon name="cart" class="text-black text-xl"></ion-icon>Carrito
+                        </a>
+                    </li>
+
+                    <li class="search-container">
+                        <form action="index.html" method="get">
+                            <input class="search-bar" type="text" placeholder="Buscar...">
+                            <button type="submit" class="search-button"><ion-icon name="search"
+                                    class="search-icon"></ion-icon></button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]">Mi Perfil</button>
+                <!-- <button class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]"><ion-icon name="cart"
+                        class="text-xl"></ion-icon> L.0</button>-->
+                <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <!-- Contenido del submenú -->
+            <div>
+                <nav class="my-submenu-nav">
+                    <a href="#">Baños</a>
+                    <a href="#">Lavandería</a>
+                    <a href="#">Herramientas de Limpieza</a>
+                    <a href="#">Bioseguridad</a>
+                    <a href="#">Desinfectante</a>
+                    <a href="#">Cuidado Personal</a>
+                    <a href="#">Productos Plásticos</a>
+                    <div class="animation start-home"></div>
+                </nav>
+            </div>
+        </section>
+
+        <section>
+
+            <div class="empty-section"></div>
+        </section>
+
+        <section>
+
+        </section>
+
+        <section>
+
+        </section>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="menu.js"></script>
+</body>
+
+</html>
