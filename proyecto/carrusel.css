@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.my-carrusel {
+    position: relative;
+    width: 99%;
+    /* Reduce the width to 90% of the page width */
+    height: 500px;
+    /* Keep the height the same */
+    margin: 10px auto;
+    /* Add automatic margins to center the carousel */
+    background: #23c01e;
+}
+
+.my-carrusel .slide {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    clip-path: circle(0% at 0 50%);
+}
+
+.my-carrusel .slide.active {
+    clip-path: circle(150% at 0 50%);
+    transition: 2s;
+    transition-property: clip-path;
+}
+
+.my-carrusel .slide img {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    /* Set the height to 100% */
+    object-fit: fill;
+    /* Change from contain to fill */
+    border-radius: 5px;
+}
+
+.my-carrusel .slide .info {
+    position: absolute;
+    top: 0;
+    padding: 15px 30px;
+}
+
+.my-carrusel .slide .info h2 {
+    color: #fff;
+    font-size: 45px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.my-carrusel .slide .info p {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    width: 60%;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.my-carrusel .navigation {
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.my-carrusel .navigation .btn {
+    background: rgba(255, 255, 255, 0.5);
+    width: 12px;
+    /* Keep the width to 12px */
+    height: 12px;
+    /* Keep the height to 12px */
+    margin: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.my-carrusel .navigation .btn.active {
+    background: #ffffff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .my-carrusel {
+        height: 200px;
+        /* Ajusta este valor a la altura que prefieras */
+    }
+
+    .my-carrusel .slide {
+        height: 200px;
+        /* Asegúrate de que este valor sea el mismo que el anterior */
+    }
+
+    .my-carrusel .slide .info h2 {
+        font-size: 20px;
+        /* Ajusta este valor al tamaño de fuente que prefieras */
+    }
+
+    .my-carrusel .slide .info p {
+        font-size: 12px;
+        /* Ajusta este valor al tamaño de fuente que prefieras */
+        width: 90%;
+        /* Ajusta este valor al ancho que prefieras */
+    }
+
+    .my-carrusel .navigation .btn {
+        width: 2px;
+        /* Ajusta este valor al ancho que prefieras */
+        height: 2px;
+        /* Ajusta este valor a la altura que prefieras */
+    }
+}

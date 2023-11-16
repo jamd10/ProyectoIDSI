@@ -44,7 +44,8 @@
     width: 100%;
     height: 100%;
     background-color: #f4f4f4;
-    z-index: 10001; /* Asegúrate de que este valor sea mayor que el z-index del menú desplegable */
+    z-index: 10001;
+    /* Asegúrate de que este valor sea mayor que el z-index del menú desplegable */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,30 +98,31 @@
         z-index: 1000;
     }
 }
+
 .nav-links {
-    position: relative; /* O absolute, fixed, o sticky */
+    position: relative;
+    /* O absolute, fixed, o sticky */
     z-index: 10000;
 }
 
 /* Submenu */
 .my-submenu-nav {
     position: relative;
-    /* Cambiado de fixed a relative */
     z-index: 1;
-    /* Ajusta el valor según sea necesario */
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 99%;
     height: 50px;
-    background-color: #34495e;
+    background-color: #23c01e;
     border-radius: 8px;
     font-size: 0;
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
+    margin: 0 auto; /* Añadido para centrar la barra de submenú */
 }
-
+/* El resto de tu código permanece igual */
 
 .my-submenu-nav a {
     line-height: 50px;
@@ -172,53 +174,50 @@
     width: 200px;
 }
 
+.my-submenu-nav a:hover~.animation {
+    background-color: #2ecc71;
+}
+
 .my-submenu-nav .start-home,
 .my-submenu-nav a:nth-child(1):hover~.animation {
     width: 100px;
     left: calc((100% - 1140px) / 2);
-    background-color: #1abc9c;
 }
 
 .my-submenu-nav .start-about,
 .my-submenu-nav a:nth-child(2):hover~.animation {
     width: 110px;
     left: calc((100% - 1140px) / 2 + 100px);
-    background-color: #e74c3c;
 }
 
 .my-submenu-nav .start-blog,
 .my-submenu-nav a:nth-child(3):hover~.animation {
     width: 240px;
     left: calc((100% - 1140px) / 2 + 210px);
-    background-color: #3498db;
 }
 
 .my-submenu-nav .start-portfolio,
 .my-submenu-nav a:nth-child(4):hover~.animation {
     width: 160px;
     left: calc((100% - 1140px) / 2 + 450px);
-    background-color: #9b59b6;
 }
 
 .my-submenu-nav .start-contact,
 .my-submenu-nav a:nth-child(5):hover~.animation {
     width: 150px;
     left: calc((100% - 1140px) / 2 + 610px);
-    background-color: #e67e22;
 }
 
 .my-submenu-nav .start-personal,
 .my-submenu-nav a:nth-child(6):hover~.animation {
     width: 180px;
     left: calc((100% - 1140px) / 2 + 760px);
-    background-color: #f1c40f;
 }
 
 .my-submenu-nav .start-products,
 .my-submenu-nav a:nth-child(7):hover~.animation {
     width: 200px;
     left: calc((100% - 1140px) / 2 + 940px);
-    background-color: #2ecc71;
 }
 
 @media (max-width: 768px) {
@@ -231,45 +230,15 @@
         margin: 0 5px;
     }
 
-    .my-submenu-nav .start-home,
-    .my-submenu-nav a:nth-child(1):hover~.animation {
-        background-color: #1abc9c;
-    }
-
-    .my-submenu-nav .start-about,
-    .my-submenu-nav a:nth-child(2):hover~.animation {
-        background-color: #e74c3c;
-    }
-
-    .my-submenu-nav .start-blog,
-    .my-submenu-nav a:nth-child(3):hover~.animation {
-        background-color: #3498db;
-    }
-
-    .my-submenu-nav .start-portfolio,
-    .my-submenu-nav a:nth-child(4):hover~.animation {
-        background-color: #9b59b6;
-    }
-
-    .my-submenu-nav .start-contact,
-    .my-submenu-nav a:nth-child(5):hover~.animation {
-        background-color: #e67e22;
-    }
-
-    .my-submenu-nav .start-personal,
-    .my-submenu-nav a:nth-child(6):hover~.animation {
-        background-color: #f1c40f;
-    }
-
-    .my-submenu-nav .start-products,
-    .my-submenu-nav a:nth-child(7):hover~.animation {
+    .my-submenu-nav a:hover~.animation {
         background-color: #2ecc71;
     }
 }
 
-/* Puedes ajustar la altura según sea necesario */
+
+/* Puedes ajustar la altura según sea necesario 
 
 .empty-section {
     height: 1000vh;
    
-}
+} */
