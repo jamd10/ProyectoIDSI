@@ -15,24 +15,18 @@
     position: relative;
     margin: 2.5%;
     overflow: hidden;
-    width: 100%;
-    /* Cambiado a 100% para ser responsive */
+    width: calc(33.33% - 5%); /* Ajuste para 3 elementos en una fila */
     max-width: 450px;
-    /* Añadido max-width para limitar el tamaño en pantallas grandes */
     height: auto;
-    /* Cambiado a auto para ser responsive */
     min-height: 350px;
-    /* Añadido min-height para asegurar un alto mínimo */
     background: #F5F5F5;
     box-shadow: 5px 5px 15px rgba(62, 205, 94, .5);
     border-radius: 10px;
     transition: all .4s ease-in-out;
-    /* Añadido para suavizar la transición del efecto hover */
 }
 
 .mi-seccion-unica .container:hover {
     transform: scale(1.05);
-    /* Añadido para aumentar el tamaño del contenedor cuando se pasa el mouse por encima */
 }
 
 .mi-seccion-unica p {
@@ -54,14 +48,10 @@
 
 .mi-seccion-unica img {
     width: 100%;
-    /* Cambiado a 100% para que la imagen ocupe el ancho completo */
     height: auto;
-    /* Añadido para mantener la proporción de la imagen */
     max-width: 230px;
-    /* Añadido para establecer un ancho máximo */
     margin-top: 30px;
 }
-
 
 .mi-seccion-unica .slideshow-buttons {
     top: 70%;
@@ -126,21 +116,15 @@
     letter-spacing: 1px;
     color: #F5F5F5;
     cursor: pointer;
-
     display: flex;
-    /* Añadido para permitir la alineación del texto */
     justify-content: center;
-    /* Centra el texto horizontalmente */
     align-items: center;
-    /* Centra el texto verticalmente */
-    /* El resto de tu código permanece igual */
 }
 
 .mi-seccion-unica button:hover {
     background: #3ecd5e;
     transition: all .4s ease-in-out;
     transform: scale(1.1);
-    /* Añadido para aumentar el tamaño del botón cuando se pasa el mouse por encima */
 }
 
 .mi-seccion-unica .add {
@@ -210,7 +194,6 @@
 @media only screen and (max-width: 600px) {
     .mi-seccion-unica .container {
         width: 100%;
-        height: auto;
     }
 
     .mi-seccion-unica p {
@@ -239,36 +222,28 @@
     .mi-seccion-unica button {
         margin-top: 10px;
         width: 100%;
-        /* Cambiado a 100% para que todos los botones tengan el mismo ancho */
     }
 
     .mi-seccion-unica img {
         width: 200px;
         margin-top: 47px;
         height: auto;
-        /* Añadido para mantener la proporción de la imagen */
     }
 
     .mi-seccion-unica .buttons {
         flex-direction: column;
-        /* Cambiado a columna para apilar el texto y el botón verticalmente */
         align-items: center;
-        /* Alineado los elementos al centro */
         text-align: center;
-        /* Alineado el texto al centro */
     }
 
     .mi-seccion-unica .buttons h2,
     .mi-seccion-unica .buttons button {
         margin-bottom: 10px;
-        /* Añadido margen inferior para espacio entre el texto y el botón */
     }
 
     .mi-seccion-unica button {
         width: 100%;
-        /* Cambiado a 100% para que todos los botones tengan el mismo ancho */
         height: 50px;
-        /* Añadido para asegurar una altura mínima del botón */
     }
 }
 
@@ -282,7 +257,6 @@
     align-items: center;
     height: 100%;
     width: 100%;
-    /* Añade esta línea */
     place-items: center;
     position: relative;
 }
@@ -297,7 +271,6 @@
     background-color: rgba(38, 190, 0, 0.6);
 }
 
-/*esto es del grosor de las letras de destacados y el tamaño de letra*/
 .text-box h1 {
     font-size: 60px;
     line-height: 160px;
@@ -325,7 +298,6 @@
         font-size: 50px;
         line-height: 80px;
         -webkit-text-stroke: 2px #fff;
-        /* Reduce el ancho del contorno */
     }
 }
 
@@ -334,6 +306,5 @@
         font-size: 30px;
         line-height: 50px;
         -webkit-text-stroke: 1px #fff;
-        /* Reduce aún más el ancho del contorno */
     }
 }
