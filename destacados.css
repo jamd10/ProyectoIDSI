@@ -17,11 +17,11 @@
     overflow: hidden;
     width: 100%;
     /* Cambiado a 100% para ser responsive */
-    max-width: 600px;
+    max-width: 450px;
     /* Añadido max-width para limitar el tamaño en pantallas grandes */
     height: auto;
     /* Cambiado a auto para ser responsive */
-    min-height: 300px;
+    min-height: 350px;
     /* Añadido min-height para asegurar un alto mínimo */
     background: #F5F5F5;
     box-shadow: 5px 5px 15px rgba(62, 205, 94, .5);
@@ -53,9 +53,15 @@
 }
 
 .mi-seccion-unica img {
-    width: 290px;
-    margin-top: 47px;
+    width: 100%;
+    /* Cambiado a 100% para que la imagen ocupe el ancho completo */
+    height: auto;
+    /* Añadido para mantener la proporción de la imagen */
+    max-width: 230px;
+    /* Añadido para establecer un ancho máximo */
+    margin-top: 30px;
 }
+
 
 .mi-seccion-unica .slideshow-buttons {
     top: 70%;
@@ -290,6 +296,7 @@
     right: 0;
     background-color: rgba(38, 190, 0, 0.6);
 }
+
 /*esto es del grosor de las letras de destacados y el tamaño de letra*/
 .text-box h1 {
     font-size: 60px;
