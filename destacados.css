@@ -3,7 +3,7 @@
     text-transform: uppercase;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     background-image: url("Img/parallax2.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -13,9 +13,11 @@
 
 .mi-seccion-unica .container {
     position: relative;
-    margin: 2.5%;
+    margin: 1%;
+    /* Ajuste del margen */
     overflow: hidden;
-    width: calc(33.33% - 5%); /* Ajuste para 3 elementos en una fila */
+    width: calc(33.33% - 2%);
+    /* Ajuste del ancho */
     max-width: 450px;
     height: auto;
     min-height: 350px;
@@ -28,6 +30,13 @@
 .mi-seccion-unica .container:hover {
     transform: scale(1.05);
 }
+
+
+
+
+
+/* Resto del código permanece igual */
+
 
 .mi-seccion-unica p {
     font-size: 0.6em;
@@ -293,7 +302,7 @@
     }
 }
 
-@media only screen and (max-width: 738px) {
+@media only screen and (max-width: 768px) {
     .text-box h1 {
         font-size: 50px;
         line-height: 80px;
@@ -301,10 +310,11 @@
     }
 }
 
-@media only screen and (max-width: 738px) {
+@media only screen and (max-width: 768px) {
     .text-box h1 {
         font-size: 30px;
         line-height: 50px;
         -webkit-text-stroke: 1px #fff;
     }
 }
+
