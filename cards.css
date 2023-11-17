@@ -1,11 +1,21 @@
 .ag-format-container {
-    width: 1142px;
+    background-image: url("Img/parallax.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    margin: auto;
+}
+
+.ag-courses-wrapper {
+    max-width: 1142px;
+    width: 100%;
     margin: 0 auto;
 }
 
-body {
-    background-color: #000;
-}
+/* El resto de tu código permanece igual */
+
 
 .ag-courses_box {
     display: grid;
@@ -14,7 +24,6 @@ body {
     padding: 100px 0;
     justify-content: center;
 }
-
 
 .ag-courses_item {
     overflow: hidden;
@@ -36,7 +45,6 @@ body {
     text-decoration: none;
     color: rgb(255, 255, 255);
 }
-
 
 .ag-courses-item_link:hover .ag-courses-item_bg {
     -webkit-transform: scale(10);

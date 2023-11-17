@@ -1,0 +1,332 @@
+.mi-seccion-unica {
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-image: url("Img/parallax2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.mi-seccion-unica .container {
+    position: relative;
+    margin: 2.5%;
+    overflow: hidden;
+    width: 100%;
+    /* Cambiado a 100% para ser responsive */
+    max-width: 600px;
+    /* Añadido max-width para limitar el tamaño en pantallas grandes */
+    height: auto;
+    /* Cambiado a auto para ser responsive */
+    min-height: 300px;
+    /* Añadido min-height para asegurar un alto mínimo */
+    background: #F5F5F5;
+    box-shadow: 5px 5px 15px rgba(62, 205, 94, .5);
+    border-radius: 10px;
+    transition: all .4s ease-in-out;
+    /* Añadido para suavizar la transición del efecto hover */
+}
+
+.mi-seccion-unica .container:hover {
+    transform: scale(1.05);
+    /* Añadido para aumentar el tamaño del contenedor cuando se pasa el mouse por encima */
+}
+
+.mi-seccion-unica p {
+    font-size: 0.6em;
+    color: #3ecd5e;
+    letter-spacing: 1px;
+}
+
+.mi-seccion-unica h1 {
+    font-size: 1.2em;
+    color: #4E4E4E;
+    margin-top: -5px;
+}
+
+.mi-seccion-unica h2 {
+    color: #3ecd5e;
+    margin-top: -5px;
+}
+
+.mi-seccion-unica img {
+    width: 290px;
+    margin-top: 47px;
+}
+
+.mi-seccion-unica .slideshow-buttons {
+    top: 70%;
+    display: none;
+}
+
+.mi-seccion-unica .one,
+.mi-seccion-unica .two,
+.mi-seccion-unica .three,
+.mi-seccion-unica .four {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #3ecd5e;
+}
+
+.mi-seccion-unica .one {
+    left: 22%;
+}
+
+.mi-seccion-unica .two {
+    left: 27%;
+}
+
+.mi-seccion-unica .three {
+    left: 32%;
+}
+
+.mi-seccion-unica .four {
+    left: 37%;
+}
+
+.mi-seccion-unica .product {
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    top: 10%;
+    left: 60%;
+}
+
+.mi-seccion-unica .desc {
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: 17px;
+    color: #4E4E4E;
+    font-size: .7em;
+    line-height: 1.6em;
+    margin-right: 25px;
+    text-align: justify;
+}
+
+.mi-seccion-unica button {
+    background: #3ecd5e;
+    padding: 10px;
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    margin: 0px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #F5F5F5;
+    cursor: pointer;
+
+    display: flex;
+    /* Añadido para permitir la alineación del texto */
+    justify-content: center;
+    /* Centra el texto horizontalmente */
+    align-items: center;
+    /* Centra el texto verticalmente */
+    /* El resto de tu código permanece igual */
+}
+
+.mi-seccion-unica button:hover {
+    background: #3ecd5e;
+    transition: all .4s ease-in-out;
+    transform: scale(1.1);
+    /* Añadido para aumentar el tamaño del botón cuando se pasa el mouse por encima */
+}
+
+.mi-seccion-unica .add {
+    width: 67%;
+}
+
+.mi-seccion-unica .like {
+    width: 22%;
+}
+
+.mi-seccion-unica .sizes {
+    display: grid;
+    color: #3ecd5e;
+    grid-template-columns: repeat(auto-fill, 30px);
+    width: 60%;
+    grid-gap: 4px;
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.mi-seccion-unica .pick {
+    margin-top: 11px;
+    margin-bottom: 0;
+    margin-left: 20px;
+}
+
+.mi-seccion-unica .size {
+    padding: 9px;
+    border: 1px solid #3ecd5e;
+    font-size: 0.7em;
+    text-align: center;
+}
+
+.mi-seccion-unica .size:hover {
+    background: #3ecd5e;
+    color: #F5F5F5;
+    transition: all .4s ease-in-out;
+}
+
+.mi-seccion-unica .focus {
+    background: #3ecd5e;
+    color: #F5F5F5;
+}
+
+.mi-seccion-unica footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+.mi-seccion-unica footer p {
+    letter-spacing: 3px;
+}
+
+.mi-seccion-unica footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.mi-seccion-unica footer a:hover {
+    color: #7d7d7d;
+}
+
+@media only screen and (max-width: 600px) {
+    .mi-seccion-unica .container {
+        width: 100%;
+        height: auto;
+    }
+
+    .mi-seccion-unica p {
+        font-size: 0.5em;
+    }
+
+    .mi-seccion-unica h1 {
+        font-size: 1em;
+    }
+
+    .mi-seccion-unica h2 {
+        font-size: 0.8em;
+    }
+
+    .mi-seccion-unica .desc {
+        font-size: 0.6em;
+        margin-right: 15px;
+    }
+
+    .mi-seccion-unica .buttons {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .mi-seccion-unica button {
+        margin-top: 10px;
+        width: 100%;
+        /* Cambiado a 100% para que todos los botones tengan el mismo ancho */
+    }
+
+    .mi-seccion-unica img {
+        width: 200px;
+        margin-top: 47px;
+        height: auto;
+        /* Añadido para mantener la proporción de la imagen */
+    }
+
+    .mi-seccion-unica .buttons {
+        flex-direction: column;
+        /* Cambiado a columna para apilar el texto y el botón verticalmente */
+        align-items: center;
+        /* Alineado los elementos al centro */
+        text-align: center;
+        /* Alineado el texto al centro */
+    }
+
+    .mi-seccion-unica .buttons h2,
+    .mi-seccion-unica .buttons button {
+        margin-bottom: 10px;
+        /* Añadido margen inferior para espacio entre el texto y el botón */
+    }
+
+    .mi-seccion-unica button {
+        width: 100%;
+        /* Cambiado a 100% para que todos los botones tengan el mismo ancho */
+        height: 50px;
+        /* Añadido para asegurar una altura mínima del botón */
+    }
+}
+
+.text-box {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    /* Añade esta línea */
+    place-items: center;
+    position: relative;
+}
+
+.text-box:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(38, 190, 0, 0.6);
+}
+
+.text-box h1 {
+    font-size: 90px;
+    line-height: 160px;
+    margin-left: -10px;
+    color: transparent;
+    -webkit-text-stroke: 4px #fff;
+    background: url(Img/back.png);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-position: 0 0;
+    background-size: cover;
+    animation: back 25s linear infinite;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes back {
+    100% {
+        background-position: 9000px 0;
+    }
+}
+
+@media only screen and (max-width: 738px) {
+    .text-box h1 {
+        font-size: 50px;
+        line-height: 80px;
+        -webkit-text-stroke: 2px #fff;
+        /* Reduce el ancho del contorno */
+    }
+}
+
+@media only screen and (max-width: 738px) {
+    .text-box h1 {
+        font-size: 30px;
+        line-height: 50px;
+        -webkit-text-stroke: 1px #fff;
+        /* Reduce aún más el ancho del contorno */
+    }
+}
