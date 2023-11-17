@@ -1,0 +1,69 @@
+/* CSS */
+body .marcas {
+    align-items: center;
+    background: #ffffff;
+    display: flex;
+    height: auto;
+    justify-content: center;
+}
+
+body .marcas .slider {
+    background: white;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 90%;
+}
+
+body .marcas .slide img {
+    width: 150px;
+    /* Cambia este valor al ancho que prefieras */
+    height: 100px;
+    /* Cambia este valor al alto que prefieras */
+    object-fit: cover;
+    /* Esto asegura que las imágenes mantengan su aspecto incluso si sus dimensiones originales no coinciden con las especificadas */
+}
+
+body .marcas .slider::before,
+body .marcas .slider::after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    content: "";
+    height: 100px;
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+}
+
+body .marcas .slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+
+body .marcas .slider::before {
+    left: 0;
+    top: 0;
+}
+
+body .marcas .slide-track {
+    animation: scroll 40s linear infinite;
+    display: flex;
+    width: calc(250px * 14);
+}
+
+body .marcas .slide {
+    height: 100px;
+    width: 250px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-250px * 7));
+    }
+}
