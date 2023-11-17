@@ -290,13 +290,13 @@
     right: 0;
     background-color: rgba(38, 190, 0, 0.6);
 }
-
+/*esto es del grosor de las letras de destacados y el tamaño de letra*/
 .text-box h1 {
-    font-size: 90px;
+    font-size: 60px;
     line-height: 160px;
     margin-left: -10px;
     color: transparent;
-    -webkit-text-stroke: 4px #fff;
+    -webkit-text-stroke: 1px #fff;
     background: url(Img/back.png);
     -webkit-background-clip: text;
     background-clip: text;
