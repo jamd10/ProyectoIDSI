@@ -1,52 +1,49 @@
-var slides = document.querySelectorAll('.slide');
-var btns = document.querySelectorAll('.btn');
-let currentSlide = 1;
+var diapositivas = document.querySelectorAll('.diapositiva');
+var botones = document.querySelectorAll('.boton');
+let diapositivaActual = 1;
 
-// Javascript for image slider manual navigation
-var manualNav = function(manual){
-  slides.forEach((slide) => {
-    slide.classList.remove('active');
+// Navegación manual del carrusel de imágenes
+var navegacionManual = function(manual){
+  diapositivas.forEach((diapositiva) => {
+    diapositiva.classList.remove('active');
 
-    btns.forEach((btn) => {
-      btn.classList.remove('active');
+    botones.forEach((boton) => {
+      boton.classList.remove('active');
     });
   });
 
-  slides[manual].classList.add('active');
-  btns[manual].classList.add('active');
+  diapositivas[manual].classList.add('active');
+  botones[manual].classList.add('active');
 }
 
-btns.forEach((btn, i) => {
-  btn.addEventListener("click", () => {
-    manualNav(i);
-    currentSlide = i;
+botones.forEach((boton, i) => {
+  boton.addEventListener("click", () => {
+    navegacionManual(i);
+    diapositivaActual = i;
   });
 });
 
-// Javascript for image slider autoplay navigation
-var repeat = function(activeClass){
-  let active = document.getElementsByClassName('active');
-  let i = 1;
+// Navegación automática del carrusel de imágenes
+var repetir = function(activeClass){
+  let activo = document.getElementsByClassName('active');
+  let indice = 0;
 
-  var repeater = () => {
+  var repetidor = () => {
     setTimeout(function(){
-      [...active].forEach((activeSlide) => {
-        activeSlide.classList.remove('active');
+      [...activo].forEach((diapositivaActiva) => {
+        diapositivaActiva.classList.remove('active');
       });
 
-    slides[i].classList.add('active');
-    btns[i].classList.add('active');
-    i++;
+    diapositivas[indice].classList.add('active');
+    botones[indice].classList.add('active');
+    indice++;
 
-    if(slides.length == i){
-      i = 0;
+    if(indice == diapositivas.length){
+      indice = 0;
     }
-    if(i >= slides.length){
-      return;
-    }
-    repeater();
-  }, 10000);
+    repetidor();
+  }, 3000);
   }
-  repeater();
+  repetidor();
 }
-repeat();
+repetir();

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>About, grupo mas limipio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- TODO IMPORTANTE ARRIBA esto es de la otra pagina-->
+
+    <!-- Enlaces de Bootstrap y jQuery -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Otros enlaces -->
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="carrusel.css">
+    <link rel="stylesheet" href="cards.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="destacados.css">
+    <link rel="stylesheet" href="marcas.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <link rel="icon" href="img/logo1.png">
+
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End NO TOCAR-->
+
+
+    <!-- Navbar Start -->
+    <header class="bg-white">
+        <nav class="flex justify-between items-center w-[92%]  mx-auto">
+            <div>
+                <a href="index.html">
+                    <img class="w-32 cursor-pointer" src="img/logo.png" alt="Logo">
+                </a>
+            </div>
+            <div
+                class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5">
+                <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
+                    <li>
+                        <a class="menu-link" href="index.html">Inicio</a>
+                    </li>
+                    <li>
+                        <a class="menu-link" href="#">Catálogo</a>
+                    </li>
+                    <li>
+                        <a class="menu-link" href="about.html">Sobre Nosotros</a>
+                    </li>
+                    <li>
+                        <a class="menu-link" href="#">
+                            <ion-icon name="cart" class="text-black text-xl"></ion-icon>Carrito
+                        </a>
+                    </li>
+
+                    <li class="search-container">
+                        <form action="index.html" method="get">
+                            <input class="search-bar" type="text" placeholder="Buscar...">
+                            <button type="submit" class="search-button"><ion-icon name="search"
+                                    class="search-icon"></ion-icon></button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]">Mi Perfil</button>
+                <!-- <button class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]"><ion-icon name="cart"
+                        class="text-xl"></ion-icon> L.0</button>-->
+                <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
+            </div>
+        </nav>
+    </header>
+    <!-- Navbar End -->
+
+    <section>
+        <!-- Contenido del submenú -->
+        <div>
+            <nav class="my-submenu-nav">
+                <a href="#">Baños</a>
+                <a href="#">Lavandería</a>
+                <a href="#">Herramientas de Limpieza</a>
+                <a href="#">Bioseguridad</a>
+                <a href="#">Desinfectante</a>
+                <a href="#">Cuidado Personal</a>
+                <a href="#">Productos Plásticos</a>
+                <div class="animation start-home"></div>
+            </nav>
+        </div>
+    </section>
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <h1 class="display-5 mb-3">¡Bienvenido a Grupo + Limpio!</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="about-img position-relative overflow-hidden p-5 pe-0">
+                        <img class="img-fluid w-100" src="img/about.jpg">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="display-5 mb-4">Acerca de Nosotros</h1>
+                    <p class="mb-4">Somos una empresa recientemente creada dedicada a la venta de productos de limpieza
+                        de alta calidad. Nuestro objetivo es brindarte soluciones efectivas para mantener tus espacios
+                        impecables. Nos enorgullece ofrecer una amplia variedad de productos de limpieza, tanto de
+                        reconocidas marcas como de nuestra propia fabricación. Con esto, garantizamos la calidad y
+                        eficacia de cada producto que ofrecemos. Sabemos lo importante que es mantener un entorno limpio
+                        y saludable, ya sea en tu hogar, oficina o cualquier otro lugar. Por eso, nos esforzamos por
+                        proporcionarte productos que se adapten a tus necesidades específicas y te brinden resultados
+                        excepcionales. Explora nuestro catálogo en línea y descubre la amplia gama de productos de
+                        limpieza que tenemos para ti. ¡Confía en Grupo + Limpio para mantener tus espacios impecables y
+                        saludables!
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Firm Visit Start -->
+    <div class="container-fluid bg-icon mt-2 py-4" style="background-color: #11ce1a;">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-md-7 wow fadeIn" data-wow-delay="0.1s">
+                    <h1 class="display-5 text-white mb-3">Visitanos</h1>
+                    <p class="text-white mb-0"> Estamos ubicados en Centro Comercial La Cumbre frente a Colonia de los
+                        Maestros.</p>
+                </div>
+                <div class="col-md-5 text-md-end wow fadeIn" data-wow-delay="0.5s">
+                    <a class="btn btn-lg btn-secondary rounded-pill py-2 px-4"
+                        href="https://www.google.com/maps/place/Centro+Comercial+y+Residencial+Cumbre/@14.0206956,-86.572114,1414m/data=!3m1!1e3!4m6!3m5!1s0x8f6e69ffbf528429:0xa335393a0a89f04a!8m2!3d14.0207164!4d-86.569979!16s%2Fg%2F11jkx71z57?entry=ttu">Ubicación</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Firm Visit End -->
+
+    <!-- Feature Start -->
+    <div class="container-fluid   py-6">
+        <div class="container">
+            <div class="section-header text-center mx-auto mb-5 wow fadeInUp" 
+                style="max-width: 500px;">
+                <h1 class="display-5 mb-3">Nuestros valores</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="bg-white text-center h-100 p-4 p-xl-5">
+                        <img class="img-fluid mb-4 d-block mx-auto" src="img/icon-1.png" alt="">
+                        <h4 class="mb-3">Integridad</h4>
+                        <p class="mb-4">Somos una empresa de carácter firme, justa y honrada.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="bg-white text-center h-100 p-4 p-xl-5">
+                        <img class="img-fluid mb-4 d-block mx-auto" src="img/icon-2.png" alt="">
+                        <h4 class="mb-3">Transparencia</h4>
+                        <p class="mb-4">Somos constantes en las tareas y actividades diarias del trabajo.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="bg-white text-center h-100 p-4 p-xl-5">
+                        <img class="img-fluid mb-4 d-block mx-auto" src="img/icon-3.png" alt="">
+                        <h4 class="mb-3">Compromiso</h4>
+                        <p class="mb-4">Cumplimos en tiempo y forma todos mis pendientes, trabajo en equipo y nos esfuerzamos al máximo.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Feature End -->
+
+
+    <!-- Footer Start -->
+    <footer>
+        <section class="footer">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <h4>Conocenos</h4>
+                    <ul class="links">
+                        <li><a href="#">Acerca de Nosotros</a></li>
+                        <li><a href="#">Historia</a></li>
+                        <li><a href="#">Marcas</a></li>
+                        <li><a href="#">Catálogo en línea</a></li>
+                        <li><a href="#">Promociones</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Preguntas </h4>
+                    <ul class="links">
+                        <li><a href="#">Formas de pago</a></li>
+                        <li><a href="#">Productos nuevos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="links">
+                        <li><a href="#">Politicas de seguridad</a></li>
+                        <li><a href="#">Envios</a></li>
+                        <li><a href="#">Pagos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <p>
+                        Suscribete a nuestro boletín de Promociones
+                        y recibe la información a través de tu
+                        correo electrónico.
+                    </p>
+                    <form action="#">
+                        <input type="text" placeholder="Ingresa tu Email" required>
+                        <button type="submit">Suscribir</button>
+                    </form>
+                    <div class="icons">
+                        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-row" style="display: flex; align-items: center; justify-content: center;">
+                <div class="footer-col" style="text-align: center; margin-top: 20px; color: #fff;">
+                    Derechos reservados © 2023 | Grupo + Limpio
+                </div>
+            </div>
+        </section>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
