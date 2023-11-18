@@ -1,0 +1,79 @@
+.SubDivIp{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Monserrat', sans-serif;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.SubDivIp3{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Monserrat', sans-serif;
+    padding: 5px;
+    font-size: 15px;
+    opacity: 0.5;
+    margin-left: 20px;
+}
+
+.SubDivIp2{
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Monserrat', sans-serif;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    margin-bottom: 30px;
+}
+
+.SubDivIpBtn{
+    display: flex;
+    align-content:flex-start;
+    padding: 10px;
+    justify-content: space-around;
+}
+
+.BtnIpEditar{
+    color: white;
+    border: none;
+    background-color: #23c01e;
+    font-family: 'Monserrat', sans-serif;
+    font-size: 20px;
+    border-radius: 8px;
+    height: 50px;
+    width: 200px
+
+}
+
+.BtnIpEditar:hover{
+    border: 2px solid  black;
+    cursor:pointer;
+}
+
+.DivIP{
+    height: 500px;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    width: 80%;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px gray;
+    border: none;
+}
+
+.InputIP{
+    padding: 6px 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 40%;
+}
+
+.InputIP:hover{
+    border-color: #23c01e;
+}

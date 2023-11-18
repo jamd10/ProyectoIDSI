@@ -54,7 +54,11 @@
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" role="status"></div>
     </div>
-    <!-- Spinner End NO TOCAR-->
+
+    <!--  <div id="loader" class="loader">
+        <div class="spinner"></div>
+    </div>
+   Spinner End NO TOCAR-->
 
 
     <!-- Navbar Start -->
@@ -93,9 +97,8 @@
                 </ul>
             </div>
             <div class="flex items-center gap-6">
-                <button class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]">Mi Perfil</button>
-                <!-- <button class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]"><ion-icon name="cart"
-                        class="text-xl"></ion-icon> L.0</button>-->
+                <a class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]"
+                    href="PerfilUsuario.html">Mi Perfil</a>
                 <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
             </div>
         </nav>
@@ -181,8 +184,7 @@
     <!-- Feature Start -->
     <div class="container-fluid   py-6">
         <div class="container">
-            <div class="section-header text-center mx-auto mb-5 wow fadeInUp" 
-                style="max-width: 500px;">
+            <div class="section-header text-center mx-auto mb-5 wow fadeInUp" style="max-width: 500px;">
                 <h1 class="display-5 mb-3">Nuestros valores</h1>
             </div>
             <div class="row g-4">
@@ -204,7 +206,8 @@
                     <div class="bg-white text-center h-100 p-4 p-xl-5">
                         <img class="img-fluid mb-4 d-block mx-auto" src="img/icon-3.png" alt="">
                         <h4 class="mb-3">Compromiso</h4>
-                        <p class="mb-4">Cumplimos en tiempo y forma todos mis pendientes, trabajo en equipo y nos esfuerzamos al máximo.</p>
+                        <p class="mb-4">Cumplimos en tiempo y forma todos mis pendientes, trabajo en equipo y nos
+                            esfuerzamos al máximo.</p>
                     </div>
                 </div>
 
@@ -255,7 +258,7 @@
                     </p>
                     <form action="#">
                         <input type="text" placeholder="Ingresa tu Email" required>
-                        <button type="submit">Suscribir</button>
+                        <button type="submit">Enviar</button>
                     </form>
                     <div class="icons">
                         <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
