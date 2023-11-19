@@ -1,0 +1,72 @@
+/* CSS */
+body .publicidad {
+    margin: 0;
+    padding: 5px;
+}
+  
+.publicidad {
+    background-color: #3ecd5e;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Cambio en la animación para dispositivos móviles */
+.publicidad .texto {
+    display: inline-block;
+    white-space: nowrap;
+    animation: moverTexto 15s linear infinite;
+}
+
+/* Consultas de medios para hacer que el texto sea responsive */
+@media (max-width: 600px) {
+    .publicidad {
+        font-size: 14px;
+    }
+    
+    /* Cambio en la animación para dispositivos móviles */
+    .publicidad .texto {
+        animation: moverTextoMobile 15s linear infinite; /* Ajusta el tiempo según lo necesario */
+    }
+}
+
+@media (max-width: 400px) {
+    .publicidad {
+        font-size: 12px;
+    }
+}
+
+/* Nueva animación para dispositivos móviles */
+@keyframes moverTextoMobile {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Resto del código permanece igual */
+.publicidad .resaltar {
+    color: #FFD700;
+    animation: destello 1s linear infinite;
+}
+
+@keyframes moverTexto {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes destello {
+    0% { color: #fff; }
+    50% { color: #FFD700; }
+    100% { color: #fff; }
+}

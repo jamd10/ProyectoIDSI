@@ -19,6 +19,12 @@
     <link rel="stylesheet" href="destacados.css">
     <link rel="stylesheet" href="marcas.css">
     <link rel="stylesheet" href="info.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="publicidad.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- FONTS -->
@@ -69,8 +75,8 @@
                 </ul>
             </div>
             <div class="flex items-center gap-6">
-                <a class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]"
-                    href="main.html">Mi Perfil</a>
+                <a class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="main.html">Mi
+                    Perfil</a>
                 <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
             </div>
         </nav>
@@ -161,7 +167,14 @@
                 </div>
             </div>
         </section>
-
+        <section>
+            <div class="publicidad" onmouseover="detenerAnimacion()" onmouseout="reanudarAnimacion()">
+                <div class="texto" id="texto"> <span class="resaltar" id="mas">¡Descubre la revolución en limpieza con
+                        Grupo + Limpio</span>! 🫧
+                    Productos de calidad premium para espacios impecables. ¡Haz tu pedido hoy y transforma tu limpieza!
+                </div>
+            </div>
+        </section>
         <section>
             <div class="ag-format-container">
                 <div class="ag-courses-wrapper">
@@ -219,58 +232,216 @@
             <div class="text-box">
                 <h1>Productos Destacados</h1>
             </div>
-            <div class="products">
-                <div class="cards style-1">
-                    <div class="col">
-                        <div class="card">
-                            <img class="card-image" src="img/Imagen_1_principal.jpeg">
-                            <div class="card-title">Soaps</div>
-                            <div class="card-description">Hot lunch</div>
+            <div class="mi-seccion">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="icons">
+                                <i class="fa-solid fa-circle-arrow-left"> </i>
+                                <img src="images/logo.png" alt="">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                            <div class="product-content">
+                                <div class="product-txt">
+                                    <span> LPS. 100 </span>
+                                    <h3>Grupo + Limpio</h3>
+                                    <p>lorem</p>
+                                </div>
+                                <div class="product-img">
+                                    <img src="images/1.png" alt="">
+                                </div>
+                            </div>
+                            <a href="#" class="btn-1"> Comprar</a>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img class="card-image" src="img/Imagen_2_principal.jpeg">
-                            <div class="card-title">Salads</div>
-                            <div class="card-description">Very tasty and healthy</div>
+                        <div class="swiper-slide">
+                            <div class="icons">
+                                <i class="fa-solid fa-circle-arrow-left"> </i>
+                                <img src="images/logo.png" alt="">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                            <div class="product-content">
+                                <div class="product-txt">
+                                    <span> LPS. 100 </span>
+                                    <h3>Grupo + Limpio</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam dignissimos
+                                        laudantium
+                                        magnam
+                                        molestiae perferendis debitis. Pariatur, dolorem ducimus, modi consequuntur quo
+                                        totam itaque
+                                        aut corporis tenetur!</p>
+                                </div>
+                                <div class="product-img">
+                                    <img src="images/1.png" alt="">
+                                </div>
+                            </div>
+                            <a href="#" class="btn-1"> Comprar</a>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img class="card-image" src="img/Imagen_3_principal.jpeg">
-                            <div class="card-title">Sweet macarons</div>
-                            <div class="card-description">Colorful deserts</div>
+                        <div class="swiper-slide">
+                            <div class="icons">
+                                <i class="fa-solid fa-circle-arrow-left"> </i>
+                                <img src="images/logo.png" alt="">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                            <div class="product-content">
+                                <div class="product-txt">
+                                    <span> LPS. 100 </span>
+                                    <h3>Grupo + Limpio</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam dignissimos
+                                        laudantium
+                                        magnam
+                                        molestiae perferendis debitis. Pariatur, dolorem ducimus, modi consequuntur quo
+                                        totam itaque
+                                        aut corporis tenetur!</p>
+                                </div>
+                                <div class="product-img">
+                                    <img src="images/1.png" alt="">
+                                </div>
+                            </div>
+                            <a href="#" class="btn-1"> Comprar</a>
                         </div>
-                    </div>
-                </div>
-                <!-- Nuevas tarjetas -->
-                <div class="cards style-1 new-cards">
-                    <div class="col">
-                        <div class="card">
-                            <img class="card-image" src="img/Imagen_4_principal.jpeg">
-                            <div class="card-title">Soaps</div>
-                            <div class="card-description">Hot lunch</div>
+                        <div class="swiper-slide">
+                            <div class="icons">
+                                <i class="fa-solid fa-circle-arrow-left"> </i>
+                                <img src="images/logo.png" alt="">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                            <div class="product-content">
+                                <div class="product-txt">
+                                    <span> LPS. 100 </span>
+                                    <h3>Grupo + Limpio</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam dignissimos
+                                        laudantium
+                                        magnam
+                                        molestiae perferendis debitis. Pariatur, dolorem ducimus, modi consequuntur quo
+                                        totam itaque
+                                        aut corporis tenetur!</p>
+                                </div>
+                                <div class="product-img">
+                                    <img src="images/1.png" alt="">
+                                </div>
+                            </div>
+                            <a href="#" class="btn-1"> Comprar</a>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img class="card-image" src="img/Imagen_1_principal.jpeg">
-                            <div class="card-title">Soaps</div>
-                            <div class="card-description">Hot lunch</div>
+                        <div class="swiper-slide">
+                            <div class="icons">
+                                <i class="fa-solid fa-circle-arrow-left"> </i>
+                                <img src="images/logo.png" alt="">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                            <div class="product-content">
+                                <div class="product-txt">
+                                    <span> LPS. 100 </span>
+                                    <h3>Grupo + Limpio</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam dignissimos
+                                        laudantium
+                                        magnam
+                                        molestiae perferendis debitis. Pariatur, dolorem ducimus, modi consequuntur quo
+                                        totam itaque
+                                        aut corporis tenetur!</p>
+                                </div>
+                                <div class="product-img">
+                                    <img src="images/1.png" alt="">
+                                </div>
+                            </div>
+                            <a href="#" class="btn-1"> Comprar</a>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img class="card-image" src="img/Imagen_2_principal.jpeg">
-                            <div class="card-title">Soaps</div>
-                            <div class="card-description">Hot lunch</div>
+                        <div class="swiper-slide">
+                            <div class="icons">
+                                <i class="fa-solid fa-circle-arrow-left"> </i>
+                                <img src="images/logo.png" alt="">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                            <div class="product-content">
+                                <div class="product-txt">
+                                    <span> LPS. 100 </span>
+                                    <h3>Grupo + Limpio</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam dignissimos
+                                        laudantium
+                                        magnam
+                                        molestiae perferendis debitis. Pariatur, dolorem ducimus, modi consequuntur quo
+                                        totam itaque
+                                        aut corporis tenetur!</p>
+                                </div>
+                                <div class="product-img">
+                                    <img src="images/1.png" alt="">
+                                </div>
+                            </div>
+                            <a href="#" class="btn-1"> Comprar</a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="icons">
+                                <i class="fa-solid fa-circle-arrow-left"> </i>
+                                <img src="images/logo.png" alt="">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                            <div class="product-content">
+                                <div class="product-txt">
+                                    <span> LPS. 100 </span>
+                                    <h3>Grupo + Limpio</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam dignissimos
+                                        laudantium
+                                        magnam
+                                        molestiae perferendis debitis. Pariatur, dolorem ducimus, modi consequuntur quo
+                                        totam itaque
+                                        aut corporis tenetur!</p>
+                                </div>
+                                <div class="product-img">
+                                    <img src="images/1.png" alt="">
+                                </div>
+                            </div>
+                            <a href="#" class="btn-1"> Comprar</a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="icons">
+                                <i class="fa-solid fa-circle-arrow-left"> </i>
+                                <img src="images/logo.png" alt="">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                            <div class="product-content">
+                                <div class="product-txt">
+                                    <span> LPS. 100 </span>
+                                    <h3>Grupo + Limpio</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam dignissimos
+                                        laudantium
+                                        magnam
+                                        molestiae perferendis debitis. Pariatur, dolorem ducimus, modi consequuntur quo
+                                        totam itaque
+                                        aut corporis tenetur!</p>
+                                </div>
+                                <div class="product-img">
+                                    <img src="images/1.png" alt="">
+                                </div>
+                            </div>
+                            <a href="#" class="btn-1"> Comprar</a>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="icons">
+                                <i class="fa-solid fa-circle-arrow-left"> </i>
+                                <img src="images/logo.png" alt="">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                            <div class="product-content">
+                                <div class="product-txt">
+                                    <span> LPS. 100 </span>
+                                    <h3>Grupo + Limpio</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam dignissimos
+                                        laudantium
+                                        magnam
+                                        molestiae perferendis debitis. Pariatur, dolorem ducimus, modi consequuntur quo
+                                        totam itaque
+                                        aut corporis tenetur!</p>
+                                </div>
+                                <div class="product-img">
+                                    <img src="images/1.png" alt="">
+                                </div>
+                            </div>
+                            <a href="#" class="btn-1"> Comprar</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </section>
+
         <!--Publicidad-->
         <section>
             <div class="infocards container-fluid">
@@ -477,6 +648,24 @@
     <script src="carrusel.js"></script>
     <script src="menu.js"></script>
     <script src="destacados.js"></script>
+    <script src="publicidad.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            loop: true,
+            coverflowEffect: {
+                depth: 500,
+                modifer: 1,
+                slidesShadows: true,
+                rotate: 0,
+                stretch: 0
+            }
+        })
+    </script>
 </body>
 
 </html>
