@@ -1,4 +1,4 @@
-.SubDivMD{
+.SubDivMD {
     display: flex;
     justify-content: space-around;
     font-family: 'Monserrat', sans-serif;
@@ -9,9 +9,9 @@
     margin-bottom: 30px;
 }
 
-.SubDivMD2{
+.SubDivMD2 {
     display: flex;
-    align-content:flex-start;
+    align-content: flex-start;
     font-family: 'Monserrat', sans-serif;
     padding: 10px;
     font-size: 15px;
@@ -20,9 +20,9 @@
     margin-left: 20px;
 }
 
-.SubDivMD3{
+.SubDivMD3 {
     display: flex;
-    align-content:flex-start;
+    align-content: flex-start;
     font-family: 'Monserrat', sans-serif;
     padding: 10px;
     font-size: 15px;
@@ -31,7 +31,7 @@
     margin-left: 20px;
 }
 
-.DivMD{
+.DivMD {
     height: 270px;
     display: none;
     margin: auto;
@@ -43,14 +43,14 @@
     border: none;
 }
 
-.SubDivMdBtn{
+.SubDivMdBtn {
     display: flex;
-    align-content:flex-start;
+    align-content: flex-start;
     padding: 10px;
     justify-content: space-around;
 }
 
-.BtnMdEditar{
+.BtnMdEditar {
     color: white;
     border: none;
     background-color: #23c01e;
@@ -58,25 +58,40 @@
     font-size: 20px;
     border-radius: 8px;
     height: 50px;
-    width: 200px
-
+    width: 200px;
 }
 
-.BtnMdEditar:hover{
-    border: 2px solid  black;
-    cursor:pointer;
+.BtnMdEditar:hover {
+    border: 2px solid black;
+    cursor: pointer;
 }
 
-.InputMD{
+.InputMD {
     padding: 6px 12px;
     margin: 8px 0;
     display: inline-block;
     border: 2px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    width: 40%
+    width: 40%;
 }
 
-.InputMD:hover{
+.InputMD:hover {
     border-color: #23c01e;
+}
+
+@media (max-width: 600px) {
+    .SubDivMD,
+    .SubDivMD2,
+    .SubDivMD3,
+    .DivMD,
+    .SubDivMdBtn,
+    .InputMD {
+        width: 100%;
+    }
+
+    .BtnMdEditar {
+        width: 100%;
+        height: auto;
+    }
 }
