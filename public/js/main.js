@@ -9,7 +9,7 @@
         // Ocultar el spinner después de 3 segundos
         setTimeout(function() {
             $('#loader').hide();
-        }, 2000);
+        }, 700);
     });
     
     // Initiate the wowjs

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="marcas.css">
     <link rel="stylesheet" href="info.css">
     <link rel="stylesheet" href="pb4.css">
+    <link rel="stylesheet" href="btn.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- FONTS -->
@@ -49,7 +50,7 @@
                         <a class="menu-link" href="index.html">Inicio</a>
                     </li>
                     <li>
-                        <a class="menu-link" href="#">Catálogo</a>
+                        <a class="menu-link" href="catalogo.html">Catálogo</a>
                     </li>
                     <li>
                         <a class="menu-link" href="about.html">Sobre Nosotros</a>
@@ -70,8 +71,8 @@
                 </ul>
             </div>
             <div class="flex items-center gap-6">
-                <a class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="main.html">Mi
-                    Perfil</a>
+                <a class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="main.html">Iniciar
+                    Sesion</a>
                 <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
             </div>
         </nav>
@@ -81,13 +82,13 @@
             <!-- Contenido del submenú -->
             <div>
                 <nav class="my-submenu-nav">
-                    <a href="#">Baños</a>
-                    <a href="#">Lavandería</a>
-                    <a href="#">Herramientas de Limpieza</a>
-                    <a href="#">Bioseguridad</a>
-                    <a href="#">Desinfectante</a>
-                    <a href="#">Cuidado Personal</a>
-                    <a href="#">Productos Plásticos</a>
+                    <a href="catalogo.html?flag=Baños">Baños</a>
+                    <a href="catalogo.html?flag=Lavandería">Lavandería</a>
+                    <a href="catalogo.html?flag=Herramientas de Limpieza">Herramientas de Limpieza</a>
+                    <a href="catalogo.html?flag=Bioseguridad">Bioseguridad</a>
+                    <a href="catalogo.html?flag=Desinfectante">Desinfectante</a>
+                    <a href="catalogo.html?flag=Cuidado Personal">Cuidado Personal</a>
+                    <a href="catalogo.html?flag=Productos Plásticos">Productos Plásticos</a>
                     <div class="animation start-home"></div>
                 </nav>
             </div>
@@ -120,6 +121,11 @@
                     </div>
                 </div>
             </div>
+        </section>
+        <section>
+            <button id="scrollToTopBtn" onclick="scrollToTop()">
+                <i class="fa fa-arrow-up"></i>
+            </button>
         </section>
     </main>
     <footer>
@@ -194,7 +200,7 @@
     <script src="carrusel.js"></script>
     <script src="menu.js"></script>
     <script src="destacados.js"></script>
+    <script src="btn.js"></script>
 </body>
 
 </html>
-

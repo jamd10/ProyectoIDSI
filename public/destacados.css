@@ -74,7 +74,8 @@
 
 .mi-seccion .swiper {
   width: 100%;
-  padding: 20px 0; /* Reducir aún más el padding superior e inferior */
+  padding: 20px 0;
+  /* Reducir aún más el padding superior e inferior */
 }
 
 .mi-seccion .swiper-slide {
@@ -82,7 +83,8 @@
   height: 500px;
   background-color: #323232;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-  padding: 10px; /* Reducir aún más el padding */
+  padding: 10px;
+  /* Reducir aún más el padding */
   text-align: center;
 }
 
@@ -90,12 +92,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px; /* Reducir el margin-top */
+  margin-top: 20px;
+  /* Reducir el margin-top */
 }
 
 .mi-seccion .icons i {
   font-size: 20px;
-  color: #ffb900;
+  color: rgba(38, 190, 0, 0.6);
 }
 
 .mi-seccion .icons img {
@@ -114,7 +117,7 @@
 
 .mi-seccion .product-txt span {
   font-size: 25px;
-  color: #ffb900;
+  color: rgba(38, 190, 0, 0.6);
   font-weight: bold;
 }
 
@@ -136,9 +139,10 @@
 .mi-seccion .btn-1 {
   display: inline-block;
   padding: 13px 55px;
-  border: 1px solid #ffb900;
+  border: 1px solid #fff;
   border-radius: 25px;
-  color: #ffb900;
+  color: #fff;
   text-decoration: none;
-  margin-top: 10px; /* Reducir aún más el margin-top */
+  margin-top: 10px;
+  /* Reducir aún más el margin-top */
 }

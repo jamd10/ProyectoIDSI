@@ -1,0 +1,27 @@
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    background-color: rgba(38, 190, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px; /* Ajusta el tamaño del círculo según tus necesidades */
+    height: 30px; /* Ajusta el tamaño del círculo según tus necesidades */
+    padding: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    z-index: 1000000; /* Ajusta según tus necesidades */
+    outline: none;
+    bottom: 20px; /* Ajusta según tus necesidades */
+    right: 20px; /* Ajusta según tus necesidades */
+}
+
+#scrollToTopBtn:hover {
+    background-color: rgba(38, 190, 0, 0.8);
+}
+
+/* Ajusta según los estilos de tu biblioteca de iconos o iconos personalizados */
+#scrollToTopBtn .fa-arrow-up:before {
+    content: "\2191"; /* Código de caracteres Unicode para una flecha hacia arriba */
+}
