@@ -74,8 +74,7 @@
 
 .mi-seccion .swiper {
   width: 100%;
-  padding: 50px 0;
-  /* Reducir el padding superior e inferior */
+  padding: 20px 0; /* Reducir aún más el padding superior e inferior */
 }
 
 .mi-seccion .swiper-slide {
@@ -83,8 +82,7 @@
   height: 500px;
   background-color: #323232;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-  padding: 20px;
-  /* Reducir el padding */
+  padding: 10px; /* Reducir aún más el padding */
   text-align: center;
 }
 
@@ -92,7 +90,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 20px; /* Reducir el margin-top */
 }
 
 .mi-seccion .icons i {
@@ -142,6 +140,5 @@
   border-radius: 25px;
   color: #ffb900;
   text-decoration: none;
-  margin-top: 20px;
-  /* Reducir el margin-top */
+  margin-top: 10px; /* Reducir aún más el margin-top */
 }
