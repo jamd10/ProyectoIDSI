@@ -1,4 +1,4 @@
-.SubDivS{
+.SubDivS {
     display: flex;
     justify-content: space-around;
     font-family: 'Monserrat', sans-serif;
@@ -9,7 +9,7 @@
     margin-bottom: 30px;
 }
 
-.DivS{
+.DivS {
     height: 165px;
     display: none;
     justify-content: space-around;
@@ -22,7 +22,7 @@
     border: none;
 }
 
-.DivS2{
+.DivS2 {
     height: 460px;
     display: none;
     justify-content: space-around;
@@ -35,14 +35,14 @@
     border: none;
 }
 
-.SubDivSBtn{
+.SubDivSBtn {
     justify-content: space-around;
     display: flex;
     padding: 10px;
     margin-left: 20px;
 }
 
-.SubDivS2{
+.SubDivS2 {
     justify-content: space-around;
     display: flex;
     font-family: 'Monserrat', sans-serif;
@@ -52,7 +52,7 @@
     margin-left: 20px;
 }
 
-.SubDivS3{
+.SubDivS3 {
     justify-content: space-around;
     display: flex;
     font-family: 'Monserrat', sans-serif;
@@ -62,7 +62,7 @@
     margin-left: 20px;
 }
 
-.BtnSEditar{
+.BtnSEditar {
     color: white;
     border: none;
     background-color: #23c01e;
@@ -70,32 +70,48 @@
     font-size: 20px;
     border-radius: 8px;
     height: 50px;
-    width: 200px
-
+    width: 200px;
 }
 
-.BtnSEditar:hover{
-    border: 2px solid  black;
-    cursor:pointer;
+.BtnSEditar:hover {
+    border: 2px solid black;
+    cursor: pointer;
 }
 
-.InputS{
+.InputS {
     padding: 6px 12px;
     margin: 8px 0;
     display: inline-block;
     border: 2px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    width: 40%
+    width: 40%;
 }
 
-.InputS:hover{
+.InputS:hover {
     border-color: #23c01e;
 }
 
-.checkboxS{
+.checkboxS {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .SubDivS,
+    .DivS,
+    .DivS2,
+    .SubDivSBtn,
+    .SubDivS2,
+    .SubDivS3,
+    .InputS {
+        width: 100%;
+    }
+
+    .BtnSEditar {
+        width: 100%;
+        height: auto;
+    }
 }

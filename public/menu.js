@@ -10,7 +10,7 @@ window.addEventListener("load", function () {
     const loader = document.getElementById("loader");
     setTimeout(function () {
         loader.classList.add("fadeOut");
-    }, 1000);
+    }, 500);
 });
 
 window.addEventListener('DOMContentLoaded', (event) => {

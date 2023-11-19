@@ -5,8 +5,10 @@
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
-    margin: auto;
+    /* Elimina el margen para que tenga el mismo ancho que la página */
+    margin: 0;
 }
+
 
 .ag-courses-wrapper {
     max-width: 1142px;

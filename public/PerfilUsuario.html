@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <link href="PerfilUsuario.css" rel="stylesheet" type="text/css" />
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="destacados.css">
   <link rel="stylesheet" href="marcas.css">
   <link rel="stylesheet" href="info.css">
+  <link rel="stylesheet" href="btn.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <!-- FONTS -->
@@ -35,7 +36,7 @@
 <body>
   <div id="loader" class="loader">
     <div class="spinner"></div>
-</div>
+  </div>
   <header class="bg-white">
     <nav class="flex justify-between items-center w-[92%]  mx-auto">
       <div>
@@ -50,7 +51,7 @@
             <a class="menu-link" href="index.html">Inicio</a>
           </li>
           <li>
-            <a class="menu-link" href="#">Catálogo</a>
+            <a class="menu-link" href="catalogo.html">Catálogo</a>
           </li>
           <li>
             <a class="menu-link" href="about.html">Sobre Nosotros</a>
@@ -71,8 +72,7 @@
         </ul>
       </div>
       <div class="flex items-center gap-6">
-        <a class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="PerfilUsuario.html">Mi
-          Perfil</a>
+        <a class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="main.html">Iniciar Sesion</a>
         <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
       </div>
     </nav>
@@ -84,274 +84,291 @@
       <!-- Contenido del submenú -->
       <div>
         <nav class="my-submenu-nav">
-          <a href="#">Baños</a>
-          <a href="#">Lavandería</a>
-          <a href="#">Herramientas de Limpieza</a>
-          <a href="#">Bioseguridad</a>
-          <a href="#">Desinfectante</a>
-          <a href="#">Cuidado Personal</a>
-          <a href="#">Productos Plásticos</a>
+          <a href="catalogo.html?flag=Baños">Baños</a>
+          <a href="catalogo.html?flag=Lavandería">Lavandería</a>
+          <a href="catalogo.html?flag=Herramientas de Limpieza">Herramientas de Limpieza</a>
+          <a href="catalogo.html?flag=Bioseguridad">Bioseguridad</a>
+          <a href="catalogo.html?flag=Desinfectante">Desinfectante</a>
+          <a href="catalogo.html?flag=Cuidado Personal">Cuidado Personal</a>
+          <a href="catalogo.html?flag=Productos Plásticos">Productos Plásticos</a>
           <div class="animation start-home"></div>
         </nav>
       </div>
     </section>
-    <div class="PUDiv">
-      <div class="TituloDiv">
-        <img src="./imagenusario.png" class="ImgU" alt="imagen" />
-        <span class="Titulo">Perfil de Cliente</span>
-      </div>
-      <div>
-        <div id="ContenidoPU" class="ConPU">
-          <nav>
-            <div class="navpu" id="nav-tab" role="tablist">
-              <button class="btnIP" id="navbtnIP" data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
-                role="tab" aria-controls="nav-IP" aria-selected="true">Informacion Personal</button>
-              <button class="btnMD" id="navbtnMD" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
-                role="tab" aria-controls="nav-MD" aria-selected="false">Mi Direccion</button>
-              <button class="btnS" id="navbtnS" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button"
-                role="tab" aria-controls="nav-S" aria-selected="false">Seguridad</button>
+    <section>
+      <div class="PUDiv">
+        <div class="TituloDiv">
+          <img src="./imagenusario.png" class="ImgU" alt="imagen" />
+          <span class="Titulo">Perfil de Cliente</span>
+        </div>
+        <div>
+          <div id="ContenidoPU" class="ConPU">
+            <nav>
+              <div class="navpu" id="nav-tab" role="tablist">
+                <button class="btnIP" id="navbtnIP" data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
+                  role="tab" aria-controls="nav-IP" aria-selected="true">Informacion Personal</button>
+                <button class="btnMD" id="navbtnMD" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
+                  role="tab" aria-controls="nav-MD" aria-selected="false">Mi Direccion</button>
+                <button class="btnS" id="navbtnS" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button"
+                  role="tab" aria-controls="nav-S" aria-selected="false">Seguridad</button>
+              </div>
+            </nav>
+            <div id="IDDivIP" class="DivIP">
+              <link href="InfoPersonal.css" rel="stylesheet" type="text/css" />
+              <div class="SubDivIp2">
+                <span>Informacion Personal</span>
+              </div>
+              <div class="SubDivIp">
+                <span>Nombre</span>
+                <span>Apellido</span>
+                <span></span>
+              </div>
+              <div class="SubDivIp3">
+                <input id="NombreInput" class="InputIP" type="text" />
+                <input id="ApellidoInput" class="InputIP" type="text" />
+                <span></span>
+              </div>
+              <div class="SubDivIp">
+                <span>Correo Electronico</span>
+                <span>Numero de Telefono</span>
+                <span></span>
+              </div>
+              <div class="SubDivIp3">
+                <input id="CorreoInput" class="InputIP" placeholder="ejemplo@correo.com" type="text" />
+                <input id="TelefonoInput" class="InputIP" placeholder="(XXX)-XXXX-XXXX" type="text" />
+                <span></span>
+              </div>
+              <div class="SubDivIp">
+                <span>Fecha de Nacimiento</span>
+                <span>Numero de Identidad</span>
+                <span></span>
+              </div>
+              <div class="SubDivIp3">
+                <input id="NacimientoInput" class="InputIP" placeholder="XX/XX/XXXX" type="text" />
+                <input id="IdentidadInput" class="InputIP" placeholder="XXXX-XXXX-XXXXX" type="text" />
+                <span></span>
+              </div>
+              <div class="SubDivIp">
+                <span>Genero</span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="SubDivIp3">
+                <select id="GeneroSelect" class="InputIP">
+                  <option value="masculino">Masculino</option>
+                  <option value="femenino">Femenino</option>
+                </select>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="SubDivIpBtn">
+                <button class="BtnIpEditar"> Guardar Cambios </button>
+              </div>
             </div>
-          </nav>
-          <div id="IDDivIP" class="DivIP">
-            <link href="InfoPersonal.css" rel="stylesheet" type="text/css" />
-            <div class="SubDivIp2">
-              <span>Informacion Personal</span>
-            </div>
-            <div class="SubDivIp">
-              <span>Nombre</span>
-              <span>Apellido</span>
-              <span></span>
-            </div>
-            <div class="SubDivIp3">
-              <input id="NombreInput" class="InputIP" type="text" />
-              <input id="ApellidoInput" class="InputIP" type="text" />
-              <span></span>
-            </div>
-            <div class="SubDivIp">
-              <span>Correo Electronico</span>
-              <span>Numero de Telefono</span>
-              <span></span>
-            </div>
-            <div class="SubDivIp3">
-              <input id="CorreoInput" class="InputIP" placeholder="ejemplo@correo.com" type="text" />
-              <input id="TelefonoInput" class="InputIP" placeholder="(XXX)-XXXX-XXXX" type="text" />
-              <span></span>
-            </div>
-            <div class="SubDivIp">
-              <span>Fecha de Nacimiento</span>
-              <span>Numero de Identidad</span>
-              <span></span>
-            </div>
-            <div class="SubDivIp3">
-              <input id="NacimientoInput" class="InputIP" placeholder="XX/XX/XXXX" type="text" />
-              <input id="IdentidadInput" class="InputIP" placeholder="XXXX-XXXX-XXXXX" type="text" />
-              <span></span>
-            </div>
-            <div class="SubDivIp">
-              <span>Genero</span>
-              <span></span>
-              <span></span>
-            </div>
-            <div class="SubDivIp3">
-              <select id="GeneroSelect" class="InputIP">
-                <option value="masculino">Masculino</option>
-                <option value="femenino">Femenino</option>
-              </select>
-              <span></span>
-              <span></span>
-            </div>
-            <div class="SubDivIpBtn">
-              <button class="BtnIpEditar"> Guardar Cambios </button>
-            </div>
-          </div>
 
-          <div id="IDDivMD" class="DivMD">
-            <link href="MiDireccion.css" rel="stylesheet" type="text/css" />
-            <div class="SubDivMD">
-              <span>Mi Direccion</span>
+            <div id="IDDivMD" class="DivMD">
+              <link href="MiDireccion.css" rel="stylesheet" type="text/css" />
+              <div class="SubDivMD">
+                <span>Mi Direccion</span>
+              </div>
+              <div class="SubDivMD2">
+                <span>Ciudad</span>
+                <span>Direccion</span>
+                <span></span>
+              </div>
+              <div class="SubDivMD3">
+                <input id="CiudadInput" class="InputMD" type="text" />
+                <input id="DireccionInput" class="InputMD" type="text" />
+                <span></span>
+              </div>
+              <div class="SubDivMdBtn">
+                <button class="BtnMdEditar">Guardar Cambios</button>
+              </div>
             </div>
-            <div class="SubDivMD2">
-              <span>Cuidad</span>
-              <span>Direccion</span>
-              <span></span>
-            </div>
-            <div class="SubDivMD3">
-              <input id="CuidadInput" class="InputMD" type="text" />
-              <input id="DireccionInput" class="InputMD" type="text" />
-              <span></span>
-            </div>
-            <div class="SubDivMdBtn">
-              <button class="BtnMdEditar">Guardar Cambios</button>
-            </div>
-          </div>
 
-          <div id="IDDivS2" class="DivS">
-            <link href="Seguridad.css" rel="stylesheet" type="text/css" />
-            <div class="SubDivS">
-              <span>Seguridad</span>
+            <div id="IDDivS2" class="DivS">
+              <link href="Seguridad.css" rel="stylesheet" type="text/css" />
+              <div class="SubDivS">
+                <span>Seguridad</span>
+              </div>
+              <div class="SubDivSBtn">
+                <button id="BtnSEditar2" class="BtnSEditar">Cambiar Contraseña</button>
+              </div>
             </div>
-            <div class="SubDivSBtn">
-              <button id="BtnSEditar2" class="BtnSEditar">Cambiar Contraseña</button>
-            </div>
-          </div>
 
-          <div id="IDDivS" class="DivS2">
-            <link href="Seguridad.css" rel="stylesheet" type="text/css" />
-            <div class="SubDivS">
-              <span>Seguridad</span>
-            </div>
-            <div class="SubDivS2">
-              <span>Ingrese la contrase&ntilde;a actual</span>
-            </div>
-            <div class="SubDivS3">
-              <input id="C1Input" class="InputS" type="password" />
-            </div>
-            <div class="checkboxS">
-              <input type="checkbox" onclick="mostrarcontra1()">Mostrar</input>
-            </div>
-            <div class="SubDivS2">
-              <span>Ingrese la contrase&ntilde;a nueva</span>
-            </div>
-            <div class="SubDivS3">
-              <input id="C2Input" class="InputS" type="password" />
-            </div>
-            <div class="checkboxS">
-              <input type="checkbox" onclick="mostrarcontra2()">Mostrar</input>
-            </div>
-            <div class="SubDivSBtn">
-              <button id="BtnSEditar1" class="BtnSEditar">Guardar Contrase&ntilde;a</button>
+            <div id="IDDivS" class="DivS2">
+              <link href="Seguridad.css" rel="stylesheet" type="text/css" />
+              <div class="SubDivS">
+                <span>Seguridad</span>
+              </div>
+              <div class="SubDivS2">
+                <span>Ingrese la contraseña actual</span>
+              </div>
+              <div class="SubDivS3">
+                <input id="C1Input" class="InputS" type="password" />
+              </div>
+              <div class="checkboxS">
+                <input type="checkbox" onclick="mostrarcontra1()">Mostrar</input>
+              </div>
+              <div class="SubDivS2">
+                <span>Ingrese la contraseña nueva</span>
+              </div>
+              <div class="SubDivS3">
+                <input id="C2Input" class="InputS" type="password" />
+              </div>
+              <div class="checkboxS">
+                <input type="checkbox" onclick="mostrarcontra2()">Mostrar</input>
+              </div>
+              <div class="SubDivSBtn">
+                <button id="BtnSEditar1" class="BtnSEditar">Guardar Contraseña</button>
+              </div>
             </div>
           </div>
         </div>
-        <script>
-          const boton1 = document.getElementById('navbtnIP');
-          const boton2 = document.getElementById('navbtnMD');
-          const boton3 = document.getElementById('navbtnS');
-          const boton4 = document.getElementById('BtnSEditar2');
-          const boton5 = document.getElementById('BtnSEditar1');
-          const div1 = document.getElementById('IDDivIP');
-          const div2 = document.getElementById('IDDivMD');
-          const div3 = document.getElementById('IDDivS');
-          const div4 = document.getElementById('IDDivS2');
-
-          function changeContent1() {
-            div1.style.display = "block"
-            div2.style.display = "none"
-            div3.style.display = "none"
-            div4.style.display = "none"
-          }
-          function changeContent2() {
-            div1.style.display = "none"
-            div2.style.display = "block"
-            div3.style.display = "none"
-            div4.style.display = "none"
-          }
-          function changeContent3() {
-            div1.style.display = "none"
-            div2.style.display = "none"
-            div3.style.display = "none"
-            div4.style.display = "block"
-          }
-          function changeContent4() {
-            div4.style.display = "none"
-            div3.style.display = "block"
-          }
-          function changeContent5() {
-            div3.style.display = "none"
-            div4.style.display = "block"
-          }
-          function mostrarcontra1() {
-            var x = document.getElementById("C1Input");
-            if (x.type === "password") {
-              x.type = "text";
-            } else {
-              x.type = "password";
-            }
-          }
-          function mostrarcontra2() {
-            var x = document.getElementById("C2Input");
-            if (x.type === "password") {
-              x.type = "text";
-            } else {
-              x.type = "password";
-            }
-          }
-
-          boton1.addEventListener('click', changeContent1);
-          boton2.addEventListener('click', changeContent2);
-          boton3.addEventListener('click', changeContent3);
-          boton4.addEventListener('click', changeContent4);
-          boton5.addEventListener('click', changeContent5);
-        </script>
       </div>
-    </div>
+      <section>
+        <button id="scrollToTopBtn" onclick="scrollToTop()">
+          <i class="fa fa-arrow-up"></i>
+        </button>
+      </section>
+    </section>
+
+    <script>
+      const boton1 = document.getElementById('navbtnIP');
+      const boton2 = document.getElementById('navbtnMD');
+      const boton3 = document.getElementById('navbtnS');
+      const boton4 = document.getElementById('BtnSEditar2');
+      const boton5 = document.getElementById('BtnSEditar1');
+      const div1 = document.getElementById('IDDivIP');
+      const div2 = document.getElementById('IDDivMD');
+      const div3 = document.getElementById('IDDivS');
+      const div4 = document.getElementById('IDDivS2');
+
+      function changeContent1() {
+        div1.style.display = "block"
+        div2.style.display = "none"
+        div3.style.display = "none"
+        div4.style.display = "none"
+      }
+
+      function changeContent2() {
+        div1.style.display = "none"
+        div2.style.display = "block"
+        div3.style.display = "none"
+        div4.style.display = "none"
+      }
+
+      function changeContent3() {
+        div1.style.display = "none"
+        div2.style.display = "none"
+        div3.style.display = "none"
+        div4.style.display = "block"
+      }
+
+      function changeContent4() {
+        div4.style.display = "none"
+        div3.style.display = "block"
+      }
+
+      function changeContent5() {
+        div3.style.display = "none"
+        div4.style.display = "block"
+      }
+
+      function mostrarcontra1() {
+        var x = document.getElementById("C1Input");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+
+      function mostrarcontra2() {
+        var x = document.getElementById("C2Input");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+
+      boton1.addEventListener('click', changeContent1);
+      boton2.addEventListener('click', changeContent2);
+      boton3.addEventListener('click', changeContent3);
+      boton4.addEventListener('click', changeContent4);
+      boton5.addEventListener('click', changeContent5);
+    </script>
+
+
   </main>
 
   <footer>
     <section class="footer">
-        <div class="footer-row">
-            <div class="footer-col">
-                <h4>Conocenos</h4>
-                <ul class="links">
-                    <li><a href="#">Acerca de Nosotros</a></li>
-                    <li><a href="#">Historia</a></li>
-                    <li><a href="#">Marcas</a></li>
-                    <li><a href="#">Catálogo en línea</a></li>
-                    <li><a href="#">Promociones</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Preguntas </h4>
-                <ul class="links">
-                    <li><a href="#">Formas de pago</a></li>
-                    <li><a href="#">Productos nuevos</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Legal</h4>
-                <ul class="links">
-                    <li><a href="#">Politicas de seguridad</a></li>
-                    <li><a href="#">Envios</a></li>
-                    <li><a href="#">Pagos</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Contacto</h4>
-                <p>
-                    Suscribete a nuestro boletín de Promociones
-                    y recibe la información a través de tu
-                    correo electrónico.
-                </p>
-                <form action="#">
-                    <input type="text" placeholder="Ingrese su Email" required>
-                    <button type="submit">Enviar</button>
-                </form>
-                <div class="icons">
-                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
+      <div class="footer-row">
+        <div class="footer-col">
+          <h4>Conocenos</h4>
+          <ul class="links">
+            <li><a href="#">Acerca de Nosotros</a></li>
+            <li><a href="#">Historia</a></li>
+            <li><a href="#">Marcas</a></li>
+            <li><a href="#">Catálogo en línea</a></li>
+            <li><a href="#">Promociones</a></li>
+          </ul>
         </div>
-        <div class="footer-row" style="display: flex; align-items: center; justify-content: center;">
-            <div class="footer-col" style="text-align: center; margin-top: 20px; color: #fff;">
-                Derechos reservados © 2023 | Grupo + Limpio
-            </div>
+
+        <div class="footer-col">
+          <h4>Preguntas </h4>
+          <ul class="links">
+            <li><a href="#">Formas de pago</a></li>
+            <li><a href="#">Productos nuevos</a></li>
+          </ul>
         </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="links">
+            <li><a href="#">Politicas de seguridad</a></li>
+            <li><a href="#">Envios</a></li>
+            <li><a href="#">Pagos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <p>
+            Suscribete a nuestro boletín de Promociones
+            y recibe la información a través de tu
+            correo electrónico.
+          </p>
+          <form action="#">
+            <input type="text" placeholder="Ingrese su Email" required>
+            <button type="submit">Enviar</button>
+          </form>
+          <div class="icons">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-row" style="display: flex; align-items: center; justify-content: center;">
+        <div class="footer-col" style="text-align: center; margin-top: 20px; color: #fff;">
+          Derechos reservados © 2023 | Grupo + Limpio
+        </div>
+      </div>
     </section>
-</footer>
+  </footer>
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
-<script src="menu.js"></script>
-<script src="carrusel.js"></script>
-<script src="menu.js"></script>
-<script src="destacados.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+  <script src="menu.js"></script>
+  <script src="carrusel.js"></script>
+  <script src="menu.js"></script>
+  <script src="destacados.js"></script>
+  <script src="btn.js"></script>
 </body>
 </body>
 
