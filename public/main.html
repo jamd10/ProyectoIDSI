@@ -215,7 +215,6 @@
             })
             .then(response => response.json())
             .then(data => {
-                alert('Se ha iniciado sesion exitosamente!');
                 localStorage["correo"] = getCorreo.value;
                 aPerfil(data.message);
             })
@@ -226,7 +225,10 @@
 
         function aPerfil(data) {
             if(data == 'Holas'){
+                alert('Se ha iniciado sesion exitosamente!');
                 window.location.href = "PerfilUsuario.html";
+            }else{
+                alert('Error al iniciar Sesion, revise sus credenciales');
             }
         }
 

@@ -111,6 +111,8 @@
                   role="tab" aria-controls="nav-MD" aria-selected="false">Mi Direccion</button>
                 <button class="btnS" id="navbtnS" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button"
                   role="tab" aria-controls="nav-S" aria-selected="false">Seguridad</button>
+                <button class="btnLO" id="navbtnLO" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button"
+                  role="tab" aria-controls="nav-S" aria-selected="false">Cerrar Sesion</button>
               </div>
             </nav>
             <div id="IDDivIP" class="DivIP">
@@ -364,6 +366,7 @@
     const getBtnC = document.getElementById('BtnSEditar1');
     const getBtn = document.getElementById('Guardarbtn');
     const getBtn2 = document.getElementById('Guardarbtn2');
+    const getBtnLO = document.getElementById('navbtnLO');
     const getNombre = document.getElementById("NombreInput");
     const getApellido =  document.getElementById("ApellidoInput");
     const getCorreo =  document.getElementById("CorreoInput");
@@ -378,8 +381,30 @@
     getBtn.addEventListener('click', Actualizar);
     getBtn2.addEventListener('click', Actualizar);
     getBtnC.addEventListener('click', BuscarContra);
+    getBtnLO.addEventListener('click', CerrarSesion);
 
     const baseUrl = 'https://grupolimpio-api.onrender.com';
+
+    function CerrarSesion() {
+      fetch(baseUrl + '/logOut', {
+          method: 'GET',
+          headers: {
+          'Content-Type': 'application/json',
+          },
+      })
+      .then(response => response.json())
+      .then(data => {
+          if(data.msg == "log out"){
+            alert('Se ha cerrrado sesion');
+            window.location.href = "index.html";
+          }else{
+
+          }
+      })
+      .catch(error => {
+          alert('No se ha podido cerrar sesion');
+      });
+    }
 
     function Actualizar() {
       fetch(baseUrl + '/Actualizar', {
@@ -387,7 +412,7 @@
           headers: {
           'Content-Type': 'application/json',
           },
-          body: JSON.stringify({nombre: getNombre.value, apellido: getApellido.value, id: getId.value, telefono: getTelefono.value, 
+          body: JSON.stringify({nombre: getNombre.value, apellido: getApellido.value, identidad: getId.value, telefono: getTelefono.value, 
                 ciudad: getCiudad.value, correo: getCorreo.value, fechanacimiento: getNacimiento.value, genero: getGenero.value, direccion: getDireccion.value }),
       })
       .then(response => response.json())
