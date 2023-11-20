@@ -141,7 +141,7 @@
 
                     <!-- Botones alineados horizontalmente -->
                     <div class="button-group">
-                        <button type="submit">Registrar</button>
+                        <button type="submit" id="registrarbtn">Registrar</button>
                         <!-- Botón para regresar -->
                         <button type="button" onclick="regresar()">Regresar</button>
                     </div>
@@ -218,6 +218,64 @@
         function regresar() {
             window.location.href = "main.html";
         }
+    </script>
+
+    <script>
+        const getBtn = document.getElementById('registrarbtn');
+        const getNombre = document.getElementById('nombre');
+        const getApellido = document.getElementById('apellidos');
+        const getId = document.getElementById('id');
+        const getTelefono = document.getElementById('telefono');
+        const getCiudad = document.getElementById('ciudad');
+        const getCorreo = document.getElementById('email');
+        const getContra = document.getElementById('password');
+        const getContraC = document.getElementById('confirm-password');
+
+        getBtn.addEventListener('click', CrearUsuario);
+        getBtn.addEventListener('click', submitData);
+
+        const baseUrl = 'https://grupolimpio-api.onrender.com';
+
+        //Deberia de ser primero CrearUsuario y despues submitData
+
+        async function submitData(e) {
+            e.preventDefault();
+            fetch(baseUrl + '/submit', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nombre: getNombre.value, apellido: getApellido.value, identidad: getId.value, telefono: getTelefono.value, 
+                ciudad: getCiudad.value, correo: getCorreo.value, password: getContra.value, fechanacimiento: '', genero: '', direccion: '' }),
+            })
+            .then(response => response.json())
+            .then(data => {
+
+            })
+            .catch(error => {
+                alert('Error Creando Usuario'+ error);
+            });
+        }
+
+        async function CrearUsuario(e) {
+            e.preventDefault();
+            fetch(baseUrl + '/createUser', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({correo: getCorreo.value, password: getContra.value}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Usuario creado con exito, se ha enviado un link de verifiacion al su correo');
+                submitData();
+            })
+            .catch(error => {
+                alert('Error al crear usuario, su correo pueda ser que ya este en uso, o su contraseña puede ser muy debil' + error);
+            });
+        }
+
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

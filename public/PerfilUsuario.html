@@ -33,7 +33,7 @@
 </head>
 
 
-<body>
+<body onload="CargarDatos()">
   <div id="loader" class="loader">
     <div class="spinner"></div>
   </div>
@@ -134,7 +134,7 @@
                 <span></span>
               </div>
               <div class="SubDivIp3">
-                <input id="CorreoInput" class="InputIP" placeholder="ejemplo@correo.com" type="text" />
+                <input id="CorreoInput" class="InputIP" placeholder="ejemplo@correo.com" type="text" readonly/>
                 <input id="TelefonoInput" class="InputIP" placeholder="(XXX)-XXXX-XXXX" type="text" />
                 <span></span>
               </div>
@@ -162,7 +162,7 @@
                 <span></span>
               </div>
               <div class="SubDivIpBtn">
-                <button class="BtnIpEditar"> Guardar Cambios </button>
+                <button id="Guardarbtn" class="BtnIpEditar"> Guardar Cambios </button>
               </div>
             </div>
 
@@ -182,7 +182,7 @@
                 <span></span>
               </div>
               <div class="SubDivMdBtn">
-                <button class="BtnMdEditar">Guardar Cambios</button>
+                <button id="Guardarbtn2" class="BtnMdEditar">Guardar Cambios</button>
               </div>
             </div>
 
@@ -360,6 +360,116 @@
     </section>
   </footer>
 
+  <script>
+    const getBtnC = document.getElementById('BtnSEditar1');
+    const getBtn = document.getElementById('Guardarbtn');
+    const getBtn2 = document.getElementById('Guardarbtn2');
+    const getNombre = document.getElementById("NombreInput");
+    const getApellido =  document.getElementById("ApellidoInput");
+    const getCorreo =  document.getElementById("CorreoInput");
+    const getTelefono =  document.getElementById("TelefonoInput");
+    const getNacimiento =  document.getElementById("NacimientoInput");
+    const getId =  document.getElementById("IdentidadInput");
+    const getGenero =  document.getElementById("GeneroSelect");
+    const getCiudad =  document.getElementById("CiudadInput");
+    const getDireccion =  document.getElementById("DireccionInput");
+    const getNuevaContra = document.getElementById("C2Input");
+
+    getBtn.addEventListener('click', Actualizar);
+    getBtn2.addEventListener('click', Actualizar);
+    getBtnC.addEventListener('click', BuscarContra);
+
+    const baseUrl = 'https://grupolimpio-api.onrender.com';
+
+    function Actualizar() {
+      fetch(baseUrl + '/Actualizar', {
+          method: 'POST',
+          headers: {
+          'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({nombre: getNombre.value, apellido: getApellido.value, id: getId.value, telefono: getTelefono.value, 
+                ciudad: getCiudad.value, correo: getCorreo.value, fechanacimiento: getNacimiento.value, genero: getGenero.value, direccion: getDireccion.value }),
+      })
+      .then(response => response.json())
+      .then(data => {
+          alert('Su informacion a sido actualizada exitosamente!');
+          window.location.reload();
+      })
+      .catch(error => {
+          alert('No se ha podido actualizar su informacion');
+      });
+    }
+
+    function NuevaContra() {
+      fetch(baseUrl + '/updatePassword', {
+          method: 'POST',
+          headers: {
+          'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({correo: getCorreo.value, password: getNuevaContra.value}),
+      })
+      .then(response => response.json())
+      .then(data => {
+          alert('Contraseña Actualizada!');
+          window.location.reload();
+      })
+      .catch(error => {
+          alert('No se ha podido actualizar la contraseña');
+      });
+    }
+
+    function BuscarContra() {
+      fetch(baseUrl + '/ConfirmPassword', {
+          method: 'POST',
+          headers: {
+          'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({correo: getCorreo.value}),
+      })
+      .then(response => response.json())
+      .then(data => {
+          VerificarContra(data.password);
+      })
+      .catch(error => {
+          console.error('Error:', error);
+          alert('Error submitting data' + error);
+      });
+    }
+
+    function VerificarContra(data) {
+      if(document.getElementById("C1Input").value == data){
+        NuevaContra();
+      }else{
+        alert("Las constraseña no es la correcta");
+      }
+    }
+
+    function CargarDatos() {
+      console.log("correo");
+      fetch(baseUrl + '/CargarPerfil', {
+          method: 'POST',
+          headers: {
+          'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({id: localStorage["correo"]}),
+      })
+      .then(response => response.json())
+      .then(data => {
+          getNombre.value = data.nombre;
+          getApellido.value = data.apellido;
+          getCorreo.value = data.correo;
+          getTelefono.value = data.telefono;
+          getNacimiento.value = data.fechanacimiento;
+          getId.value = data.identidad;
+          getGenero.value = data.genero;
+          getCiudad.value = data.ciudad;
+          getDireccion.value = data.direccion;
+      })
+      .catch(error => {
+          alert('No han podido cargar los datos de su cuenta' + error);
+      });
+    }
+  </script>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
