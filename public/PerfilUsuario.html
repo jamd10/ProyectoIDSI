@@ -126,8 +126,8 @@
                 <span></span>
               </div>
               <div class="SubDivIp3">
-                <input id="NombreInput" class="InputIP" type="text" />
-                <input id="ApellidoInput" class="InputIP" type="text" />
+                <input id="NombreInput" class="InputIP" type="text" onkeyup="validate();"/>
+                <input id="ApellidoInput" class="InputIP" type="text" onkeyup="validate2();"/>
                 <span></span>
               </div>
               <div class="SubDivIp">
@@ -136,8 +136,8 @@
                 <span></span>
               </div>
               <div class="SubDivIp3">
-                <input id="CorreoInput" class="InputIP" placeholder="ejemplo@correo.com" type="text" readonly/>
-                <input id="TelefonoInput" class="InputIP" placeholder="(XXX)-XXXX-XXXX" type="text" />
+                <input id="CorreoInput" class="InputIP" placeholder="ejemplo@correo.com" type="text" style="opacity: 0.5;" disabled/>
+                <input id="TelefonoInput" class="InputIP" placeholder="XXXXXXXX" type="text" onkeyup="validate4();" maxlength = "8"/>
                 <span></span>
               </div>
               <div class="SubDivIp">
@@ -146,8 +146,8 @@
                 <span></span>
               </div>
               <div class="SubDivIp3">
-                <input id="NacimientoInput" class="InputIP" placeholder="XX/XX/XXXX" type="text" />
-                <input id="IdentidadInput" class="InputIP" placeholder="XXXX-XXXX-XXXXX" type="text" />
+                <input id="NacimientoInput" class="InputIP" placeholder="DD/MM/AAAA" type="date" pattern="\d{2}/\d{2}/\d{4}"/>
+                <input id="IdentidadInput" class="InputIP" placeholder="XXXXXXXXXXXXX" type="text" onkeyup="validate3();" maxlength = "13"/>
                 <span></span>
               </div>
               <div class="SubDivIp">
@@ -179,7 +179,7 @@
                 <span></span>
               </div>
               <div class="SubDivMD3">
-                <input id="CiudadInput" class="InputMD" type="text" />
+                <input id="CiudadInput" class="InputMD" type="text" onkeyup="validate5();"/>
                 <input id="DireccionInput" class="InputMD" type="text" />
                 <span></span>
               </div>
@@ -378,12 +378,12 @@
     const getDireccion =  document.getElementById("DireccionInput");
     const getNuevaContra = document.getElementById("C2Input");
 
-    getBtn.addEventListener('click', Actualizar);
-    getBtn2.addEventListener('click', Actualizar);
+    getBtn.addEventListener('click', validar3);
+    getBtn2.addEventListener('click', validar3);
     getBtnC.addEventListener('click', BuscarContra);
     getBtnLO.addEventListener('click', CerrarSesion);
 
-    const baseUrl = 'https://grupolimpio-api.onrender.com';
+    const baseUrl = 'http://localhost:3001';
 
     function CerrarSesion() {
       fetch(baseUrl + '/logOut', {
@@ -412,7 +412,7 @@
           headers: {
           'Content-Type': 'application/json',
           },
-          body: JSON.stringify({nombre: getNombre.value, apellido: getApellido.value, identidad: getId.value, telefono: getTelefono.value, 
+          body: JSON.stringify({nombre: getNombre.value, apellido: getApellido.value, id: getId.value, telefono: getTelefono.value, 
                 ciudad: getCiudad.value, correo: getCorreo.value, fechanacimiento: getNacimiento.value, genero: getGenero.value, direccion: getDireccion.value }),
       })
       .then(response => response.json())
@@ -470,7 +470,6 @@
     }
 
     function CargarDatos() {
-      console.log("correo");
       fetch(baseUrl + '/CargarPerfil', {
           method: 'POST',
           headers: {
@@ -485,7 +484,7 @@
           getCorreo.value = data.correo;
           getTelefono.value = data.telefono;
           getNacimiento.value = data.fechanacimiento;
-          getId.value = data.identidad;
+          getId.value = data.id;
           getGenero.value = data.genero;
           getCiudad.value = data.ciudad;
           getDireccion.value = data.direccion;
@@ -494,6 +493,75 @@
           alert('No han podido cargar los datos de su cuenta' + error);
       });
     }
+
+    function validar(){
+        if(getId.value.length == 13){
+            validar2();
+        }else if(getId.value.length == 0){
+            alert("Debe de llenar el campo de Identidad");
+        }else{
+            alert("El numero de identidad debe ser de 13 numeros, sin espacios");
+        }
+    }
+
+    function validar2(){
+        if(getTelefono.value.length == 8){
+            validar5();
+        }else if(getTelefono.value.length == 0){
+            alert("Debe de llenar el campo de Telefono");
+        }else{
+            alert("El numero de telefono debe ser de 8 numeros, sin espacios");
+        }
+    }
+
+    function validar3(){
+        if(getNombre.value.length == 0){
+            alert("Debe de llenar el campo de Nombre");
+        }else {
+            validar4();
+        }
+    }
+
+    function validar4(){
+        if(getApellido.value.length == 0){
+            alert("Debe de llenar el campo de Apellido");
+        }else {
+            validar();
+        }
+    }
+
+    function validar5(){
+        if(getCiudad.value.length == 0){
+            alert("Debe de llenar el campo de Ciudad");
+        }else {
+            Actualizar();
+        }
+    }
+
+    function validate() {
+        var element = document.getElementById('NombreInput');
+        element.value = element.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
+    };
+
+    function validate2() {
+        var element2 = document.getElementById('ApellidoInput');
+        element2.value = element2.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
+    };
+
+    function validate3() {
+        var element2 = document.getElementById('IdentidadInput');
+        element2.value = element2.value.replace(/[^0-9]+/, '');
+    };
+
+    function validate4() {
+        var element2 = document.getElementById('TelefonoInput');
+        element2.value = element2.value.replace(/[^0-9]+/, '');
+    };
+    
+    function validate5() {
+        var element2 = document.getElementById('CiudadInput');
+        element2.value = element2.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
+    };
   </script>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
