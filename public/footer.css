@@ -95,10 +95,15 @@
 
 .footer-col .icons {
     display: flex;
-    margin-top: 30px;
+    justify-content: center;
+    margin-top: 10px;
     gap: 30px;
     cursor: pointer;
+    border-top: 1px solid white;
+    padding-top: 30px;
 }
+
+
 
 .footer-col .icons i {
     color: #afb6c7;

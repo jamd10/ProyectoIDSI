@@ -122,7 +122,7 @@
                 <span></span>
               </div>
               <div class="SubDivIp3">
-                <input id="NombreInput" class="InputIP" type="text" style="opacity: 0.5;" disabaled/>
+                <input id="NombreInput" class="InputIP" type="text" style="opacity: 0.5;" disabaled />
                 <span></span>
                 <span></span>
               </div>
@@ -132,8 +132,9 @@
                 <span></span>
               </div>
               <div class="SubDivIp3">
-                <input id="CorreoInput" class="InputIP" placeholder="ejemplo@correo.com" type="text" style="opacity: 0.5;" disabled/>
-                <input id="TelefonoInput" class="InputIP" type="text" style="opacity: 0.5;" disabled/>
+                <input id="CorreoInput" class="InputIP" placeholder="ejemplo@correo.com" type="text"
+                  style="opacity: 0.5;" disabled />
+                <input id="TelefonoInput" class="InputIP" type="text" style="opacity: 0.5;" disabled />
                 <span></span>
               </div>
             </div>
@@ -187,25 +188,19 @@
 
         <div class="footer-col">
           <h4>Contacto</h4>
-          <p>
-            Suscribete a nuestro boletín de Promociones
-            y recibe la información a través de tu
-            correo electrónico.
-          </p>
-          <form action="#">
-            <input type="text" placeholder="Ingrese su Email" required>
-            <button type="submit">Enviar</button>
-          </form>
-          <div class="icons">
-            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
-            <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          </div>
+          <ul class="links">
+            <li><a href="Contactarse.html">Contactar</a></li>
+          </ul>
         </div>
       </div>
       <div class="footer-row" style="display: flex; align-items: center; justify-content: center;">
         <div class="footer-col" style="text-align: center; margin-top: 20px; color: #fff;">
           Derechos reservados © 2023 | Grupo + Limpio
+          <div class="icons">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
         </div>
       </div>
     </section>
@@ -214,14 +209,14 @@
   <script>
     const getBtnLO = document.getElementById('navbtnLO');
     const getNombre = document.getElementById("NombreInput");
-    const getApellido =  document.getElementById("ApellidoInput");
-    const getCorreo =  document.getElementById("CorreoInput");
-    const getTelefono =  document.getElementById("TelefonoInput");
-    const getNacimiento =  document.getElementById("NacimientoInput");
-    const getId =  document.getElementById("IdentidadInput");
-    const getGenero =  document.getElementById("GeneroSelect");
-    const getCiudad =  document.getElementById("CiudadInput");
-    const getDireccion =  document.getElementById("DireccionInput");
+    const getApellido = document.getElementById("ApellidoInput");
+    const getCorreo = document.getElementById("CorreoInput");
+    const getTelefono = document.getElementById("TelefonoInput");
+    const getNacimiento = document.getElementById("NacimientoInput");
+    const getId = document.getElementById("IdentidadInput");
+    const getGenero = document.getElementById("GeneroSelect");
+    const getCiudad = document.getElementById("CiudadInput");
+    const getDireccion = document.getElementById("DireccionInput");
     const getNuevaContra = document.getElementById("C2Input");
 
     getBtnLO.addEventListener('click', CerrarSesion);
@@ -230,42 +225,42 @@
 
     function CerrarSesion() {
       fetch(baseUrl + '/logOut', {
-          method: 'GET',
-          headers: {
+        method: 'GET',
+        headers: {
           'Content-Type': 'application/json',
-          },
+        },
       })
-      .then(response => response.json())
-      .then(data => {
-          if(data.msg == "log out"){
+        .then(response => response.json())
+        .then(data => {
+          if (data.msg == "log out") {
             alert('Se ha cerrrado sesion');
             window.location.href = "index.html";
-          }else{
+          } else {
 
           }
-      })
-      .catch(error => {
+        })
+        .catch(error => {
           alert('No se ha podido cerrar sesion');
-      });
+        });
     }
 
     function CargarDatos() {
       fetch(baseUrl + '/CargarPerfilAdmin', {
-          method: 'POST',
-          headers: {
+        method: 'POST',
+        headers: {
           'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({id: localStorage["correo"]}),
+        },
+        body: JSON.stringify({ id: localStorage["correo"] }),
       })
-      .then(response => response.json())
-      .then(data => {
+        .then(response => response.json())
+        .then(data => {
           getNombre.value = data.nombre;
           getCorreo.value = data.correo;
           getTelefono.value = data.tipo;
-      })
-      .catch(error => {
+        })
+        .catch(error => {
           alert('No han podido cargar los datos de su cuenta' + error);
-      });
+        });
     }
   </script>
 
