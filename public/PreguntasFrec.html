@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Preguntas Frecuentes</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="EstiloPreguntasFrec.css" rel="stylesheet">
+</head>
+<body>
+    
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Preguntas Frecuentes</h1>
+
+    <div class="accordion" id="faqAccordion">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              ¿En que consisten las marcas propias de Grupo Limpio?
+            </button>
+          </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
+          <div class="card-body">
+            La categoria de Marcas Propias se refiere a los productos manufacturados, desarrollados y distribuidos por <br>
+            Grupo Limpio. 
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              ¿Los precios que aparecen en la pagina web son los mismos precios aparentes del local fisico?
+            </button>
+          </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+          <div class="card-body">
+            Es correcto en la mayoria de casos, los precios corresponden a la sucursal fisica, sin embargo <br>
+            pueden haber variaciones debido a descuentos especiales, programas o tematicas relacionadas <br>
+            a los precios unicamente disponibles Online o unicamente disponibles en fisico. 
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+              ¿Que eficacia tienen los productos de las Marcas Propias en comparacion al mercado nacional?
+            </button>
+          </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+          <div class="card-body">
+            Los productos propios son eficaces y competitivos en relacion al mercado, son preferidos por un amplio <br>
+            sector de consumidores. 
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header" id="headingFour">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
+              ¿Como funciona la dinamica de envio para la compra de productos Online?
+            </button>
+          </h2>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqAccordion">
+          <div class="card-body">
+            La tematica de envio funciona en base a la ubicacion de la entrega estipulada del cliente y segun los <br>
+            productos de la comanda realizada debido al calculo a realizar tomando en cuenta tarifas, impuestos <br>
+            y servicios de operacion. 
+          </div>
+        </div>
+      </div>
+
+      <!-- Fin de preguntas y respuestas hardcoded -->
+    </div>
+
+    <!-- Seccion para agregar y eliminar preguntas -->
+    <div class="pt-5"></div>
+
+    <div class="text-center mt-5">
+      <div class="card">
+        <div class="card-header" id="headingAdd">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseAdd" aria-expanded="false" aria-controls="collapseAdd">
+              INSERTAR PREGUNTA
+            </button>
+          </h2>
+        </div>
+        <div id="collapseAdd" class="collapse" aria-labelledby="headingAdd" data-parent="#faqAccordion">
+          <div class="card-body">
+            <form id="addForm">
+              <div class="form-group">
+                <label for="newQuestion">Escriba su pregunta:</label>
+                <textarea class="form-control" id="newQuestion" rows="3" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-success">Enviar Pregunta</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Seccion para modificar respuesta-->
+    <div class="text-center mt-5">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" id="modifyButton" aria-expanded="false">
+              MODIFICAR PREGUNTA
+            </button>
+          </h5>
+        </div>
+      
+        <div id="modifyCollapse" class="collapse" aria-labelledby="modifyHeading" data-parent="#accordion">
+          <div class="card-body text-center">
+            <form id="modifyForm">
+              <!-- Campos para modificar -->
+              <div class="form-group">
+                <label for="questionId">Ingrese el numero de la pregunta a modificar:</label>
+                <input type="number" class="form-control" id="questionId" placeholder="Ingresa el ID">
+              </div>
+              <div class="form-group">
+                <label for="modifiedText">Respuesta para la pregunta:</label>
+                <textarea class="form-control" id="modifiedText" rows="3" placeholder="Ingresa el nuevo texto"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Modificar pregunta</button>
+              <div class="alert alert-danger mt-3" id="modifyAlert" style="display: none;" role="alert">
+                Por favor, completa todos los campos.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección para eliminar una pregunta -->
+    <div class="text-center mt-5">
+        <div class="card">
+          <div class="card-header" id="headingDelete">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseDelete" aria-expanded="false" aria-controls="collapseDelete">
+                ELIMINAR PREGUNTA
+              </button>
+            </h2>
+          </div>
+          <div id="collapseDelete" class="collapse" aria-labelledby="headingDelete" data-parent="#faqAccordion">
+            <div class="card-body">
+              <form id="deleteForm">
+                <div class="form-group">
+                  <label for="deleteQuestion">Escriba el número de la pregunta que desea eliminar:</label>
+                  <input type="number" class="form-control" id="deleteQuestion" required>
+                </div>
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    
+    <div class="text-center mt-5">
+        <a href="index.html" class="btn btn-success">Regresar al Menú Principal</a>
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+  <!--Funcionalidad para agregar nueva pregunta-->
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+  let cardCounter = 1; // Inicializar el contador para IDs de tarjetas
+
+  const addForm = document.getElementById('addForm');
+  addForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const newQuestion = document.getElementById('newQuestion').value.trim();
+    if (newQuestion !== '') {
+      const newCard = createCard(newQuestion);
+      const faqAccordion = document.getElementById('faqAccordion');
+      faqAccordion.appendChild(newCard);
+      document.getElementById('newQuestion').value = '';
+
+      // Enviar correo electrónico usando SMTPJS
+      sendEmail(newQuestion);
+    } else {
+      alert('Por favor, ingrese una pregunta válida.');
+    }
+  });
+
+
+  const createCard = (question) => {
+    const newCard = document.createElement('div');
+    newCard.classList.add('card');
+    newCard.setAttribute('data-id', cardCounter); // Asignar el ID a la tarjeta
+    cardCounter++; // Incrementar el contador para el próximo ID
+
+    const newCardHeader = document.createElement('div');
+    newCardHeader.classList.add('card-header');
+
+    const newButton = document.createElement('button');
+    newButton.classList.add('btn', 'btn-link');
+    newButton.setAttribute('type', 'button');
+    newButton.setAttribute('data-toggle', 'collapse');
+    newButton.setAttribute('data-target', `#collapse${newCard.getAttribute('data-id')}`);
+    newButton.setAttribute('aria-expanded', 'false');
+    newButton.setAttribute('aria-controls', `collapse${newCard.getAttribute('data-id')}`);
+    newButton.textContent = question;
+
+    newCardHeader.appendChild(newButton);
+    newCard.appendChild(newCardHeader);
+
+    const newCardBody = document.createElement('div');
+    newCardBody.classList.add('collapse');
+    newCardBody.setAttribute('id', `collapse${newCard.getAttribute('data-id')}`);
+    newCardBody.setAttribute('aria-labelledby', `heading${newCard.getAttribute('data-id')}`);
+    newCardBody.setAttribute('data-parent', '#faqAccordion');
+
+    const newCardBodyContent = document.createElement('div');
+    newCardBodyContent.classList.add('card-body');
+
+    const newCardText = document.createElement('p');
+    newCardText.classList.add('card-text');
+    newCardText.textContent = "Se ha enviado su pregunta al equipo de soporte, se responderá pronto.";
+
+    newCardBodyContent.appendChild(newCardText);
+
+    newCardBody.appendChild(newCardBodyContent);
+    newCard.appendChild(newCardBody);
+
+    return newCard;
+  };
+
+  const sendEmail = (question) => {
+    Email.send({
+      Host: 'smtp.elasticemail.com', // Reemplaza con el servidor SMTP que uses
+      Username: 'denis.gallegos03@gmail.com', // Reemplaza con tu nombre de usuario SMTP
+      Password: '8C11E2668AE2BA2DBA0BB5E56EB03E0C3F92', // Reemplaza con tu contraseña SMTP
+      To: 'denis.gallegos03@gmail.com', // Reemplaza con la dirección de correo del equipo de soporte
+      From: 'denis.gallegos03@gmail.com', // Reemplaza con tu dirección de correo
+      Subject: 'Nueva pregunta ingresada',
+      Body: `Se ha ingresado una nueva pregunta: ${question}`
+    })
+      .then(function (message) {
+        console.log('Correo enviado correctamente:', message);
+      })
+      .catch(function (error) {
+        console.error('Error al enviar el correo:', error);
+      });
+  };
+
+});
+  </script>
+
+  <!--Funcionalidad para modificar la respuesta de una pregunta-->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+  const modifyButton = document.getElementById('modifyButton');
+  const modifyCollapse = document.getElementById('modifyCollapse');
+  const modifyForm = document.getElementById('modifyForm');
+  const modifyAlert = document.getElementById('modifyAlert');
+
+  modifyButton.addEventListener('click', function () {
+    const isCollapsed = modifyCollapse.classList.contains('show');
+    
+    if (isCollapsed) {
+      modifyCollapse.classList.remove('show');
+      modifyButton.setAttribute('aria-expanded', 'false');
+    } else {
+      modifyCollapse.classList.add('show');
+      modifyButton.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  modifyForm.addEventListener('submit', function (event) {
+    event.preventDefault(); // Evitar que el formulario se envíe para manejar la modificación
+
+    const questionId = document.getElementById('questionId').value.trim();
+    const modifiedText = document.getElementById('modifiedText').value.trim();
+
+    if (questionId === '' || modifiedText === '') {
+      modifyAlert.style.display = 'block';
+    } else {
+      const questionCard = document.getElementById(`collapse${questionId}`);
+
+      if (questionCard) {
+        const cardBody = questionCard.querySelector('.card-body .card-text');
+        cardBody.textContent = modifiedText;
+
+        modifyCollapse.classList.remove('show');
+        modifyButton.setAttribute('aria-expanded', 'false');
+
+        // Limpiar los campos después de la modificación
+        document.getElementById('questionId').value = '';
+        document.getElementById('modifiedText').value = '';
+      } else {
+        modifyAlert.style.display = 'block';
+        modifyAlert.textContent = 'La pregunta especificada no existe.';
+      }
+    }
+  });
+});
+
+  </script>
+
+  <script>
+    const deleteForm = document.getElementById('deleteForm');
+  deleteForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const questionIdToDelete = parseInt(document.getElementById('deleteQuestion').value);
+    if (!isNaN(questionIdToDelete)) {
+      const cardToDelete = document.querySelector(`[data-id="${questionIdToDelete}"]`);
+      if (cardToDelete) {
+        cardToDelete.remove();
+      } else {
+        alert('La pregunta especificada no existe.');
+      }
+    } else {
+      alert('Por favor, ingresa un número de pregunta válido.');
+    }
+  });
+
+  
+  </script>
+
+
+</body>
+</html>

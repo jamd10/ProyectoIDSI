@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Preguntas Frecuentes</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="EstiloPreguntasFrec.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Preguntas Frecuentes</h1>
+
+    <div class="accordion" id="faqAccordion">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
+              ¿En que consisten las marcas propias de Grupo Limpio?
+            </button>
+          </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
+          <div class="card-body">
+            La categoria de Marcas Propias se refiere a los productos manufacturados, desarrollados y distribuidos por
+            <br>
+            Grupo Limpio.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+              aria-expanded="false" aria-controls="collapseTwo">
+              ¿Los precios que aparecen en la pagina web son los mismos precios aparentes del local fisico?
+            </button>
+          </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+          <div class="card-body">
+            Es correcto en la mayoria de casos, los precios corresponden a la sucursal fisica, sin embargo <br>
+            pueden haber variaciones debido a descuentos especiales, programas o tematicas relacionadas <br>
+            a los precios unicamente disponibles Online o unicamente disponibles en fisico.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+              aria-expanded="false" aria-controls="collapseTwo">
+              ¿Que eficacia tienen los productos de las Marcas Propias en comparacion al mercado nacional?
+            </button>
+          </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+          <div class="card-body">
+            Los productos propios son eficaces y competitivos en relacion al mercado, son preferidos por un amplio <br>
+            sector de consumidores.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header" id="headingFour">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour"
+              aria-expanded="false" aria-controls="collapseTwo">
+              ¿Como funciona la dinamica de envio para la compra de productos Online?
+            </button>
+          </h2>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqAccordion">
+          <div class="card-body">
+            La tematica de envio funciona en base a la ubicacion de la entrega estipulada del cliente y segun los <br>
+            productos de la comanda realizada debido al calculo a realizar tomando en cuenta tarifas, impuestos <br>
+            y servicios de operacion.
+          </div>
+        </div>
+      </div>
+
+      <!-- Fin de preguntas y respuestas hardcoded -->
+    </div>
+
+    <!-- Seccion para agregar y eliminar preguntas -->
+    <div class="pt-5"></div>
+    <div class="text-center mt-5">
+      <div class="card">
+        <div class="card-header" id="headingAdd">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseAdd"
+              aria-expanded="false" aria-controls="collapseAdd">
+              INSERTAR PREGUNTA
+            </button>
+          </h2>
+        </div>
+        <div id="collapseAdd" class="collapse" aria-labelledby="headingAdd" data-parent="#faqAccordion">
+          <div class="card-body">
+            <form id="addForm">
+              <div class="form-group">
+                <label for="newQuestion">Escriba su pregunta:</label>
+                <textarea class="form-control" id="newQuestion" rows="3" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-success">Enviar Pregunta</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="index.html" class="btn btn-success">Regresar al Menú Principal</a>
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+  <!--Funcionalidad para agregar nueva pregunta-->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let cardCounter = 1; // Inicializar el contador para IDs de tarjetas
+
+      const addForm = document.getElementById('addForm');
+      addForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const newQuestion = document.getElementById('newQuestion').value.trim();
+        if (newQuestion !== '') {
+          const newCard = createCard(newQuestion);
+          const faqAccordion = document.getElementById('faqAccordion');
+          faqAccordion.appendChild(newCard);
+          document.getElementById('newQuestion').value = '';
+
+          // Enviar correo electrónico usando SMTPJS
+          sendEmail(newQuestion);
+        } else {
+          alert('Por favor, ingrese una pregunta válida.');
+        }
+      });
+
+
+      const createCard = (question) => {
+        const newCard = document.createElement('div');
+        newCard.classList.add('card');
+        newCard.setAttribute('data-id', cardCounter); // Asignar el ID a la tarjeta
+        cardCounter++; // Incrementar el contador para el próximo ID
+
+        const newCardHeader = document.createElement('div');
+        newCardHeader.classList.add('card-header');
+
+        const newButton = document.createElement('button');
+        newButton.classList.add('btn', 'btn-link');
+        newButton.setAttribute('type', 'button');
+        newButton.setAttribute('data-toggle', 'collapse');
+        newButton.setAttribute('data-target', `#collapse${newCard.getAttribute('data-id')}`);
+        newButton.setAttribute('aria-expanded', 'false');
+        newButton.setAttribute('aria-controls', `collapse${newCard.getAttribute('data-id')}`);
+        newButton.textContent = question;
+
+        newCardHeader.appendChild(newButton);
+        newCard.appendChild(newCardHeader);
+
+        const newCardBody = document.createElement('div');
+        newCardBody.classList.add('collapse');
+        newCardBody.setAttribute('id', `collapse${newCard.getAttribute('data-id')}`);
+        newCardBody.setAttribute('aria-labelledby', `heading${newCard.getAttribute('data-id')}`);
+        newCardBody.setAttribute('data-parent', '#faqAccordion');
+
+        const newCardBodyContent = document.createElement('div');
+        newCardBodyContent.classList.add('card-body');
+
+        const newCardText = document.createElement('p');
+        newCardText.classList.add('card-text');
+        newCardText.textContent = "Se ha enviado su pregunta al equipo de soporte, se responderá pronto.";
+
+        newCardBodyContent.appendChild(newCardText);
+
+        newCardBody.appendChild(newCardBodyContent);
+        newCard.appendChild(newCardBody);
+
+        return newCard;
+      };
+
+      const sendEmail = (question) => {
+        Email.send({
+          Host: "smtp.elasticemail.com",
+          Username: "grupomaslimpio39@gmail.com",
+          Password: "76E990FBD497ABA937D0AF30F4871241CBD5",
+          To: "grupomaslimpio39@gmail.com",
+          From: "grupomaslimpio39@gmail.com",
+          Subject: 'Nueva pregunta ingresada',
+          Body: `Se ha ingresado una nueva pregunta: ${question}`
+        })
+          .then(function (message) {
+            console.log('Correo enviado correctamente:', message);
+          })
+          .catch(function (error) {
+            console.error('Error al enviar el correo:', error);
+          });
+      };
+
+    });
+  </script>
+
+</body>
+
+</html>

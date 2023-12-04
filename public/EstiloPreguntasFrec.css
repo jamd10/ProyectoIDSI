@@ -1,0 +1,43 @@
+/* Estilos personalizados */
+
+body {
+    background-color: #f8f9fa; /* Color de fondo */
+    overflow-x: hidden; /* Evitar desplazamiento horizontal */
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Patrón de fondo */
+    perspective: 1px;
+    transform-style: preserve-3d;
+  }
+  
+  .parallax {
+    position: relative;
+    transform: translateZ(-1px) scale(2);
+  }
+  
+  .card-header {
+    background-color: #5cb85c; /* Color de encabezado (verde más claro) */
+    color: #fff; /* Color del texto del encabezado */
+  }
+  
+  .card-body {
+    background-color: #d4edda; /* Color del cuerpo */
+    color: #155724; /* Color del texto del cuerpo */
+  }
+  
+  .card-header button {
+    color: #fff; /* Color del texto del botón en el encabezado */
+    text-decoration: none; /* Quitar subrayado del texto */
+  }
+  
+  .btn-success {
+    background-color: #5cb85c; /* Color del botón (verde más claro) */
+    border-color: #5cb85c; /* Color del borde del botón */
+    transition: background-color 0.3s ease; /* Transición suave del color al pasar el ratón */
+  }
+  
+  .btn-success:hover {
+    background-color: #4cae4c; /* Cambio de color al pasar el ratón sobre el botón (verde más oscuro) */
+    border-color: #4cae4c; /* Cambio de color del borde al pasar el ratón sobre el botón (verde más oscuro) */
+  }
+  
+  
+  
