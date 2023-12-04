@@ -1,0 +1,64 @@
+.content-container {
+    box-sizing: border-box;
+    padding: 30px 60px;
+    margin: 30px 60px;
+    background-color: #eee;
+    
+     
+  }
+  h1, h2 {
+   text-align: center;
+    color: #333;
+  }
+  .min {
+   position: relative;
+   left: 20px;
+    font-size: 20px;
+  
+  }
+  .novela {
+   position: relative;
+   left: 35px;
+  }
+  p {
+    font-size: 14px;
+  }
+  li {
+   
+   font-size: 15px;
+  }
+  .quote {
+   display: block;
+   margin-top: 13px;
+   font-size: 26px;
+   color: #333;
+  }
+  .obras,.premios {
+   text-decoration: underline;
+  }
+  .thumbnail {
+   text-align: center;
+   max-width: 100%;
+   height: auto;
+   
+  }
+  .by{
+   text-align: center;
+   font-size: 15px;
+  }
+  a {
+   text-decoration: none;
+   color: #67818a;
+  }
+  .informacion {
+   
+  margin-top: 90px;
+   font-size: 20px;
+  }
+  
+  @media only screen and (max-width: 600px){
+      .content-container { width: 100%; }
+   .by {text-align: center;}
+  }
+  
+  
