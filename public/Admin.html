@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Grupo mas Limpio</title>
+	<link rel="stylesheet" href="estilos_menu_lateral.css">
+</head>
+<body>
+	<header class="header">
+		<div class="container">
+		<div class="btn-menu">
+			<label for="btn-menu">☰</label>
+		</div>
+			<div class="logo">
+				<h1>ADMINISTRADOR</h1>
+			</div>
+			<nav class="menu">
+				<a id="Cerrar" href="#">Cerrar sesión</a>
+			</nav> 
+		</div>
+	</header>
+	<div class="capa"></div>
+<!--	--------------->
+<input type="checkbox" id="btn-menu">
+<div class="container-menu">
+	<div class="cont-menu">
+		<nav>
+			<a href="#">Inicio</a>
+			<a href="fcatalogo.html">Cátalogo</a>
+			<a href="#">Sobre Nosotros</a>
+            <a href="#">Contacto</a>
+            <a href="#">Preguntas frecuentes</a>
+		</nav>
+		<label for="btn-menu">✖️</label>
+	</div>
+</div>
+</body>
+<script>
+	const getBtnLO = document.getElementById('Cerrar');
+	getBtnLO.addEventListener('click', CerrarSesion);
+	
+	const baseUrl = 'https://grupolimpio-api.onrender.com';
+
+	function CerrarSesion() {
+	fetch(baseUrl + '/logOut', {
+		method: 'GET',
+		headers: {
+		'Content-Type': 'application/json',
+		},
+	})
+	.then(response => response.json())
+	.then(data => {
+		if(data.msg == "log out"){
+			alert('Se ha cerrrado sesion');
+			window.location.href = "index.html";
+		}else{
+
+		}
+	})
+	.catch(error => {
+		alert('No se ha podido cerrar sesion');
+	});
+	}
+</script>
+</html>

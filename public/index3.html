@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pb3.css">
+    <title>Tu Catálogo</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <aside class="filter">
+            <label for="category">Categoría:</label>
+            <select id="category" name="category">
+                <option value="todo">Todo</option>
+                <option value="baño">Baños</option>
+                <option value="lavandería">Lavandería</option>
+                <option value="herramientas">Herramientas de Limpieza</option>
+                <option value="bioseguridad">Bioseguridad</option>
+                <option value="desinfectante">Desinfectante</option>
+                <option value="cuidadopersonal">Cuidado Personal</option>
+                <option value="productosplasticos">Productos Plasticos</option>
+            </select>
+
+            <label for="brand">Marca:</label>
+            <select id="brand" name="brand">
+                <option value="todos">Todos</option>
+            </select>
+        </aside>
+
+        <main class="product-grid">
+            <!-- Productos -->
+            <div class="product categoria-todos categoria-baño" data-brand="masLimpio" data-price="10.99"
+                data-quantity="50" id="producto1">
+                <img src="imagenes/carrito.jpg" alt="Producto 1">
+                <p>Carrito</p>
+                <p>Precio: 101.99</p>
+                <p>Cantidad disponible: 50</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-lavandería" data-brand="zink" data-price="8.50"
+                data-quantity="30" id="producto2">
+                <img src="imagenes/bolsas.jpg" alt="Producto 2">
+                <p>Bolsas de basura</p>
+                <p>Precio: 81.50</p>
+                <p>Cantidad disponible: 30</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-herramientas" data-brand="masLimpio" data-price="10.99"
+                data-quantity="50" id="producto3">
+                <img src="imagenes/detergente.jpg" alt="Producto 3">
+                <p>Detergente</p>
+                <p>Precio: 8.50</p>
+                <p>Cantidad disponible: 30</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-baño" data-brand="zink" data-price="8.50" data-quantity="30"
+                id="producto4">
+                <img src="imagenes/jabon2.jpg" alt="Producto 4">
+                <p>Jabon Zagaz</p>
+                <p>Precio: 8.50</p>
+                <p>Cantidad disponible: 30</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+            <!-- Continuación de productos con categorías hardcoded -->
+            <div class="product categoria-todos categoria-herramientas" data-brand="masLimpio" data-price="10.99"
+                data-quantity="50" id="producto5">
+                <img src="imagenes/dispensador.jpg" alt="Producto 5">
+                <p>Dispensador</p>
+                <p>Precio: 200.99</p>
+                <p>Cantidad disponible: 50</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-lavandería" data-brand="zink" data-price="8.50"
+                data-quantity="30" id="producto6">
+                <img src="imagenes/dispensador1.jpg" alt="Producto 6">
+                <p>Dispensador</p>
+                <p>Precio: 89.50</p>
+                <p>Cantidad disponible: 30</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-herramientas" data-brand="masLimpio" data-price="10.99"
+                data-quantity="50" id="producto7">
+                <img src="imagenes/escurridor.jpg" alt="Producto 7">
+                <p>Escurridor</p>
+                <p>Precio: 110.99</p>
+                <p>Cantidad disponible: 50</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-lavandería" data-brand="zink" data-price="8.50"
+                data-quantity="30" id="producto8">
+                <img src="imagenes/gel.jpg" alt="Producto 8">
+                <p>Gel antibacterial</p>
+                <p>Precio: 80.50</p>
+                <p>Cantidad disponible: 30</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-herramientas" data-brand="masLimpio" data-price="10.99"
+                data-quantity="50" id="producto9">
+                <img src="imagenes/esencia.jpg" alt="Producto 9">
+                <p>Esencias</p>
+                <p>Precio: 100.99</p>
+                <p>Cantidad disponible: 50</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-lavandería" data-brand="zink" data-price="8.50"
+                data-quantity="30" id="producto10">
+                <img src="imagenes/jabon.jpg" alt="Producto 10">
+                <p>Jabon</p>
+                <p>Precio: 30.99</p>
+                <p>Cantidad disponible: 30</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-desinfectante" data-brand="zink" data-price="8.50"
+                data-quantity="30" id="producto11">
+                <img src="imagenes/cepillo.jpg" alt="Producto 11">
+                <p>Cepillo</p>
+                <p>Precio: 56.50</p>
+                <p>Cantidad disponible: 30</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-herramientas" data-brand="masLimpio" data-price="10.99"
+                data-quantity="50" id="producto12">
+                <img src="imagenes/dispensador2.jpg" alt="Producto 12">
+                <p>Producto 12</p>
+                <p>Precio: 101.99</p>
+                <p>Cantidad disponible: 50</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-lavandería" data-brand="zink" data-price="8.50"
+                data-quantity="30" id="producto13">
+                <img src="imagenes/papeltoalla.jpg" alt="Producto 13">
+                <p>Papel toalla 3</p>
+                <p>Precio: 88.50</p>
+                <p>Cantidad disponible: 30</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-herramientas" data-brand="masLimpio" data-price="10.99"
+                data-quantity="50" id="producto14">
+                <img src="imagenes/limpiadoracero.jpg" alt="Producto 14">
+                <p>Limpiador acero</p>
+                <p>Precio: 210.99</p>
+                <p>Cantidad disponible: 50</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-lavandería" data-brand="zink" data-price="8.50"
+                data-quantity="30" id="producto15">
+                <img src="imagenes/escurridor.jpg" alt="Producto 15">
+                <p>Escurridor</p>
+                <p>Precio: 8.50</p>
+                <p>Cantidad disponible: 30</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-baño" data-brand="masLimpio" data-price="10.99"
+                data-quantity="50" id="producto16">
+                <img src="imagenes/bolsas2.jpg" alt="Producto 16">
+                <p>Bolsas de Basura</p>
+                <p>Precio:10.99</p>
+                <p>Cantidad disponible: 50</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-lavandería" data-brand="zink" data-price="8.50"
+                data-quantity="30" id="producto17">
+                <img src="imagenes/papel.jpg" alt="Producto 17">
+                <p>Papel baño</p>
+                <p>Precio: 8.50</p>
+                <p>Cantidad disponible: 30</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-bioseguridad" data-brand="masLimpio" data-price="10.99"
+                data-quantity="50" id="producto18">
+                <img src="imagenes/cepillobaño.jpg" alt="Producto 18">
+                <p>Cepillo Baño</p>
+                <p>Precio: 10.99</p>
+                <p>Cantidad disponible: 50</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-productosplasticos" data-brand="zink" data-price="8.50"
+                data-quantity="30" id="producto19">
+                <img src="imagenes/detergente.jpg" alt="Producto 19">
+                <p>Detergente</p>
+                <p>Precio: 8.50</p>
+                <p>Cantidad disponible: 30</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+
+            <div class="product categoria-todos categoria-cuidadopersonal" data-brand="zink" data-price="8.50"
+                data-quantity="30" id="producto20">
+                <img src="imagenes/jabon2.jpg" alt="Producto 20">
+                <p>Jabon Zagaz</p>
+                <p>Precio: 8.50</p>
+                <p>Cantidad disponible: 30</p>
+                <button class="add-to-cart">Añadir al carrito</button>
+            </div>
+            <!-- Continuación de productos con categorías hardcoded -->
+
+        </main>
+
+        <div class="pagination">
+        </div>
+    </div>
+
+    <script src="pb3.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const categorySelect = document.getElementById('category');
+
+            categorySelect.addEventListener('change', function () {
+                const selectedCategory = categorySelect.value;
+
+                document.querySelectorAll('.product').forEach(function (product) {
+                    const productCategories = product.classList; // todas las clases del producto
+                    const productId = product.id;
+
+                    // Verifica si la categoría seleccionada es 'todo' o si el producto tiene esa categoría específica
+                    if (selectedCategory === 'todo' || productCategories.contains(`categoria-${selectedCategory}`)) {
+                        document.getElementById(productId).style.display = 'block';
+                    } else {
+                        document.getElementById(productId).style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

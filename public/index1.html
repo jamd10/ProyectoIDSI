@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <title>Grupo + Limpio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enlaces de Bootstrap y jQuery -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Otros enlaces -->
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="carrusel.css">
+    <link rel="stylesheet" href="cards.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="destacados.css">
+    <link rel="stylesheet" href="marcas.css">
+    <link rel="stylesheet" href="info.css">
+    <link rel="stylesheet" href="btn.css">
+    <link rel="stylesheet" type="text/css" href="pb.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <link rel="icon" href="img/logo1.png">
+</head>
+
+<body class="font-[Poppins] bg-white h-screen">
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+    </div>
+    <header class="bg-white">
+        <nav class="flex justify-between items-center w-[92%]  mx-auto">
+            <div>
+                <a href="index.html">
+                    <img class="w-32 cursor-pointer" src="img/logo.png" alt="Logo">
+                </a>
+            </div>
+            <div
+                class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5">
+                <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
+                    <li>
+                        <a class="menu-link" href="index.html">Inicio</a>
+                    </li>
+                    <li>
+                        <a class="menu-link" href="catalogo.html">Catálogo</a>
+                    </li>
+                    <li>
+                        <a class="menu-link" href="about.html">Sobre Nosotros</a>
+                    </li>
+                    <li>
+                        <a class="menu-link" href="#">
+                            <ion-icon name="cart" class="text-black text-xl"></ion-icon>Carrito
+                        </a>
+                    </li>
+
+                    <li class="search-container">
+                        <form action="index.html" method="get">
+                            <input class="search-bar" type="text" placeholder="Buscar...">
+                            <button type="submit" class="search-button"><ion-icon name="search"
+                                    class="search-icon"></ion-icon></button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex items-center gap-6">
+                <a class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="main.html">Iniciar Sesion</a>
+                <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <!-- Contenido del submenú -->
+            <div>
+                <nav class="my-submenu-nav">
+                    <a href="catalogo.html?flag=Baños">Baños</a>
+                    <a href="catalogo.html?flag=Lavandería">Lavandería</a>
+                    <a href="catalogo.html?flag=Herramientas de Limpieza">Herramientas de Limpieza</a>
+                    <a href="catalogo.html?flag=Bioseguridad">Bioseguridad</a>
+                    <a href="catalogo.html?flag=Desinfectante">Desinfectante</a>
+                    <a href="catalogo.html?flag=Cuidado Personal">Cuidado Personal</a>
+                    <a href="catalogo.html?flag=Productos Plásticos">Productos Plásticos</a>
+                    <div class="animation start-home"></div>
+                </nav>
+            </div>
+        </section>
+
+        <section>
+            <div class="registration-container">
+                <div class="logo"></div>
+                <h1>Registro de Usuario</h1>
+                <form id="registration-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" onkeyup="validate();">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" id="apellidos" onkeyup="validate2();">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id">Cédula de ID:</label>
+                        <input type="text" id="id" onkeyup="validate3();" maxlength = "13">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono">Celular/Teléfono:</label>
+                        <input type="text" id="telefono" onkeyup="validate4();" maxlength = "8">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ciudad">Ciudad:</label>
+                        <input type="text" id="ciudad" onkeyup="validate5();">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="email" id="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" id="password">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">Confirmar Contraseña:</label>
+                        <input type="password" id="confirm-password">
+                        <p id="password-error" class="error"></p>
+                    </div>
+
+                    <!-- Botones alineados horizontalmente -->
+                    <div class="button-group">
+                        <button type="button" id="registrarbtn">Registrar</button>
+                        <!-- Botón para regresar -->
+                        <button type="button" onclick="regresar()">Regresar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section>
+            <button id="scrollToTopBtn" onclick="scrollToTop()">
+                <i class="fa fa-arrow-up"></i>
+            </button>
+        </section>
+    </main>
+    <footer>
+        <section class="footer">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <h4>Conocenos</h4>
+                    <ul class="links">
+                        <li><a href="#">Acerca de Nosotros</a></li>
+                        <li><a href="#">Historia</a></li>
+                        <li><a href="#">Marcas</a></li>
+                        <li><a href="#">Catálogo en línea</a></li>
+                        <li><a href="#">Promociones</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Preguntas </h4>
+                    <ul class="links">
+                        <li><a href="#">Formas de pago</a></li>
+                        <li><a href="#">Productos nuevos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="links">
+                        <li><a href="#">Politicas de seguridad</a></li>
+                        <li><a href="#">Envios</a></li>
+                        <li><a href="#">Pagos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <p>
+                        Suscribete a nuestro boletín de Promociones
+                        y recibe la información a través de tu
+                        correo electrónico.
+                    </p>
+                    <form action="#">
+                        <input type="text" placeholder="Ingrese su Email" required>
+                        <button type="submit">Enviar</button>
+                    </form>
+                    <div class="icons">
+                        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-row" style="display: flex; align-items: center; justify-content: center;">
+                <div class="footer-col" style="text-align: center; margin-top: 20px; color: #fff;">
+                    Derechos reservados © 2023 | Grupo + Limpio
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <script src="pb.js"></script>
+
+    <!-- Script para regresar a la página anterior -->
+    <script>
+        function regresar() {
+            window.location.href = "main.html";
+        }
+    </script>
+
+    <script>
+        const getBtn = document.getElementById('registrarbtn');
+        const getNombre = document.getElementById('nombre');
+        const getApellido = document.getElementById('apellidos');
+        const getId = document.getElementById('id');
+        const getTelefono = document.getElementById('telefono');
+        const getCiudad = document.getElementById('ciudad');
+        const getCorreo = document.getElementById('email');
+        const getContra = document.getElementById('password');
+        const getContraC = document.getElementById('confirm-password');
+
+        // getBtn.addEventListener('click', CrearUsuario);
+        // getBtn.addEventListener('click', submitData);
+        getBtn.addEventListener('click', validar3);
+
+        const baseUrl = 'https://grupolimpio-api.onrender.com';
+
+        //Deberia de ser primero CrearUsuario y despues submitData
+
+        function validar(){
+            if(getId.value.length == 13){
+                validar2();
+            }else if(getId.value.length == 0){
+                alert("Debe de llenar el campo de Identidad");
+            }else{
+                alert("El numero de identidad debe ser de 13 numeros, sin espacios");
+            }
+        }
+
+        function validar2(){
+            if(getTelefono.value.length == 8){
+                validar5();
+            }else if(getTelefono.value.length == 0){
+                alert("Debe de llenar el campo de Telefono");
+            }else{
+                alert("El numero de telefono debe ser de 8 numeros, sin espacios");
+            }
+        }
+
+        function validar3(){
+            if(getNombre.value.length == 0){
+                alert("Debe de llenar el campo de Nombre");
+            }else {
+                validar4();
+            }
+        }
+
+        function validar4(){
+            if(getApellido.value.length == 0){
+                alert("Debe de llenar el campo de Apellido");
+            }else {
+                validar();
+            }
+        }
+
+        function validar5(){
+            if(getCiudad.value.length == 0){
+                alert("Debe de llenar el campo de Ciudad");
+            }else {
+                mismacontra();
+            }
+        }
+
+        function mismacontra(){
+            if(getContra.value == getContraC.value){
+                CrearUsuario();
+            }else{
+                alert("Las contraseñas no son las mismas");
+            }
+        }
+
+        function submitData() {
+            fetch(baseUrl + '/submit', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nombre: getNombre.value, apellido: getApellido.value, id: getId.value, telefono: getTelefono.value, 
+                ciudad: getCiudad.value, correo: getCorreo.value, password: getContra.value, fechanacimiento: '', genero: '', direccion: '' }),
+            })
+            .then(response => response.json())
+            .then(data => {
+
+            })
+            .catch(error => {
+                alert('Error Creando Usuario'+ error);
+            });
+        }
+
+        function CrearUsuario() {
+            fetch(baseUrl + '/createUser', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({correo: getCorreo.value, password: getContra.value}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.Error == "auth/missing-email"){
+                    alert('Ingrese un correo');
+                }else if(data.Error == "auth/invalid-email"){
+                    alert('Ingrese un correo valido');
+                }else if(data.Error == "auth/missing-password"){
+                    alert('Ingrese una contraseña');
+                }else if(data.Error == "auth/weak-password"){
+                    alert('Ingrese una contraseña fuerte, utilize letras mayusculas, minusculas y numeros u otros caracteres');
+                }else if(data.Error == "auth/email-already-in-use"){
+                    alert('Ya existe una cuenta con el correo que ingreso');
+                }else{
+                    alert('Usuario creado con exito, se ha enviado un link de verifiacion al su correo');
+                    submitData();
+                }
+            })
+            .catch(error => {
+                alert('Error al crear usuario, su correo pueda ser que ya este en uso, o su contraseña puede ser muy debil' + error);
+            });
+        }
+
+        function validate() {
+            var element = document.getElementById('nombre');
+            element.value = element.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
+        };
+        function validate2() {
+            var element2 = document.getElementById('apellidos');
+            element2.value = element2.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
+        };
+        function validate3() {
+            var element2 = document.getElementById('id');
+            element2.value = element2.value.replace(/[^0-9]+/, '');
+        };
+        function validate4() {
+            var element2 = document.getElementById('telefono');
+            element2.value = element2.value.replace(/[^0-9]+/, '');
+        };
+        function validate5() {
+            var element2 = document.getElementById('ciudad');
+            element2.value = element2.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
+        };
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+    <script src="menu.js"></script>
+    <script src="carrusel.js"></script>
+    <script src="menu.js"></script>
+    <script src="destacados.js"></script>
+    <script src="btn.js"></script>
+</body>
+
+</html>

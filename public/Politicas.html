@@ -196,6 +196,108 @@
             </div>
         </section>
     </footer>
+<<<<<<< Updated upstream:public/Politicas.html
+=======
+    <script src="pb4.js"></script>
+
+    <script>
+        function redirectCrearCuenta() {
+
+            window.location.href = "index1.html";
+        }
+    </script>
+
+    <script>
+        //pasar a un documento de js despues y tambien en index1 y perfilusuario
+        const getBtn = document.getElementById('Submitbtn');
+        const getCorreo = document.getElementById('correo_o_celular');
+        const getCorreo2 = document.getElementById('emailR');
+        const getContra = document.getElementById('contrasena');
+        const getBtnR = document.getElementById('recuperarbtn');
+
+        getBtn.addEventListener('click', LogInUsuario);
+        getBtnR.addEventListener('click', Recuperacion);
+
+        const baseUrl = 'https://grupolimpio-api.onrender.com';
+
+        async function LogInUsuario(e) {
+            e.preventDefault();
+            fetch(baseUrl + '/logIn', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({correo: getCorreo.value, password: getContra.value}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                localStorage["correo"] = getCorreo.value;
+                LogInAdmin(data.message);
+            })
+            .catch(error => {
+                alert('Error al iniciar Sesion, revise sus credenciales');
+                alert('Error');
+            });
+        }
+
+        function LogInAdmin(datas) {
+            fetch(baseUrl + '/readAdmin', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({correo: getCorreo.value}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.tipo == "Admin"){
+                    aPerfil(datas,data.tipo);
+                }else{
+                    aPerfil(datas,data.tipo);
+                }
+            })
+            .catch(error => {
+                aPerfil(datas,error);
+            });
+        }
+
+        function aPerfil(data,admin) {
+            if(data == 'Holas'){
+                if(admin == "Admin"){
+                    alert('Se ha iniciado sesion exitosamente administrador!');
+                    window.location.href = "Admin.html";
+                }else{
+                    alert('Se ha iniciado sesion exitosamente!');
+                    window.location.href = "PerfilUsuario.html";
+                }
+            }else{
+                alert('Error al iniciar Sesion, revise sus credenciales');
+                alert('credenciales');
+            }
+        }
+        
+        //Esto solo cambia la contra en auth y no en la base de datos
+
+        function Recuperacion(){
+            fetch(baseUrl + '/restorePassword', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({correo: getCorreo2.value}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Se ha enviado un correo de recuparacion a su correo!');
+            })
+            .catch(error => {
+                alert('Error al enviar el correo' + error);
+                console.log(error.message);
+            });
+        }
+        
+    </script>
+>>>>>>> Stashed changes:public/main.html
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

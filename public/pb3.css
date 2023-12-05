@@ -1,11 +1,11 @@
-.my-unique-class body {
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
 }
 
-.my-unique-class .container {
+.container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -15,21 +15,21 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.my-unique-class .filter {
-    width: 100%;
+.filter {
+    width: 25%;
     padding: 20px;
     box-sizing: border-box;
     background-color: #e4e7e4;
-}
+}   
 
-.my-unique-class .filter label {
+.filter label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
     color: #333;
 }
 
-.my-unique-class .filter select {
+.filter select {
     width: 100%;
     padding: 8px;
     margin-bottom: 20px;
@@ -38,7 +38,7 @@
     border-radius: 4px;
 }
 
-.my-unique-class .filter button {
+.filter button {
     width: 100%;
     padding: 10px;
     background-color: #4CAF50;
@@ -48,7 +48,7 @@
     border-radius: 4px;
 }
 
-.my-unique-class .product-grid {
+.product-grid {
     width: 70%;
     display: flex;
     flex-wrap: wrap;
@@ -57,8 +57,8 @@
     box-sizing: border-box;
 }
 
-.my-unique-class .product {
-    width: 100%;
+.product {
+    width: 30%;
     margin: 10px;
     box-sizing: border-box;
     cursor: pointer;
@@ -67,14 +67,16 @@
     border-radius: 4px;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     overflow: hidden;
+
 }
 
-.my-unique-class .product:hover {
+
+.product:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
-.my-unique-class .product img {
+.product img {
     width: 100%;
     height: auto;
     border-bottom: 1px solid #ddd;
@@ -82,17 +84,17 @@
     transition: transform 0.3s ease-in-out;
 }
 
-.my-unique-class .product:hover img {
+.product:hover img {
     transform: scale(1.2);
 }
 
-.my-unique-class .product p {
+.product p {
     padding: 10px;
     margin: 0;
     color: #333;
 }
 
-.my-unique-class .product button {
+.product button {
     width: 100%;
     padding: 10px;
     background-color: #3498db;
@@ -103,49 +105,50 @@
     transition: background-color 0.3s ease-in-out;
 }
 
-.my-unique-class .product button:hover {
+.product button:hover {
     background-color: #2980b9;
 }
 
-.my-unique-class .pagination {
+.pagination-container {
     width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 20px;
-}
-
-.my-unique-class .page-link {
-    margin: 0 5px;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    background-color: #ddd;
-    padding: 8px 12px;
-    border-radius: 4px;
-}
-
-.my-unique-class .page-link:hover {
-    background-color: #3498db;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pagination button {
+    padding: 10px;
+    margin: 5px;
+    background-color: #007BFF;
     color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .pagination div {
+    display: flex;
+  }
+  
+  .pagination div div {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #007BFF;
+    cursor: pointer;
+  }
+  
+  .pagination div div:hover,
+  .pagination div div.selected {
+    background-color: #007BFF;
+     color: #fff;
 }
 
-@media only screen and (min-width: 768px) {
-    .my-unique-class .filter {
-        width: 50%;
-    }
-
-    .my-unique-class .product {
-        width: 45%;
-    }
+.hidden {
+    display: none;
 }
 
-/* Media query para pantallas de tamaño grande (desktops, 992px y más) */
-@media only screen and (min-width: 992px) {
-    .my-unique-class .filter {
-        width: 25%;
-    }
-
-    .my-unique-class .product {
-        width: 30%;
-    }
-}

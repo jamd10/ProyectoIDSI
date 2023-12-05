@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Producto</title>
+    <link rel="stylesheet" href="fcatalogo.css">
+</head>
+<body>
+    <form id="addProductForm">
+        <div class="botones">
+            <button type="button" id="Agregar" onclick="CD1()">Agregar</button>
+            <button type="button" id="Editar" onclick="CD2()">Editar</button>
+            <button type="button" id="Eliminar" onclick="CD3()">Eliminar</button>
+        </div>
+        <div class="botones">
+            <label></label>
+        </div>
+        <div id="DC1" class="DivC1">
+            <label for="category">Categoría:</label>
+            <select id="category" name="category">
+                <option value="baño">Baños</option>
+                <option value="lavandería">Lavandería</option>
+                <option value="herramientas">Herramientas de Limpieza</option>
+                <option value="bioseguridad">Bioseguridad</option>
+                <option value="desinfectante">Desinfectante</option>
+                <option value="cuidadopersonal">Cuidado Personal</option>
+                <option value="productosplasticos">Productos Plasticos</option>
+            </select>
+            
+            <!-- validar despues -->
+
+            <label for="brand">Marca:</label>
+            <input type="text" id="brand" name="brand" required>
+
+            <label for="productName">Nombre del Producto:</label>
+            <input type="text" id="productName" name="productName" required>
+
+            <label for="productImage">Url de la imagen del producto:</label>
+            <input type="text" id="productImage" name="productImage" required>
+
+            <!-- <label for="productImage">Seleccionar Imagen del Producto:</label>
+            <input type="file" id="productImage" name="productImage" accept="image/*" required>
+            <img id="previewImage" src="" alt="Preview" style="max-width: 200px; max-height: 200px; display: none;"> -->
+
+            <label for="productPrice">Precio del Producto:</label>
+            <input type="number" id="productPrice" name="productPrice" min="0" step="0.50"  value="1.00" required>
+
+            <label for="productQuantity">Cantidad en Stock:</label>
+            <input type="number" id="productQuantity" name="productQuantity" min="0" required>
+
+            <div class="botones">
+                <button type="button" id="addProductButton">Agregar Producto</button>
+                <label ></label>
+                <a href="Admin.html">Regresar a perfil</a>
+            </div>
+        </div>
+
+
+
+        <div id="DC2" class="DivC2">
+            <label for="Editarseleccionar">Seleccione el producto a editar:</label>
+            <select id="Editarseleccionar" name="Editarseleccionar" onclick="setEditar()">
+            </select>
+            <label for="category2">Categoría:</label>
+            <select id="category2" name="category2">
+                <option value="baño">Baños</option>
+                <option value="lavandería">Lavandería</option>
+                <option value="herramientas">Herramientas de Limpieza</option>
+                <option value="bioseguridad">Bioseguridad</option>
+                <option value="desinfectante">Desinfectante</option>
+                <option value="cuidadopersonal">Cuidado Personal</option>
+                <option value="productosplasticos">Productos Plasticos</option>
+            </select>
+            
+            <!-- validar despues -->
+
+            <label for="brand2">Marca:</label>
+            <input type="text" id="brand2" name="brand2" required>
+
+            <label for="productName2">Nombre del Producto:</label>
+            <input type="text" id="productName2" name="productName2" disabled style="opacity: 0.5;">
+
+            <label for="productImage2">Url de la imagen del producto:</label>
+            <input type="text" id="productImage2" name="productImage2" required>
+
+            <!-- <label for="productImage">Seleccionar Imagen del Producto:</label>
+            <input type="file" id="productImage" name="productImage" accept="image/*" required>
+            <img id="previewImage" src="" alt="Preview" style="max-width: 200px; max-height: 200px; display: none;"> -->
+
+            <label for="productPrice2">Precio del Producto:</label>
+            <input type="number" id="productPrice2" name="productPrice2" min="0" step="0.50"  value="1.00" required>
+
+            <label for="productQuantity2">Cantidad en Stock:</label>
+            <input type="number" id="productQuantity2" name="productQuantity2" min="0" required>
+            <div class="botones">
+                <button type="button" id="ActualizarProducto">Actualizar Producto</button>
+                <label ></label>
+                <a href="Admin.html">Regresar a perfil</a>
+            </div>
+        </div>
+
+
+
+        <div id="DC3" class="DivC3">
+            <label for="Eliminarseleccionar">Seleccione el producto a editar:</label>
+            <select id="Eliminarseleccionar" name="Eliminarseleccionar">
+            </select>
+            <div class="botones">
+                <button type="button" id="EliminarProducto">Eliminar Producto</button>
+                <label ></label>
+                <a href="Admin.html">Regresar a perfil</a>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        const category = document.getElementById('category');
+        const brand = document.getElementById('brand');
+        const productName = document.getElementById('productName');
+        const productImage = document.getElementById('productImage'); 
+        const productPrice = document.getElementById('productPrice');
+        const productQuantity = document.getElementById('productQuantity');
+        const category2 = document.getElementById('category2');
+        const brand2 = document.getElementById('brand2');
+        const productName2 = document.getElementById('productName2');
+        const productImage2 = document.getElementById('productImage2'); 
+        const productPrice2 = document.getElementById('productPrice2');
+        const productQuantity2 = document.getElementById('productQuantity2');
+        const SelectEdit = document.getElementById('Editarseleccionar');
+        const SelectDelete = document.getElementById('Eliminarseleccionar');
+        const ActualizarProducto = document.getElementById('ActualizarProducto');
+        const EliminarProducto = document.getElementById('EliminarProducto');
+
+        const btn1 = document.getElementById('Agregar');
+        const btn2 = document.getElementById('Editar');
+        const btn3 = document.getElementById('Eliminar');
+        const div1 = document.getElementById('DC1');
+        const div2 = document.getElementById('DC2');
+        const div3 = document.getElementById('DC3');
+
+        document.getElementById('addProductButton').addEventListener('click', submitData);
+        btn1.addEventListener('click', CD1);
+        btn2.addEventListener('click', CD2);
+        btn3.addEventListener('click', CD3);
+        btn2.addEventListener('click', leerProducto);
+        btn3.addEventListener('click', leerProducto2);
+        ActualizarProducto.addEventListener('click', Actualizar);
+        EliminarProducto.addEventListener('click', Eliminar);
+
+        const baseUrl = 'https://grupolimpio-api.onrender.com';
+
+        // productImage.addEventListener("change", () => {
+        //     const file = productImage.files;
+        //     console.log(file);
+        // })
+
+        function addProduct() {
+            console.log('Categoría:', category.value);
+            console.log('Marca:', brand.value);
+            console.log('Nombre del Producto:', productName.value);
+            console.log('Imagen del Producto:', productImage.value); 
+            console.log('Precio del Producto:', productPrice.value);
+            console.log('Cantidad en Stock:', productQuantity.value);
+        }
+
+        //Tire la toalla
+
+        // function getBaseUrl ()  {
+        //     var file = document.querySelector('input[type=file]')['files'][0];
+        //     var reader = new FileReader();
+        //     var baseString;
+        //     reader.onloadend = function () {
+        //         baseString = reader.result;
+        //         console.log(baseString); 
+        //     };
+        //     reader.readAsDataURL(file);
+        // }
+
+        // function SubirImagen() {
+        //     var file = document.querySelector('input[type=file]')['files'][0];
+        //     var reader = new FileReader();
+        //     var baseString;
+        //     reader.onloadend = function () {
+        //         baseString = reader.result;
+        //         console.log(baseString); 
+        //     };
+        //     reader.readAsDataURL(file);
+        //     console.log(reader.result);
+        //     fetch(baseUrl + '/subirImagen', {
+        //         method: 'POST',
+        //         headers: {
+        //         'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify({imagen: baseString}),
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(productImage.files[0]);
+        //         alert('Se guardo la imagen');
+        //     })
+        //     .catch(error => {
+        //         alert('No se guardo la imagen');
+        //     });
+        // }
+
+        function submitData() {
+            fetch(baseUrl + '/submitProducto', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nombre: productName.value, categoria: category.value, marca: brand.value, imagen: productImage.value, 
+                precio: productPrice.value, cantidad: productQuantity.value,}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Producto creado exitosamente')
+            })
+            .catch(error => {
+                alert('Error Creando Usuario'+ error);
+            });
+        }
+
+        function leerProducto() {
+            fetch(baseUrl + '/selectProductos', {
+                method: 'GET',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                SelectEdit.innerHTML=""
+                for(var i = 0; i < data.length; i++) {
+                    var opt = data[i].nombre;
+                    var el = document.createElement("option");
+                    el.textContent = opt;
+                    el.value = opt;
+                    SelectEdit.appendChild(el);
+                }
+                category2.value = data[0].categoria;
+                brand2.value = data[0].marca;
+                productName2.value = data[0].nombre;
+                productImage2.value = data[0].imagen;
+                productPrice2.value = data[0].precio;
+                productQuantity2.value = data[0].cantidad;
+            })
+            .catch(error => {
+                alert(':('+error);
+            });
+        }
+
+        function leerProducto2() {
+            fetch(baseUrl + '/selectProductos', {
+                method: 'GET',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                SelectDelete.innerHTML=""
+                for(var i = 0; i < data.length; i++) {
+                    var opt = data[i].nombre;
+                    var el = document.createElement("option");
+                    el.textContent = opt;
+                    el.value = opt;
+                    SelectDelete.appendChild(el);
+                }
+                localStorage["productos"] = data;
+            })
+            .catch(error => {
+                alert(':('+error);
+            });
+        }
+        
+        function setEditar() {
+            fetch(baseUrl + '/selectProductos', {
+                method: 'GET',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                var num = 0;
+                for(var i = 0; i < data.length; i++) {
+                    console.log(data[i].nombre)
+                    if(data[i].nombre == SelectEdit.value){
+                        num = i;
+                    }
+                }
+                category2.value = data[num].categoria;
+                brand2.value = data[num].marca;
+                productName2.value = data[num].nombre;
+                productImage2.value = data[num].imagen;
+                productPrice2.value = data[num].precio;
+                productQuantity2.value = data[num].cantidad;
+            })
+            .catch(error => {
+                alert(':('+error);
+            });
+        }
+
+        function Actualizar() {
+            fetch(baseUrl + '/ActualizarProducto', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nombre: productName2.value, categoria: category2.value, marca: brand2.value, imagen: productImage2.value, 
+                precio: productPrice2.value, cantidad: productQuantity2.value,}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('El producto a sido actualizado');
+            })
+            .catch(error => {
+                alert('No se ha podido actualizar su informacion');
+            });
+        }
+
+        function Eliminar() {
+            fetch(baseUrl + '/EliminarProducto', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nombre: SelectDelete.value,}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('El producto a sido eliminado');
+            })
+            .catch(error => {
+                alert('No se ha podido eliminar el producto');
+            });
+        }
+
+        function CD1(){
+            div1.style.display = "block";
+            div2.style.display = "none";
+            div3.style.display = "none";
+        }
+
+        function CD2(){
+            div1.style.display = "none";
+            div2.style.display = "block";
+            div3.style.display = "none";
+        }
+
+        function CD3(){
+            div1.style.display = "none";
+            div2.style.display = "none";
+            div3.style.display = "block";
+        }
+
+
+    </script>
+
+    <!-- <script src="fcatalogo.js"></script> -->
+</body>
+</html>
