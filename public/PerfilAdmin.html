@@ -81,19 +81,19 @@
 
   <main>
     <section>
-      <!-- Contenido del submenú -->
       <div>
         <nav class="my-submenu-nav">
-          <a href="catalogo.html?flag=Baños">Baños</a>
-          <a href="catalogo.html?flag=Lavandería">Lavandería</a>
-          <a href="catalogo.html?flag=Herramientas de Limpieza">Herramientas de Limpieza</a>
-          <a href="catalogo.html?flag=Bioseguridad">Bioseguridad</a>
-          <a href="catalogo.html?flag=Desinfectante">Desinfectante</a>
-          <a href="catalogo.html?flag=Cuidado Personal">Cuidado Personal</a>
-          <a href="catalogo.html?flag=Productos Plásticos">Productos Plásticos</a>
+          <a href="catalogo.html?categoria=Baños">Baños</a>
+          <a href="catalogo.html?categoria=Lavandería">Lavandería</a>
+          <a href="catalogo.html?categoria=Herramientas de limpieza">Herramientas de Limpieza</a>
+          <a href="catalogo.html?categoria=Bioseguridad">Bioseguridad</a>
+          <a href="catalogo.html?categoria=Desinfectante">Desinfectante</a>
+          <a href="catalogo.html?categoria=Cuidado Personal">Cuidado Personal</a>
+          <a href="catalogo.html?categoria=Productos Plásticos">Productos Plásticos</a>
           <div class="animation start-home"></div>
         </nav>
       </div>
+
     </section>
     <section>
       <div class="PUDiv">
@@ -122,7 +122,7 @@
                 <span></span>
               </div>
               <div class="SubDivIp3">
-                <input id="NombreInput" class="InputIP" type="text" style="opacity: 0.5;" disabaled/>
+                <input id="NombreInput" class="InputIP" type="text" style="opacity: 0.5;" disabaled />
                 <span></span>
                 <span></span>
               </div>
@@ -132,8 +132,9 @@
                 <span></span>
               </div>
               <div class="SubDivIp3">
-                <input id="CorreoInput" class="InputIP" placeholder="ejemplo@correo.com" type="text" style="opacity: 0.5;" disabled/>
-                <input id="TelefonoInput" class="InputIP" type="text" style="opacity: 0.5;" disabled/>
+                <input id="CorreoInput" class="InputIP" placeholder="ejemplo@correo.com" type="text"
+                  style="opacity: 0.5;" disabled />
+                <input id="TelefonoInput" class="InputIP" type="text" style="opacity: 0.5;" disabled />
                 <span></span>
               </div>
             </div>
@@ -214,14 +215,14 @@
   <script>
     const getBtnLO = document.getElementById('navbtnLO');
     const getNombre = document.getElementById("NombreInput");
-    const getApellido =  document.getElementById("ApellidoInput");
-    const getCorreo =  document.getElementById("CorreoInput");
-    const getTelefono =  document.getElementById("TelefonoInput");
-    const getNacimiento =  document.getElementById("NacimientoInput");
-    const getId =  document.getElementById("IdentidadInput");
-    const getGenero =  document.getElementById("GeneroSelect");
-    const getCiudad =  document.getElementById("CiudadInput");
-    const getDireccion =  document.getElementById("DireccionInput");
+    const getApellido = document.getElementById("ApellidoInput");
+    const getCorreo = document.getElementById("CorreoInput");
+    const getTelefono = document.getElementById("TelefonoInput");
+    const getNacimiento = document.getElementById("NacimientoInput");
+    const getId = document.getElementById("IdentidadInput");
+    const getGenero = document.getElementById("GeneroSelect");
+    const getCiudad = document.getElementById("CiudadInput");
+    const getDireccion = document.getElementById("DireccionInput");
     const getNuevaContra = document.getElementById("C2Input");
 
     getBtnLO.addEventListener('click', CerrarSesion);
@@ -230,42 +231,42 @@
 
     function CerrarSesion() {
       fetch(baseUrl + '/logOut', {
-          method: 'GET',
-          headers: {
+        method: 'GET',
+        headers: {
           'Content-Type': 'application/json',
-          },
+        },
       })
-      .then(response => response.json())
-      .then(data => {
-          if(data.msg == "log out"){
+        .then(response => response.json())
+        .then(data => {
+          if (data.msg == "log out") {
             alert('Se ha cerrrado sesion');
             window.location.href = "index.html";
-          }else{
+          } else {
 
           }
-      })
-      .catch(error => {
+        })
+        .catch(error => {
           alert('No se ha podido cerrar sesion');
-      });
+        });
     }
 
     function CargarDatos() {
       fetch(baseUrl + '/CargarPerfilAdmin', {
-          method: 'POST',
-          headers: {
+        method: 'POST',
+        headers: {
           'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({id: localStorage["correo"]}),
+        },
+        body: JSON.stringify({ id: localStorage["correo"] }),
       })
-      .then(response => response.json())
-      .then(data => {
+        .then(response => response.json())
+        .then(data => {
           getNombre.value = data.nombre;
           getCorreo.value = data.correo;
           getTelefono.value = data.tipo;
-      })
-      .catch(error => {
+        })
+        .catch(error => {
           alert('No han podido cargar los datos de su cuenta' + error);
-      });
+        });
     }
   </script>
 

@@ -81,19 +81,19 @@
 
   <main>
     <section>
-      <!-- Contenido del submenú -->
       <div>
         <nav class="my-submenu-nav">
-          <a href="catalogo.html?flag=Baños">Baños</a>
-          <a href="catalogo.html?flag=Lavandería">Lavandería</a>
-          <a href="catalogo.html?flag=Herramientas de Limpieza">Herramientas de Limpieza</a>
-          <a href="catalogo.html?flag=Bioseguridad">Bioseguridad</a>
-          <a href="catalogo.html?flag=Desinfectante">Desinfectante</a>
-          <a href="catalogo.html?flag=Cuidado Personal">Cuidado Personal</a>
-          <a href="catalogo.html?flag=Productos Plásticos">Productos Plásticos</a>
+          <a href="catalogo.html?categoria=Baños">Baños</a>
+          <a href="catalogo.html?categoria=Lavandería">Lavandería</a>
+          <a href="catalogo.html?categoria=Herramientas de limpieza">Herramientas de Limpieza</a>
+          <a href="catalogo.html?categoria=Bioseguridad">Bioseguridad</a>
+          <a href="catalogo.html?categoria=Desinfectante">Desinfectante</a>
+          <a href="catalogo.html?categoria=Cuidado Personal">Cuidado Personal</a>
+          <a href="catalogo.html?categoria=Productos Plásticos">Productos Plásticos</a>
           <div class="animation start-home"></div>
         </nav>
       </div>
+
     </section>
     <section>
       <div class="PUDiv">
@@ -126,8 +126,8 @@
                 <span></span>
               </div>
               <div class="SubDivIp3">
-                <input id="NombreInput" class="InputIP" type="text" onkeyup="validate();"/>
-                <input id="ApellidoInput" class="InputIP" type="text" onkeyup="validate2();"/>
+                <input id="NombreInput" class="InputIP" type="text" onkeyup="validate();" />
+                <input id="ApellidoInput" class="InputIP" type="text" onkeyup="validate2();" />
                 <span></span>
               </div>
               <div class="SubDivIp">
@@ -136,8 +136,10 @@
                 <span></span>
               </div>
               <div class="SubDivIp3">
-                <input id="CorreoInput" class="InputIP" placeholder="ejemplo@correo.com" type="text" style="opacity: 0.5;" disabled/>
-                <input id="TelefonoInput" class="InputIP" placeholder="XXXXXXXX" type="text" onkeyup="validate4();" maxlength = "8"/>
+                <input id="CorreoInput" class="InputIP" placeholder="ejemplo@correo.com" type="text"
+                  style="opacity: 0.5;" disabled />
+                <input id="TelefonoInput" class="InputIP" placeholder="XXXXXXXX" type="text" onkeyup="validate4();"
+                  maxlength="8" />
                 <span></span>
               </div>
               <div class="SubDivIp">
@@ -146,8 +148,10 @@
                 <span></span>
               </div>
               <div class="SubDivIp3">
-                <input id="NacimientoInput" class="InputIP" placeholder="DD/MM/AAAA" type="date" pattern="\d{2}/\d{2}/\d{4}"/>
-                <input id="IdentidadInput" class="InputIP" placeholder="XXXXXXXXXXXXX" type="text" onkeyup="validate3();" maxlength = "13"/>
+                <input id="NacimientoInput" class="InputIP" placeholder="DD/MM/AAAA" type="date"
+                  pattern="\d{2}/\d{2}/\d{4}" />
+                <input id="IdentidadInput" class="InputIP" placeholder="XXXXXXXXXXXXX" type="text"
+                  onkeyup="validate3();" maxlength="13" />
                 <span></span>
               </div>
               <div class="SubDivIp">
@@ -179,7 +183,7 @@
                 <span></span>
               </div>
               <div class="SubDivMD3">
-                <input id="CiudadInput" class="InputMD" type="text" onkeyup="validate5();"/>
+                <input id="CiudadInput" class="InputMD" type="text" onkeyup="validate5();" />
                 <input id="DireccionInput" class="InputMD" type="text" />
                 <span></span>
               </div>
@@ -307,55 +311,55 @@
 
   <footer>
     <section class="footer">
-        <div class="footer-row">
-            <div class="footer-col">
-                <h4>Conocenos</h4>
-                <ul class="links">
-                    <li><a href="#">Acerca de Nosotros</a></li>
-                    <li><a href="#">Historia</a></li>
-                    <li><a href="#">Marcas</a></li>
-                    <li><a href="#">Catálogo en línea</a></li>
-                    <li><a href="#">Promociones</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Información </h4>
-                <ul class="links">
-                    <li><a href="#">Formas de pago</a></li>
-                    <li><a href="#">Productos nuevos</a></li>
-                    <li><a href="PreguntasFrecCliente.html">Preguntas frecuentes</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Legal</h4>
-                <ul class="links">
-                    <li><a href="Politicas.html">Politicas de seguridad</a></li>
-                    <li><a href="#">Envios</a></li>
-                    <li><a href="#">Pagos</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Contacto</h4>
-                <ul class="links">
-                    <li><a href="Contactarse.html">Contactar</a></li>
-                </ul>
-            </div>
+      <div class="footer-row">
+        <div class="footer-col">
+          <h4>Conocenos</h4>
+          <ul class="links">
+            <li><a href="#">Acerca de Nosotros</a></li>
+            <li><a href="#">Historia</a></li>
+            <li><a href="#">Marcas</a></li>
+            <li><a href="#">Catálogo en línea</a></li>
+            <li><a href="#">Promociones</a></li>
+          </ul>
         </div>
-        <div class="footer-row" style="display: flex; align-items: center; justify-content: center;">
-            <div class="footer-col" style="text-align: center; margin-top: 20px; color: #fff;">
-                Derechos reservados © 2023 | Grupo + Limpio
-                <div class="icons">
-                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
+
+        <div class="footer-col">
+          <h4>Información </h4>
+          <ul class="links">
+            <li><a href="#">Formas de pago</a></li>
+            <li><a href="#">Productos nuevos</a></li>
+            <li><a href="PreguntasFrecCliente.html">Preguntas frecuentes</a></li>
+          </ul>
         </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="links">
+            <li><a href="Politicas.html">Politicas de seguridad</a></li>
+            <li><a href="#">Envios</a></li>
+            <li><a href="#">Pagos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul class="links">
+            <li><a href="Contactarse.html">Contactar</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-row" style="display: flex; align-items: center; justify-content: center;">
+        <div class="footer-col" style="text-align: center; margin-top: 20px; color: #fff;">
+          Derechos reservados © 2023 | Grupo + Limpio
+          <div class="icons">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
     </section>
-</footer>
+  </footer>
 
   <script>
     const getBtnC = document.getElementById('BtnSEditar1');
@@ -363,14 +367,14 @@
     const getBtn2 = document.getElementById('Guardarbtn2');
     const getBtnLO = document.getElementById('navbtnLO');
     const getNombre = document.getElementById("NombreInput");
-    const getApellido =  document.getElementById("ApellidoInput");
-    const getCorreo =  document.getElementById("CorreoInput");
-    const getTelefono =  document.getElementById("TelefonoInput");
-    const getNacimiento =  document.getElementById("NacimientoInput");
-    const getId =  document.getElementById("IdentidadInput");
-    const getGenero =  document.getElementById("GeneroSelect");
-    const getCiudad =  document.getElementById("CiudadInput");
-    const getDireccion =  document.getElementById("DireccionInput");
+    const getApellido = document.getElementById("ApellidoInput");
+    const getCorreo = document.getElementById("CorreoInput");
+    const getTelefono = document.getElementById("TelefonoInput");
+    const getNacimiento = document.getElementById("NacimientoInput");
+    const getId = document.getElementById("IdentidadInput");
+    const getGenero = document.getElementById("GeneroSelect");
+    const getCiudad = document.getElementById("CiudadInput");
+    const getDireccion = document.getElementById("DireccionInput");
     const getNuevaContra = document.getElementById("C2Input");
 
     getBtn.addEventListener('click', validar3);
@@ -382,98 +386,100 @@
 
     function CerrarSesion() {
       fetch(baseUrl + '/logOut', {
-          method: 'GET',
-          headers: {
+        method: 'GET',
+        headers: {
           'Content-Type': 'application/json',
-          },
+        },
       })
-      .then(response => response.json())
-      .then(data => {
-          if(data.msg == "log out"){
+        .then(response => response.json())
+        .then(data => {
+          if (data.msg == "log out") {
             alert('Se ha cerrrado sesion');
             window.location.href = "index.html";
-          }else{
+          } else {
 
           }
-      })
-      .catch(error => {
+        })
+        .catch(error => {
           alert('No se ha podido cerrar sesion');
-      });
+        });
     }
 
     function Actualizar() {
       fetch(baseUrl + '/Actualizar', {
-          method: 'POST',
-          headers: {
+        method: 'POST',
+        headers: {
           'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({nombre: getNombre.value, apellido: getApellido.value, id: getId.value, telefono: getTelefono.value, 
-                ciudad: getCiudad.value, correo: getCorreo.value, fechanacimiento: getNacimiento.value, genero: getGenero.value, direccion: getDireccion.value }),
+        },
+        body: JSON.stringify({
+          nombre: getNombre.value, apellido: getApellido.value, id: getId.value, telefono: getTelefono.value,
+          ciudad: getCiudad.value, correo: getCorreo.value, fechanacimiento: getNacimiento.value, genero: getGenero.value, direccion: getDireccion.value
+        }),
       })
-      .then(response => response.json())
-      .then(data => {
+        .then(response => response.json())
+        .then(data => {
           alert('Su informacion a sido actualizada exitosamente!');
           window.location.reload();
-      })
-      .catch(error => {
+        })
+        .catch(error => {
           alert('No se ha podido actualizar su informacion');
-      });
+        });
     }
 
     function NuevaContra() {
       fetch(baseUrl + '/updatePassword', {
-          method: 'POST',
-          headers: {
+        method: 'POST',
+        headers: {
           'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({correo: getCorreo.value, password: getNuevaContra.value}),
+        },
+        body: JSON.stringify({ correo: getCorreo.value, password: getNuevaContra.value }),
       })
-      .then(response => response.json())
-      .then(data => {
+        .then(response => response.json())
+        .then(data => {
           alert('Contraseña Actualizada!');
           window.location.reload();
-      })
-      .catch(error => {
+        })
+        .catch(error => {
           alert('No se ha podido actualizar la contraseña');
-      });
+        });
     }
 
     function BuscarContra() {
       fetch(baseUrl + '/ConfirmPassword', {
-          method: 'POST',
-          headers: {
+        method: 'POST',
+        headers: {
           'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({correo: getCorreo.value}),
+        },
+        body: JSON.stringify({ correo: getCorreo.value }),
       })
-      .then(response => response.json())
-      .then(data => {
+        .then(response => response.json())
+        .then(data => {
           VerificarContra(data.password);
-      })
-      .catch(error => {
+        })
+        .catch(error => {
           console.error('Error:', error);
           alert('Error submitting data' + error);
-      });
+        });
     }
 
     function VerificarContra(data) {
-      if(document.getElementById("C1Input").value == data){
+      if (document.getElementById("C1Input").value == data) {
         NuevaContra();
-      }else{
+      } else {
         alert("Las constraseña no es la correcta");
       }
     }
 
     function CargarDatos() {
       fetch(baseUrl + '/CargarPerfil', {
-          method: 'POST',
-          headers: {
+        method: 'POST',
+        headers: {
           'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({id: localStorage["correo"]}),
+        },
+        body: JSON.stringify({ id: localStorage["correo"] }),
       })
-      .then(response => response.json())
-      .then(data => {
+        .then(response => response.json())
+        .then(data => {
           getNombre.value = data.nombre;
           getApellido.value = data.apellido;
           getCorreo.value = data.correo;
@@ -483,79 +489,79 @@
           getGenero.value = data.genero;
           getCiudad.value = data.ciudad;
           getDireccion.value = data.direccion;
-      })
-      .catch(error => {
+        })
+        .catch(error => {
           alert('No han podido cargar los datos de su cuenta' + error);
-      });
+        });
     }
 
-    function validar(){
-        if(getId.value.length == 13){
-            validar2();
-        }else if(getId.value.length == 0){
-            alert("Debe de llenar el campo de Identidad");
-        }else{
-            alert("El numero de identidad debe ser de 13 numeros, sin espacios");
-        }
+    function validar() {
+      if (getId.value.length == 13) {
+        validar2();
+      } else if (getId.value.length == 0) {
+        alert("Debe de llenar el campo de Identidad");
+      } else {
+        alert("El numero de identidad debe ser de 13 numeros, sin espacios");
+      }
     }
 
-    function validar2(){
-        if(getTelefono.value.length == 8){
-            validar5();
-        }else if(getTelefono.value.length == 0){
-            alert("Debe de llenar el campo de Telefono");
-        }else{
-            alert("El numero de telefono debe ser de 8 numeros, sin espacios");
-        }
+    function validar2() {
+      if (getTelefono.value.length == 8) {
+        validar5();
+      } else if (getTelefono.value.length == 0) {
+        alert("Debe de llenar el campo de Telefono");
+      } else {
+        alert("El numero de telefono debe ser de 8 numeros, sin espacios");
+      }
     }
 
-    function validar3(){
-        if(getNombre.value.length == 0){
-            alert("Debe de llenar el campo de Nombre");
-        }else {
-            validar4();
-        }
+    function validar3() {
+      if (getNombre.value.length == 0) {
+        alert("Debe de llenar el campo de Nombre");
+      } else {
+        validar4();
+      }
     }
 
-    function validar4(){
-        if(getApellido.value.length == 0){
-            alert("Debe de llenar el campo de Apellido");
-        }else {
-            validar();
-        }
+    function validar4() {
+      if (getApellido.value.length == 0) {
+        alert("Debe de llenar el campo de Apellido");
+      } else {
+        validar();
+      }
     }
 
-    function validar5(){
-        if(getCiudad.value.length == 0){
-            alert("Debe de llenar el campo de Ciudad");
-        }else {
-            Actualizar();
-        }
+    function validar5() {
+      if (getCiudad.value.length == 0) {
+        alert("Debe de llenar el campo de Ciudad");
+      } else {
+        Actualizar();
+      }
     }
 
     function validate() {
-        var element = document.getElementById('NombreInput');
-        element.value = element.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
+      var element = document.getElementById('NombreInput');
+      element.value = element.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
     };
 
     function validate2() {
-        var element2 = document.getElementById('ApellidoInput');
-        element2.value = element2.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
+      var element2 = document.getElementById('ApellidoInput');
+      element2.value = element2.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
     };
 
     function validate3() {
-        var element2 = document.getElementById('IdentidadInput');
-        element2.value = element2.value.replace(/[^0-9]+/, '');
+      var element2 = document.getElementById('IdentidadInput');
+      element2.value = element2.value.replace(/[^0-9]+/, '');
     };
 
     function validate4() {
-        var element2 = document.getElementById('TelefonoInput');
-        element2.value = element2.value.replace(/[^0-9]+/, '');
+      var element2 = document.getElementById('TelefonoInput');
+      element2.value = element2.value.replace(/[^0-9]+/, '');
     };
-    
+
     function validate5() {
-        var element2 = document.getElementById('CiudadInput');
-        element2.value = element2.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
+      var element2 = document.getElementById('CiudadInput');
+      element2.value = element2.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
     };
   </script>
 

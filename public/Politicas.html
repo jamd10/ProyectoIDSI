@@ -87,21 +87,20 @@
     </header>
     <main>
         <section>
-            <!-- Contenido del submenú -->
             <div>
                 <nav class="my-submenu-nav">
-                    <a href="catalogo.html?flag=Baños">Baños</a>
-                    <a href="catalogo.html?flag=Lavandería">Lavandería</a>
-                    <a href="catalogo.html?flag=Herramientas de Limpieza">Herramientas de Limpieza</a>
-                    <a href="catalogo.html?flag=Bioseguridad">Bioseguridad</a>
-                    <a href="catalogo.html?flag=Desinfectante">Desinfectante</a>
-                    <a href="catalogo.html?flag=Cuidado Personal">Cuidado Personal</a>
-                    <a href="catalogo.html?flag=Productos Plásticos">Productos Plásticos</a>
+                    <a href="catalogo.html?categoria=Baños">Baños</a>
+                    <a href="catalogo.html?categoria=Lavandería">Lavandería</a>
+                    <a href="catalogo.html?categoria=Herramientas de limpieza">Herramientas de Limpieza</a>
+                    <a href="catalogo.html?categoria=Bioseguridad">Bioseguridad</a>
+                    <a href="catalogo.html?categoria=Desinfectante">Desinfectante</a>
+                    <a href="catalogo.html?categoria=Cuidado Personal">Cuidado Personal</a>
+                    <a href="catalogo.html?categoria=Productos Plásticos">Productos Plásticos</a>
                     <div class="animation start-home"></div>
                 </nav>
             </div>
-        </section>
 
+        </section>
         <div class="content-container">
             <h1 class="min"> Políticas de Grupo + Limpio</h1>
             <h2 class="min"> Términos y Condiciones </h2>
@@ -200,139 +199,138 @@
 
 
 
-<<<<<<< Updated upstream:public/Politicas.html
-=======
-    <script src="pb4.js"></script>
+    <<<<<<< Updated upstream:public/Politicas.html=======<script src="pb4.js">
+        </script>
 
-    <script>
-        function redirectCrearCuenta() {
+        <script>
+            function redirectCrearCuenta() {
 
-            window.location.href = "index1.html";
-        }
-    </script>
-
-    <script>
-        //pasar a un documento de js despues y tambien en index1 y perfilusuario
-        const getBtn = document.getElementById('Submitbtn');
-        const getCorreo = document.getElementById('correo_o_celular');
-        const getCorreo2 = document.getElementById('emailR');
-        const getContra = document.getElementById('contrasena');
-        const getBtnR = document.getElementById('recuperarbtn');
-
-        getBtn.addEventListener('click', LogInUsuario);
-        getBtnR.addEventListener('click', Recuperacion);
-
-        const baseUrl = 'https://grupolimpio-api.onrender.com';
-
-        async function LogInUsuario(e) {
-            e.preventDefault();
-            fetch(baseUrl + '/logIn', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({correo: getCorreo.value, password: getContra.value}),
-            })
-            .then(response => response.json())
-            .then(data => {
-                localStorage["correo"] = getCorreo.value;
-                LogInAdmin(data.message);
-            })
-            .catch(error => {
-                alert('Error al iniciar Sesion, revise sus credenciales');
-                alert('Error');
-            });
-        }
-
-        function LogInAdmin(datas) {
-            fetch(baseUrl + '/readAdmin', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({correo: getCorreo.value}),
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.tipo == "Admin"){
-                    aPerfil(datas,data.tipo);
-                }else{
-                    aPerfil(datas,data.tipo);
-                }
-            })
-            .catch(error => {
-                aPerfil(datas,error);
-            });
-        }
-
-        function aPerfil(data,admin) {
-            if(data == 'Holas'){
-                if(admin == "Admin"){
-                    alert('Se ha iniciado sesion exitosamente administrador!');
-                    window.location.href = "Admin.html";
-                }else{
-                    alert('Se ha iniciado sesion exitosamente!');
-                    window.location.href = "PerfilUsuario.html";
-                }
-            }else{
-                alert('Error al iniciar Sesion, revise sus credenciales');
-                alert('credenciales');
+                window.location.href = "index1.html";
             }
-        }
-        
-        //Esto solo cambia la contra en auth y no en la base de datos
+        </script>
 
-        function Recuperacion(){
-            fetch(baseUrl + '/restorePassword', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({correo: getCorreo2.value}),
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Se ha enviado un correo de recuparacion a su correo!');
-            })
-            .catch(error => {
-                alert('Error al enviar el correo' + error);
-                console.log(error.message);
-            });
-        }
-        
-    </script>
->>>>>>> Stashed changes:public/main.html
+        <script>
+            //pasar a un documento de js despues y tambien en index1 y perfilusuario
+            const getBtn = document.getElementById('Submitbtn');
+            const getCorreo = document.getElementById('correo_o_celular');
+            const getCorreo2 = document.getElementById('emailR');
+            const getContra = document.getElementById('contrasena');
+            const getBtnR = document.getElementById('recuperarbtn');
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
-    <script src="menu.js"></script>
-    <script src="carrusel.js"></script>
-    <script src="menu.js"></script>
-    <script src="destacados.js"></script>
-    <script src="publicidad.js"></script>
-    <script src="btn.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            effect: "coverflow",
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: "auto",
-            loop: true,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-            coverflowEffect: {
-                depth: 500,
-                modifier: 1,
-                slidesShadows: true,
-                rotate: 0,
-                stretch: 0
+            getBtn.addEventListener('click', LogInUsuario);
+            getBtnR.addEventListener('click', Recuperacion);
+
+            const baseUrl = 'https://grupolimpio-api.onrender.com';
+
+            async function LogInUsuario(e) {
+                e.preventDefault();
+                fetch(baseUrl + '/logIn', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ correo: getCorreo.value, password: getContra.value }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        localStorage["correo"] = getCorreo.value;
+                        LogInAdmin(data.message);
+                    })
+                    .catch(error => {
+                        alert('Error al iniciar Sesion, revise sus credenciales');
+                        alert('Error');
+                    });
             }
-        });
-    </script>
+
+            function LogInAdmin(datas) {
+                fetch(baseUrl + '/readAdmin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ correo: getCorreo.value }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.tipo == "Admin") {
+                            aPerfil(datas, data.tipo);
+                        } else {
+                            aPerfil(datas, data.tipo);
+                        }
+                    })
+                    .catch(error => {
+                        aPerfil(datas, error);
+                    });
+            }
+
+            function aPerfil(data, admin) {
+                if (data == 'Holas') {
+                    if (admin == "Admin") {
+                        alert('Se ha iniciado sesion exitosamente administrador!');
+                        window.location.href = "Admin.html";
+                    } else {
+                        alert('Se ha iniciado sesion exitosamente!');
+                        window.location.href = "PerfilUsuario.html";
+                    }
+                } else {
+                    alert('Error al iniciar Sesion, revise sus credenciales');
+                    alert('credenciales');
+                }
+            }
+
+            //Esto solo cambia la contra en auth y no en la base de datos
+
+            function Recuperacion() {
+                fetch(baseUrl + '/restorePassword', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ correo: getCorreo2.value }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert('Se ha enviado un correo de recuparacion a su correo!');
+                    })
+                    .catch(error => {
+                        alert('Error al enviar el correo' + error);
+                        console.log(error.message);
+                    });
+            }
+
+        </script>
+        >>>>>>> Stashed changes:public/main.html
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+        <script src="menu.js"></script>
+        <script src="carrusel.js"></script>
+        <script src="menu.js"></script>
+        <script src="destacados.js"></script>
+        <script src="publicidad.js"></script>
+        <script src="btn.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                effect: "coverflow",
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: "auto",
+                loop: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                coverflowEffect: {
+                    depth: 500,
+                    modifier: 1,
+                    slidesShadows: true,
+                    rotate: 0,
+                    stretch: 0
+                }
+            });
+        </script>
 
 
 </body>

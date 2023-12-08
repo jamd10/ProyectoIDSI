@@ -1,0 +1,352 @@
+/* Estilos generales */
+
+.container.catalogo {
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 0 10px;
+    overflow-x: hidden;
+}
+
+.container.catalogo .form-control,
+.container.catalogo .form-control-range,
+.container.catalogo .btn-primary {
+    border-color: #23c01e;
+}
+
+.container.catalogo .form-control-range {
+    background: linear-gradient(to right, #23c01e, #23c01e);
+}
+
+.container.catalogo .btn-primary {
+    background-color: #23c01e;
+}
+
+.container.catalogo .form-control option:hover,
+.container.catalogo .form-control option:focus {
+    background-color: #23c01e;
+    color: white;
+}
+
+/* Estilos para las tarjetas de producto */
+
+.catalogo .card {
+    width: 18%;
+    /* Ancho fijo del 18% del contenedor */
+    height: 400px;
+    /* Ajusta la altura según sea necesario */
+    margin: 1%;
+    /* Margen del 1% para dar espacio entre las tarjetas */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.catalogo .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.catalogo .card img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.catalogo .card .card-body {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.catalogo .card .card-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+    /* En negrita */
+    color: #000000;
+    /* Color naranja */
+}
+
+.catalogo .card .card-text {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.catalogo .card .precio {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+}
+
+/* Estilos para el contenedor del catálogo */
+
+#catalogoProductos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+/* Estilos para la franja de botones */
+
+#botones {
+    background-color: #23c01e;
+    color: white;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.botones button {
+    background-color: #23c01e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+}
+
+.botones button:hover {
+    background-color: #23c01e;
+    color: #ffffff;
+}
+
+/* Media queries para hacer las tarjetas responsivas */
+@media (min-width: 1200px) {
+    .catalogo .card {
+        flex: 0 0 calc(20% - 2%);
+        /* Permite 5 tarjetas por fila en pantallas grandes */
+    }
+}
+
+@media (max-width: 600px) {
+    .catalogo .card {
+        flex: 0 0 calc(50% - 2%);
+        /* Permite 2 tarjetas por fila en dispositivos móviles */
+    }
+}
+
+/* Estilos para las tarjetas de producto */
+
+.catalogo .card {
+    width: 18%;
+    /* Ancho fijo del 18% del contenedor */
+    height: 400px;
+    /* Ajusta la altura según sea necesario */
+    margin: 1%;
+    /* Margen del 1% para dar espacio entre las tarjetas */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos para pantallas más pequeñas (responsive) */
+@media (max-width: 768px) {
+    .catalogo .card {
+        width: 48%;
+        /* Ancho fijo del 48% del contenedor en pantallas más pequeñas */
+        margin: 1%;
+        /* Ajustar el margen según sea necesario */
+        height: auto;
+        /* Altura automática para adaptarse al contenido */
+    }
+
+    .catalogo .card img {
+        height: 60%;
+        /* Ajustar la altura de la imagen en pantallas más pequeñas */
+    }
+
+    .catalogo .card .card-body {
+        padding: 10px;
+        /* Ajustar el padding del cuerpo en pantallas más pequeñas */
+    }
+
+    .catalogo .card .card-title {
+        font-size: 14px;
+        /* Reducir el tamaño del título en pantallas más pequeñas */
+        margin-bottom: 5px;
+        /* Ajustar el margen según sea necesario */
+    }
+
+    .catalogo .card .card-text {
+        font-size: 12px;
+        /* Reducir el tamaño del texto en pantallas más pequeñas */
+        margin-bottom: 5px;
+        /* Ajustar el margen según sea necesario */
+        color: orange;
+        /* Cambiar el color del texto del precio a naranja */
+    }
+
+    .catalogo .card .precio {
+        font-size: 16px;
+        /* Reducir el tamaño del precio en pantallas más pequeñas */
+        color: orange;
+        /* Cambiar el color del precio a naranja */
+        font-weight: bold;
+        /* Hacer el precio en negrita */
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+    }
+
+    .catalogo .card .input-group {
+        margin-top: 5px;
+        /* Ajustar el margen superior del grupo de entrada en pantallas más pequeñas */
+    }
+
+    .catalogo .card .btn {
+        padding: 5px 10px;
+        /* Ajustar el padding de los botones en pantallas más pequeñas */
+        font-size: 12px;
+        /* Reducir el tamaño del texto de los botones en pantallas más pequeñas */
+        height: 25px;
+        /* Ajustar la altura de los botones en pantallas más pequeñas */
+    }
+}
+
+.catalogo .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.catalogo .card img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.catalogo .card .card-body {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.catalogo .card .card-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+    color: #000000;
+}
+
+.catalogo .card .card-text {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.catalogo .card .precio {
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+}
+
+/* Estilos para el contenedor del catálogo */
+
+#catalogoProductos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+/* Estilos para la franja de botones */
+
+#botones {
+    background-color: #23c01e;
+    color: white;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.botones button {
+    background-color: #23c01e;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+
+.botones button:hover {
+    background-color: #23c01e;
+    color: #ffffff;
+}
+
+/* CSS para el spinner */
+.form-control.text-center {
+    height: 25px;
+}
+
+/* CSS para el botón */
+.btn.btn-outline-success {
+    height: 25px;
+}
+
+#catalogoFiltro {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background: url('img/banner.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    color: white;
+    font-size: 6em; /* Tamaño de fuente para pantallas grandes */
+    font-family: 'Times New Roman', Times, serif;
+    z-index: 1;
+    text-align: center; /* Asegurar que el texto esté centrado */
+}
+
+#catalogoFiltro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+/* Cuando la pantalla tiene 600px o menos de ancho, disminuir el tamaño de la fuente */
+@media (max-width: 600px) {
+    #catalogoFiltro {
+        font-size: 4em; /* Tamaño de fuente para pantallas pequeñas */
+    }
+}
