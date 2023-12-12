@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="info.css">
     <link rel="stylesheet" href="btn.css">
     <link rel="stylesheet" href="catalago.css">
+    <link rel="stylesheet" href="publicidad.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -142,8 +143,6 @@
         <section>
             <h1 id="catalogoFiltro">Catálogo</h1>
             <div class="container catalogo">
-
-
                 <div class="row">
                     <div class="col-md-3">
                         <h5>Filtros</h5>
@@ -213,6 +212,7 @@
                 </div>
             </div>
         </section>
+
         <section>
             <button id="scrollToTopBtn" onclick="scrollToTop()">
                 <i class="fa fa-arrow-up"></i>
@@ -221,6 +221,17 @@
     </main>
     <footer>
         <section class="footer">
+            <section>
+                <div class="publicidad" onmouseover="detenerAnimacion()" onmouseout="reanudarAnimacion()"
+                    style="display: none;">
+                    <div class="texto" id="texto"> <span class="resaltar" id="mas">¡Descubre la revolución en limpieza
+                            con
+                            Grupo + Limpio</span>! 🫧
+                        Productos de calidad premium para espacios impecables. ¡Haz tu pedido hoy y transforma tu
+                        limpieza!
+                    </div>
+                </div>
+            </section>
             <div class="footer-row">
                 <div class="footer-col">
                     <h4>Conocenos</h4>

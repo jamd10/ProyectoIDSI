@@ -10,47 +10,48 @@ precio.oninput = function () {
 }
 
 const productos = [
-    { id: 1234567, nombre: 'Limpiador de Baños FreshClean', precio: 15.99, marca: 'CleanStar', categoria: 'Baños', imagen: 'img/1.png', cantidad: 31 },
-    { id: 2345678, nombre: 'Detergente Lavanda Premium', precio: 25.49, marca: 'PureWash', categoria: 'Lavandería', imagen: 'img/2.png', cantidad: 22 },
-    { id: 3456789, nombre: 'Escoba de Microfibra Ultra Limpia', precio: 100.90, marca: 'SweepPro', categoria: 'Herramientas de limpieza', imagen: 'img/3.png', cantidad: 53 },
-    { id: 4567890, nombre: 'Desinfectante PowerGuard', precio: 300.00, marca: 'Guardian', categoria: 'Desinfectante', imagen: 'img/4.png', cantidad: 44 },
-    { id: 5678901, nombre: 'Toallitas Desinfectantes BioShield', precio: 200.00, marca: 'BioDefense', categoria: 'Bioseguridad', imagen: 'img/5.png', cantidad: 25 },
-    { id: 6789012, nombre: 'Gel de Manos Suave y Fresco', precio: 22.99, marca: 'SoftCare', categoria: 'Cuidado Personal', imagen: 'img/6.png', cantidad: 36 },
-    { id: 7890123, nombre: 'Bolsas de Basura Resistentes EcoPlast', precio: 12.99, marca: 'EcoSolutions', categoria: 'Productos Plásticos', imagen: 'img/7.png', cantidad: 67 },
-    { id: 8901234, nombre: 'Limpiador de Ventanas CrystalView', precio: 400.00, marca: 'ClearVision', categoria: 'Herramientas de limpieza', imagen: 'img/8.png', cantidad: 28 },
-    { id: 9012345, nombre: 'Eliminador de Olores FreshAir', precio: 400.00, marca: 'AromaFresh', categoria: 'Baños', imagen: 'img/1.png', cantidad: 49 },
-    { id: 1234501, nombre: 'Detergente Hipoalergénico PureGentle', precio: 240.00, marca: 'SensitiveCare', categoria: 'Lavandería', imagen: 'img/2.png', cantidad: 50 },
-    { id: 2345012, nombre: 'Esponja Multiusos PowerScrub', precio: 111.49, marca: 'ScrubMaster', categoria: 'Herramientas de limpieza', imagen: 'img/3.png', cantidad: 31 },
-    { id: 3450123, nombre: 'Toallitas Limpiadoras GentleTouch', precio: 935.99, marca: 'GentleClean', categoria: 'Desinfectante', imagen: 'img/4.png', cantidad: 22 },
-    { id: 4501234, nombre: 'Spray Antibacterial BioGuard', precio: 319.99, marca: 'BioShield', categoria: 'Bioseguridad', imagen: 'img/5.png', cantidad: 63 },
-    { id: 5012345, nombre: 'Jabón Líquido AloeFresh', precio: 726.49, marca: 'NatureSoothe', categoria: 'Cuidado Personal', imagen: 'img/6.png', cantidad: 44 },
-    { id: 1234590, nombre: 'Contenedores de Almacenamiento EcoBox', precio: 614.99, marca: 'EcoStorage', categoria: 'Productos Plásticos', imagen: 'img/7.png', cantidad: 35 },
-    { id: 2345901, nombre: 'Limpiador de Superficies MultiClean', precio: 529.99, marca: 'SurfacePro', categoria: 'Herramientas de limpieza', imagen: 'img/8.png', cantidad: 56 },
-    { id: 3459012, nombre: 'Desodorante Ambiental FreshBreeze', precio: 417.99, marca: 'AirScent', categoria: 'Baños', imagen: 'img/1.png', cantidad: 27 },
-    { id: 4590123, nombre: 'Suavizante de Ropa DelicateSoft', precio: 323.49, marca: 'SoftLux', categoria: 'Lavandería', imagen: 'img/2.png', cantidad: 48 },
-    { id: 5901234, nombre: 'Cepillo de Limpieza Profunda DeepClean', precio: 213.49, marca: 'ProScrub', categoria: 'Herramientas de limpieza', imagen: 'img/3.png', cantidad: 39 },
-    { id: 9012345, nombre: 'Toallitas Desinfectantes CitrusGuard', precio: 131.99, marca: 'CitrusShield', categoria: 'Desinfectante', imagen: 'img/4.png', cantidad: 60 },
-    { id: 1234590, nombre: 'Gel de Ducha Relajante SpaSensation', precio: 121.99, marca: 'SpaLux', categoria: 'Cuidado Personal', imagen: 'img/5.png', cantidad: 51 },
-    { id: 2345901, nombre: 'Bolsas de Basura Biodegradables GreenBag', precio: 17.49, marca: 'EcoGreen', categoria: 'Productos Plásticos', imagen: 'img/6.png', cantidad: 32 },
-    { id: 3459012, nombre: 'Limpiavidrios Profesional ClearMaster', precio: 1.00, marca: 'CrystalClear', categoria: 'Herramientas de limpieza', imagen: 'img/7.png', cantidad: 43 },
-    { id: 4590123, nombre: 'Aromatizador de Ambientes FreshScent', precio: 2.99, marca: 'AromaBliss', categoria: 'Baños', imagen: 'img/8.png', cantidad: 24 },
-    { id: 5901234, nombre: 'Detergente para Ropa WhiteLux', precio: 9.99, marca: 'LuxClean', categoria: 'Lavandería', imagen: 'img/1.png', cantidad: 55 },
-    { id: 9012345, nombre: 'Cepillo de Esponja Multiuso SpongeMaster', precio: 3.99, marca: 'SpongePro', categoria: 'Herramientas de limpieza', imagen: 'img/2.png', cantidad: 3 },
-    { id: 1234567, nombre: 'Toallitas Antibacterianas AquaGuard', precio: 15.99, marca: 'AquaShield', categoria: 'Desinfectante', imagen: 'img/3.png', cantidad: 66 },
-    { id: 2345678, nombre: 'Jabón de Manos Vainilla SilkTouch', precio: 333.49, marca: 'SilkCare', categoria: 'Cuidado Personal', imagen: 'img/4.png', cantidad: 47 },
-    { id: 3456789, nombre: 'Contenedores de Almacenamiento EcoBin', precio: 149.99, marca: 'EcoStorage', categoria: 'Productos Plásticos', imagen: 'img/5.png', cantidad: 38 },
-    { id: 4567890, nombre: 'Limpiador Multiusos EcoClean', precio: 99.99, marca: 'EcoSolutions', categoria: 'Baños', imagen: 'img/6.png', cantidad: 59 },
+    { id: 1234567, nombre: 'Limpiador de Baños FreshClean', precio: 15.99, marca: 'CleanStar', categoria: 'Baños', imagen: 'img/1.png', cantidad: 31, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 2345678, nombre: 'Detergente Lavanda Premium', precio: 25.49, marca: 'PureWash', categoria: 'Lavandería', imagen: 'img/2.png', cantidad: 22, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 3456789, nombre: 'Escoba de Microfibra Ultra Limpia', precio: 100.90, marca: 'SweepPro', categoria: 'Herramientas de limpieza', imagen: 'img/3.png', cantidad: 53, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 4567890, nombre: 'Desinfectante PowerGuard', precio: 300.00, marca: 'Guardian', categoria: 'Desinfectante', imagen: 'img/4.png', cantidad: 44, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 5678901, nombre: 'Toallitas Desinfectantes BioShield', precio: 200.00, marca: 'BioDefense', categoria: 'Bioseguridad', imagen: 'img/5.png', cantidad: 25, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 6789012, nombre: 'Gel de Manos Suave y Fresco', precio: 22.99, marca: 'SoftCare', categoria: 'Cuidado Personal', imagen: 'img/6.png', cantidad: 36, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 7890123, nombre: 'Bolsas de Basura Resistentes EcoPlast', precio: 12.99, marca: 'EcoSolutions', categoria: 'Productos Plásticos', imagen: 'img/7.png', cantidad: 67, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 8901234, nombre: 'Limpiador de Ventanas CrystalView', precio: 400.00, marca: 'ClearVision', categoria: 'Herramientas de limpieza', imagen: 'img/8.png', cantidad: 28, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 9012345, nombre: 'Eliminador de Olores FreshAir', precio: 400.00, marca: 'AromaFresh', categoria: 'Baños', imagen: 'img/1.png', cantidad: 49, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 1234501, nombre: 'Detergente Hipoalergénico PureGentle', precio: 240.00, marca: 'SensitiveCare', categoria: 'Lavandería', imagen: 'img/2.png', cantidad: 50, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 2345012, nombre: 'Esponja Multiusos PowerScrub', precio: 111.49, marca: 'ScrubMaster', categoria: 'Herramientas de limpieza', imagen: 'img/3.png', cantidad: 31, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 3450123, nombre: 'Toallitas Limpiadoras GentleTouch', precio: 935.99, marca: 'GentleClean', categoria: 'Desinfectante', imagen: 'img/4.png', cantidad: 22, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 4501234, nombre: 'Spray Antibacterial BioGuard', precio: 319.99, marca: 'BioShield', categoria: 'Bioseguridad', imagen: 'img/5.png', cantidad: 63, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 5012345, nombre: 'Jabón Líquido AloeFresh', precio: 726.49, marca: 'NatureSoothe', categoria: 'Cuidado Personal', imagen: 'img/6.png', cantidad: 44, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 1234590, nombre: 'Contenedores de Almacenamiento EcoBox', precio: 614.99, marca: 'EcoStorage', categoria: 'Productos Plásticos', imagen: 'img/7.png', cantidad: 35, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 2345901, nombre: 'Limpiador de Superficies MultiClean', precio: 529.99, marca: 'SurfacePro', categoria: 'Herramientas de limpieza', imagen: 'img/8.png', cantidad: 56, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 3459012, nombre: 'Desodorante Ambiental FreshBreeze', precio: 417.99, marca: 'AirScent', categoria: 'Baños', imagen: 'img/1.png', cantidad: 27, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 4590123, nombre: 'Suavizante de Ropa DelicateSoft', precio: 323.49, marca: 'SoftLux', categoria: 'Lavandería', imagen: 'img/2.png', cantidad: 48, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 5901234, nombre: 'Cepillo de Limpieza Profunda DeepClean', precio: 213.49, marca: 'ProScrub', categoria: 'Herramientas de limpieza', imagen: 'img/3.png', cantidad: 39, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 9012345, nombre: 'Toallitas Desinfectantes CitrusGuard', precio: 131.99, marca: 'CitrusShield', categoria: 'Desinfectante', imagen: 'img/4.png', cantidad: 60, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 1234590, nombre: 'Gel de Ducha Relajante SpaSensation', precio: 121.99, marca: 'SpaLux', categoria: 'Cuidado Personal', imagen: 'img/5.png', cantidad: 51, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 2345901, nombre: 'Bolsas de Basura Biodegradables GreenBag', precio: 17.49, marca: 'EcoGreen', categoria: 'Productos Plásticos', imagen: 'img/6.png', cantidad: 32, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 3459012, nombre: 'Limpiavidrios Profesional ClearMaster', precio: 1.00, marca: 'CrystalClear', categoria: 'Herramientas de limpieza', imagen: 'img/7.png', cantidad: 43, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 4590123, nombre: 'Aromatizador de Ambientes FreshScent', precio: 2.99, marca: 'AromaBliss', categoria: 'Baños', imagen: 'img/8.png', cantidad: 24, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 5901234, nombre: 'Detergente para Ropa WhiteLux', precio: 9.99, marca: 'LuxClean', categoria: 'Lavandería', imagen: 'img/1.png', cantidad: 55, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 9012345, nombre: 'Cepillo de Esponja Multiuso SpongeMaster', precio: 3.99, marca: 'SpongePro', categoria: 'Herramientas de limpieza', imagen: 'img/2.png', cantidad: 3, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 1234567, nombre: 'Toallitas Antibacterianas AquaGuard', precio: 15.99, marca: 'AquaShield', categoria: 'Desinfectante', imagen: 'img/3.png', cantidad: 66, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 2345678, nombre: 'Jabón de Manos Vainilla SilkTouch', precio: 333.49, marca: 'SilkCare', categoria: 'Cuidado Personal', imagen: 'img/4.png', cantidad: 47, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 3456789, nombre: 'Contenedores de Almacenamiento EcoBin', precio: 149.99, marca: 'EcoStorage', categoria: 'Productos Plásticos', imagen: 'img/5.png', cantidad: 38, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
+    { id: 4567890, nombre: 'Limpiador Multiusos EcoClean', precio: 99.99, marca: 'EcoSolutions', categoria: 'Baños', imagen: 'img/6.png', cantidad: 59, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
     // ... (resto de los productos con sus IDs y cantidades)
 ];
-// inicializa el catalago
-// inicializa el catálogo
 var productosPorPagina = 10; // Cambiado a 10 productos por página
 var paginaActual = 1;
 var productosFiltrados = productos; // Inicialmente, todos los productos están filtrados
+var intervalId;
 
+// Funciones de inicialización y filtrado
 function inicializarCatalogo() {
     mostrarProductos(productosFiltrados, paginaActual);
 }
+
 function aplicarFiltros() {
     var precioSeleccionado = parseFloat(document.getElementById('precio').value);
     var marcaSeleccionada = document.getElementById('marca').value;
@@ -76,11 +77,10 @@ function aplicarFiltros() {
 }
 
 
-// mostrar catálogo
 function limpiarFiltros() {
     // Restablecer el valor del rango
     var precio = document.getElementById('precio');
-    precio.value = 101;
+    precio.value = 1001;
 
     // Restablecer el contenido del elemento <p> asociado al precio
     var precioSeleccionado = document.getElementById('precioSeleccionado');
@@ -101,66 +101,26 @@ function limpiarFiltros() {
     // Restablecer el texto en la franja a 'Catálogo'
     document.getElementById('catalogoFiltro').textContent = 'Catálogo';
 }
-// code
-var intervalId;
-
-function startChangingQuantity(id, change) {
-    intervalId = setInterval(function () {
-        var spinner = document.getElementById('spinner' + id);
-        var newValue = parseInt(spinner.textContent) + change;
-        if (newValue >= 1) {
-            spinner.textContent = newValue;
-        }
-    }, 200);
-}
-
-function stopChangingQuantity() {
-    clearInterval(intervalId);
-}
 
 
-var intervalId;
-
-function startChangingQuantity(id, change) {
-    intervalId = setInterval(function () {
-        var spinner = document.getElementById('spinner' + id);
-        var newValue = parseInt(spinner.value) + change;
-        if (newValue >= 1) {
-            spinner.value = newValue;
-        }
-    }, 200);
-}
-
-function stopChangingQuantity() {
-    clearInterval(intervalId);
-}
-
-
-
-function mostrarBotonesPaginacion(productos, pagina) {
-    var botones = document.getElementById('botones');
-    botones.innerHTML = '';
-
-    var numeroPaginas = Math.ceil(productos.length / productosPorPagina);
-
-    for (var i = 1; i <= numeroPaginas; i++) {
-        var botonHTML = `<button class="btn btn-primary" onclick="cambiarPagina(${i})">${i}</button>`;
-        botones.innerHTML += botonHTML;
+// Funciones para cambiar la cantidad
+function cambiarCantidad(id, change, maxCantidad) {
+    var spinner = document.getElementById('spinner' + id);
+    var newValue = parseInt(spinner.textContent) + change;
+    if (newValue >= 1 && newValue <= maxCantidad) {
+        spinner.textContent = newValue;
     }
 }
 
-function cambiarPagina(pagina) {
-    paginaActual = pagina;
-    mostrarProductos(productosFiltrados, paginaActual); // Mostrar productos filtrados
+function cambiarCantidadDetalle(id, cambio, maxCantidadDetalle) {
+    var spinnerDetalle = document.getElementById('spinnerDetalle' + id);
+    var nuevoValor = parseInt(spinnerDetalle.textContent) + cambio;
+    if (nuevoValor >= 1 && nuevoValor <= maxCantidadDetalle) {
+        spinnerDetalle.textContent = nuevoValor;
+    }
 }
 
-// Detalles
-
-// Funciones para restar y sumar la cantidad en el spinner del modal
-// Variables globales
-var intervalId;
-
-// Mostrar catálogo
+// Funciones para mostrar productos y detalles
 function mostrarProductos(productos, pagina) {
     var catalogoProductos = document.getElementById('catalogoProductos');
     catalogoProductos.innerHTML = '';
@@ -198,21 +158,144 @@ function mostrarProductos(productos, pagina) {
     mostrarBotonesPaginacion(productos, pagina);
 }
 
+// Funcion para mostrar detalles de los productos
+function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
+    var productoSeleccionado = productos.find(p => p.id === id); // Encuentra el producto por id
+    var mainContainer = document.getElementById('catalogoProductos');
+    var filtersContainer = document.querySelector('.col-md-3');
+    var paginationContainer = document.getElementById('botones');
+    var publicidad = document.querySelector('.publicidad'); // Obtén el elemento de publicidad
+    var currentContent = mainContainer.innerHTML;
+    var currentFilters = filtersContainer.innerHTML;
+    var currentPagination = paginationContainer.innerHTML;
+    var newContent = `
+    <div class="row justify-content-center" style="margin-top: 50px;">
+        <div class="col-lg-3 col-md-12 mb-3 d-flex flex-lg-column flex-md-row align-items-center" style="flex: 0 0 300px;"> <!-- Ajuste del tamaño fijo -->
+            <img src="${imagen}" class="img-fluid mb-2 image-thumbnail" alt="${nombre}" onclick="changeImage('${imagen}')">
+            <img src="img/6.png" class="img-fluid mb-2 image-thumbnail" alt="Imagen 1" onclick="changeImage('img/6.png')">
+            <img src="img/1.png" class="img-fluid mb-2 image-thumbnail" alt="Imagen 2" onclick="changeImage('img/1.png')">
+        </div>
+        <div class="col-lg-9 col-md-12">
+            <div class="row justify-content-end">
+                <div class="col-lg-6 col-md-12 mb-3 d-flex flex-column align-items-start">
+                    <img src="${imagen}" class="img-fluid product-image" alt="${nombre}" id="mainImage">
+                </div>
+                <div class="col-lg-6 col-md-12 d-flex flex-column align-items-start">
+                    <p style="font-size: 24px; margin-bottom: 20px;font-weight: bold; color: gray;">${id}</p>
+                    <h1 class="product-title" style="font-size: 36px; font-weight: bold; margin-bottom: 20px;">${nombre}</h1>
+                    <p style="font-size: 30px; color: #ff8c00; margin-bottom: 20px;">Precio: L. ${precio.toFixed(2)}</p>
+                    <div class="quantity-control mb-3 d-flex align-items-center" style="width: ${nombre.length * 15}px; height: 60px; margin-bottom: 20px;">
+                        <button class="btn btn-outline-success" type="button" id="decrementButton" onclick="event.stopPropagation(); cambiarCantidadDetalle(${id}, -1, ${maxCantidad})" style="background-color: white;">-</button>
+                        <span class="form-control text-center border-success" id="spinnerDetalle${id}" style="background-color: white;">1</span>
+                        <button class="btn btn-outline-success" type="button" id="incrementButton" onclick="event.stopPropagation(); cambiarCantidadDetalle(${id}, 1, ${maxCantidad})" style="background-color: white);">+</button>
+                    </div>
+                    <a href="#" class="btn btn-success mb-2" style="width: ${nombre.length * 15}px; height: 40px; background-color: rgba(38, 190, 0, 0.6);" onclick="event.stopPropagation();">Añadir al carrito</a>
+                    <button class="btn btn-danger" style="width: ${nombre.length * 15}px; height: 40px; margin-bottom: 20px;" onclick="restoreContent()">Cancelar</button>
+                    <div class="description" style="border: 1px solid rgba(0, 0, 0, 0.1); padding: 10px; width: ${nombre.length * 15}px; border-radius: 10px; position: relative;">
+                        <h2 style="position: absolute; top: 10px; left: 10px; background: rgba(38, 190, 0, 0.6); color: #fff; padding: 0 10px; font-weight: bold;">Descripción</h2>
+                        <p style="margin-top: 40px; text-align: justify;">${productoSeleccionado.descripcion}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+    filtersContainer.style.display = 'none';
+    paginationContainer.style.display = 'none';
+    publicidad.style.display = 'block'; // Muestra la publicidad
+    mainContainer.style.margin = '0 auto'; // Ajuste de margen para centrar el contenido
+    mainContainer.innerHTML = newContent;
 
-
-
-
-
-// Cambiar cantidad en el spinner
-function cambiarCantidad(id, change, maxCantidad) {
-    var spinner = document.getElementById('spinner' + id);
-    var newValue = parseInt(spinner.textContent) + change;
-    if (newValue >= 1 && newValue <= maxCantidad) {
-        spinner.textContent = newValue;
+    window.restoreContent = function () {
+        filtersContainer.style.display = 'block';
+        paginationContainer.style.display = 'block';
+        publicidad.style.display = 'none'; // Oculta la publicidad
+        mainContainer.style.margin = '0'; // Restaurar el margen original
+        mainContainer.innerHTML = currentContent;
     }
+
+    window.changeImage = function (newImage) {
+        document.querySelector('#mainImage').src = newImage;
+    }
+
+    var images = document.querySelectorAll('.image-thumbnail');
+    images.forEach(function (image) {
+        image.style.width = '100px';
+        image.style.height = '100px';
+        image.style.objectFit = 'contain';
+        image.style.borderRadius = '5px';
+        image.style.border = '3px solid #D3D3D3';
+        image.style.cursor = 'pointer';
+        image.onmouseover = function () {
+            image.style.border = '3px solid #23c01e';
+        };
+        image.onmouseout = function () {
+            image.style.border = '3px solid #D3D3D3';
+        };
+        image.onclick = function () {
+            images.forEach(function (img) {
+                img.style.border = '3px solid #D3D3D3';
+            });
+            image.style.border = '3px solid #23c01e';
+            changeImage(image.src);
+        }
+    });
+    var mainImage = document.querySelector('#mainImage');
+    mainImage.style.width = '900px';
+    mainImage.style.height = '600px';
+    mainImage.style.objectFit = 'contain';
+
+    var spinner = document.querySelector('.quantity-control .form-control');
+    var button = document.querySelector('.quantity-control .btn');
+
+    // Ajustar el tamaño del spinner para que sea igual al de los botones
+    spinner.style.width = button.offsetWidth + 'px';
+    spinner.style.height = button.offsetHeight + 'px';
+
+    // Centrar el texto dentro del spinner
+    spinner.style.display = 'flex';
+    spinner.style.justifyContent = 'center';
+    spinner.style.alignItems = 'center';
+
+    // Ajustar el tamaño de los signos "+" y "-" para que sean del mismo tamaño que el spinner
+    var decrementButton = document.getElementById('decrementButton');
+    var incrementButton = document.getElementById('incrementButton');
+    decrementButton.style.width = spinner.offsetWidth + 'px';
+    decrementButton.style.height = spinner.offsetHeight + 'px';
+    incrementButton.style.width = spinner.offsetWidth + 'px';
+    incrementButton.style.height = spinner.offsetHeight + 'px';
+
+    // Centrar los signos "+" y "-" dentro de los botones
+    decrementButton.style.display = 'flex';
+    decrementButton.style.justifyContent = 'center';
+    decrementButton.style.alignItems = 'center';
+    incrementButton.style.display = 'flex';
+    incrementButton.style.justifyContent = 'center';
+    incrementButton.style.alignItems = 'center';
+
+    // Ajustar el ancho del spinner para que sea igual al de los botones
+    var quantityControl = document.querySelector('.quantity-control');
+    quantityControl.style.width = (button.offsetWidth * 3) + 'px';  // Ancho total de los 3 elementos (2 botones y 1 spinner)
+
+    // Ajustar el tamaño de los botones para que sea fijo
+    var addToCartButton = document.querySelector('.btn.btn-success');
+    var cancelButton = document.querySelector('.btn.btn-danger');
+    addToCartButton.style.width = '100%';  // Ancho fijo para los botones
+    cancelButton.style.width = '100%';  // Ancho fijo para los botones
+
+    // Añadir un margen en la parte inferior para dispositivos móviles
+    if (window.innerWidth <= 768) {  // Si la pantalla es de 768px o menos
+        mainContainer.style.marginBottom = '50px';  // Añadir un margen en la parte inferior
+    }
+
+    // Ajustar el ancho de la tarjeta de descripción al ancho del botón
+    var descriptionCard = document.querySelector('.description');
+    descriptionCard.style.width = addToCartButton.offsetWidth + 'px';
 }
 
-// Mostrar botones de paginación
+
+
+// Funciones para la paginación
 function mostrarBotonesPaginacion(productos, pagina) {
     var botones = document.getElementById('botones');
     botones.innerHTML = '';
@@ -225,137 +308,12 @@ function mostrarBotonesPaginacion(productos, pagina) {
     }
 }
 
-// Cambiar página
 function cambiarPagina(pagina) {
     paginaActual = pagina;
     mostrarProductos(productosFiltrados, paginaActual);
 }
 
-// Mostrar detalles del producto en el modal
-function cambiarCantidad(id, cambio, maxCantidad) {
-    var spinner = document.getElementById('spinner' + id);
-    var nuevoValor = parseInt(spinner.textContent) + cambio;
-    if (nuevoValor >= 1 && nuevoValor <= maxCantidad) {
-        spinner.textContent = nuevoValor;
-    }
-}
-
-// Función para mostrar el detalle de un producto en un modal
-function cambiarCantidadDetalle(id, cambio, maxCantidadDetalle) {
-    var spinnerDetalle = document.getElementById('spinnerDetalle' + id);
-    var nuevoValor = parseInt(spinnerDetalle.textContent) + cambio;
-    if (nuevoValor >= 1 && nuevoValor <= maxCantidadDetalle) {
-        spinnerDetalle.textContent = nuevoValor;
-    }
-}
-
-// Función para mostrar el detalle de un producto en un modal
-function cambiarCantidadDetalle(id, cambio, maxCantidadDetalle) {
-    var spinnerDetalle = document.getElementById('spinnerDetalle' + id);
-    var nuevoValor = parseInt(spinnerDetalle.textContent) + cambio;
-    if (nuevoValor >= 1 && nuevoValor <= maxCantidadDetalle) {
-        spinnerDetalle.textContent = nuevoValor;
-    }
-}
-
-// Función para mostrar el detalle de un producto en un modal
-function cambiarCantidadDetalle(id, cambio, maxCantidadDetalle) {
-    var spinnerDetalle = document.getElementById('spinnerDetalle' + id);
-    var nuevoValor = parseInt(spinnerDetalle.textContent) + cambio;
-    if (nuevoValor >= 1 && nuevoValor <= maxCantidadDetalle) {
-        spinnerDetalle.textContent = nuevoValor;
-    }
-}
-
-// Función para mostrar el detalle de un producto en un modal
-function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
-    // Verificar si el clic se realizó en el botón "Añadir al carrito"
-    if (event.target.tagName.toLowerCase() !== 'a' || !event.target.classList.contains('btn-primary')) {
-        // Eliminar el modal anterior si existe
-        var modalAnterior = document.getElementById('detalleModal');
-        if (modalAnterior) {
-            modalAnterior.parentNode.removeChild(modalAnterior);
-        }
-
-        // Crear el contenido del modal
-        var modalHTML = `
-            <div class="modal fade" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="detalleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document"> <!-- Centrado y modal más grande -->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="detalleModalLabel">${nombre}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="${imagen}" class="img-fluid" alt="${nombre}" style="width: 100%; height: auto; max-height: 400px; object-fit: cover;">
-                            <p>Precio: L. ${precio.toFixed(2)}</p>
-                            <!-- Agrega más detalles según sea necesario -->
-                        </div>
-                        <div class="modal-footer" style="justify-content: flex-start;"> <!-- Alinea los botones a la izquierda -->
-                            <div class="input-group mb-3">
-                                <button class="btn btn-outline-success" type="button" id="decrementButton" onclick="event.stopPropagation(); cambiarCantidadDetalle(${id}, -1, ${maxCantidad})">-</button>
-                                <span class="form-control text-center border-success" id="spinnerDetalle${id}">1</span>
-                                <button class="btn btn-outline-success" type="button" id="incrementButton" onclick="event.stopPropagation(); cambiarCantidadDetalle(${id}, 1, ${maxCantidad})">+</button>
-                            </div>
-                            <a href="#" class="btn btn-success btn-block" onclick="event.stopPropagation();">Añadir al carrito</a>
-                            <button type="button" class="btn btn-success btn-block" data-dismiss="modal">Cerrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        // Agregar el modal al final del cuerpo del documento
-        document.body.insertAdjacentHTML('beforeend', modalHTML);
-        // Mostrar el modal
-        $('#detalleModal').modal('show');
-        // Establecer estilos para los botones en el modal
-        var decrementButton = document.getElementById('decrementButton');
-        var incrementButton = document.getElementById('incrementButton');
-        var spinner = document.getElementById('spinnerDetalle' + id);
-        var addToCartButton = document.querySelector('#detalleModal .btn-success:nth-child(2)');
-        var closeButton = document.querySelector('#detalleModal .btn-success:nth-child(3)');
-        decrementButton.style.backgroundColor = 'white';
-        decrementButton.style.color = '#23c01e';
-        decrementButton.style.borderColor = '#23c01e';
-        decrementButton.onmouseover = function () {
-            this.style.backgroundColor = '#23c01e';
-            this.style.color = 'white';
-        }
-        decrementButton.onmouseout = function () {
-            this.style.backgroundColor = 'white';
-            this.style.color = '#23c01e';
-        }
-        incrementButton.style.backgroundColor = 'white';
-        incrementButton.style.color = '#23c01e';
-        incrementButton.style.borderColor = '#23c01e';
-        incrementButton.onmouseover = function () {
-            this.style.backgroundColor = '#23c01e';
-            this.style.color = 'white';
-        }
-        incrementButton.onmouseout = function () {
-            this.style.backgroundColor = 'white';
-            this.style.color = '#23c01e';
-        }
-        // Estilo para el spinner
-        spinner.style.borderColor = '#23c01e';
-        // Estilo para el botón "Añadir al carrito"
-        addToCartButton.style.backgroundColor = '#23c01e';
-        addToCartButton.style.color = 'white';
-        // Estilo para el botón "Cerrar"
-        closeButton.style.backgroundColor = '#23c01e';
-        closeButton.style.color = 'white';
-    }
-}
-
 // Inicializar catálogo al cargar la página
-document.addEventListener('DOMContentLoaded', function () {
-    inicializarCatalogo();
-});
-
-
-// Resto del código...
 document.addEventListener('DOMContentLoaded', function () {
     inicializarCatalogo();
 });
