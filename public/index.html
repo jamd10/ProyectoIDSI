@@ -66,14 +66,22 @@
                             <ion-icon name="cart" class="text-black text-xl"></ion-icon>Carrito
                         </a>
                     </li>
-
                     <li class="search-container">
-                        <form action="index.html" method="get">
-                            <input class="search-bar" type="text" placeholder="Buscar...">
+                        <form action="catalogo.html" method="get">
+                            <input name="nombre" class="search-bar" type="text" placeholder="Buscar...">
                             <button type="submit" class="search-button"><ion-icon name="search"
                                     class="search-icon"></ion-icon></button>
                         </form>
+                        <script>document.querySelector('form').addEventListener('submit', function (event) {
+                                event.preventDefault(); // Prevenir la recarga de la página
+                                var busqueda = document.querySelector('.search-bar').value;
+
+                                // Redirigir al usuario a catalogo.html con la búsqueda como parámetro de la URL
+                                window.location.href = 'catalogo.html?nombre=' + encodeURIComponent(busqueda);
+                            });
+                        </script>
                     </li>
+
                 </ul>
             </div>
             <div class="flex items-center gap-6">
@@ -604,6 +612,7 @@
     <script src="carrusel.js"></script>
     <script src="menu.js"></script>
     <script src="destacados.js"></script>
+    <script src="catalago.js"></script>
     <script src="publicidad.js"></script>
     <script src="btn.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>

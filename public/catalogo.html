@@ -68,14 +68,30 @@
                             <ion-icon name="cart" class="text-black text-xl"></ion-icon>Carrito
                         </a>
                     </li>
-
                     <li class="search-container">
-                        <form action="index.html" method="get">
+                        <form action="#" method="get">
                             <input class="search-bar" type="text" placeholder="Buscar...">
                             <button type="submit" class="search-button"><ion-icon name="search"
                                     class="search-icon"></ion-icon></button>
                         </form>
+                        <script>
+                            // Obtener la búsqueda del parámetro de la URL
+                            var urlParams = new URLSearchParams(window.location.search);
+                            var busqueda = urlParams.get('nombre');
+
+                            document.querySelector('form').addEventListener('submit', function (event) {
+                                event.preventDefault(); // Prevenir la recarga de la página
+                                var busqueda = document.querySelector('.search-bar').value;
+
+                                // Filtrar los productos por nombre
+                                var productosFiltrados = busquedaProducto(busqueda);
+
+                                // Mostrar los productos filtrados en la sección de catálogo
+                                mostrarProductos(productosFiltrados, paginaActual);
+                            });
+                        </script>
                     </li>
+
                 </ul>
             </div>
             <div class="flex items-center gap-6">

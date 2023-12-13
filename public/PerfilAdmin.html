@@ -63,11 +63,19 @@
           </li>
 
           <li class="search-container">
-            <form action="index.html" method="get">
-              <input class="search-bar" type="text" placeholder="Buscar...">
+            <form action="catalogo.html" method="get">
+              <input name="nombre" class="search-bar" type="text" placeholder="Buscar...">
               <button type="submit" class="search-button"><ion-icon name="search"
                   class="search-icon"></ion-icon></button>
             </form>
+            <script>document.querySelector('form').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevenir la recarga de la página
+                var busqueda = document.querySelector('.search-bar').value;
+
+                // Redirigir al usuario a catalogo.html con la búsqueda como parámetro de la URL
+                window.location.href = 'catalogo.html?nombre=' + encodeURIComponent(busqueda);
+              });
+            </script>
           </li>
         </ul>
       </div>

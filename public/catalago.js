@@ -51,6 +51,82 @@ var intervalId;
 function inicializarCatalogo() {
     mostrarProductos(productosFiltrados, paginaActual);
 }
+// Función para filtrar productos por nombre
+function busquedaProducto(query) {
+    var inputBusqueda = query.toLowerCase();
+    return productos.filter(function (producto) {
+        var nombre = producto.nombre.toLowerCase();
+        return nombre.includes(inputBusqueda);
+    });
+}
+
+// Función para mostrar productos en la sección de catálogo
+function mostrarProductos(productos, pagina) {
+    // Aquí va tu código para mostrar los productos en la página
+}
+
+// Obtener la búsqueda del parámetro de la URL
+var urlParams = new URLSearchParams(window.location.search);
+var busqueda = urlParams.get('nombre');
+
+// Establecer el valor del cuadro de búsqueda
+document.querySelector('.search-bar').value = busqueda;
+
+var productosFiltrados;
+if (busqueda === '') {
+    // Si la búsqueda está vacía, mostrar todos los productos
+    productosFiltrados = productos;
+} else {
+    // Si no, filtrar los productos por nombre
+    productosFiltrados = busquedaProducto(busqueda);
+}
+
+// Mostrar los productos filtrados en la sección de catálogo
+mostrarProductos(productosFiltrados, paginaActual);
+
+// Evento input del cuadro de búsqueda
+document.querySelector('.search-bar').addEventListener('input', function () {
+    var busqueda = document.querySelector('.search-bar').value;
+
+    var productosFiltrados;
+    if (busqueda === '') {
+        // Si la búsqueda está vacía, mostrar todos los productos
+        productosFiltrados = productos;
+    } else {
+        // Si no, filtrar los productos por nombre
+        productosFiltrados = busquedaProducto(busqueda);
+    }
+
+    // Mostrar los productos filtrados en la sección de catálogo
+    mostrarProductos(productosFiltrados, paginaActual);
+});
+
+//filtros
+function aplicarFiltros() {
+    var precioSeleccionado = parseFloat(document.getElementById('precio').value);
+    var marcaSeleccionada = document.getElementById('marca').value;
+    var categoriaSeleccionada = document.getElementById('categoria').value;
+    var busqueda = document.querySelector('.search-bar').value;
+
+    productosFiltrados = productos.filter(function (producto) {
+        var coincidePrecio = producto.precio <= precioSeleccionado;
+        var coincideMarca = marcaSeleccionada === '' || producto.marca === marcaSeleccionada;
+        var coincideCategoria = categoriaSeleccionada === '' || producto.categoria.toLowerCase().trim() === categoriaSeleccionada.toLowerCase().trim();
+        var coincideBusqueda = busqueda === '' || busquedaProducto(busqueda).includes(producto);
+
+        return coincidePrecio && coincideMarca && coincideCategoria && coincideBusqueda;
+    });
+
+    // Reiniciar la página actual al aplicar filtros
+    paginaActual = 1;
+
+    // Mostrar los productos filtrados en la sección de catálogo
+    mostrarProductos(productosFiltrados, paginaActual);
+
+    // Actualizar el texto en el encabezado
+    var texto = categoriaSeleccionada !== '' ? categoriaSeleccionada : 'Catálogo';
+    document.querySelector('h1').textContent = texto;
+}
 
 function aplicarFiltros() {
     var precioSeleccionado = parseFloat(document.getElementById('precio').value);
@@ -200,6 +276,7 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
         </div>
     </div>
     `;
+
     filtersContainer.style.display = 'none';
     paginationContainer.style.display = 'none';
     publicidad.style.display = 'block'; // Muestra la publicidad
@@ -240,6 +317,7 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
             changeImage(image.src);
         }
     });
+
     var mainImage = document.querySelector('#mainImage');
     mainImage.style.width = '900px';
     mainImage.style.height = '600px';
@@ -248,16 +326,13 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
     var spinner = document.querySelector('.quantity-control .form-control');
     var button = document.querySelector('.quantity-control .btn');
 
-    // Ajustar el tamaño del spinner para que sea igual al de los botones
     spinner.style.width = button.offsetWidth + 'px';
     spinner.style.height = button.offsetHeight + 'px';
 
-    // Centrar el texto dentro del spinner
     spinner.style.display = 'flex';
     spinner.style.justifyContent = 'center';
     spinner.style.alignItems = 'center';
 
-    // Ajustar el tamaño de los signos "+" y "-" para que sean del mismo tamaño que el spinner
     var decrementButton = document.getElementById('decrementButton');
     var incrementButton = document.getElementById('incrementButton');
     decrementButton.style.width = spinner.offsetWidth + 'px';
@@ -265,7 +340,6 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
     incrementButton.style.width = spinner.offsetWidth + 'px';
     incrementButton.style.height = spinner.offsetHeight + 'px';
 
-    // Centrar los signos "+" y "-" dentro de los botones
     decrementButton.style.display = 'flex';
     decrementButton.style.justifyContent = 'center';
     decrementButton.style.alignItems = 'center';
@@ -273,26 +347,21 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
     incrementButton.style.justifyContent = 'center';
     incrementButton.style.alignItems = 'center';
 
-    // Ajustar el ancho del spinner para que sea igual al de los botones
     var quantityControl = document.querySelector('.quantity-control');
-    quantityControl.style.width = (button.offsetWidth * 3) + 'px';  // Ancho total de los 3 elementos (2 botones y 1 spinner)
+    quantityControl.style.width = (button.offsetWidth * 3) + 'px';
 
-    // Ajustar el tamaño de los botones para que sea fijo
     var addToCartButton = document.querySelector('.btn.btn-success');
     var cancelButton = document.querySelector('.btn.btn-danger');
-    addToCartButton.style.width = '100%';  // Ancho fijo para los botones
-    cancelButton.style.width = '100%';  // Ancho fijo para los botones
+    addToCartButton.style.width = '100%';
+    cancelButton.style.width = '100%';
 
-    // Añadir un margen en la parte inferior para dispositivos móviles
-    if (window.innerWidth <= 768) {  // Si la pantalla es de 768px o menos
-        mainContainer.style.marginBottom = '50px';  // Añadir un margen en la parte inferior
+    if (window.innerWidth <= 768) {
+        mainContainer.style.marginBottom = '50px';
     }
 
-    // Ajustar el ancho de la tarjeta de descripción al ancho del botón
     var descriptionCard = document.querySelector('.description');
-    descriptionCard.style.width = addToCartButton.offsetWidth + 'px';
+    descriptionCard.style.width = '100%';
 }
-
 
 
 // Funciones para la paginación
