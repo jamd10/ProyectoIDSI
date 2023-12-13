@@ -131,31 +131,6 @@ function aplicarFiltros() {
     document.querySelector('h1').textContent = texto;
 }
 
-function aplicarFiltros() {
-    var precioSeleccionado = parseFloat(document.getElementById('precio').value);
-    var marcaSeleccionada = document.getElementById('marca').value;
-    var categoriaSeleccionada = document.getElementById('categoria').value;
-
-    productosFiltrados = productos.filter(function (producto) {
-        var coincidePrecio = producto.precio <= precioSeleccionado;
-        var coincideMarca = marcaSeleccionada === '' || producto.marca === marcaSeleccionada;
-        var coincideCategoria = categoriaSeleccionada === '' || producto.categoria.toLowerCase().trim() === categoriaSeleccionada.toLowerCase().trim();
-
-        return coincidePrecio && coincideMarca && coincideCategoria;
-    });
-
-    // Reiniciar la página actual al aplicar filtros
-    paginaActual = 1;
-
-    // Mostrar los productos filtrados en la sección de catálogo
-    mostrarProductos(productosFiltrados, paginaActual);
-
-    // Actualizar el texto en el encabezado
-    var texto = categoriaSeleccionada !== '' ? categoriaSeleccionada : 'Catálogo';
-    document.querySelector('h1').textContent = texto;
-}
-
-
 function limpiarFiltros() {
     // Restablecer el valor del rango
     var precio = document.getElementById('precio');
@@ -167,9 +142,11 @@ function limpiarFiltros() {
 
     var marca = document.getElementById('marca');
     var categoria = document.getElementById('categoria');
+    var busqueda = document.querySelector('.search-bar'); // Obtener el cuadro de búsqueda
 
     marca.value = '';
     categoria.value = '';
+    busqueda.value = ''; // Restablecer el valor del cuadro de búsqueda
 
     // Mostrar todos los productos
     productosFiltrados = productos;
@@ -180,6 +157,7 @@ function limpiarFiltros() {
     // Restablecer el texto en la franja a 'Catálogo'
     document.getElementById('catalogoFiltro').textContent = 'Catálogo';
 }
+
 
 
 // Funciones para cambiar la cantidad
@@ -201,6 +179,11 @@ function cambiarCantidadDetalle(id, cambio, maxCantidadDetalle) {
 
 // Funciones para mostrar productos y detalles
 function mostrarProductos(productos, pagina) {
+    // Cerrar el detalle del producto
+    if (typeof restoreContent === 'function') {
+        restoreContent();
+    }
+
     var catalogoProductos = document.getElementById('catalogoProductos');
     catalogoProductos.innerHTML = '';
 
@@ -236,6 +219,7 @@ function mostrarProductos(productos, pagina) {
 
     mostrarBotonesPaginacion(productos, pagina);
 }
+
 
 // Funcion para mostrar detalles de los productos
 function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
