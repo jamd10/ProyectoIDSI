@@ -51,6 +51,8 @@ var intervalId;
 function inicializarCatalogo() {
     mostrarProductos(productosFiltrados, paginaActual);
 }
+// Asumiendo que tienes una variable 'productos' que contiene todos tus productos
+
 // Función para filtrar productos por nombre
 function busquedaProducto(query) {
     var inputBusqueda = query.toLowerCase();
@@ -73,8 +75,8 @@ var busqueda = urlParams.get('nombre');
 document.querySelector('.search-bar').value = busqueda;
 
 var productosFiltrados;
-if (busqueda === '') {
-    // Si la búsqueda está vacía, mostrar todos los productos
+if (busqueda === null || busqueda === '') {
+    // Si la búsqueda está vacía o es null, mostrar todos los productos
     productosFiltrados = productos;
 } else {
     // Si no, filtrar los productos por nombre
@@ -100,6 +102,7 @@ document.querySelector('.search-bar').addEventListener('input', function () {
     // Mostrar los productos filtrados en la sección de catálogo
     mostrarProductos(productosFiltrados, paginaActual);
 });
+
 
 //filtros
 function aplicarFiltros() {
