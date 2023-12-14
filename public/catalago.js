@@ -1,14 +1,11 @@
 // actualizar el precio
 var precio = document.getElementById('precio');
 var precioSeleccionado = document.getElementById('precioSeleccionado');
-
 // Inicializa el precio seleccionado
 precioSeleccionado.innerHTML = "L. " + precio.value;
-
 precio.oninput = function () {
     precioSeleccionado.innerHTML = "L. " + this.value;
 }
-
 const productos = [
     { id: 1234567, nombre: 'Limpiador de Baños FreshClean', precio: 15.99, marca: 'CleanStar', categoria: 'Baños', imagen: 'img/1.png', img1: 'img/1.png', img2: 'img/2.png', cantidad: 31, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
     { id: 2345678, nombre: 'Detergente Lavanda Premium', precio: 25.49, marca: 'PureWash', categoria: 'Lavandería', imagen: 'img/2.png', img1: 'img/3.png', img2: 'img/4.png', cantidad: 22, descripcion: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, at earum similique voluptates accusantium voluptatum sit, facilis sunt, perspiciatis beatae est eveniet ex iste architecto reiciendis sequi error dolores laboriosam.' },
@@ -45,13 +42,11 @@ var productosPorPagina = 10; // Cambiado a 10 productos por página
 var paginaActual = 1;
 var productosFiltrados = productos; // Inicialmente, todos los productos están filtrados
 var intervalId;
-
 // Funciones de inicialización y filtrado
 function inicializarCatalogo() {
     mostrarProductos(productosFiltrados, paginaActual);
 }
 // Asumiendo que tienes una variable 'productos' que contiene todos tus productos
-
 // Función para filtrar productos por nombre
 function busquedaProducto(query) {
     var inputBusqueda = query.toLowerCase();
@@ -60,19 +55,15 @@ function busquedaProducto(query) {
         return nombre.includes(inputBusqueda);
     });
 }
-
 // Función para mostrar productos en la sección de catálogo
 function mostrarProductos(productos, pagina) {
     // Aquí va tu código para mostrar los productos en la página
 }
-
 // Obtener la búsqueda del parámetro de la URL
 var urlParams = new URLSearchParams(window.location.search);
 var busqueda = urlParams.get('nombre');
-
 // Establecer el valor del cuadro de búsqueda
 document.querySelector('.search-bar').value = busqueda;
-
 var productosFiltrados;
 if (busqueda === null || busqueda === '') {
     // Si la búsqueda está vacía o es null, mostrar todos los productos
@@ -81,14 +72,11 @@ if (busqueda === null || busqueda === '') {
     // Si no, filtrar los productos por nombre
     productosFiltrados = busquedaProducto(busqueda);
 }
-
 // Mostrar los productos filtrados en la sección de catálogo
 mostrarProductos(productosFiltrados, paginaActual);
-
 // Evento input del cuadro de búsqueda
 document.querySelector('.search-bar').addEventListener('input', function () {
     var busqueda = document.querySelector('.search-bar').value;
-
     var productosFiltrados;
     if (busqueda === '') {
         // Si la búsqueda está vacía, mostrar todos los productos
@@ -97,68 +85,50 @@ document.querySelector('.search-bar').addEventListener('input', function () {
         // Si no, filtrar los productos por nombre
         productosFiltrados = busquedaProducto(busqueda);
     }
-
     // Mostrar los productos filtrados en la sección de catálogo
     mostrarProductos(productosFiltrados, paginaActual);
 });
-
-
 //filtros
 function aplicarFiltros() {
     var precioSeleccionado = parseFloat(document.getElementById('precio').value);
     var marcaSeleccionada = document.getElementById('marca').value;
     var categoriaSeleccionada = document.getElementById('categoria').value;
     var busqueda = document.querySelector('.search-bar').value;
-
     productosFiltrados = productos.filter(function (producto) {
         var coincidePrecio = producto.precio <= precioSeleccionado;
         var coincideMarca = marcaSeleccionada === '' || producto.marca === marcaSeleccionada;
         var coincideCategoria = categoriaSeleccionada === '' || producto.categoria.toLowerCase().trim() === categoriaSeleccionada.toLowerCase().trim();
         var coincideBusqueda = busqueda === '' || busquedaProducto(busqueda).includes(producto);
-
         return coincidePrecio && coincideMarca && coincideCategoria && coincideBusqueda;
     });
-
     // Reiniciar la página actual al aplicar filtros
     paginaActual = 1;
-
     // Mostrar los productos filtrados en la sección de catálogo
     mostrarProductos(productosFiltrados, paginaActual);
-
     // Actualizar el texto en el encabezado
     var texto = categoriaSeleccionada !== '' ? categoriaSeleccionada : 'Catálogo';
     document.querySelector('h1').textContent = texto;
 }
-
 function limpiarFiltros() {
     // Restablecer el valor del rango
     var precio = document.getElementById('precio');
     precio.value = 1001;
-
     // Restablecer el contenido del elemento <p> asociado al precio
     var precioSeleccionado = document.getElementById('precioSeleccionado');
     precioSeleccionado.innerHTML = "L. " + precio.value;
-
     var marca = document.getElementById('marca');
     var categoria = document.getElementById('categoria');
     var busqueda = document.querySelector('.search-bar'); // Obtener el cuadro de búsqueda
-
     marca.value = '';
     categoria.value = '';
     busqueda.value = ''; // Restablecer el valor del cuadro de búsqueda
-
     // Mostrar todos los productos
     productosFiltrados = productos;
-
     // Actualizar la página de productos
     mostrarProductos(productosFiltrados, paginaActual);
-
     // Restablecer el texto en la franja a 'Catálogo'
     document.getElementById('catalogoFiltro').textContent = 'Catálogo';
 }
-
-
-
 // Funciones para cambiar la cantidad
 function cambiarCantidad(id, change, maxCantidad) {
     var spinner = document.getElementById('spinner' + id);
@@ -167,7 +137,6 @@ function cambiarCantidad(id, change, maxCantidad) {
         spinner.textContent = newValue;
     }
 }
-
 function cambiarCantidadDetalle(id, cambio, maxCantidadDetalle) {
     var spinnerDetalle = document.getElementById('spinnerDetalle' + id);
     var nuevoValor = parseInt(spinnerDetalle.textContent) + cambio;
@@ -175,20 +144,16 @@ function cambiarCantidadDetalle(id, cambio, maxCantidadDetalle) {
         spinnerDetalle.textContent = nuevoValor;
     }
 }
-
 // Funciones para mostrar productos y detalles
 function mostrarProductos(productos, pagina) {
     // Cerrar el detalle del producto
     if (typeof restoreContent === 'function') {
         restoreContent();
     }
-
     var catalogoProductos = document.getElementById('catalogoProductos');
     catalogoProductos.innerHTML = '';
-
     var inicio = (pagina - 1) * productosPorPagina;
     var fin = inicio + productosPorPagina;
-
     for (var i = inicio; i < fin; i++) {
         var productoHTML;
         if (i < productos.length) {
@@ -212,14 +177,10 @@ function mostrarProductos(productos, pagina) {
             // Agregar una tarjeta de producto vacía
             productoHTML = `<div class="card invisible"></div>`;
         }
-
         catalogoProductos.innerHTML += productoHTML;
     }
-
     mostrarBotonesPaginacion(productos, pagina);
 }
-
-
 // Funcion para mostrar detalles de los productos
 function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
     var productoSeleccionado = productos.find(p => p.id === id); // Encuentra el producto por id
@@ -262,13 +223,11 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
         </div>
     </div>
     `;
-
     filtersContainer.style.display = 'none';
     paginationContainer.style.display = 'none';
     publicidad.style.display = 'block'; // Muestra la publicidad
     mainContainer.style.margin = '0 auto'; // Ajuste de margen para centrar el contenido
     mainContainer.innerHTML = newContent;
-
     window.restoreContent = function () {
         filtersContainer.style.display = 'block';
         paginationContainer.style.display = 'block';
@@ -276,11 +235,9 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
         mainContainer.style.margin = '0'; // Restaurar el margen original
         mainContainer.innerHTML = currentContent;
     }
-
     window.changeImage = function (newImage) {
         document.querySelector('#mainImage').src = newImage;
     }
-
     var images = document.querySelectorAll('.image-thumbnail');
     images.forEach(function (image) {
         image.style.width = '100px';
@@ -303,71 +260,55 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
             changeImage(image.src);
         }
     });
-
     var mainImage = document.querySelector('#mainImage');
     mainImage.style.width = '900px';
     mainImage.style.height = '600px';
     mainImage.style.objectFit = 'contain';
-
     var spinner = document.querySelector('.quantity-control .form-control');
     var button = document.querySelector('.quantity-control .btn');
-
     spinner.style.width = button.offsetWidth + 'px';
     spinner.style.height = button.offsetHeight + 'px';
-
     spinner.style.display = 'flex';
     spinner.style.justifyContent = 'center';
     spinner.style.alignItems = 'center';
-
     var decrementButton = document.getElementById('decrementButton');
     var incrementButton = document.getElementById('incrementButton');
     decrementButton.style.width = spinner.offsetWidth + 'px';
     decrementButton.style.height = spinner.offsetHeight + 'px';
     incrementButton.style.width = spinner.offsetWidth + 'px';
     incrementButton.style.height = spinner.offsetHeight + 'px';
-
     decrementButton.style.display = 'flex';
     decrementButton.style.justifyContent = 'center';
     decrementButton.style.alignItems = 'center';
     incrementButton.style.display = 'flex';
     incrementButton.style.justifyContent = 'center';
     incrementButton.style.alignItems = 'center';
-
     var quantityControl = document.querySelector('.quantity-control');
     quantityControl.style.width = (button.offsetWidth * 3) + 'px';
-
     var addToCartButton = document.querySelector('.btn.btn-success');
     var cancelButton = document.querySelector('.btn.btn-danger');
     addToCartButton.style.width = '100%';
     cancelButton.style.width = '100%';
-
     if (window.innerWidth <= 768) {
         mainContainer.style.marginBottom = '50px';
     }
-
     var descriptionCard = document.querySelector('.description');
     descriptionCard.style.width = '100%';
 }
-
-
 // Funciones para la paginación
 function mostrarBotonesPaginacion(productos, pagina) {
     var botones = document.getElementById('botones');
     botones.innerHTML = '';
-
     var numeroPaginas = Math.ceil(productos.length / productosPorPagina);
-
     for (var i = 1; i <= numeroPaginas; i++) {
         var botonHTML = `<button class="btn btn-primary" onclick="cambiarPagina(${i})">${i}</button>`;
         botones.innerHTML += botonHTML;
     }
 }
-
 function cambiarPagina(pagina) {
     paginaActual = pagina;
     mostrarProductos(productosFiltrados, paginaActual);
 }
-
 // Inicializar catálogo al cargar la página
 document.addEventListener('DOMContentLoaded', function () {
     inicializarCatalogo();

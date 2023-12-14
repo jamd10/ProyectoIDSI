@@ -1,0 +1,42 @@
+.contact-info {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    text-align: center;
+    margin: 20px 0;
+    color: #333; /* Color de texto predeterminado */
+}
+
+.contact-info i {
+    font-size: 16px; /* Tamaño del ícono */
+    margin-right: 4px; /* Espacio entre el ícono y el texto */
+    vertical-align: middle; /* Alinear verticalmente con el texto */
+}
+
+.contact-info .separator {
+    display: inline-block;
+    border-left: 1px solid #23c01e; /* Estilo del separador vertical */
+    height: 30px; /* Altura del separador */
+    margin: 0 8px; /* Espaciado entre los elementos y el separador */
+    vertical-align: middle; /* Alinear verticalmente con el texto */
+}
+
+.contact-info span {
+    display: inline-block;
+    vertical-align: middle; /* Alinear verticalmente con el ícono y el separador */
+}
+
+@media only screen and (max-width: 600px) {
+    .contact-info {
+        font-size: 12px;
+    }
+
+    .contact-info i {
+        font-size: 14px;
+        margin-right: 3px; /* Ajusté el espacio en dispositivos móviles */
+    }
+
+    .contact-info .separator {
+        margin: 3px 0; /* Ajusté el espacio entre el separador y el texto en dispositivos móviles */
+        height: 8px; /* Altura del separador en dispositivos móviles */
+    }
+}

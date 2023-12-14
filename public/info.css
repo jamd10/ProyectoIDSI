@@ -15,7 +15,6 @@
 	transition: all 0.3s ease;
 	width: 100%;
 	border-radius: 15px;
-	/* Asegurarse de que las esquinas redondeadas se apliquen a la imagen también */
 }
 
 .infocards figure {
@@ -23,9 +22,7 @@
 	overflow: hidden;
 	position: relative;
 	border-radius: 15px;
-	/* Agregar esquinas redondeadas */
 	margin: 10px;
-	/* Agregar margen alrededor de las tarjetas */
 }
 
 .infocards figure a {
@@ -41,8 +38,6 @@
 	transform: scale(1.25);
 }
 
-
-
 .infocards svg {
 	height: inherit;
 	width: 100%;
@@ -52,13 +47,9 @@
 	text-anchor: middle;
 }
 
-
-
 .infocards svg .title {
 	font-size: 24px;
-	/* Reducir el tamaño de la fuente */
 	letter-spacing: 3px;
-	/* Reducir el espaciado entre letras */
 	font-family: "Montserrat";
 }
 
@@ -82,7 +73,20 @@
 
 .infocards .body p {
 	font-size: 14px;
-	/* Reducir el tamaño de la fuente del párrafo */
 	line-height: 1.2;
-	/* Ajustar el espaciado entre líneas */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media only screen and (max-width: 600px) {
+	.infocards figure {
+		height: 200px;
+	}
+
+	.infocards svg .title {
+		font-size: 16px;
+	}
+
+	.infocards .body p {
+		font-size: 12px;
+	}
 }
