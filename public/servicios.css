@@ -182,3 +182,80 @@
         font-size: 4em;
     }
 }
+/*Contacto*/
+
+body #formulario-section {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #fff;
+    color: #000;
+    background-size: 20px 20px;
+    display: none; /* Añade esto para ocultar inicialmente la sección de contacto */
+  }
+  
+  #formulario-section .container {
+    margin-top: 30px;
+  }
+  
+  #formulario-section form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #formulario-section form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  #formulario-section form label {
+    font-weight: bold;
+    color: #000;
+  }
+  
+  #formulario-section form .form-control {
+    margin-bottom: 15px;
+    color: #000;
+  }
+  
+  #formulario-section form button {
+    margin-top: 15px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #formulario-section form button:hover {
+    background-color: #45a049;
+  }
+  
+  #formulario-section .col-md-6:last-child {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #formulario-section .col-md-6:last-child h2 {
+    margin-bottom: 20px;
+  }
+  
+  #formulario-section iframe {
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  #formulario-section .col-md-6:last-child p {
+    margin-bottom: 10px;
+    color: #000;
+  }
+  
+  #formulario-section .col-md-6 .info-contacto-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
