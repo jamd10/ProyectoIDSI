@@ -58,7 +58,7 @@
 }
 
 .catalogo .card .card-title {
-    font-size: 16px;
+    font-size: 1.5vw; /* Ajusta este valor según tus necesidades */
     margin-bottom: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -68,7 +68,7 @@
 }
 
 .catalogo .card .card-text {
-    font-size: 14px;
+    font-size: 1.2vw; /* Ajusta este valor según tus necesidades */
     color: #666;
     margin-bottom: 10px;
 }
@@ -104,7 +104,7 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px;
+    font-size: 1vw; /* Ajusta este valor según tus necesidades */
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
@@ -116,17 +116,37 @@
     color: #ffffff;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1081px) {
     .catalogo .card {
-        flex: 0 0 calc(48% - 2%);
+        flex: 0 0 calc(50% - 2%);
     }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1199px) {
+    .catalogo .card {
+        flex: 0 0 calc(100% - 2%);
+    }
+}
+
+@media (max-width: 767px) {
     .catalogo .card {
         width: 100%;
         margin: 2.5%;
         height: auto;
+    }
+}
+
+@media (max-width: 1080px) {
+    .catalogo .card .card-title {
+        font-size: 2vw;
+    }
+
+    .catalogo .card .card-text {
+        font-size: 1.6vw;
+    }
+
+    .botones button {
+        font-size: 1.4vw;
     }
 }
 
