@@ -238,7 +238,7 @@ function mostrarDetalle(id, nombre, imagen, maxCantidad) {
         </div>
     </div>
     `;
-
+    document.querySelector('h1').textContent = nombre;
     filtersContainer.style.display = 'none';
     paginationContainer.style.display = 'none';
     publicidad.style.display = 'block'; // Muestra la publicidad
