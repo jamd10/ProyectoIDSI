@@ -294,6 +294,15 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
     }
     var descriptionCard = document.querySelector('.description');
     descriptionCard.style.width = '100%';
+    document.querySelector('h1').textContent = nombre;
+    window.restoreContent = function () {
+        filtersContainer.style.display = 'block';
+        paginationContainer.style.display = 'block';
+        publicidad.style.display = 'none'; // Oculta la publicidad
+        mainContainer.style.margin = '0'; // Restaurar el margen original
+        mainContainer.innerHTML = currentContent;
+        document.querySelector('h1').textContent = "Catálogo"; // Actualiza el encabezado a "Servicios"
+    }
 }
 // Funciones para la paginación
 function mostrarBotonesPaginacion(productos, pagina) {

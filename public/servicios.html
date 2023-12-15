@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="marcas.css">
     <link rel="stylesheet" href="info.css">
     <link rel="stylesheet" href="btn.css">
-    <link rel="stylesheet" href="catalago.css">
+    <link rel="stylesheet" href="servicios.css">
     <link rel="stylesheet" href="publicidad.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -108,102 +108,70 @@
         <section>
             <div>
                 <nav class="my-submenu-nav">
-                    <a href="javascript:void(0);" onclick="filtrarCategoria('Baños')">Baños</a>
-                    <a href="javascript:void(0);" onclick="filtrarCategoria('Lavandería')">Lavandería</a>
-                    <a href="javascript:void(0);" onclick="filtrarCategoria('Herramientas de limpieza')">Herramientas de
-                        Limpieza</a>
-                    <a href="javascript:void(0);" onclick="filtrarCategoria('Bioseguridad')">Bioseguridad</a>
-                    <a href="javascript:void(0);" onclick="filtrarCategoria('Desinfectante')">Desinfectante</a>
-                    <a href="javascript:void(0);" onclick="filtrarCategoria('Cuidado Personal')">Cuidado Personal</a>
-                    <a href="javascript:void(0);" onclick="filtrarCategoria('Productos Plásticos')">Productos
-                        Plásticos</a>
+                    <a href="catalogo.html?categoria=Baños">Baños</a>
+                    <a href="catalogo.html?categoria=Lavandería">Lavandería</a>
+                    <a href="catalogo.html?categoria=Herramientas de limpieza">Herramientas de Limpieza</a>
+                    <a href="catalogo.html?categoria=Bioseguridad">Bioseguridad</a>
+                    <a href="catalogo.html?categoria=Desinfectante">Desinfectante</a>
+                    <a href="catalogo.html?categoria=Cuidado Personal">Cuidado Personal</a>
+                    <a href="catalogo.html?categoria=Productos Plásticos">Productos Plásticos</a>
                     <div class="animation start-home"></div>
                 </nav>
             </div>
-
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    const params = new URLSearchParams(window.location.search);
-                    const categoria = params.get("categoria");
-                    if (categoria) {
-                        document.getElementById('categoria').value = categoria;
-                        aplicarFiltros();
-                    }
-                });
-
-                function filtrarCategoria(categoria) {
-                    document.getElementById('categoria').value = categoria;
-                    aplicarFiltros();
-                }
-
-                function aplicarFiltros() {
-                    var precioSeleccionado = parseFloat(document.getElementById('precio').value);
-                    var marcaSeleccionada = document.getElementById('marca').value;
-                    var categoriaSeleccionada = document.getElementById('categoria').value;
-
-                    // Asegúrate de que la comparación de la categoría sea adecuada para tu sistema
-                    productosFiltrados = productos.filter(function (producto) {
-                        var coincidePrecio = producto.precio <= precioSeleccionado;
-                        var coincideMarca = marcaSeleccionada === '' || producto.marca === marcaSeleccionada;
-                        // Ajusta la comparación de la categoría según sea necesario
-                        var coincideCategoria = categoriaSeleccionada === '' || producto.categoria.toLowerCase().includes(categoriaSeleccionada.toLowerCase());
-
-                        return coincidePrecio && coincideMarca && coincideCategoria;
-                    });
-
-                    paginaActual = 1;
-                    mostrarProductos(productosFiltrados, paginaActual);
-
-                    var texto = categoriaSeleccionada !== '' ? categoriaSeleccionada : 'Catálogo';
-                    document.querySelector('h1').textContent = texto;
-                }
-            </script>
         </section>
         <section>
-            <h1 id="catalogoFiltro">Catálogo</h1>
+            <h1 id="catalogoFiltro">Servicios</h1>
             <div class="container catalogo">
                 <div class="row">
                     <div class="col-md-3">
                         <h5>Filtros</h5>
                         <form>
                             <div class="form-group">
-                                <label for="categoria">Categoría:</label>
+                                <label for="categoria">Servicio:</label>
                                 <select class="form-control" id="categoria">
                                     <option value="">Seleccionar</option>
-                                    <option value="Baños">Baños</option>
-                                    <option value="Lavandería">Lavandería</option>
-                                    <option value="Herramientas de limpieza">Herramientas de Limpieza</option>
-                                    <option value="Bioseguridad">Bioseguridad</option>
-                                    <option value="Desinfectante">Desinfectante</option>
-                                    <option value="Cuidado Personal">Cuidado Personal</option>
-                                    <option value="Productos Plásticos">Productos Plásticos</option>
+                                    <option value="Servicio De Plomeria">Servicio De Plomeria</option>
+                                    <option value="Servicio De Electricidad">Servicio De Electricidad</option>
+                                    <option value="Servicio De Jardineria">Servicio De Jardineria</option>
+                                    <option value="Servicio De Carpinteria">Servicio De Carpinteria</option>
+                                    <option value="Servicio De Cerrajeria">Servicio De Cerrajeria</option>
+                                    <option value="Servicio De Pintura General">Servicio De Pintura General</option>
+                                    <option value="Servicio De Mantenimiento Computadoras">Servicio De Mantenimiento
+                                        Computadoras</option>
+                                    <option value="Servicio De Aires Acondicionados">Servicio De Aires Acondicionados
+                                    </option>
+                                    <option value="Servicio De Fumigacion">Servicio De Fumigacion</option>
+                                    <option value="Servicio De Champuseado Muebles">Servicio De Champuseado Muebles
+                                    </option>
+                                    <option value="Servicio De Soldadura">Servicio De Soldadura</option>
+                                    <option value="Servicio De Instalacion Extintores">Servicio De Instalacion
+                                        Extintores</option>
+                                    <option value="Servicio De Mudanza">Servicio De Mudanza</option>
+                                    <option value="Servicio De Ipersonal De Limpieza">Servicio De Ipersonal De Limpieza
+                                    </option>
+                                    <option value="Servicio De Gruas Y Remolques">Servicio De Gruas Y Remolques</option>
                                     <!-- Agrega más categorías según sea necesario -->
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="marca">Marca:</label>
+                                <label for="marca">Area:</label>
                                 <select class="form-control" id="marca">
                                     <option value="">Seleccionar</option>
-                                    <option value="CleanStar">CleanStar</option>
-                                    <option value="PureWash">PureWash</option>
-                                    <option value="SweepPro">SweepPro</option>
-                                    <option value="Guardian">Guardian</option>
-                                    <option value="BioDefense">BioDefense</option>
-                                    <option value="SoftCare">SoftCare</option>
-                                    <option value="EcoSolutions">EcoSolutions</option>
-                                    <option value="ClearVision">ClearVision</option>
-                                    <option value="AromaFresh">AromaFresh</option>
-                                    <option value="SensitiveCare">SensitiveCare</option>
-                                    <option value="ScrubMaster">ScrubMaster</option>
-                                    <option value="GentleClean">GentleClean</option>
-                                    <option value="BioShield">BioShield</option>
-                                    <option value="NatureSoothe">NatureSoothe</option>
-                                    <option value="SurfacePro">SurfacePro</option>
-                                    <option value="LuxClean">LuxClean</option>
-                                    <option value="SpongePro">SpongePro</option>
-                                    <option value="AquaShield">AquaShield</option>
-                                    <option value="SilkCare">SilkCare</option>
-                                    <option value="EcoSolutions">EcoSolutions</option>
+                                    <option value="Plomeria">Plomeria</option>
+                                    <option value="Electricidad">Electricidad</option>
+                                    <option value="Jardineria">Jardineria</option>
+                                    <option value="Carpinteria">Carpinteria</option>
+                                    <option value="Cerrajeria">Cerrajeria</option>
+                                    <option value="Pintura General">Pintura General</option>
+                                    <option value="Informatica">Informatica</option>
+                                    <option value="Aires Acondicionados">Aires Acondicionados</option>
+                                    <option value="Fumigacion">Fumigacion</option>
+                                    <option value="Champuseado Muebles">Champuseado Muebles</option>
+                                    <option value="Soldadura">Soldadura</option>
+                                    <option value="Instalacion Extintores">Instalacion Extintores</option>
+                                    <option value="Mudanza">Mudanza</option>
+                                    <option value="Ipersonal De Limpieza">Ipersonal De Limpieza</option>
+                                    <option value="Gruas Y Remolques">Gruas Y Remolques</option>
                                     <!-- Agrega más marcas según sea necesario -->
                                 </select>
                             </div>
@@ -311,7 +279,7 @@
     <script src="destacados.js"></script>
     <script src="publicidad.js"></script>
     <script src="btn.js"></script>
-    <script src="catalago.js"></script>
+    <script src="servicios.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 </body>
 
