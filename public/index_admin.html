@@ -64,10 +64,7 @@
                     <div class="user">
                         <div class="bg-img" style="background-image: url(img/3.jpeg)"></div>
 
-                        <a href="/cerrar-sesion" class="logout-link">
-                            <span class="las la-power-off"></span>
-                            <span>Cerrar Sesión</span>
-                        </a>
+                        <button id="CSAdmin" class="logout-link" > Cerrar Sesión </button>
                     </div>
                 </div>
             </div>
@@ -150,5 +147,34 @@
 
     </div>
 </body>
+
+<script>
+    const getBtnLO = document.getElementById('CSAdmin');
+
+    getBtnLO.addEventListener('click', CerrarSesion);
+
+    const baseUrl = 'https://grupolimpio-api.onrender.com';
+
+    function CerrarSesion() {
+      fetch(baseUrl + '/logOut', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.msg == "log out") {
+            alert('Se ha cerrrado sesion');
+            window.location.href = "index.html";
+          } else {
+
+          }
+        })
+        .catch(error => {
+          alert('No se ha podido cerrar sesion');
+        });
+    }
+</script>
 
 </html>

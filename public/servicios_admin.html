@@ -12,7 +12,7 @@
 
 </head>
 
-<body>
+<body onload="leerServicio()">
     <input type="checkbox" id="menu-toggle">
     <div class="sidebar">
         <div class="side-header">
@@ -64,10 +64,8 @@
                     <div class="user">
                         <div class="bg-img" style="background-image: url(img/3.jpeg)"></div>
 
-                        <a href="/cerrar-sesion" class="logout-link">
-                            <span class="las la-power-off"></span>
-                            <span>Cerrar Sesión</span>
-                        </a>
+                        <button id="CSAdmin" class="logout-link" > Cerrar Sesión </button>
+
                     </div>
                 </div>
             </div>
@@ -88,15 +86,15 @@
 
                         </div>
 
-                        <div class="browse">
+                        <!-- <div class="browse">
                             <input type="search" placeholder="Buscar" class="record-search">
                             <select name="" id="">
                                 <option value="">Estado</option>
                             </select>
-                        </div>
+                        </div> -->
                     </div>
                     <div>
-                        <table class="product-table">
+                        <table class="product-table" id="TablaServicios">
                             <style>
                                 body {
                                     font-family: Arial, sans-serif;
@@ -165,63 +163,7 @@
                                     <th>OPCIONES</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>0011</td>
-                                    <td>
-                                        <h4>Carpintería</h4>
-                                    </td>
-
-                                    <td>
-                                        <p>Nos dedicamos a la creación y
-                                            diseño de productos de madera de alta calidad. Nos especializamos en la
-                                            fabricación de muebles a medida, carpintería arquitectónica y elementos
-                                            decorativos, fusionando la tradición artesanal con técnicas modernas para
-                                            ofrecer soluciones únicas y personalizadas.</p>
-                                    </td>
-                                    <td>
-                                        <p>Al elegir nuestro servicio, los clientes no solo adquieren
-                                            productos de madera, sino que también experimentan el arte, la calidad y la
-                                            atención excepcionales que definen nuestro enfoque hacia la carpintería.</p>
-                                    </td>
-                                    
-                                    <td>
-                                        <p>Al elegir nuestro servicio, los clientes no solo adquieren
-                                            productos de madera, sino que también experimentan el arte, la calidad y la
-                                            atención excepcionales que definen nuestro enfoque hacia la carpintería.</p>
-                                    </td>
-                                    <td>
-                                        <div class="client-img-catalogo bg-img-tabla"
-                                            style="background-image: url(img_admin/3.jpeg)">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="client-img-catalogo bg-img-tabla"
-                                            style="background-image: url(img_admin/3.jpeg)">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="client-img-catalogo bg-img-tabla"
-                                            style="background-image: url(img_admin/3.jpeg)">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        ACTIVO
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-                                            <button id="openForm" onclick="openModificarModal()">
-                                                <img src="Img_Admin/Boton-Editar.Png" alt="Agregar">
-                                            </button>
-
-                                            <button id="openForm" onclick="openEliminarModal()">
-                                                <img src="img_admin/basura.png" alt="Eliminar">
-                                            </button>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            
                         </table>
 
                     </div>
@@ -242,45 +184,39 @@
             <div class="form-container">
                 <div class="row">
                     <div class="column">
-                        <label for="id">ID:</label>
-                        <input type="text" id="id" name="id">
-
-                        <label for="nombre">Nombre del servicio</label>
+                        <label for="nombre">Nombre del servicio:</label>
                         <input type="text" id="nombre" name="nombre">
 
-                        <label for="marca">Marca:</label>
-                        <input type="text" id="marca" name="marca">
-
-                        <label for="categoria">Categoría:</label>
-                        <input type="text" id="categoria" name="categoria">
-
                         <label for="imagen1">Imagen 1:</label>
-                        <input type="file" id="imagen1" name="imagen1">
+                        <input type="text" id="imagen1" name="imagen1">
+
+                        <label for="imagen2">Imagen 2:</label>
+                        <input type="text" id="imagen2" name="imagen2">
+
+                        <label for="imagen3">Imagen 3:</label>
+                        <input type="text" id="imagen3" name="imagen3">
                     </div>
 
                     <div class="column">
-                        <label for="imagen2">Imagen 2:</label>
-                        <input type="file" id="imagen2" name="imagen2">
-
-                        <label for="imagen3">Imagen 3:</label>
-                        <input type="file" id="imagen3" name="imagen3">
-
                         <label for="descripcion">Descripción:</label>
                         <textarea id="descripcion" name="descripcion"></textarea>
+      
+                        <label for="beneficios">Beneficios:</label>
+                        <textarea id="beneficios" name="beneficios"></textarea>
 
-                        <label for="cantidad">Beneficios y Características:</label>
-                        <input type="number" id="cantidad" name="cantidad">
+                        <label for="caracteristicas">Características:</label>
+                        <textarea id="caracteristicas" name="caracteristicas"></textarea>
 
                         <label for="estado">Estado:</label>
                         <select id="estado" name="estado">
-                            <option value="activo">Activo</option>
-                            <option value="desactivo">Desactivo</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Desactivo">Desactivo</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="buttons">
-                    <button id="aceptar">Aceptar</button>
+                    <button id="AgregarAceptar">Aceptar</button>
                     <button id="cancelar">Cancelar</button>
                 </div>
             </div>
@@ -298,49 +234,39 @@
             <div class="form-container">
                 <div class="row">
                     <div class="column">
-                        <label for="id">ID:</label>
-                        <select id="ID" name="ID">
-                            <option value="00011">00011</option>
-                        </select>
+                        <label for="nombre2">Nombre del servicio:</label>
+                        <input type="text" id="nombre2" name="nombre">
 
-                        <label for="nombre">Nombre del servicio:</label>
-                        <input type="text" id="nombre" name="nombre">
+                        <label for="imagen12">Imagen 1:</label>
+                        <input type="text" id="imagen12" name="imagen1">
 
-                        <label for="marca">Marca:</label>
-                        <input type="text" id="marca" name="marca">
+                        <label for="imagen22">Imagen 2:</label>
+                        <input type="text" id="imagen22" name="imagen22">
 
-                        <label for="categoria">Categoría:</label>
-                        <input type="text" id="categoria" name="categoria">
-
-                        <label for="imagen1">Imagen 1:</label>
-                        <input type="file" id="imagen1" name="imagen1">
+                        <label for="imagen32">Imagen 3:</label>
+                        <input type="text" id="imagen32" name="imagen32">
                     </div>
 
                     <div class="column">
-                        <label for="imagen2">Imagen 2:</label>
-                        <input type="file" id="imagen2" name="imagen2">
+                        <label for="descripcion2">Descripción:</label>
+                        <textarea id="descripcion2" name="descripcion2"></textarea>
+      
+                        <label for="beneficios2">Beneficios:</label>
+                        <textarea type="text" id="beneficios2" name="beneficios2"></textarea>
 
-                        <label for="imagen3">Imagen 3:</label>
-                        <input type="file" id="imagen3" name="imagen3">
+                        <label for="caracteristicas2">Características:</label>
+                        <textarea type="text" id="caracteristicas2" name="caracteristicas2"></textarea>
 
-                        <label for="descripcion">Descripción:</label>
-                        <textarea id="descripcion" name="descripcion"></textarea>
-
-                        
-                        <label for="cantidad">Beneficios y Características:</label>
-                        <input type="number" id="cantidad" name="cantidad">
-
-
-                        <label for="estado">Estado:</label>
-                        <select id="estado" name="estado">
-                            <option value="activo">Activo</option>
-                            <option value="desactivo">Desactivo</option>
+                        <label for="estado2">Estado:</label>
+                        <select id="estado2" name="estado2">
+                            <option value="Activo">Activo</option>
+                            <option value="Desactivo">Desactivo</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="buttons">
-                    <button id="aceptar">Aceptar</button>
+                    <button id="ModificarAceptar">Aceptar</button>
                     <button id="cancelar">Cancelar</button>
                 </div>
             </div>
@@ -356,16 +282,17 @@
             <p>¿Está seguro de que desea eliminar este cambio? Esta acción es permanente.</p>
 
             <div class="buttons">
-                <button id="confirmarEliminar" onclick="eliminarCambio()">Confirmar</button>
+                <button id="EliminarConfirmar">Confirmar</button>
                 <button id="cancelarEliminar" onclick="closeEliminarModal()">Cancelar</button>
             </div>
         </div>
     </div>
 
     <script>
-        function openEliminarModal() {
+        function openEliminarModal(data) {
             var modalEliminar = document.getElementById('myModal_Eliminar');
             modalEliminar.style.display = 'block';
+            localStorage["idS"] = data;
         }
 
         function closeEliminarModal() {
@@ -388,15 +315,348 @@
 </body>
 
 <script>
-    function openModificarModal() {
+    function openModificarModal(data) {
         var modalModificar = document.getElementById('myModal_Modificar');
         modalModificar.style.display = 'block';
+        leerModificar(data);
+        localStorage["idS"] = data;
     }
 
     function closeModificarModal() {
         var modalModificar = document.getElementById('myModal_Modificar');
         modalModificar.style.display = 'none';
     }
+</script>
+
+<script>
+    const getBtnLO = document.getElementById('CSAdmin');
+    const Agregarbtn = document.getElementById('AgregarAceptar');
+    const Modificarbtn = document.getElementById('ModificarAceptar');
+    const Eliminarbtn = document.getElementById('EliminarConfirmar');
+    const Tabla = document.getElementById('TablaServicios');
+
+    const serviceName = document.getElementById('nombre');
+    const serviceImage = document.getElementById('imagen1'); 
+    const serviceImage2 = document.getElementById('imagen2'); 
+    const serviceImage3 = document.getElementById('imagen3'); 
+    const serviceState = document.getElementById('estado');
+    const serviceDescription = document.getElementById('descripcion');
+    const serviceBenefit = document.getElementById('beneficios');
+    const serviceCaracteristics = document.getElementById('caracteristicas');
+
+    const serviceName2 = document.getElementById('nombre2');
+    const serviceImage12 = document.getElementById('imagen12'); 
+    const serviceImage22 = document.getElementById('imagen22'); 
+    const serviceImage32 = document.getElementById('imagen32'); 
+    const serviceState2 = document.getElementById('estado2');
+    const serviceDescription2 = document.getElementById('descripcion2');
+    const serviceBenefit2 = document.getElementById('beneficios2');
+    const serviceCaracteristics2 = document.getElementById('caracteristicas2');
+
+    getBtnLO.addEventListener('click', CerrarSesion);
+    Agregarbtn.addEventListener('click', PreSubmitData);
+    Modificarbtn.addEventListener('click', PreActualizar);
+    Eliminarbtn.addEventListener('click', Eliminar);
+
+    const baseUrl = 'https://grupolimpio-api.onrender.com';
+
+    function CerrarSesion() {
+      fetch(baseUrl + '/logOut', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.msg == "log out") {
+            alert('Se ha cerrrado sesion');
+            window.location.href = "index.html";
+          } else {
+
+          }
+        })
+        .catch(error => {
+          alert('No se ha podido cerrar sesion');
+        });
+    }
+
+    function Eliminar() {
+        fetch(baseUrl + '/EliminarServicio', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ nombre: localStorage["idS"],}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('El servicio a sido eliminado');
+            location.reload();
+            var modalModificar = document.getElementById('myModal_Modificar');
+            modalModificar.style.display = 'none';
+        })
+        .catch(error => {
+            alert('No se ha podido eliminar el servicio');
+        });
+    }
+
+    function Actualizar() {
+            fetch(baseUrl + '/ActualizarServicio', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nombre: serviceName2.value, imagen1: serviceImage12.value, 
+                    imagen2: serviceImage22.value, imagen3: serviceImage32.value, beneficio: serviceBenefit2.value,
+                    estado: serviceState2.value, descripcion: serviceDescription2.value, caracteristicas: serviceCaracteristics2.value,
+                    id: localStorage["idS"]}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('El servicio a sido actualizado');
+                var modalModificar = document.getElementById('myModal_Modificar');
+                modalModificar.style.display = 'none';
+                location.reload();
+                })
+            .catch(error => {
+                alert('No se ha podido actualizar su informacion');
+            });
+        }
+
+    function PreSubmitData(){
+        if(serviceName.value == ""){
+            alert("Ingrese el nombre del servicio");
+        }
+        else if(serviceImage.value == ""){
+            alert("Ingrese una imagen en el campo imagen1");
+        }
+        else if(serviceImage2.value == ""){
+            alert("Ingrese una imagen en el campo imagen2");
+        }
+        else if(serviceImage3.value == ""){
+            alert("Ingrese una imagen en el campo imagen3");
+        }
+        else if(serviceState.value == ""){
+            alert("Seleccione un estado");
+        }
+        else if(serviceDescription.value == ""){
+            alert("Ingrese la descripcion del servicio");
+        }
+        else if(serviceBenefit.value == ""){
+            alert("Ingrese el beneficio del servicio");
+        }
+        else if(serviceCaracteristics.value == ""){
+            alert("Ingrese las caracteristicas del servicio");
+        }
+        else{
+            submitData();
+        }
+    }
+
+    function PreActualizar(){
+        if(serviceName2.value == ""){
+            alert("Ingrese el nombre del servicio");
+        }
+        else if(serviceImage12.value == ""){
+            alert("Ingrese una imagen en el campo imagen1");
+        }
+        else if(serviceImage22.value == ""){
+            alert("Ingrese una imagen en el campo imagen2");
+        }
+        else if(serviceImage32.value == ""){
+            alert("Ingrese una imagen en el campo imagen3");
+        }
+        else if(serviceState2.value == ""){
+            alert("Seleccione un estado");
+        }
+        else if(serviceDescription2.value == ""){
+            alert("Ingrese la descripcion del servicio");
+        }
+        else if(serviceBenefit2.value == ""){
+            alert("Ingrese el beneficio del servicio");
+        }
+        else if(serviceCaracteristics2.value == ""){
+            alert("Ingrese las caracteristicas del servicio");
+        }
+        else{
+            Actualizar();
+        }
+    }
+
+    function submitData() {
+        fetch(baseUrl + '/submitServicio', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ nombre: serviceName.value, imagen1: serviceImage.value, 
+                imagen2: serviceImage2.value, imagen3: serviceImage3.value, beneficio: serviceBenefit.value,
+                caracteristicas: serviceCaracteristics.value, descripcion: serviceDescription.value, estado: serviceState.value}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            Tabla.innerHTML += `
+            <tbody>
+                <tr>
+                    <td>`+data.id+`</td>
+                    <td>
+                        <h4>`+serviceName.value+`</h4>
+                    </td>
+
+                    <td>
+                        <p>`+serviceDescription.value+`</p>
+                    </td>
+                    <td>
+                        <p>`+serviceBenefit.value+`</p>
+                    </td>
+                    
+                    <td>
+                        <p>`+serviceCaracteristics.value+`</p>
+                    </td>
+                    <td>
+                        <div class="client-img-catalogo bg-img-tabla"
+                            style="background-image: url(`+serviceImage.value+`)">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="client-img-catalogo bg-img-tabla"
+                            style="background-image: url(`+serviceImage2.value+`)">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="client-img-catalogo bg-img-tabla"
+                            style="background-image: url(`+serviceImage3.value+`)">
+                        </div>
+                    </td>
+                    <td>
+                        `+serviceState.value+`
+                    </td>
+                    <td>
+                        <div class="actions">
+                            <button id="openForm" onclick=openModificarModal("`+data.id+`")>
+                                <img src="Img_Admin/Boton-Editar.Png" alt="Agregar">
+                            </button>
+
+                            <button id="openForm" onclick=openEliminarModal("`+data.id+`")>
+                                <img src="img_admin/basura.png" alt="Eliminar">
+                            </button>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            `
+            alert('Servicio creado exitosamente');
+            serviceName.value = "";
+            serviceImage.value = "";
+            serviceImage2.value = ""; 
+            serviceImage3.value = ""; 
+            serviceState.value = "";
+            serviceDescription.value = "";
+            serviceBenefit.value = "";
+            serviceCaracteristics.value = "";
+        })
+        .catch(error => {
+            alert('Error Creando Servicio'+ error);
+        });
+    }
+
+    function leerServicio() {
+            fetch(baseUrl + '/selectServicios', {
+                method: 'GET',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                Tabla.innerHTML += ``;
+                for(var i = 0; i < data.length; i++){
+                    var idtb = data[i].id;
+                    Tabla.innerHTML += `
+                    <tbody>
+                        <tr>
+                            <td>`+data[i].id+`</td>
+                            <td>
+                                <h4>`+data[i].nombre+`</h4>
+                            </td>
+
+                            <td>
+                                <p>`+data[i].descripcion+`</p>
+                            </td>
+                            <td>
+                                <p>`+data[i].beneficio+`</p>
+                            </td>
+                            
+                            <td>
+                                <p>`+data[i].caracteristicas+`</p>
+                            </td>
+                            <td>
+                                <div class="client-img-catalogo bg-img-tabla"
+                                    style="background-image: url(`+data[i].imagen1+`)">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="client-img-catalogo bg-img-tabla"
+                                    style="background-image: url(`+data[i].imagen2+`)">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="client-img-catalogo bg-img-tabla"
+                                    style="background-image: url(`+data[i].imagen3+`)">
+                                </div>
+                            </td>
+                            <td>
+                                `+data[i].estado+`
+                            </td>
+                            <td>
+                                <div class="actions">
+                                    <button id="openForm" onclick=openModificarModal("`+data[i].id+`")>
+                                        <img src="Img_Admin/Boton-Editar.Png" alt="Agregar">
+                                    </button>
+
+                                    <button id="openForm" onclick=openEliminarModal("`+data[i].id+`")>
+                                        <img src="img_admin/basura.png" alt="Eliminar">
+                                    </button>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    `
+                }
+            })
+            .catch(error => {
+                alert(':('+error);
+            });          
+        }
+
+        function leerModificar(datas) {
+            fetch(baseUrl + '/selectServicio', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: datas}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                serviceName2.value = data.nombre;
+                serviceImage12.value = data.imagen1;
+                serviceImage22.value = data.imagen2;
+                serviceImage32.value = data.imagen3;
+                serviceDescription2.value = data.descripcion;
+                serviceBenefit2.value = data.beneficio;
+                serviceCaracteristics2.value = data.caracteristicas;
+                serviceState2.value = data.estado;
+            })
+            .catch(error => {
+                alert(':('+error);
+            });
+        }
 </script>
 
 

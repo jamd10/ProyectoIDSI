@@ -141,14 +141,85 @@
 
                     <div class="form-group">
                         <label for="password">Contraseña:</label>
-                        <input type="password" id="password">
+                        <div class="password-container">
+                            <input type="password" id="password" placeholder="Contraseña" required>
+                            <i class="fa fa-eye-slash" id="togglePassword" onclick="togglePassword()"></i>
+                        </div>
                     </div>
+                    
+                    <style>
+                        .password-container {
+                            position: relative;
+                        }
+                    
+                        #password {
+                            padding-right: 69px; 
+                        }
+                    
+                        #togglePassword {
+                            position: absolute;
+                            top: 50%;
+                            right: 10px;
+                            transform: translateY(-50%);
+                            cursor: pointer;
+                        }
+                    </style>
+                    
+                    <script>
+                        function togglePassword() {
+                            var passwordField = document.getElementById("password");
+                            var toggleIcon = document.getElementById("togglePassword");
+                    
+                            if (passwordField.type === "password") {
+                                passwordField.type = "text";
+                                toggleIcon.className = "fa fa-eye";
+                            } else {
+                                passwordField.type = "password";
+                                toggleIcon.className = "fa fa-eye-slash";
+                            }
+                        }
+                    </script>
 
                     <div class="form-group">
                         <label for="confirm-password">Confirmar Contraseña:</label>
-                        <input type="password" id="confirm-password">
+                        <div class="password-container">
+                            <input type="password" id="confirm-password" placeholder="Confirmar Contraseña" required>
+                            <i class="fa fa-eye-slash" id="toggleConfirmPassword" onclick="toggleConfirmPassword()"></i>
+                        </div>
                         <p id="password-error" class="error"></p>
                     </div>
+
+                    <style>
+                        .password-container {
+                            position: relative;
+                        }
+
+                        #confirm-password {
+                            padding-right: 69px; 
+                        }
+                        #toggleConfirmPassword {
+                            position: absolute;
+                            top: 50%;
+                            right: 10px;
+                            transform: translateY(-50%);
+                            cursor: pointer;
+                        }
+                    </style>
+
+                    <script>
+                        function toggleConfirmPassword() {
+                            var confirmPasswordField = document.getElementById("confirm-password");
+                            var toggleIcon = document.getElementById("toggleConfirmPassword");
+
+                            if (confirmPasswordField.type === "password") {
+                                confirmPasswordField.type = "text";
+                                toggleIcon.className = "fa fa-eye";
+                            } else {
+                                confirmPasswordField.type = "password";
+                                toggleIcon.className = "fa fa-eye-slash";
+                            }
+                        }
+                    </script>
 
                     <!-- Botones alineados horizontalmente -->
                     <div class="button-group">
@@ -184,6 +255,7 @@
                     <ul class="links">
                         <li><a href="#">Formas de pago</a></li>
                         <li><a href="#">Productos nuevos</a></li>
+                        <li><a href="PreguntasFrecCliente.html">Preguntas frecuentes</a></li>
                     </ul>
                 </div>
 
@@ -345,6 +417,16 @@
                     } else {
                         alert('Usuario creado con exito, se ha enviado un link de verifiacion al su correo');
                         submitData();
+                        getNombre.value = "";
+                        getApellido.value = "";
+                        getId.value = "";
+                        getTelefono.value = "";
+                        getCiudad.value = "";
+                        getCorreo.value = "";
+                        getContra.value = "";
+                        getContraC.value = "";
+
+                        window.location.href = "main.html";
                     }
                 })
                 .catch(error => {

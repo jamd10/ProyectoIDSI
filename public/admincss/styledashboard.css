@@ -560,7 +560,7 @@ table tbody tr {
 }
 
 .logout-link:hover {
-    color: #4cc734;
+    color: white;
     /* Cambiar el color al pasar el ratón sobre el enlace */
 }
 

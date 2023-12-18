@@ -107,16 +107,53 @@
         <section>
             <div class="logincontainer">
 
-                <form id="loginForm">
-                    <div class="logo"></div>
-                    <h2>Iniciar Sesión</h2>
-                    <input type="text" id="correo_o_celular" placeholder="Correo" required>
-                    <input type="password" id="contrasena" placeholder="Contraseña" required>
-                    <button type="submit" id="Submitbtn">Iniciar Sesión</button>
-                    <button type="button" onclick="redirectCrearCuenta()">Crear Cuenta</button>
-                    <a href="#" class="recover-link" onclick="openModal()">¿Olvidaste tu contraseña?</a>
-
-                </form>
+                <div class="logincontainer">
+                    <form id="loginForm">
+                        <div class="logo"></div>
+                        <h2>Iniciar Sesión</h2>
+                        <input type="text" id="correo_o_celular" placeholder="Correo" required>
+                        <div class="password-container">
+                            <input type="password" id="contrasena" placeholder="Contraseña" required>
+                            <i class="fa fa-eye-slash" id="togglePassword" onclick="togglePassword()"></i>
+                        </div>
+                        <button type="submit" id="Submitbtn">Iniciar Sesión</button>
+                        <button type="button" onclick="redirectCrearCuenta()">Crear Cuenta</button>
+                        <a href="#" class="recover-link" onclick="openModal()">¿Olvidaste tu contraseña?</a>
+                    </form>
+                </div>
+                
+                <style>
+                    .password-container {
+                        position: relative;
+                    }
+                
+                    #contrasena {
+                        padding-right: 30px; /* Ajusta el espacio para el ícono */
+                    }
+                
+                    #togglePassword {
+                        position: absolute;
+                        top: 50%;
+                        right: 10px;
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                    }
+                </style>
+                
+                <script>
+                    function togglePassword() {
+                        var passwordField = document.getElementById("contrasena");
+                        var toggleIcon = document.getElementById("togglePassword");
+                
+                        if (passwordField.type === "password") {
+                            passwordField.type = "text";
+                            toggleIcon.className = "fa fa-eye";
+                        } else {
+                            passwordField.type = "password";
+                            toggleIcon.className = "fa fa-eye-slash";
+                        }
+                    }
+                </script>
 
                 <div id="myModal" class="modal">
                     <div class="modal-content">
@@ -158,6 +195,7 @@
                     <ul class="links">
                         <li><a href="#">Formas de pago</a></li>
                         <li><a href="#">Productos nuevos</a></li>
+                        <li><a href="PreguntasFrecCliente.html">Preguntas frecuentes</a></li>
                     </ul>
                 </div>
 
@@ -262,7 +300,7 @@
             if (data == 'Holas') {
                 if (admin == "Admin") {
                     alert('Se ha iniciado sesion exitosamente administrador!');
-                    window.location.href = "Admin.html";
+                    window.location.href = "index_admin.html";
                 } else {
                     alert('Se ha iniciado sesion exitosamente!');
                     window.location.href = "PerfilUsuario.html";

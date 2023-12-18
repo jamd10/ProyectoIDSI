@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body onload="leerProducto()">
     <input type="checkbox" id="menu-toggle">
     <div class="sidebar">
         <div class="side-header">
@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="servicios_admin.html.html">
+                        <a href="servicios_admin.html">
                             <span class="las la-clipboard-list"></span>
                             <small>Servicios</small>
                         </a>
@@ -63,12 +63,8 @@
                 </label>
                 <div class="header-menu">
                     <div class="user">
-                        <div class="bg-img" style="background-image: url(img_admin/3.jpeg)"></div>
 
-                        <a href="/cerrar-sesion" class="logout-link">
-                            <span class="las la-power-off"></span>
-                            <span>Cerrar Sesión</span>
-                        </a>
+                        <button id="CSAdmin" class="logout-link" > Cerrar Sesión </button>
                     </div>
                 </div>
             </div>
@@ -86,15 +82,15 @@
                         <div class="add">
                             <button id="openForm">Agregar</button>
                         </div>
-                        <div class="browse">
+                        <!-- <div class="browse">
                             <input type="search" placeholder="Buscar" class="record-search">
                             <select name="" id="">
                                 <option value="">Estado</option>
                             </select>
-                        </div>
+                        </div> -->
                     </div>
                     <div>
-                        <table class="product-table">
+                        <table id="TablaProductos" class="product-table">
                             <style>
                                 body {
                                     font-family: Arial, sans-serif;
@@ -166,64 +162,7 @@
                                     <th>OPCIONES</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>0001</td>
-                                    <td>
-                                        <h4>Jabon Loza</h4>
-                                    </td>
-                                    <td>
-                                        L. 20.00
-                                    </td>
-                                    <td>
-                                        XEDEX
-                                    </td>
-                                    <td>
-                                        Baño
-                                    </td>
-                                    <td>
-                                        <div class="client-img-catalogo bg-img-tabla"
-                                            style="background-image: url(img_admin/3.jpeg)">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="client-img-catalogo bg-img-tabla"
-                                            style="background-image: url(img_admin/3.jpeg)">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="client-img-catalogo bg-img-tabla"
-                                            style="background-image: url(img_admin/3.jpeg)">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p>Descubre la revolución en limpieza de utensilios de cocina con nuestro Jabón
-                                            de Loza Ultraconcentrado</p>
-                                    </td>
-                                    <td>
-                                        12/12/2023
-                                    </td>
-                                    <td>
-                                        L. 28.00
-                                    </td>
-                                    <td>
-                                        ACTIVO
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-
-                                            <button id="openForm" onclick="openModificarModal()">
-                                                <img src="Img_Admin/Boton-Editar.Png" alt="Agregar">
-                                            </button>
-                                    
-                                            <button id="openForm" onclick="openEliminarModal()">
-                                                <img src="img_admin/basura.png" alt="Eliminar">
-                                            </button>
-
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            
                         </table>
                     </div>
                 </div>
@@ -241,31 +180,41 @@
             <div class="form-container">
                 <div class="row">
                     <div class="column">
-                        <label for="id">ID:</label>
-                        <input type="text" id="id" name="id">
+                        <!-- <label for="id">ID:</label>
+                        <input type="text" id="id" name="id"> -->
 
                         <label for="nombre">Nombre de Producto:</label>
                         <input type="text" id="nombre" name="nombre">
 
-                        <label for="precio">Precio (L. 00.00):</label>
-                        <input type="text" id="precio" name="precio" placeholder="L. 00.00">
+                        <label for="precio">Precio (en Lempiras):</label>
+                        <input type="number" id="precio" name="precio" placeholder="L. 00.00">
 
                         <label for="marca">Marca:</label>
                         <input type="text" id="marca" name="marca">
 
                         <label for="categoria">Categoría:</label>
-                        <input type="text" id="categoria" name="categoria">
+                        <select id="categoria" name="categoria">
+                            <option value="Baño">Baños</option>
+                            <option value="Lavandería">Lavandería</option>
+                            <option value="Herramientas">Herramientas de Limpieza</option>
+                            <option value="Bioseguridad">Bioseguridad</option>
+                            <option value="Desinfectante">Desinfectante</option>
+                            <option value="Cuidado Personal">Cuidado Personal</option>
+                            <option value="Productos Plasticos">Productos Plasticos</option>
+                        </select>
 
                         <label for="imagen1">Imagen 1:</label>
-                        <input type="file" id="imagen1" name="imagen1">
+                        <input type="text" id="imagen1" name="imagen1">
+
+                        <label for="imagen2">Imagen 2:</label>
+                        <input type="text" id="imagen2" name="imagen2">
+
                     </div>
 
                     <div class="column">
-                        <label for="imagen2">Imagen 2:</label>
-                        <input type="file" id="imagen2" name="imagen2">
 
                         <label for="imagen3">Imagen 3:</label>
-                        <input type="file" id="imagen3" name="imagen3">
+                        <input type="text" id="imagen3" name="imagen3">
 
                         <label for="cantidad">Cantidad:</label>
                         <input type="number" id="cantidad" name="cantidad">
@@ -277,19 +226,18 @@
                         <input type="date" id="fecha" name="fecha">
 
                         <label for="precioventa">Precio de Venta (L. 00.00):</label>
-                        <input type="text" id="precioventa" name="precioventa" placeholder="L. 00.00">
+                        <input type="number" id="precioventa" name="precioventa" placeholder="L. 00.00">
 
                         <label for="estado">Estado:</label>
                         <select id="estado" name="estado">
-                            <option value="activo">Activo</option>
-                            <option value="desactivo">Desactivo</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Desactivo">Desactivo</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="buttons">
-                    <button id="aceptar">Aceptar</button>
-                    <button id="cancelar">Cancelar</button>
+                    <button id="aceptarAgregar">Aceptar</button>
                 </div>
             </div>
         </div>
@@ -306,57 +254,62 @@
             <div class="form-container">
                 <div class="row">
                     <div class="column">
-                        <label for="id">ID:</label>
-                        <select id="ID" name="ID">
-                            <option value="00011">00011</option>
+
+                        <label for="nombre2">Nombre de Producto:</label>
+                        <input type="text" id="nombre2" name="nombre2">
+
+                        <label for="precio2">Precio (L. 00.00):</label>
+                        <input type="number" id="precio2" name="precio2" placeholder="L. 00.00">
+
+                        <label for="marca2">Marca:</label>
+                        <input type="text" id="marca2" name="marca2">
+
+                        <label for="categoria2">Categoría:</label>
+                        <select id="categoria2" name="categoria2">
+                            <option value="Baños">Baños</option>
+                            <option value="Lavandería">Lavandería</option>
+                            <option value="Herramientas de limpieza">Herramientas de Limpieza</option>
+                            <option value="Bioseguridad">Bioseguridad</option>
+                            <option value="Desinfectante">Desinfectante</option>
+                            <option value="Cuidado Personal">Cuidado Personal</option>
+                            <option value="Productos Plásticos">Productos Plasticos</option>
                         </select>
 
-                        <label for="nombre">Nombre de Producto:</label>
-                        <input type="text" id="nombre" name="nombre">
+                        <label for="imagen12">Imagen 1:</label>
+                        <input type="text" id="imagen12" name="imagen12">
 
-                        <label for="precio">Precio (L. 00.00):</label>
-                        <input type="text" id="precio" name="precio" placeholder="L. 00.00">
-
-                        <label for="marca">Marca:</label>
-                        <input type="text" id="marca" name="marca">
-
-                        <label for="categoria">Categoría:</label>
-                        <input type="text" id="categoria" name="categoria">
-
-                        <label for="imagen1">Imagen 1:</label>
-                        <input type="file" id="imagen1" name="imagen1">
+                        <label for="imagen22">Imagen 2:</label>
+                        <input type="text" id="imagen22" name="imagen22">
                     </div>
 
                     <div class="column">
-                        <label for="imagen2">Imagen 2:</label>
-                        <input type="file" id="imagen2" name="imagen2">
 
-                        <label for="imagen3">Imagen 3:</label>
-                        <input type="file" id="imagen3" name="imagen3">
+                        <label for="imagen32">Imagen 3:</label>
+                        <input type="text" id="imagen32" name="imagen32">
 
-                        <label for="cantidad">Cantidad:</label>
-                        <input type="number" id="cantidad" name="cantidad">
+                        <label for="cantidad2">Cantidad:</label>
+                        <input type="number" id="cantidad2" name="cantidad2">
 
-                        <label for="descripcion">Descripción:</label>
-                        <textarea id="descripcion" name="descripcion"></textarea>
+                        <label for="descripcion2">Descripción:</label>
+                        <textarea id="descripcion2" name="descripcion2"></textarea>
 
-                        <label for="fecha">Fecha:</label>
-                        <input type="date" id="fecha" name="fecha">
+                        <label for="fecha2">Fecha:</label>
+                        <input type="date" id="fecha2" name="fecha2">
 
-                        <label for="precioventa">Precio de Venta (L. 00.00):</label>
-                        <input type="text" id="precioventa" name="precioventa" placeholder="L. 00.00">
+                        <label for="precioventa2">Precio de Venta (L. 00.00):</label>
+                        <input type="number" id="precioventa2" name="precioventa2" placeholder="L. 00.00">
 
-                        <label for="estado">Estado:</label>
-                        <select id="estado" name="estado">
-                            <option value="activo">Activo</option>
-                            <option value="desactivo">Desactivo</option>
+                        <label for="estado2">Estado:</label>
+                        <select id="estado2" name="estado2">
+                            <option value="Activo">Activo</option>
+                            <option value="Desactivo">Desactivo</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="buttons">
-                    <button id="aceptar">Aceptar</button>
-                    <button id="cancelar">Cancelar</button>
+                    <button id="aceptarModificar">Aceptar</button>
+                    <button id="cancelar" onclick="closeModificarModal()">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -368,19 +321,22 @@
             <h2>Confirmación de Eliminación</h2>
             <hr>
 
-            <p>¿Está seguro de que desea eliminar este cambio? Esta acción es permanente.</p>
+            <p>¿Está seguro de que desea eliminar este producto? Esta acción es permanente.</p>
 
             <div class="buttons">
-                <button id="confirmarEliminar" onclick="eliminarCambio()">Confirmar</button>
+                <button id="confirmarEliminar">Confirmar</button>
                 <button id="cancelarEliminar" onclick="closeEliminarModal()">Cancelar</button>
             </div>
         </div>
     </div>
 
     <script>
-        function openEliminarModal() {
+        function openEliminarModal(data) {
+
             var modalEliminar = document.getElementById('myModal_Eliminar');
             modalEliminar.style.display = 'block';
+            localStorage["idP"] = data;
+
         }
 
         function closeEliminarModal() {
@@ -401,15 +357,405 @@
 
 </body>
 <script>
-    function openModificarModal() {
+    function openModificarModal(data) {
+        console.log("Hola");
         var modalModificar = document.getElementById('myModal_Modificar');
         modalModificar.style.display = 'block';
+        localStorage["idP"] = data;
+        leerModificar(data);
     }
 
     function closeModificarModal() {
         var modalModificar = document.getElementById('myModal_Modificar');
         modalModificar.style.display = 'none';
     }
+</script>
+
+<script>
+    const Tabla = document.getElementById('TablaProductos');
+    const getBtnLO = document.getElementById('CSAdmin');
+    const Agregarbtn = document.getElementById('aceptarAgregar');
+    const Modificarbtn = document.getElementById('aceptarModificar');
+    const Eliminarbtn = document.getElementById('confirmarEliminar');
+
+    const category = document.getElementById('categoria');
+    const brand = document.getElementById('marca');
+    const productName = document.getElementById('nombre');
+    const productImage = document.getElementById('imagen1'); 
+    const productImage2 = document.getElementById('imagen2'); 
+    const productImage3 = document.getElementById('imagen3'); 
+    const productPrice = document.getElementById('precio');
+    const productPriceSale = document.getElementById('precioventa');
+    const productQuantity = document.getElementById('cantidad');
+    const productState = document.getElementById('estado');
+    const productDate = document.getElementById('fecha');
+    const productDescription = document.getElementById('descripcion');
+
+    const category2 = document.getElementById('categoria2');
+    const brand2 = document.getElementById('marca2');
+    const productName2 = document.getElementById('nombre2');
+    const productImage12 = document.getElementById('imagen12'); 
+    const productImage22 = document.getElementById('imagen22'); 
+    const productImage32 = document.getElementById('imagen32'); 
+    const productPrice2 = document.getElementById('precio2');
+    const productPriceSale2 = document.getElementById('precioventa2');
+    const productQuantity2 = document.getElementById('cantidad2');
+    const productState2 = document.getElementById('estado2');
+    const productDate2 = document.getElementById('fecha2');
+    const productDescription2 = document.getElementById('descripcion2');
+
+    getBtnLO.addEventListener('click', CerrarSesion);
+    Agregarbtn.addEventListener('click', PreSubmitData);
+    Modificarbtn.addEventListener('click', PreActualizar);
+    Eliminarbtn.addEventListener('click', Eliminar);
+
+    const baseUrl = 'https://grupolimpio-api.onrender.com';
+
+    function Eliminar() {
+        fetch(baseUrl + '/EliminarProducto', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ nombre: localStorage["idP"],}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('El producto a sido eliminado');
+            var modalEliminar = document.getElementById('myModal_Eliminar');
+            modalEliminar.style.display = 'none';
+            location.reload();
+        })
+        .catch(error => {
+            alert('No se ha podido eliminar el producto');
+        });
+    }
+
+    function Actualizar() {
+            fetch(baseUrl + '/ActualizarProducto', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nombre: productName2.value, categoria: category2.value, marca: brand2.value, imagen1: productImage12.value, 
+                    imagen2: productImage22.value, imagen3: productImage32.value, precio: +productPrice2.value, precioventa: +productPriceSale2.value,
+                    cantidad: +productQuantity2.value, estado: productState2.value, fecha: productDate2.value, descripcion: productDescription2.value,
+                    id: localStorage["idP"]}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('El producto a sido actualizado');
+                var modalModificar = document.getElementById('myModal_Modificar');
+                modalModificar.style.display = 'none';
+                location.reload();
+            })
+            .catch(error => {
+                alert('No se ha podido actualizar su informacion');
+            });
+        }
+    
+    function PreSubmitData(){
+        if(productName.value == ""){
+            alert("Ingrese el nombre del producto");
+        }
+        else if(+productPrice.value < 1){
+            alert("Ingrese el precio del producto");
+        }
+        else if(brand.value == ""){
+            alert("Ingrese la marca del producto");
+        }
+        else if(category.value == ""){
+            alert("Seleccione la categoria del producto");
+        }
+        else if(productImage.value == ""){
+            alert("Ingrese una imagen en el campo imagen1");
+        }
+        else if(productImage2.value == ""){
+            alert("Ingrese una imagen en el campo imagen2");
+        }
+        else if(productImage3.value == ""){
+            alert("Ingrese una imagen en el campo imagen3");
+        }
+        else if(+productQuantity.value < 1){
+            alert("Ingrese la cantidad del producto");
+        }
+        else if(productDescription.value == ""){
+            alert("Ingrese la descripcion del producto");
+        }
+        else if(productDate.value == ""){
+            alert("Ingrese la fecha del producto");
+        }
+        else if(+productPriceSale.value < 1){
+            alert("Ingrese el precio de venta del producto");
+        }
+        else if(productState.value == ""){
+            alert("Seleccione el estado del servicio");
+        }
+        else{
+            submitData();
+        }
+    }
+
+    function PreActualizar(){
+        if(productName2.value == ""){
+            alert("Ingrese el nombre del producto");
+        }
+        else if(+productPrice2.value < 1){
+            alert("Ingrese el precio del producto");
+        }
+        else if(brand2.value == ""){
+            alert("Ingrese la marca del producto");
+        }
+        else if(category2.value == ""){
+            alert("Seleccione la categoria del producto");
+        }
+        else if(productImage12.value == ""){
+            alert("Ingrese una imagen en el campo imagen1");
+        }
+        else if(productImage22.value == ""){
+            alert("Ingrese una imagen en el campo imagen2");
+        }
+        else if(productImage32.value == ""){
+            alert("Ingrese una imagen en el campo imagen3");
+        }
+        else if(+productQuantity2.value < 1){
+            alert("Ingrese la cantidad del producto");
+        }
+        else if(productDescription2.value == ""){
+            alert("Ingrese la descripcion del producto");
+        }
+        else if(productDate2.value == ""){
+            alert("Ingrese la fecha del producto");
+        }
+        else if(+productPriceSale2.value < 1){
+            alert("Ingrese el precio de venta del producto");
+        }
+        else if(productState2.value == ""){
+            alert("Seleccione el estado del producto");
+        }
+        else{
+            Actualizar();
+        }
+    }
+
+    function CerrarSesion() {
+      fetch(baseUrl + '/logOut', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.msg == "log out") {
+            alert('Se ha cerrrado sesion');
+            window.location.href = "index.html";
+          } else {
+
+          }
+        })
+        .catch(error => {
+          alert('No se ha podido cerrar sesion');
+        });
+    }
+
+    function submitData() {
+        fetch(baseUrl + '/submitProducto', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ nombre: productName.value, categoria: category.value, marca: brand.value, imagen1: productImage.value, 
+                imagen2: productImage2.value, imagen3: productImage3.value, precio: +productPrice.value, cantidad: +productQuantity.value,
+                precioventa: +productPriceSale.value, fecha: productDate.value, descripcion: productDescription.value, estado: productState.value}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            Tabla.innerHTML += `
+            <tbody>
+                <tr>
+                    <td>`+data.id+`</td>
+                    <td>
+                        <h4>`+productName.value+`</h4>
+                    </td>
+                    <td>
+                        L. `+productPrice.value+`
+                    </td>
+                    <td>
+                        `+brand.value+`
+                    </td>
+                    <td>
+                        `+category.value+`
+                    </td>
+                    <td>
+                        <div class="client-img-catalogo bg-img-tabla"
+                            style="background-image: url(`+productImage.value+`)">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="client-img-catalogo bg-img-tabla"
+                            style="background-image: url(`+productImage2.value+`)">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="client-img-catalogo bg-img-tabla"
+                            style="background-image: url(`+productImage3.value+`)">
+                        </div>
+                    </td>
+                    <td>
+                        <p>`+productDescription.value+`</p>
+                    </td>
+                    <td>
+                        `+productDate.value+`
+                    </td>
+                    <td>
+                        L. `+productPriceSale.value+`
+                    </td>
+                    <td>
+                        `+productState.value+`
+                    </td>
+                    <td>
+                        <div class="actions">
+
+                            <button id="openForm" onclick=openModificarModal("`+data.id+`")>
+                                <img src="Img_Admin/Boton-Editar.Png" alt="Agregar">
+                            </button>
+                    
+                            <button id="openForm" onclick=openEliminarModal("`+data.id+`")>
+                                <img src="img_admin/basura.png" alt="Eliminar">
+                            </button>
+
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            `
+            alert('Producto creado exitosamente');
+            category.value = "";
+            brand.value = "";
+            productName.value = "";
+            productImage.value = "";
+            productImage2.value = ""; 
+            productImage3.value = ""; 
+            productPrice.value = "";
+            productPriceSale.value = "";
+            productQuantity.value = "";
+            productState.value = "";
+            productDate.value = "";
+            productDescription.value = "";
+        })
+        .catch(error => {
+            alert('Error Creando Usuario'+ error);
+        });
+    }
+
+    function leerProducto() {
+            fetch(baseUrl + '/selectProductos', {
+                method: 'GET',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                Tabla.innerHTML += ``;
+                for(var i = 0; i < data.length; i++){
+                    var idtb = data[i].id;
+                    Tabla.innerHTML += `
+                    <tbody>
+                        <tr>
+                            <td>`+data[i].id+`</td>
+                            <td>
+                                <h4>`+data[i].nombre+`</h4>
+                            </td>
+                            <td>
+                                L. `+data[i].precio+`
+                            </td>
+                            <td>
+                                `+data[i].marca+`
+                            </td>
+                            <td>
+                                `+data[i].categoria+`
+                            </td>
+                            <td>
+                                <div class="client-img-catalogo bg-img-tabla"
+                                    style="background-image: url(`+data[i].imagen1+`)">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="client-img-catalogo bg-img-tabla"
+                                    style="background-image: url(`+data[i].imagen2+`)">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="client-img-catalogo bg-img-tabla"
+                                    style="background-image: url(`+data[i].imagen3+`)">
+                                </div>
+                            </td>
+                            <td>
+                                <p>`+data[i].descripcion+`</p>
+                            </td>
+                            <td>
+                                `+data[i].fecha+`
+                            </td>
+                            <td>
+                                L. `+data[i].precioventa+`
+                            </td>
+                            <td>
+                                `+data[i].estado+`
+                            </td>
+                            <td>
+                                <div class="actions">
+
+                                    <button id="openForm" onclick=openModificarModal("`+data[i].id+`")>
+                                        <img src="Img_Admin/Boton-Editar.Png" alt="Agregar">
+                                    </button>
+                            
+                                    <button id="openForm" onclick=openEliminarModal("`+data[i].id+`")>
+                                        <img src="img_admin/basura.png" alt="Eliminar">
+                                    </button>
+
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    `
+                }
+            })
+            .catch(error => {
+                alert(':('+error);
+            });          
+        }
+
+        function leerModificar(datas) {
+            fetch(baseUrl + '/selectProducto', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: datas}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                category2.value = data.categoria;
+                brand2.value = data.marca;
+                productName2.value = data.nombre;
+                productImage12.value = data.imagen1;
+                productImage22.value = data.imagen2;
+                productImage32.value = data.imagen3;
+                productPrice2.value = data.precio;
+                productQuantity2.value = data.cantidad;
+                productPriceSale2.value = data.precioventa;
+                productDate2.value = data.fecha;
+                productDescription2.value = data.descripcion;
+                productState2.value = data.estado;
+            })
+            .catch(error => {
+                alert(':('+error);
+            });
+        }
 </script>
 
 </html>

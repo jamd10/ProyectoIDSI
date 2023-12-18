@@ -40,7 +40,7 @@
     <link rel="icon" href="img/logo1.png">
 </head>
 
-<body class="font-[Poppins] bg-white h-screen">
+<body class="font-[Poppins] bg-white h-screen" onload="leerProducto()">
     <div id="loader" class="loader">
         <div class="spinner"></div>
     </div>
@@ -180,33 +180,7 @@
                                     <!-- Agrega más categorías según sea necesario -->
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="marca">Marca:</label>
-                                <select class="form-control" id="marca">
-                                    <option value="">Seleccionar</option>
-                                    <option value="CleanStar">CleanStar</option>
-                                    <option value="PureWash">PureWash</option>
-                                    <option value="SweepPro">SweepPro</option>
-                                    <option value="Guardian">Guardian</option>
-                                    <option value="BioDefense">BioDefense</option>
-                                    <option value="SoftCare">SoftCare</option>
-                                    <option value="EcoSolutions">EcoSolutions</option>
-                                    <option value="ClearVision">ClearVision</option>
-                                    <option value="AromaFresh">AromaFresh</option>
-                                    <option value="SensitiveCare">SensitiveCare</option>
-                                    <option value="ScrubMaster">ScrubMaster</option>
-                                    <option value="GentleClean">GentleClean</option>
-                                    <option value="BioShield">BioShield</option>
-                                    <option value="NatureSoothe">NatureSoothe</option>
-                                    <option value="SurfacePro">SurfacePro</option>
-                                    <option value="LuxClean">LuxClean</option>
-                                    <option value="SpongePro">SpongePro</option>
-                                    <option value="AquaShield">AquaShield</option>
-                                    <option value="SilkCare">SilkCare</option>
-                                    <option value="EcoSolutions">EcoSolutions</option>
-                                    <!-- Agrega más marcas según sea necesario -->
-                                </select>
-                            </div>
+                            
                             <div class="form-group">
                                 <label for="precio">Precio:</label>
                                 <input type="range" class="form-control-range" id="precio" min="1" max="1001" step="10"
