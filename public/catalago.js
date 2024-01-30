@@ -18,21 +18,21 @@ function leerProducto() {
     fetch(baseUrl + '/selectProductos', {
         method: 'GET',
         headers: {
-        'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
         },
     })
-    .then(response => response.json())
-    .then(data => {
-        productos = data;
-        productosFiltrados = productos;
-        mostrarProductos(productosFiltrados, paginaActual);
-        // console.log(productos[0].imagen1);
-    })
-    .catch(error => {
-        alert(':('+error);
-    });
+        .then(response => response.json())
+        .then(data => {
+            productos = data;
+            productosFiltrados = productos;
+            mostrarProductos(productosFiltrados, paginaActual);
+            // console.log(productos[0].imagen1);
+        })
+        .catch(error => {
+            alert(':(' + error);
+        });
 
-    
+
 }
 
 
@@ -94,7 +94,7 @@ function aplicarFiltros() {
         var coincidePrecio = producto.precio <= precioSeleccionado;
         var coincideCategoria = categoriaSeleccionada === '' || producto.categoria.toLowerCase().trim() === categoriaSeleccionada.toLowerCase().trim();
         var coincideBusqueda = busqueda === '' || busquedaProducto(busqueda).includes(producto);
-        return coincidePrecio  && coincideCategoria && coincideBusqueda;
+        return coincidePrecio && coincideCategoria && coincideBusqueda;
     });
     // Reiniciar la página actual al aplicar filtros
     paginaActual = 1;
@@ -139,6 +139,9 @@ function cambiarCantidadDetalle(id, cambio, maxCantidadDetalle) {
 }
 // Funciones para mostrar productos y detalles
 function mostrarProductos(productos, pagina) {
+    // Limpiar el carrito en el almacenamiento local
+// localStorage.removeItem('carrito');
+
     // Cerrar el detalle del producto
     if (typeof restoreContent === 'function') {
         restoreContent();
@@ -175,18 +178,46 @@ function mostrarProductos(productos, pagina) {
     mostrarBotonesPaginacion(productos, pagina);
 }
 // Funcion para mostrar detalles de los productos
+function actualizarCantidadProductosEnCarrito() {
+    var cantidadProductos = carrito.reduce(function (total, producto) {
+        return total + producto.cantidad;
+    }, 0);
+
+    // Actualiza la cantidad de productos en el HTML
+    document.getElementById('cantidadCarrito').textContent = cantidadProductos;
+}
+
+// Cargar el carrito desde el almacenamiento local al inicio
+// Intenta obtener el carrito desde el almacenamiento local
+var carritoGuardado = localStorage.getItem('carrito');
+var carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
+
+// Actualiza la cantidad en el carrito en el HTML
+document.getElementById('cantidadCarrito').textContent = carrito.length;
+
+
+
+var estadoCarrito = {};
+
+function cambiarCantidadDetalle(id, cambio, maxCantidad) {
+    var cantidadTemporal = 1;
+    cantidadTemporal += cambio;
+    document.getElementById('spinnerDetalle' + id).textContent = cantidadTemporal;
+}
+
 function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
-    var productoSeleccionado = productos.find(p => p.id === id); // Encuentra el producto por id
+    var productoSeleccionado = productos.find(p => p.id === id);
     var mainContainer = document.getElementById('catalogoProductos');
     var filtersContainer = document.querySelector('.col-md-3');
     var paginationContainer = document.getElementById('botones');
-    var publicidad = document.querySelector('.publicidad'); // Obtén el elemento de publicidad
+    var publicidad = document.querySelector('.publicidad');
     var currentContent = mainContainer.innerHTML;
     var currentFilters = filtersContainer.innerHTML;
     var currentPagination = paginationContainer.innerHTML;
+
     var newContent = `
     <div class="row justify-content-center" style="margin-top: 50px;">
-        <div class="col-lg-3 col-md-12 mb-3 d-flex flex-lg-column flex-md-row align-items-center" style="flex: 0 0 300px;"> <!-- Ajuste del tamaño fijo -->
+        <div class="col-lg-3 col-md-12 mb-3 d-flex flex-lg-column flex-md-row align-items-center" style="flex: 0 0 300px;">
             <img src="${imagen}" class="img-fluid mb-2 image-thumbnail" alt="${nombre}" onclick="changeImage('${imagen}')">
             <img src="${productoSeleccionado.imagen2}" class="img-fluid mb-2 image-thumbnail" alt="Imagen 1" onclick="changeImage('${productoSeleccionado.imagen2}')">
             <img src="${productoSeleccionado.imagen3}" class="img-fluid mb-2 image-thumbnail" alt="Imagen 2" onclick="changeImage('${productoSeleccionado.imagen3}')">
@@ -216,21 +247,25 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
         </div>
     </div>
     `;
+
     filtersContainer.style.display = 'none';
     paginationContainer.style.display = 'none';
-    publicidad.style.display = 'block'; // Muestra la publicidad
-    mainContainer.style.margin = '0 auto'; // Ajuste de margen para centrar el contenido
+    publicidad.style.display = 'block';
+    mainContainer.style.margin = '0 auto';
     mainContainer.innerHTML = newContent;
+
     window.restoreContent = function () {
         filtersContainer.style.display = 'block';
         paginationContainer.style.display = 'block';
-        publicidad.style.display = 'none'; // Oculta la publicidad
-        mainContainer.style.margin = '0'; // Restaurar el margen original
+        publicidad.style.display = 'none';
+        mainContainer.style.margin = '0';
         mainContainer.innerHTML = currentContent;
     }
+
     window.changeImage = function (newImage) {
         document.querySelector('#mainImage').src = newImage;
     }
+
     var images = document.querySelectorAll('.image-thumbnail');
     images.forEach(function (image) {
         image.style.width = '100px';
@@ -253,10 +288,12 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
             changeImage(image.src);
         }
     });
+
     var mainImage = document.querySelector('#mainImage');
     mainImage.style.width = '900px';
     mainImage.style.height = '600px';
     mainImage.style.objectFit = 'contain';
+
     var spinner = document.querySelector('.quantity-control .form-control');
     var button = document.querySelector('.quantity-control .btn');
     spinner.style.width = button.offsetWidth + 'px';
@@ -264,6 +301,7 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
     spinner.style.display = 'flex';
     spinner.style.justifyContent = 'center';
     spinner.style.alignItems = 'center';
+
     var decrementButton = document.getElementById('decrementButton');
     var incrementButton = document.getElementById('incrementButton');
     decrementButton.style.width = spinner.offsetWidth + 'px';
@@ -276,27 +314,82 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
     incrementButton.style.display = 'flex';
     incrementButton.style.justifyContent = 'center';
     incrementButton.style.alignItems = 'center';
+
     var quantityControl = document.querySelector('.quantity-control');
     quantityControl.style.width = (button.offsetWidth * 3) + 'px';
+
     var addToCartButton = document.querySelector('.btn.btn-success');
     var cancelButton = document.querySelector('.btn.btn-danger');
     addToCartButton.style.width = '100%';
     cancelButton.style.width = '100%';
+
     if (window.innerWidth <= 768) {
         mainContainer.style.marginBottom = '50px';
     }
+
     var descriptionCard = document.querySelector('.description');
     descriptionCard.style.width = '100%';
     document.querySelector('h1').textContent = nombre;
+
     window.restoreContent = function () {
         filtersContainer.style.display = 'block';
         paginationContainer.style.display = 'block';
-        publicidad.style.display = 'none'; // Oculta la publicidad
-        mainContainer.style.margin = '0'; // Restaurar el margen original
+        publicidad.style.display = 'none';
+        mainContainer.style.margin = '0';
         mainContainer.innerHTML = currentContent;
-        document.querySelector('h1').textContent = "Catálogo"; // Actualiza el encabezado a "Servicios"
+        document.querySelector('h1').textContent = "Catálogo";
     }
+
+    document.querySelector('.btn.btn-success').onclick = function () {
+        var cantidadActualizada = parseInt(document.getElementById('spinnerDetalle' + id).textContent);
+
+        if (estadoCarrito[id]) {
+            if ((estadoCarrito[id].cantidad + cantidadActualizada) > maxCantidad) {
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡No hay suficientes productos en existencia!',
+                    text: `La cantidad máxima permitida es ${maxCantidad}.`,
+                    confirmButtonColor: '#e44d26',
+                    confirmButtonText: '¡Entendido!',
+                });
+                return;
+            }
+            estadoCarrito[id].cantidad += cantidadActualizada;
+        } else {
+            estadoCarrito[id] = {
+                id: id,
+                nombre: nombre,
+                cantidad: cantidadActualizada,
+                precioTotal: precio * cantidadActualizada
+            };
+            carrito.push(estadoCarrito[id]);
+        }
+
+        document.getElementById('cantidadCarrito').textContent = carrito.length;
+
+        var precioCarrito = 0;
+        carrito.forEach(function (producto) {
+            precioCarrito += producto.precioTotal;
+        });
+
+        Swal.fire({
+            icon: 'success',
+            title: '¡Producto añadido al carrito con éxito!',
+            text: `Cantidad: ${cantidadActualizada}, Precio total: L. ${precioCarrito}`,
+            confirmButtonColor: '#28be00',
+            confirmButtonText: '¡Entendido!',
+        });
+
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        
+    };
+    // ... (código para añadir productos al carrito)
+
+    // Luego de añadir o actualizar productos, llama a la función
+    actualizarCantidadProductosEnCarrito();
+
 }
+
 // Funciones para la paginación
 function mostrarBotonesPaginacion(productos, pagina) {
     var botones = document.getElementById('botones');

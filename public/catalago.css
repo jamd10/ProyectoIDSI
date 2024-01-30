@@ -217,3 +217,11 @@
         font-size: 4em;
     }
 }
+/*Carrito*/
+/* Estilo del contador en el carrito */
+#cantidadCarrito {
+    background-color: #23c01e; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    padding: 4px 8px; /* Espaciado interno */
+    border-radius: 25%; /* Borde redondeado para un aspecto más agradable */
+}

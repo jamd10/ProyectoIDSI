@@ -69,8 +69,10 @@
                     <li>
                         <a class="menu-link" href="#">
                             <ion-icon name="cart" class="text-black text-xl"></ion-icon>Carrito
+                            <span id="cantidadCarrito" class="badge badge-danger ml-1">0</span>
                         </a>
                     </li>
+
                     <li class="search-container">
                         <form action="#" method="get">
                             <input class="search-bar" type="text" placeholder="Buscar...">
@@ -180,7 +182,7 @@
                                     <!-- Agrega más categorías según sea necesario -->
                                 </select>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="precio">Precio:</label>
                                 <input type="range" class="form-control-range" id="precio" min="1" max="1001" step="10"
@@ -287,6 +289,8 @@
     <script src="btn.js"></script>
     <script src="catalago.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </body>
 
 </html>
