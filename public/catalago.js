@@ -161,9 +161,9 @@ function mostrarProductos(productos, pagina) {
                         <h5 class="card-title" style="font-size: 16px; margin-bottom: 0; color: #000; font-weight: bold;">${producto.nombre}</h5>
                         <p class="card-text" style="color: #ff8c00; margin-bottom: 5px; margin-top: 5px; font-size: 18px; font-weight: bold;">Precio: L. ${producto.precio}</p>
                         <div class="input-group mb-1" style="margin-bottom: 5px; margin-top: 5px;">
-                            <button class="btn btn-outline-success" type="button" style="height: 30px; font-size: 12px;" onclick="event.stopPropagation(); cambiarCantidad(${producto.id}, -1, ${producto.cantidad})">-</button>
+                            <button class="btn btn-outline-success" type="button" style="height: 30px; font-size: 12px;" onclick="event.stopPropagation(); cambiarCantidad('${producto.id}', -1, ${producto.cantidad})">-</button>
                             <span class="form-control text-center" id="spinner${producto.id}" style="height: 30px; padding: 0; margin: 0 5px;">1</span>
-                            <button class="btn btn-outline-success" type="button" style="height: 30px; font-size: 12px;" onclick="event.stopPropagation(); cambiarCantidad(${producto.id}, 1, ${producto.cantidad})">+</button>
+                            <button class="btn btn-outline-success" type="button" style="height: 30px; font-size: 12px;" onclick="event.stopPropagation(); cambiarCantidad('${producto.id}', 1, ${producto.cantidad})">+</button>
                         </div>
                         <a href="#" class="btn btn-primary" style="width: 100%; padding: 5px 0; margin-top: 5px;">Añadir al carrito</a>
                     </div>
