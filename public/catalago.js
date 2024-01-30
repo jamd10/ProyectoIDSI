@@ -131,6 +131,7 @@ function cambiarCantidad(id, change, maxCantidad) {
     }
 }
 function cambiarCantidadDetalle(id, cambio, maxCantidadDetalle) {
+    console.log(cambio);
     var spinnerDetalle = document.getElementById('spinnerDetalle' + id);
     var nuevoValor = parseInt(spinnerDetalle.textContent) + cambio;
     if (nuevoValor >= 1 && nuevoValor <= maxCantidadDetalle) {
@@ -199,12 +200,6 @@ document.getElementById('cantidadCarrito').textContent = carrito.length;
 
 var estadoCarrito = {};
 
-function cambiarCantidadDetalle(id, cambio, maxCantidad) {
-    var cantidadTemporal = 1;
-    cantidadTemporal += cambio;
-    document.getElementById('spinnerDetalle' + id).textContent = cantidadTemporal;
-}
-
 function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
     var productoSeleccionado = productos.find(p => p.id === id);
     var mainContainer = document.getElementById('catalogoProductos');
@@ -232,9 +227,9 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
                     <h1 class="product-title" style="font-size: 36px; font-weight: bold; margin-bottom: 20px;">${nombre}</h1>
                     <p style="font-size: 30px; color: #ff8c00; margin-bottom: 20px;">Precio: L. ${precio}</p>
                     <div class="quantity-control mb-3 d-flex align-items-center" style="width: ${nombre.length * 15}px; height: 60px; margin-bottom: 20px;">
-                        <button class="btn btn-outline-success" type="button" id="decrementButton" onclick="event.stopPropagation(); cambiarCantidadDetalle(${id}, -1, ${maxCantidad})" style="background-color: white;">-</button>
+                        <button class="btn btn-outline-success" type="button" id="decrementButton" onclick="cambiarCantidadDetalle('${id}', -1, ${maxCantidad})" style="background-color: white;">-</button>
                         <span class="form-control text-center border-success" id="spinnerDetalle${id}" style="background-color: white;">1</span>
-                        <button class="btn btn-outline-success" type="button" id="incrementButton" onclick="event.stopPropagation(); cambiarCantidadDetalle(${id}, 1, ${maxCantidad})" style="background-color: white);">+</button>
+                        <button class="btn btn-outline-success" type="button" id="incrementButton" onclick="cambiarCantidadDetalle('${id}', 1, ${maxCantidad})" style="background-color: white);">+</button>
                     </div>
                     <a href="#" class="btn btn-success mb-2" style="width: ${nombre.length * 15}px; height: 40px; background-color: rgba(38, 190, 0, 0.6);" onclick="event.stopPropagation();">Añadir al carrito</a>
                     <button class="btn btn-danger" style="width: ${nombre.length * 15}px; height: 40px; margin-bottom: 20px;" onclick="restoreContent()">Cancelar</button>
