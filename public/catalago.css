@@ -217,11 +217,107 @@
         font-size: 4em;
     }
 }
+
 /*Carrito*/
 /* Estilo del contador en el carrito */
 #cantidadCarrito {
-    background-color: #23c01e; /* Color de fondo */
-    color: #fff; /* Color del texto */
-    padding: 4px 8px; /* Espaciado interno */
-    border-radius: 25%; /* Borde redondeado para un aspecto más agradable */
+    background-color: #23c01e;
+    /* Color de fondo */
+    color: #fff;
+    /* Color del texto */
+    padding: 4px 8px;
+    /* Espaciado interno */
+    border-radius: 25%;
+    /* Borde redondeado para un aspecto más agradable */
+}
+
+/*carrito*/
+/* Estilos para el panel del carrito de compras */
+.carrito-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    /* Cambiado a altura del 100% */
+    width: 300px;
+    /* Ancho del panel */
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.carrito-panel.open {
+    transform: translateX(0);
+}
+
+.carrito-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.carrito-header h3 {
+    margin: 0;
+}
+
+.carrito-header ion-icon {
+    cursor: pointer;
+}
+
+.productos-carrito {
+    padding: 10px;
+    overflow-y: auto;
+    max-height: calc(100% - 120px);
+    /* Ajustado para que calcule la altura correctamente */
+}
+
+.carrito-footer {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.carrito-footer p {
+    margin: 0;
+}
+
+#totalPagar {
+    font-weight: bold;
+    color: #23c01e;
+    /* Color verde */
+}
+
+.botonCarrito {
+    width: 100%;
+    /* Ocupar todo el ancho del contenedor */
+    background-color: #23c01e;
+    /* Color verde personalizado */
+    color: #fff;
+    /* Texto en color blanco */
+    padding: 10px;
+    /* Espaciado interno del botón */
+    border: none;
+    /* Eliminar bordes */
+    cursor: pointer;
+    /* Cambiar el cursor al pasar sobre el botón */
+    border-radius: 5px;
+    /* Esquinas redondeadas */
+}
+
+.botonCarrito:hover {
+    background-color: #1a7d14;
+    /* Cambiar color al pasar el ratón sobre el botón */
+}
+
+/* Estilos para las imágenes del carrito */
+.carrito-imagen {
+    width: 50px;
+    /* Puedes ajustar el ancho según sea necesario */
+    height: auto;
+    /* Mantener la proporción original de la imagen */
+    margin-right: 10px;
+    /* Espaciado entre la imagen y el texto */
 }

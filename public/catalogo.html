@@ -66,12 +66,32 @@
                     <li>
                         <a class="menu-link" href="about.html">Sobre Nosotros</a>
                     </li>
+                    <!-- Botón del carrito de compras -->
                     <li>
-                        <a class="menu-link" href="#">
+                        <a class="menu-link" href="#" onclick="mostrarCarrito()">
                             <ion-icon name="cart" class="text-black text-xl"></ion-icon>Carrito
                             <span id="cantidadCarrito" class="badge badge-danger ml-1">0</span>
                         </a>
                     </li>
+
+                    <!-- Panel del carrito de compras -->
+                    <div id="carritoPanel" class="carrito-panel">
+                        <!-- Dentro del HTML del panel del carrito -->
+                        <div class="carrito-header">
+                            <h3>Carrito de compras</h3>
+                            <ion-icon name="close-circle" onclick="ocultarCarrito()"></ion-icon>
+                        </div>
+
+                        <div id="productosCarrito" class="productos-carrito">
+                            <!-- Aquí se mostrarán los productos en el carrito -->
+                        </div>
+                        <div class="carrito-footer">
+                            <p>Total a pagar: <span id="totalPagar">LPS.0</span></p>
+                            <button class="botonCarrito" onclick="realizarCompra()">Realizar compra</button>
+                        </div>
+                    </div>
+
+
 
                     <li class="search-container">
                         <form action="#" method="get">

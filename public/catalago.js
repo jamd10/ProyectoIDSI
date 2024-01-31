@@ -141,7 +141,7 @@ function cambiarCantidadDetalle(id, cambio, maxCantidadDetalle) {
 // Funciones para mostrar productos y detalles
 function mostrarProductos(productos, pagina) {
     // Limpiar el carrito en el almacenamiento local
-// localStorage.removeItem('carrito');
+    localStorage.removeItem('carrito');
 
     // Cerrar el detalle del producto
     if (typeof restoreContent === 'function') {
@@ -355,7 +355,8 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
                 id: id,
                 nombre: nombre,
                 cantidad: cantidadActualizada,
-                precioTotal: precio * cantidadActualizada
+                precioTotal: precio * cantidadActualizada,
+                imagen: imagen
             };
             carrito.push(estadoCarrito[id]);
         }
@@ -376,14 +377,14 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
         });
 
         localStorage.setItem('carrito', JSON.stringify(carrito));
-        
+
+        // Actualizar el carrito en el panel
+        mostrarCarrito();
     };
-    // ... (código para añadir productos al carrito)
 
-    // Luego de añadir o actualizar productos, llama a la función
     actualizarCantidadProductosEnCarrito();
-
 }
+
 
 // Funciones para la paginación
 function mostrarBotonesPaginacion(productos, pagina) {
@@ -403,3 +404,58 @@ function cambiarPagina(pagina) {
 document.addEventListener('DOMContentLoaded', function () {
     inicializarCatalogo();
 });
+// carrito
+// Función para mostrar el carrito
+function mostrarCarrito() {
+    var carritoPanel = document.getElementById('carritoPanel');
+    carritoPanel.classList.add('open');
+
+    // Obtener el contenedor donde se mostrarán los productos
+    var productosCarritoContainer = document.getElementById('productosCarrito');
+
+    // Limpiar el contenido actual
+    productosCarritoContainer.innerHTML = '';
+
+    // Tamaño fijo para las imágenes del carrito
+    var imagenCarritoStyle = 'width: 80px; height: 80px; object-fit: contain; margin-right: 20px; border: 1px solid #ddd;'; // Ajusta el tamaño según tus preferencias
+
+    // Mostrar cada producto en el carrito
+    carrito.forEach(function (producto) {
+        var productoHTML = `
+            <div class="producto-carrito" style="display: flex; align-items: center; padding: 10px; border-bottom: 1px solid #ddd;">
+                <img src="${producto.imagen}" alt="${producto.nombre}" class="img-thumbnail carrito-imagen" style="${imagenCarritoStyle}">
+                <div>
+                    <p style="font-weight: bold; margin-bottom: 5px;">${producto.nombre}</p>
+                    <p style="margin-bottom: 5px;">Cantidad: ${producto.cantidad}</p>
+                    <p style="color: green;">Precio total: L. ${producto.precioTotal}</p>
+                </div>
+            </div>
+        `;
+        productosCarritoContainer.innerHTML += productoHTML;
+    });
+
+    // Calcular y mostrar el total a pagar
+    calcularTotalPagar();
+}
+
+
+
+
+
+// Función para calcular y mostrar el total a pagar
+function calcularTotalPagar() {
+    var totalPagar = 0;
+
+    // Calcular el total sumando los precios totales de cada producto en el carrito
+    carrito.forEach(function (producto) {
+        totalPagar += producto.precioTotal;
+    });
+
+    // Actualizar el contenido HTML con el total a pagar
+    document.getElementById('totalPagar').textContent = 'L.' + totalPagar.toFixed(2);
+}
+// Función para ocultar el carrito
+function ocultarCarrito() {
+    var carritoPanel = document.getElementById('carritoPanel');
+    carritoPanel.classList.remove('open');
+}
