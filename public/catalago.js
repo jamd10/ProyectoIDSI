@@ -385,27 +385,12 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
     actualizarCantidadProductosEnCarrito();
 }
 
-
-// Funciones para la paginación
-function mostrarBotonesPaginacion(productos, pagina) {
-    var botones = document.getElementById('botones');
-    botones.innerHTML = '';
-    var numeroPaginas = Math.ceil(productos.length / productosPorPagina);
-    for (var i = 1; i <= numeroPaginas; i++) {
-        var botonHTML = `<button class="btn btn-primary" onclick="cambiarPagina(${i})">${i}</button>`;
-        botones.innerHTML += botonHTML;
-    }
+// Función para ocultar el carrito
+function ocultarCarrito() {
+    var carritoPanel = document.getElementById('carritoPanel');
+    carritoPanel.classList.remove('open');
 }
-function cambiarPagina(pagina) {
-    paginaActual = pagina;
-    mostrarProductos(productosFiltrados, paginaActual);
-}
-// Inicializar catálogo al cargar la página
-document.addEventListener('DOMContentLoaded', function () {
-    inicializarCatalogo();
-});
-// carrito
-// Función para mostrar el carrito
+// Función para mostrar el carrito con el nuevo diseño
 function mostrarCarrito() {
     var carritoPanel = document.getElementById('carritoPanel');
     carritoPanel.classList.add('open');
@@ -424,10 +409,16 @@ function mostrarCarrito() {
         var productoHTML = `
             <div class="producto-carrito" style="display: flex; align-items: center; padding: 10px; border-bottom: 1px solid #ddd;">
                 <img src="${producto.imagen}" alt="${producto.nombre}" class="img-thumbnail carrito-imagen" style="${imagenCarritoStyle}">
-                <div>
+                <div style="flex: 1;">
                     <p style="font-weight: bold; margin-bottom: 5px;">${producto.nombre}</p>
-                    <p style="margin-bottom: 5px;">Cantidad: ${producto.cantidad}</p>
-                    <p style="color: green;">Precio total: L. ${producto.precioTotal}</p>
+                    <p style="margin-bottom: 5px;">Cantidad: ${producto.cantidad} (Max: ${producto.maxCantidad})</p>
+                    <div class="quantity-control d-flex align-items-center" style="margin-bottom: 5px;">
+                        <button class="btn btn-outline-success" type="button" onclick="cambiarCantidadCarrito('${producto.id}', -1, ${producto.maxCantidad})">-</button>
+                        <span class="form-control text-center border-success" id="spinnerCarrito${producto.id}" style="margin: 0 5px; font-size: 12px;">${producto.cantidad}</span>
+                        <button class="btn btn-outline-success" type="button" onclick="cambiarCantidadCarrito('${producto.id}', 1, ${producto.maxCantidad})">+</button>
+                    </div>
+                    <p style="color: green; margin-bottom: 5px;">Precio total: L. ${producto.precioTotal.toFixed(2)}</p>
+                    <button class="btn btn-danger btn-block" onclick="eliminarProductoCarrito('${producto.id}')">Eliminar</button>
                 </div>
             </div>
         `;
@@ -438,9 +429,58 @@ function mostrarCarrito() {
     calcularTotalPagar();
 }
 
+function cambiarCantidadCarrito(id, cantidad, maxCantidad) {
+    var productoCarrito = carrito.find(producto => producto.id === id);
 
+    // Verificar límites de cantidad
+    if (cantidad === -1 && productoCarrito.cantidad === 1) {
+        return; // Evitar cantidad negativa o cero
+    }
 
+    if (cantidad === 1 && productoCarrito.cantidad === maxCantidad) {
+        Swal.fire({
+            icon: 'error',
+            title: '¡No puedes añadir más productos!',
+            text: `La cantidad máxima permitida es ${maxCantidad}.`,
+            confirmButtonColor: '#e44d26',
+            confirmButtonText: '¡Entendido!',
+        });
+        return; // Evitar exceder la cantidad máxima
+    }
 
+    // Actualizar la cantidad del producto
+    productoCarrito.cantidad += cantidad;
+
+    // Actualizar el spinner
+    document.getElementById(`spinnerCarrito${id}`).textContent = productoCarrito.cantidad;
+
+    // Actualizar el precio total
+    productoCarrito.precioTotal = productoCarrito.precio * productoCarrito.cantidad;
+
+    // Actualizar el carrito en el almacenamiento local
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+    // Calcular y mostrar el total a pagar
+    calcularTotalPagar();
+
+    // Actualizar el carrito en el panel
+    mostrarCarrito();
+}
+
+// Función para eliminar un producto del carrito
+function eliminarProductoCarrito(id) {
+    // Filtrar el carrito para excluir el producto con el ID dado
+    carrito = carrito.filter(producto => producto.id !== id);
+
+    // Actualizar el carrito en el almacenamiento local
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+    // Actualizar el carrito en el panel
+    mostrarCarrito();
+
+    // Actualizar la cantidad de productos en el carrito
+    actualizarCantidadProductosEnCarrito();
+}
 
 // Función para calcular y mostrar el total a pagar
 function calcularTotalPagar() {
@@ -452,10 +492,5 @@ function calcularTotalPagar() {
     });
 
     // Actualizar el contenido HTML con el total a pagar
-    document.getElementById('totalPagar').textContent = 'L.' + totalPagar.toFixed(2);
-}
-// Función para ocultar el carrito
-function ocultarCarrito() {
-    var carritoPanel = document.getElementById('carritoPanel');
-    carritoPanel.classList.remove('open');
+    document.getElementById('totalPagar').textContent = 'L. ' + totalPagar.toFixed(2);
 }
