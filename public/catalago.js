@@ -138,6 +138,56 @@ function cambiarCantidadDetalle(id, cambio, maxCantidadDetalle) {
         spinnerDetalle.textContent = nuevoValor;
     }
 }
+
+function AgregarCarrito(id, nombre, imagen, precio, cantidad){
+    var cantidadActualizada = parseInt(document.getElementById('spinner' + id).textContent);
+
+    if (estadoCarrito[id]) {
+        if ((estadoCarrito[id].cantidad + cantidadActualizada) > cantidad) {
+            Swal.fire({
+                icon: 'error',
+                title: '¡No hay suficientes productos en existencia!',
+                text: `La cantidad máxima permitida es ${cantidad}.`,
+                confirmButtonColor: '#e44d26',
+                confirmButtonText: '¡Entendido!',
+            });
+            return;
+        }
+        estadoCarrito[id].cantidad += cantidadActualizada;
+    } else {
+        estadoCarrito[id] = {
+            id: id,
+            nombre: nombre,
+            maxCantidad: cantidad,
+            cantidad: cantidadActualizada,
+            precio: precio,
+            precioTotal: precio * cantidadActualizada,
+            imagen: imagen
+        };
+        carrito.push(estadoCarrito[id]);
+    }
+
+    document.getElementById('cantidadCarrito').textContent = carrito.length;
+
+    var precioCarrito = 0;
+    carrito.forEach(function (producto) {
+        precioCarrito += producto.precioTotal;
+    });
+
+    Swal.fire({
+        icon: 'success',
+        title: '¡Producto añadido al carrito con éxito!',
+        text: `Cantidad: ${cantidadActualizada}, Precio total: L. ${precioCarrito}`,
+        confirmButtonColor: '#28be00',
+        confirmButtonText: '¡Entendido!',
+    });
+
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+    // Actualizar el carrito en el panel
+    mostrarCarrito();
+}
+
 // Funciones para mostrar productos y detalles
 function mostrarProductos(productos, pagina) {
     // Limpiar el carrito en el almacenamiento local
@@ -166,10 +216,11 @@ function mostrarProductos(productos, pagina) {
                             <span class="form-control text-center" id="spinner${producto.id}" style="height: 30px; padding: 0; margin: 0 5px;">1</span>
                             <button class="btn btn-outline-success" type="button" style="height: 30px; font-size: 12px;" onclick="event.stopPropagation(); cambiarCantidad('${producto.id}', 1, ${producto.cantidad})">+</button>
                         </div>
-                        <a href="#" class="btn btn-primary" style="width: 100%; padding: 5px 0; margin-top: 5px;">Añadir al carrito</a>
+                        <a href="#" class="btn btn-primary" style="width: 100%; padding: 5px 0; margin-top: 5px;" onclick="event.stopPropagation(); AgregarCarrito('${producto.id}', '${producto.nombre}', '${producto.imagen1}', ${producto.precio}, ${producto.cantidad}); ">Añadir al carrito</a>
                     </div>
                 </div>
-            `;
+            `;       
+            actualizarCantidadProductosEnCarrito();
         } else {
             // Agregar una tarjeta de producto vacía
             productoHTML = `<div class="card invisible"></div>`;
