@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="btn.css">
     <link rel="stylesheet" href="servicios.css">
     <link rel="stylesheet" href="publicidad.css">
+    <link rel="stylesheet" href="catalago.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -67,8 +68,9 @@
                         <a class="menu-link" href="about.html">Sobre Nosotros</a>
                     </li>
                     <li>
-                        <a class="menu-link" href="#">
+                        <a class="menu-link" href="#" onclick="mostrarCarrito()">
                             <ion-icon name="cart" class="text-black text-xl"></ion-icon>Carrito
+                            <span id="cantidadCarrito" class="badge badge-danger ml-1">0</span>
                         </a>
                     </li>
                     <li class="search-container">
@@ -129,14 +131,14 @@
                             <div class="form-group">
                                 <label for="categoria">Servicio:</label>
                                 <select class="form-control" id="categoria">
-                                    
+
                                     <!-- Agrega más categorías según sea necesario -->
                                 </select>
                                 <div class="text-center">
-                                    
+
                                 </div>
                                 <div class="text-center">
-                                
+
                                 </div>
 
                                 <div class="text-center" style="margin-top: 20px;">
@@ -145,7 +147,7 @@
                                     <button type="button" class="btn btn-primary" onclick="limpiarFiltros()">Limpiar
                                         Filtros</button>
                                 </div>
-    
+
                             </div>
 
                         </form>
@@ -276,89 +278,89 @@
 
     <script>
         document.getElementById('contactForm').addEventListener('submit', function (event) {
-          event.preventDefault(); // Evitar el envío del formulario por defecto
-    
-          const nombre = document.getElementById('nombre');
-          const telefono = document.getElementById('telefono');
-          const email = document.getElementById('email');
-          const asunto = document.getElementById('asunto');
-          const mensaje = document.getElementById('mensaje');
-    
-          // Validar nombre
-          const nombreRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/;
-          if (nombre.value.trim() === '' || !nombreRegex.test(nombre.value.trim())) {
-            alert('Por favor, ingrese un nombre válido.');
-            nombre.focus();
-            return;
-          }
-    
-          // Validar teléfono
-          const telefonoRegex = /^[2-9]\d{7}$/;
-          if (telefono.value.trim() === '' || !telefonoRegex.test(telefono.value.trim())) {
-            alert('Por favor, ingrese un número de teléfono válido');
-            telefono.focus();
-            return;
-          }
-    
-          // Validar email (puedes agregar una validación de correo electrónico si es necesario)
-          if (email.value.trim() === '') {
-            alert('Por favor, ingrese una dirección de correo electrónico.');
-            email.focus();
-            return;
-          }
-    
-          // Validar asunto
-          if (asunto.value.trim() === '') {
-            alert('Por favor, ingrese el asunto.');
-            asunto.focus();
-            return;
-          }
-    
-          // Validar mensaje
-          if (mensaje.value.trim() === '') {
-            alert('Por favor, ingrese su mensaje.');
-            mensaje.focus();
-            return;
-          }
-    
-          // Añadir el código de envío de correo electrónico principal aquí
-          Email.send({
-            Host: "smtp.elasticemail.com",
-            Username: "grupomaslimpio39@gmail.com",
-            Password: "76E990FBD497ABA937D0AF30F4871241CBD5",
-            To: "grupomaslimpio39@gmail.com",
-            From: "grupomaslimpio39@gmail.com",
-            Subject: asunto.value.trim(),
-            Body: `Nombre: ${nombre.value.trim()}\nTeléfono: ${telefono.value.trim()}\nEmail: ${email.value.trim()}\nMensaje: ${mensaje.value.trim()}`
-          }).then(
-            message => {
-              // Envía el correo de agradecimiento
-              Email.send({
+            event.preventDefault(); // Evitar el envío del formulario por defecto
+
+            const nombre = document.getElementById('nombre');
+            const telefono = document.getElementById('telefono');
+            const email = document.getElementById('email');
+            const asunto = document.getElementById('asunto');
+            const mensaje = document.getElementById('mensaje');
+
+            // Validar nombre
+            const nombreRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/;
+            if (nombre.value.trim() === '' || !nombreRegex.test(nombre.value.trim())) {
+                alert('Por favor, ingrese un nombre válido.');
+                nombre.focus();
+                return;
+            }
+
+            // Validar teléfono
+            const telefonoRegex = /^[2-9]\d{7}$/;
+            if (telefono.value.trim() === '' || !telefonoRegex.test(telefono.value.trim())) {
+                alert('Por favor, ingrese un número de teléfono válido');
+                telefono.focus();
+                return;
+            }
+
+            // Validar email (puedes agregar una validación de correo electrónico si es necesario)
+            if (email.value.trim() === '') {
+                alert('Por favor, ingrese una dirección de correo electrónico.');
+                email.focus();
+                return;
+            }
+
+            // Validar asunto
+            if (asunto.value.trim() === '') {
+                alert('Por favor, ingrese el asunto.');
+                asunto.focus();
+                return;
+            }
+
+            // Validar mensaje
+            if (mensaje.value.trim() === '') {
+                alert('Por favor, ingrese su mensaje.');
+                mensaje.focus();
+                return;
+            }
+
+            // Añadir el código de envío de correo electrónico principal aquí
+            Email.send({
                 Host: "smtp.elasticemail.com",
                 Username: "grupomaslimpio39@gmail.com",
                 Password: "76E990FBD497ABA937D0AF30F4871241CBD5",
-                To: email.value.trim(), // Envía el correo de agradecimiento al usuario
+                To: "grupomaslimpio39@gmail.com",
                 From: "grupomaslimpio39@gmail.com",
-                Subject: "Agradecemos tu contacto",
-                Body: "Le agradecemos por ponerse en contacto con nosotros. Su correo ha sido recibido con éxito. En Grupo Más Limpio, valoramos su interés y nos comprometemos a brindarle una pronta respuesta a su solicitud. ¡Esté atento a nuestras comunicaciones! Muchas gracias por elegirnos."
-              }).then(
+                Subject: asunto.value.trim(),
+                Body: `Nombre: ${nombre.value.trim()}\nTeléfono: ${telefono.value.trim()}\nEmail: ${email.value.trim()}\nMensaje: ${mensaje.value.trim()}`
+            }).then(
                 message => {
-                  alert('Correo enviado con éxito');
-                  // Aquí se podría redirigir a una página de confirmación si es necesario
-    
-                  // Limpia las casillas después de enviar el correo
-                  nombre.value = '';
-                  telefono.value = '';
-                  email.value = '';
-                  asunto.value = '';
-                  mensaje.value = '';
+                    // Envía el correo de agradecimiento
+                    Email.send({
+                        Host: "smtp.elasticemail.com",
+                        Username: "grupomaslimpio39@gmail.com",
+                        Password: "76E990FBD497ABA937D0AF30F4871241CBD5",
+                        To: email.value.trim(), // Envía el correo de agradecimiento al usuario
+                        From: "grupomaslimpio39@gmail.com",
+                        Subject: "Agradecemos tu contacto",
+                        Body: "Le agradecemos por ponerse en contacto con nosotros. Su correo ha sido recibido con éxito. En Grupo Más Limpio, valoramos su interés y nos comprometemos a brindarle una pronta respuesta a su solicitud. ¡Esté atento a nuestras comunicaciones! Muchas gracias por elegirnos."
+                    }).then(
+                        message => {
+                            alert('Correo enviado con éxito');
+                            // Aquí se podría redirigir a una página de confirmación si es necesario
+
+                            // Limpia las casillas después de enviar el correo
+                            nombre.value = '';
+                            telefono.value = '';
+                            email.value = '';
+                            asunto.value = '';
+                            mensaje.value = '';
+                        }
+                    );
                 }
-              );
-            }
-          );
+            );
         });
-    
-      </script>
+
+    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
@@ -369,6 +371,7 @@
     <script src="publicidad.js"></script>
     <script src="btn.js"></script>
     <script src="servicios.js"></script>
+    <script src="catalago.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
 </body>

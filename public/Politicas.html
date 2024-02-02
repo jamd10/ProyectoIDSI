@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="info.css">
     <link rel="stylesheet" href="btn.css">
     <link rel="stylesheet" href="politicas.css">
+    <link rel="stylesheet" href="catalago.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -66,8 +67,9 @@
                         <a class="menu-link" href="about.html">Sobre Nosotros</a>
                     </li>
                     <li>
-                        <a class="menu-link" href="#">
+                        <a class="menu-link" href="#" onclick="mostrarCarrito()">
                             <ion-icon name="cart" class="text-black text-xl"></ion-icon>Carrito
+                            <span id="cantidadCarrito" class="badge badge-danger ml-1">0</span>
                         </a>
                     </li>
                     <li class="search-container">
@@ -320,6 +322,7 @@
         <script src="destacados.js"></script>
         <script src="publicidad.js"></script>
         <script src="btn.js"></script>
+        <script src="catalago.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
         <script>
             var swiper = new Swiper(".mySwiper", {

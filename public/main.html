@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="info.css">
     <link rel="stylesheet" href="pb4.css">
     <link rel="stylesheet" href="btn.css">
+    <link rel="stylesheet" href="catalago.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- FONTS -->
@@ -59,8 +60,9 @@
                         <a class="menu-link" href="about.html">Sobre Nosotros</a>
                     </li>
                     <li>
-                        <a class="menu-link" href="#">
+                        <a class="menu-link" href="#" onclick="mostrarCarrito()">
                             <ion-icon name="cart" class="text-black text-xl"></ion-icon>Carrito
+                            <span id="cantidadCarrito" class="badge badge-danger ml-1">0</span>
                         </a>
                     </li>
 
@@ -121,16 +123,17 @@
                         <a href="#" class="recover-link" onclick="openModal()">¿Olvidaste tu contraseña?</a>
                     </form>
                 </div>
-                
+
                 <style>
                     .password-container {
                         position: relative;
                     }
-                
+
                     #contrasena {
-                        padding-right: 30px; /* Ajusta el espacio para el ícono */
+                        padding-right: 30px;
+                        /* Ajusta el espacio para el ícono */
                     }
-                
+
                     #togglePassword {
                         position: absolute;
                         top: 50%;
@@ -139,12 +142,12 @@
                         cursor: pointer;
                     }
                 </style>
-                
+
                 <script>
                     function togglePassword() {
                         var passwordField = document.getElementById("contrasena");
                         var toggleIcon = document.getElementById("togglePassword");
-                
+
                         if (passwordField.type === "password") {
                             passwordField.type = "text";
                             toggleIcon.className = "fa fa-eye";
@@ -341,6 +344,7 @@
     <script src="menu.js"></script>
     <script src="destacados.js"></script>
     <script src="btn.js"></script>
+    <script src="catalago.js"></script>
 </body>
 
 </html>

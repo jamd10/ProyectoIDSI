@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,8 @@
     <link rel="stylesheet" href="estilos-detalles.css">
     <link rel="stylesheet" href="pb3.css">
     <title>Grupo + Limpio</title>
-  
-   
+
+
     <!-- Enlaces de Bootstrap y jQuery -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -26,6 +27,7 @@
     <link rel="stylesheet" href="marcas.css">
     <link rel="stylesheet" href="btn.css">
     <link rel="stylesheet" href="info.css">
+    <link rel="stylesheet" href="catalago.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -43,6 +45,7 @@
     <link rel="icon" href="img/logo1.png">
     <link rel="stylesheet" href="detalles.css">
 </head>
+
 <body>
 
     <header class="bg-white">
@@ -68,8 +71,9 @@
                         <a class="menu-link" href="about.html">Sobre Nosotros</a>
                     </li>
                     <li>
-                        <a class="menu-link" href="#">
+                        <a class="menu-link" href="#" onclick="mostrarCarrito()">
                             <ion-icon name="cart" class="text-black text-xl"></ion-icon>Carrito
+                            <span id="cantidadCarrito" class="badge badge-danger ml-1">0</span>
                         </a>
                     </li>
 
@@ -150,4 +154,6 @@
         </section>
     </footer>
 </body>
+<script src="catalago.js"></script>
+
 </html>
