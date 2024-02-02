@@ -176,7 +176,8 @@ function mostrarProductos(productos, pagina) {
         }
         catalogoProductos.innerHTML += productoHTML;
     }
-    mostrarBotonesPaginacion(productos, pagina);
+    //Por ahorita porque siempre tira un error al iniciar pagina (No esta definido)
+    //mostrarBotonesPaginacion(productos, pagina);
 }
 // Funcion para mostrar detalles de los productos
 function actualizarCantidadProductosEnCarrito() {
@@ -354,7 +355,9 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
             estadoCarrito[id] = {
                 id: id,
                 nombre: nombre,
+                maxCantidad: maxCantidad,
                 cantidad: cantidadActualizada,
+                precio: precio,
                 precioTotal: precio * cantidadActualizada,
                 imagen: imagen
             };
