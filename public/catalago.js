@@ -553,7 +553,6 @@ function calcularTotalPagar() {
         totalPagar += producto.precioTotal;
     });
 
-    // Actualizar el contenido HTML con el total a pagar
     document.getElementById('totalPagar').textContent = 'L. ' + totalPagar.toFixed(2);
 }
 
