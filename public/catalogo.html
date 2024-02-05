@@ -40,7 +40,7 @@
     <link rel="icon" href="img/logo1.png">
 </head>
 
-<body class="font-[Poppins] bg-white h-screen" onload="leerProducto()">
+<body class="font-[Poppins] bg-white h-screen" onload="leerProducto(); actualizarCantidadProductosEnCarrito(); loggedIn();">
     <div id="loader" class="loader">
         <div class="spinner"></div>
     </div>
@@ -120,7 +120,7 @@
                 </ul>
             </div>
             <div class="flex items-center gap-6">
-                <a class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="main.html">Iniciar
+                <a id="LogInMenuButton" class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="#">Iniciar
                     Sesion</a>
                 <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
             </div>
@@ -308,6 +308,7 @@
     <script src="publicidad.js"></script>
     <script src="btn.js"></script>
     <script src="catalago.js"></script>
+    <script src="main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 

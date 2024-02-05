@@ -34,7 +34,7 @@
 </head>
 
 
-<body onload="CargarDatos()">
+<body onload="CargarDatos(); actualizarCantidadProductosEnCarrito(); loggedIn();">
   <div id="loader" class="loader">
     <div class="spinner"></div>
   </div>
@@ -66,7 +66,22 @@
               <span id="cantidadCarrito" class="badge badge-danger ml-1">0</span>
             </a>
           </li>
+          <!-- Panel del carrito de compras -->
+          <div id="carritoPanel" class="carrito-panel">
+              <!-- Dentro del HTML del panel del carrito -->
+              <div class="carrito-header">
+                  <h3>Carrito de compras</h3>
+                  <ion-icon name="close-circle" onclick="ocultarCarrito()"></ion-icon>
+              </div>
 
+              <div id="productosCarrito" class="productos-carrito">
+                  <!-- Aquí se mostrarán los productos en el carrito -->
+              </div>
+              <div class="carrito-footer">
+                  <p>Total a pagar: <span id="totalPagar">LPS.0</span></p>
+                  <button class="botonCarrito" onclick="realizarCompra()">Realizar compra</button>
+              </div>
+          </div>
           <li class="search-container">
             <form action="catalogo.html" method="get">
               <input name="nombre" class="search-bar" type="text" placeholder="Buscar...">
@@ -85,8 +100,9 @@
         </ul>
       </div>
       <div class="flex items-center gap-6">
-        <a class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="main.html">Iniciar Sesion</a>
-        <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
+          <a id="LogInMenuButton" class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="#">Iniciar
+              Sesion</a>
+          <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
       </div>
     </nav>
   </header>
@@ -409,6 +425,7 @@
           if (data.msg == "log out") {
             alert('Se ha cerrrado sesion');
             window.location.href = "index.html";
+            localStorage.removeItem('correo');
           } else {
 
           }
@@ -585,8 +602,10 @@
   <script src="carrusel.js"></script>
   <script src="menu.js"></script>
   <script src="destacados.js"></script>
+  <script src="catalago.js"></script>
+  <script src="catalago.css"></script>
+  <script src="main.js"></script>
   <script src="btn.js"></script>
-</body>
 </body>
 
 </html>

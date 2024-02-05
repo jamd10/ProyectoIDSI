@@ -1,7 +1,10 @@
+<!-- BORRAR ESTE ARCHIVO -->
+
 <!doctype html>
 <html lang="es">
 
 <head>
+
   <link href="PerfilUsuario.css" rel="stylesheet" type="text/css" />
   <title>Grupo + Limpio</title>
   <meta charset="UTF-8">
@@ -34,7 +37,7 @@
 </head>
 
 
-<body onload="CargarDatos()">
+<body onload="CargarDatos(); actualizarCantidadProductosEnCarrito();">
   <div id="loader" class="loader">
     <div class="spinner"></div>
   </div>
@@ -66,7 +69,22 @@
               <span id="cantidadCarrito" class="badge badge-danger ml-1">0</span>
             </a>
           </li>
+          <!-- Panel del carrito de compras -->
+          <div id="carritoPanel" class="carrito-panel">
+              <!-- Dentro del HTML del panel del carrito -->
+              <div class="carrito-header">
+                  <h3>Carrito de compras</h3>
+                  <ion-icon name="close-circle" onclick="ocultarCarrito()"></ion-icon>
+              </div>
 
+              <div id="productosCarrito" class="productos-carrito">
+                  <!-- Aquí se mostrarán los productos en el carrito -->
+              </div>
+              <div class="carrito-footer">
+                  <p>Total a pagar: <span id="totalPagar">LPS.0</span></p>
+                  <button class="botonCarrito" onclick="realizarCompra()">Realizar compra</button>
+              </div>
+          </div>
           <li class="search-container">
             <form action="catalogo.html" method="get">
               <input name="nombre" class="search-bar" type="text" placeholder="Buscar...">

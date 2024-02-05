@@ -33,7 +33,7 @@
     <link rel="icon" href="img/logo1.png">
 </head>
 
-<body class="font-[Poppins] bg-white h-screen">
+<body class="font-[Poppins] bg-white h-screen" onload="actualizarCantidadProductosEnCarrito(); loggedIn();">
     <div id="loader" class="loader">
         <div class="spinner"></div>
     </div>
@@ -65,7 +65,22 @@
                             <span id="cantidadCarrito" class="badge badge-danger ml-1">0</span>
                         </a>
                     </li>
+                    <!-- Panel del carrito de compras -->
+                    <div id="carritoPanel" class="carrito-panel">
+                        <!-- Dentro del HTML del panel del carrito -->
+                        <div class="carrito-header">
+                            <h3>Carrito de compras</h3>
+                            <ion-icon name="close-circle" onclick="ocultarCarrito()"></ion-icon>
+                        </div>
 
+                        <div id="productosCarrito" class="productos-carrito">
+                            <!-- Aquí se mostrarán los productos en el carrito -->
+                        </div>
+                        <div class="carrito-footer">
+                            <p>Total a pagar: <span id="totalPagar">LPS.0</span></p>
+                            <button class="botonCarrito" onclick="realizarCompra()">Realizar compra</button>
+                        </div>
+                    </div>
                     <li class="search-container">
                         <form action="catalogo.html" method="get">
                             <input name="nombre" class="search-bar" type="text" placeholder="Buscar...">
@@ -84,7 +99,7 @@
                 </ul>
             </div>
             <div class="flex items-center gap-6">
-                <a class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="main.html">Iniciar
+                <a id="LogInMenuButton" class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="#">Iniciar
                     Sesion</a>
                 <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
             </div>
@@ -303,6 +318,7 @@
             if (data == 'Holas') {
                 if (admin == "Admin") {
                     alert('Se ha iniciado sesion exitosamente administrador!');
+                    localStorage["Admin"] = "Admin";
                     window.location.href = "index_admin.html";
                 } else {
                     alert('Se ha iniciado sesion exitosamente!');
@@ -310,7 +326,6 @@
                 }
             } else {
                 alert('Error al iniciar Sesion, revise sus credenciales');
-                alert('credenciales');
             }
         }
 
@@ -345,6 +360,8 @@
     <script src="destacados.js"></script>
     <script src="btn.js"></script>
     <script src="catalago.js"></script>
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 
 </html>

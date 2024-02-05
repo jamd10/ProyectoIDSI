@@ -50,7 +50,7 @@
 
 </head>
 
-<body>
+<body onload="actualizarCantidadProductosEnCarrito(); loggedIn();">
     <!-- Spinner Start
     <div id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -92,7 +92,22 @@
                             <span id="cantidadCarrito" class="badge badge-danger ml-1">0</span>
                         </a>
                     </li>
+                    <!-- Panel del carrito de compras -->
+                    <div id="carritoPanel" class="carrito-panel">
+                        <!-- Dentro del HTML del panel del carrito -->
+                        <div class="carrito-header">
+                            <h3 style="font-family: 'Open Sans', sans-serif;">Carrito de compras</h3>
+                            <ion-icon name="close-circle" onclick="ocultarCarrito()"></ion-icon>
+                        </div>
 
+                        <div id="productosCarrito" class="productos-carrito">
+                            <!-- Aquí se mostrarán los productos en el carrito -->
+                        </div>
+                        <div class="carrito-footer">
+                            <p>Total a pagar: <span id="totalPagar">LPS.0</span></p>
+                            <button class="botonCarrito" onclick="realizarCompra()">Realizar compra</button>
+                        </div>
+                    </div>
                     <li class="search-container">
                         <form action="catalogo.html" method="get">
                             <input name="nombre" class="search-bar" type="text" placeholder="Buscar...">
@@ -111,7 +126,7 @@
                 </ul>
             </div>
             <div class="flex items-center gap-6">
-                <a class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="main.html">Iniciar
+                <a id="LogInMenuButton" class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="#">Iniciar
                     Sesion</a>
                 <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
             </div>
@@ -300,6 +315,8 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="btn.js"></script>
     <script src="catalago.js"></script>
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>

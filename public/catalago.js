@@ -12,10 +12,10 @@ var paginaActual = 1;
 var productosFiltrados = productos; // Inicialmente, todos los productos están filtrados
 var intervalId;
 
-const baseUrl = 'https://grupolimpio-api.onrender.com';
+const baseUrl2 = 'https://grupolimpio-api.onrender.com';
 
 function leerProducto() {
-    fetch(baseUrl + '/selectProductos', {
+    fetch(baseUrl2 + '/selectProductos', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -36,10 +36,6 @@ function leerProducto() {
 }
 
 
-// Funciones de inicialización y filtrado
-function inicializarCatalogo() {
-    mostrarProductos(productosFiltrados, paginaActual);
-}
 // Asumiendo que tienes una variable 'productos' que contiene todos tus productos
 // Función para filtrar productos por nombre
 function busquedaProducto(query) {
@@ -48,10 +44,6 @@ function busquedaProducto(query) {
         var nombre = producto.nombre.toLowerCase();
         return nombre.includes(inputBusqueda);
     });
-}
-// Función para mostrar productos en la sección de catálogo
-function mostrarProductos(productos, pagina) {
-    // Aquí va tu código para mostrar los productos en la página
 }
 // Obtener la búsqueda del parámetro de la URL
 var urlParams = new URLSearchParams(window.location.search);
@@ -140,6 +132,8 @@ function cambiarCantidadDetalle(id, cambio, maxCantidadDetalle) {
 }
 
 function AgregarCarrito(id, nombre, imagen, precio, cantidad){
+    var carritoGuardado2 = localStorage.getItem('carrito');
+    var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
     var cantidadActualizada = parseInt(document.getElementById('spinner' + id).textContent);
 
     if (estadoCarrito[id]) {
@@ -164,13 +158,13 @@ function AgregarCarrito(id, nombre, imagen, precio, cantidad){
             precioTotal: precio * cantidadActualizada,
             imagen: imagen
         };
-        carrito.push(estadoCarrito[id]);
+        carrito2.push(estadoCarrito[id]);
     }
 
-    document.getElementById('cantidadCarrito').textContent = carrito.length;
+    document.getElementById('cantidadCarrito').textContent = carrito2.length;
 
     var precioCarrito = 0;
-    carrito.forEach(function (producto) {
+    carrito2.forEach(function (producto) {
         precioCarrito += producto.precioTotal;
     });
 
@@ -182,7 +176,7 @@ function AgregarCarrito(id, nombre, imagen, precio, cantidad){
         confirmButtonText: '¡Entendido!',
     });
 
-    localStorage.setItem('carrito', JSON.stringify(carrito));
+    localStorage.setItem('carrito', JSON.stringify(carrito2));
 
     // Actualizar el carrito en el panel
     mostrarCarrito();
@@ -191,7 +185,7 @@ function AgregarCarrito(id, nombre, imagen, precio, cantidad){
 // Funciones para mostrar productos y detalles
 function mostrarProductos(productos, pagina) {
     // Limpiar el carrito en el almacenamiento local
-    localStorage.removeItem('carrito');
+    //localStorage.removeItem('carrito');
 
     // Cerrar el detalle del producto
     if (typeof restoreContent === 'function') {
@@ -232,7 +226,9 @@ function mostrarProductos(productos, pagina) {
 }
 // Funcion para mostrar detalles de los productos
 function actualizarCantidadProductosEnCarrito() {
-    var cantidadProductos = carrito.reduce(function (total, producto) {
+    var carritoGuardado2 = localStorage.getItem('carrito');
+    var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
+    var cantidadProductos = carrito2.reduce(function (total, producto) {
         return total + producto.cantidad;
     }, 0);
 
@@ -294,6 +290,9 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
         </div>
     </div>
     `;
+
+    var carritoGuardado2 = localStorage.getItem('carrito');
+    var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
 
     filtersContainer.style.display = 'none';
     paginationContainer.style.display = 'none';
@@ -412,13 +411,13 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
                 precioTotal: precio * cantidadActualizada,
                 imagen: imagen
             };
-            carrito.push(estadoCarrito[id]);
+            carrito2.push(estadoCarrito[id]);
         }
 
-        document.getElementById('cantidadCarrito').textContent = carrito.length;
+        document.getElementById('cantidadCarrito').textContent = carrito2.length;
 
         var precioCarrito = 0;
-        carrito.forEach(function (producto) {
+        carrito2.forEach(function (producto) {
             precioCarrito += producto.precioTotal;
         });
 
@@ -430,7 +429,7 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
             confirmButtonText: '¡Entendido!',
         });
 
-        localStorage.setItem('carrito', JSON.stringify(carrito));
+        localStorage.setItem('carrito', JSON.stringify(carrito2));
 
         // Actualizar el carrito en el panel
         mostrarCarrito();
@@ -457,9 +456,11 @@ function mostrarCarrito() {
 
     // Tamaño fijo para las imágenes del carrito
     var imagenCarritoStyle = 'width: 80px; height: 80px; object-fit: contain; margin-right: 20px; border: 1px solid #ddd;'; // Ajusta el tamaño según tus preferencias
-
+    
+    var carritoGuardado2 = localStorage.getItem('carrito');
+    var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
     // Mostrar cada producto en el carrito
-    carrito.forEach(function (producto) {
+    carrito2.forEach(function (producto) {
         var productoHTML = `
             <div class="producto-carrito" style="display: flex; align-items: center; padding: 10px; border-bottom: 1px solid #ddd;">
                 <img src="${producto.imagen}" alt="${producto.nombre}" class="img-thumbnail carrito-imagen" style="${imagenCarritoStyle}">
@@ -479,12 +480,16 @@ function mostrarCarrito() {
         productosCarritoContainer.innerHTML += productoHTML;
     });
 
+    actualizarCantidadProductosEnCarrito();
+
     // Calcular y mostrar el total a pagar
     calcularTotalPagar();
 }
 
 function cambiarCantidadCarrito(id, cantidad, maxCantidad) {
-    var productoCarrito = carrito.find(producto => producto.id === id);
+    var carritoGuardado2 = localStorage.getItem('carrito');
+    var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
+    var productoCarrito = carrito2.find(producto => producto.id === id);
 
     // Verificar límites de cantidad
     if (cantidad === -1 && productoCarrito.cantidad === 1) {
@@ -512,7 +517,7 @@ function cambiarCantidadCarrito(id, cantidad, maxCantidad) {
     productoCarrito.precioTotal = productoCarrito.precio * productoCarrito.cantidad;
 
     // Actualizar el carrito en el almacenamiento local
-    localStorage.setItem('carrito', JSON.stringify(carrito));
+    localStorage.setItem('carrito', JSON.stringify(carrito2));
 
     // Calcular y mostrar el total a pagar
     calcularTotalPagar();
@@ -524,10 +529,12 @@ function cambiarCantidadCarrito(id, cantidad, maxCantidad) {
 // Función para eliminar un producto del carrito
 function eliminarProductoCarrito(id) {
     // Filtrar el carrito para excluir el producto con el ID dado
-    carrito = carrito.filter(producto => producto.id !== id);
+    var carritoGuardado2 = localStorage.getItem('carrito');
+    var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
+    carrito2 = carrito2.filter(producto => producto.id !== id);
 
     // Actualizar el carrito en el almacenamiento local
-    localStorage.setItem('carrito', JSON.stringify(carrito));
+    localStorage.setItem('carrito', JSON.stringify(carrito2));
 
     // Actualizar el carrito en el panel
     mostrarCarrito();
@@ -539,9 +546,10 @@ function eliminarProductoCarrito(id) {
 // Función para calcular y mostrar el total a pagar
 function calcularTotalPagar() {
     var totalPagar = 0;
-
+    var carritoGuardado2 = localStorage.getItem('carrito');
+    var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
     // Calcular el total sumando los precios totales de cada producto en el carrito
-    carrito.forEach(function (producto) {
+    carrito2.forEach(function (producto) {
         totalPagar += producto.precioTotal;
     });
 

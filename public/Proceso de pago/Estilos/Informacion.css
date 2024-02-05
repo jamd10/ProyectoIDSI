@@ -1,0 +1,162 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 5px;
+}
+
+.container {
+    max-width: 900px; /* Reduzco el ancho del contenedor */
+    margin: 50px auto; /* Alineo el contenedor al centro */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.title {
+    background-color: #23c01e;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+}
+
+.detalles {
+    font-size: 20px;
+}
+
+.content {
+    display: flex;
+    padding: 20px;
+}
+
+.product-table {
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.details {
+    width: 300px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.total-row td {
+    font-weight: bold;
+}
+
+input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.custom-form-group {
+    text-align: center;
+}
+
+.custom-input {
+    width: 200px;
+}
+
+.button-container button {
+    margin: 10px;
+    background-color: #23c01e !important;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: #1a751d !important;
+}
+
+
+.delete-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.delete-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.delete-button::before {
+    content: "x";
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+}
+
+.delete-button:hover {
+    background-color: #c8233300;
+}
+
+.discount-container {
+    margin-bottom: 10px;
+}
+
+.discount-container input[type="number"] {
+    margin-right: 5px;
+}
+
+.checkout-box {
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.checkout-box button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-box button:hover {
+    background-color: #45a049;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+.logo {
+    display: inline-block;
+    max-width: 200px; /* Ajusta el tamaño máximo según sea necesario */
+    max-height: 100px; /* Ajusta la altura máxima según sea necesario */
+}

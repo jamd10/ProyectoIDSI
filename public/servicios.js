@@ -121,6 +121,7 @@ function limpiarFiltros() {
 // Funciones para cambiar la cantidad
 
 // Funciones para mostrar productos y detalles
+
 function mostrarProductos(productos, pagina) {
     // Cerrar el detalle del producto
     if (typeof restoreContent === 'function') {
@@ -135,54 +136,16 @@ function mostrarProductos(productos, pagina) {
         if (i < productos.length) {
             var producto = productos[i];
             productoHTML = `
-                <div class="card" style="box-shadow: 0 0 1000px rgba(35, 192, 30, 0.2);" onclick="mostrarDetalle(${producto.id}, '${producto.nombre}', '${producto.imagen1}', ${producto.cantidad})">
+                <div class="card2" style="box-shadow: 0 0 1000px rgba(35, 192, 30, 0.2);" onclick="mostrarDetalle('${producto.id}', '${producto.nombre}', '${producto.imagen1}')">
                     <div class="row no-gutters">
                         <div class="col-md-6">
-                            <img src="${producto.imagen1}" class="card-img" alt="${producto.nombre}" style="object-fit: contain; height: 100%; width: 100%;">
+                            <img src="${producto.imagen1}" class="card-img2" alt="${producto.nombre}" style="object-fit: contain; height: 100%; width: 100%;">
                         </div>
                         <div class="col-md-6 d-flex align-items-center justify-content-center">
-                            <div class="card-body text-center">
-                                <p style="font-size: 24px; color: #008000; margin-bottom: 10px;"><i class="fas fa-medal" style="margin-left: 5px;"></i> Grupo Más Limpio</p>
-                                <h5 class="card-title" style="font-size: 20px; margin-bottom: 0; color: #000; font-weight: bold;">${producto.nombre}</h5>
-                                <p class="card-text" style="font-size: 12px;">${producto.descripcion}</p>
-                                <a href="#" class="btn btn-primary" style="height: 100%; width: 100%; padding: 6px 0; margin-top: 5px; font-size: 1vw;">Contratar Servicio</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        } else {
-            // Agregar una tarjeta de producto vacía
-            productoHTML = `<div class="card invisible"></div>`;
-        }
-        catalogoProductos.innerHTML += productoHTML;
-    }
-    mostrarBotonesPaginacion(productos, pagina);
-}
-function mostrarProductos(productos, pagina) {
-    // Cerrar el detalle del producto
-    if (typeof restoreContent === 'function') {
-        restoreContent();
-    }
-    var catalogoProductos = document.getElementById('catalogoProductos');
-    catalogoProductos.innerHTML = '';
-    var inicio = (pagina - 1) * productosPorPagina;
-    var fin = inicio + productosPorPagina;
-    for (var i = inicio; i < fin; i++) {
-        var productoHTML;
-        if (i < productos.length) {
-            var producto = productos[i];
-            productoHTML = `
-                <div class="card" style="box-shadow: 0 0 1000px rgba(35, 192, 30, 0.2);" onclick="mostrarDetalle('${producto.id}', '${producto.nombre}', '${producto.imagen1}')">
-                    <div class="row no-gutters">
-                        <div class="col-md-6">
-                            <img src="${producto.imagen1}" class="card-img" alt="${producto.nombre}" style="object-fit: contain; height: 100%; width: 100%;">
-                        </div>
-                        <div class="col-md-6 d-flex align-items-center justify-content-center">
-                            <div class="card-body text-center">
+                            <div class="card-body2">
                                 <p style="font-size: 20px; color: #008000; margin-bottom: 10px;"><i class="fas fa-medal" style="margin-left: 5px;"></i> Grupo Más Limpio</p>
-                                <h5 class="card-title" style="font-size: 15px; margin-bottom: 0; color: #000; font-weight: bold;">${producto.nombre}</h5>
-                                <p class="card-text" style="font-size: 12px;">${producto.descripcion}</p>
+                                <h5 class="card-title2" style="font-size: 15px; margin-bottom: 0; color: #000; font-weight: bold;">${producto.nombre}</h5>
+                                <p class="card-text2" style="font-size: 12px;">${producto.descripcion}</p>
                                 <a href="#" class="btn btn-primary" style="height: 100%; width: 100%; padding: 6px 0; margin-top: 5px; font-size: 1vw;">Contratar Servicio</a>
                             </div>
                         </div>
@@ -191,7 +154,7 @@ function mostrarProductos(productos, pagina) {
             `;
         } else {
             // Agregar una tarjeta de producto vacía
-            productoHTML = `<div class="card invisible"></div>`;
+            productoHTML = `<div class="card2"></div>`;
         }
         catalogoProductos.innerHTML += productoHTML;
     }
