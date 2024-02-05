@@ -556,3 +556,12 @@ function calcularTotalPagar() {
     // Actualizar el contenido HTML con el total a pagar
     document.getElementById('totalPagar').textContent = 'L. ' + totalPagar.toFixed(2);
 }
+
+function realizarCompra(){
+    if(localStorage["correo"] == null){
+        window.location.href = "Proceso de pago/Iniciar_Sesion.html";
+    }else{
+        window.location.href = "Proceso de pago/Pago_Envio.html";
+    }
+
+}

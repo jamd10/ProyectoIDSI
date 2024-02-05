@@ -50,25 +50,26 @@
         <img class="logo" src="Imagenes/logo.png" alt="Logo de la empresa">
 
     </div>
+
     <nav class="form-steps">
-        <div class="form-steps__item form-steps__item--completed">
+        <div class="form-steps__item form-steps__item--active">
             <div class="form-steps__item-content">
                 <span class="form-steps__item-icon">1</span>
-                <span class="form-steps__item-text">Verificar carrito</span>
+                <span class="form-steps__item-text">Iniciar Sesion</span>
             </div>
         </div>
-        <div class="form-steps__item form-steps__item--active">
+        <div class="form-steps__item">
             <div class="form-steps__item-content">
                 <span class="form-steps__item-icon">2</span>
                 <span class="form-steps__item-line"></span>
-                <span class="form-steps__item-text">Iniciar Sesión</span>
+                <span class="form-steps__item-text">Pago y Envio</span>
             </div>
         </div>
         <div class="form-steps__item">
             <div class="form-steps__item-content">
                 <span class="form-steps__item-icon">3</span>
                 <span class="form-steps__item-line"></span>
-                <span class="form-steps__item-text">Pago y envio</span>
+                <span class="form-steps__item-text">Verificar Carrito</span>
             </div>
         </div>
         <div class="form-steps__item">
@@ -79,6 +80,7 @@
             </div>
         </div>
     </nav>
+
 </head>
 
 <body>
@@ -90,7 +92,10 @@
             <button class="btn btn-success mb-3 custom-button" onclick="openLoginWindow()">Iniciar Sesión</button>
 
             <!-- Botón "Registrarse" -->
-            <button class="btn btn-success custom-button" onclick="openLoginWindow()">Registrarse</button>
+            <button class="btn btn-success mb-3 custom-button" onclick="openLoginWindow2()">Registrarse</button>
+
+
+            <button class="btn btn-success mb-3 custom-button" onclick="openLoginWindow3()">Atras</button>
         </div>
     </div>
 
@@ -103,68 +108,17 @@
     <script>
         function openLoginWindow() {
             // Abre una ventana nueva más pequeña
-            window.open('pagina_inicio_sesion.html', 'Inicio de Sesión', 'width=400,height=400');
+            window.location.href = "../main.html"
+        }
+        function openLoginWindow2() {
+            // Abre una ventana nueva más pequeña
+            window.location.href = "../index1.html"
+        }
+        function openLoginWindow3() {
+            // Abre una ventana nueva más pequeña
+            window.history.back();
         }
     </script>
 </body>
 <br>
-
-<footer>
-    <section class="footer">
-        <div class="footer-row">
-            <div class="footer-col">
-                <h4>Conocenos</h4>
-                <ul class="links">
-                    <li><a href="#">Acerca de Nosotros</a></li>
-                    <li><a href="#">Historia</a></li>
-                    <li><a href="#">Marcas</a></li>
-                    <li><a href="#">Catálogo en línea</a></li>
-                    <li><a href="#">Promociones</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Preguntas </h4>
-                <ul class="links">
-                    <li><a href="#">Formas de pago</a></li>
-                    <li><a href="#">Productos nuevos</a></li>
-                    <li><a href="PreguntasFrecCliente.html">Preguntas frecuentes</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Legal</h4>
-                <ul class="links">
-                    <li><a href="#">Politicas de seguridad</a></li>
-                    <li><a href="#">Envios</a></li>
-                    <li><a href="#">Pagos</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Contacto</h4>
-                <p>
-                    Suscribete a nuestro boletín de Promociones
-                    y recibe la información a través de tu
-                    correo electrónico.
-                </p>
-                <form action="#">
-                    <input type="text" placeholder="Ingrese su Email" required>
-                    <button type="submit">Enviar</button>
-                </form>
-                <div class="icons">
-                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-row" style="display: flex; align-items: center; justify-content: center;">
-            <div class="footer-col" style="text-align: center; margin-top: 20px; color: #fff;">
-                Derechos reservados © 2023 | Grupo + Limpio
-            </div>
-        </div>
-    </section>
-</footer>
-
 </html>

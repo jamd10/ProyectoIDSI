@@ -135,9 +135,11 @@
             <nav>
               <div class="navpu" id="nav-tab" role="tablist">
                 <button class="btnIP" id="navbtnIP" data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
-                  role="tab" aria-controls="nav-IP" aria-selected="true">Informacion Personal</button>
+                  role="tab" aria-controls="nav-IP" aria-selected="true">Info Personal</button>
                 <button class="btnMD" id="navbtnMD" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
-                  role="tab" aria-controls="nav-MD" aria-selected="false">Mi Direccion</button>
+                  role="tab" aria-controls="nav-MD" aria-selected="false">Direccion</button>
+                <button class="btnMD" id="navbtnTC" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
+                  role="tab" aria-controls="nav-TC" aria-selected="false">Tajeta de Credito</button>
                 <button class="btnS" id="navbtnS" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button"
                   role="tab" aria-controls="nav-S" aria-selected="false">Seguridad</button>
                 <button class="btnLO" id="navbtnLO" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button"
@@ -216,8 +218,62 @@
                 <input id="DireccionInput" class="InputMD" type="text" />
                 <span></span>
               </div>
+              <div class="SubDivMD2">
+                <span>Estado</span>
+                <span>Codigo Postal</span>
+                <span></span>
+              </div>
+              <div class="SubDivMD3">
+                <input id="EstadoInput" class="InputMD" type="text" onkeyup="validate7();"/>
+                <input id="PostalInput" class="InputMD" type="text" onkeyup="validate6();" maxlength="5"/>
+                <span></span>
+              </div>
               <div class="SubDivMdBtn">
                 <button id="Guardarbtn2" class="BtnMdEditar">Guardar Cambios</button>
+              </div>
+            </div>
+
+            <div id="IDDivTC" class="DivTC">
+              <link href="MiDireccion.css" rel="stylesheet" type="text/css" />
+              <div class="SubDivMD">
+                <span>Tarjeta</span>
+              </div>
+              <div class="SubDivMD2">
+                <span>Nombre de Tarjeta</span>
+                <span>Numero de Tarjeta</span>
+                <span></span>
+              </div>
+              <div class="SubDivMD3">
+                <input id="NomTarjetaInput" class="InputMD" type="text" onkeyup="validate8();"/>
+                <input id="NumTarjetaInput" class="InputMD" type="text" onkeyup="validate9();" maxlength="16"/>
+                <span></span>
+              </div>
+              <div class="SubDivMD2">
+                <span>Fecha de Expiracion</span>
+                <span>Codigo de Seguridad</span>
+                <span></span>
+              </div>
+              <div class="SubDivMD3">
+                <input id="FechaExpInput" class="InputMD" type="text" placeholder="MM/AA" onkeyup="validate11();" maxlength="5"/>
+                <input id="CodSeguridadInput" class="InputMD" type="text" onkeyup="validate10();" maxlength="3"/>
+                <span></span>
+              </div>
+              <div class="SubDivMD2">
+                <span>Tipo de Tarjeta</span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="SubDivMD3">
+                <select id="TarjetaSelect" class="InputIP">
+                  <option value=""></option>
+                  <option value="visa">Visa</option>
+                  <option value="mastercard">Mastercard</option>
+                </select>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="SubDivMdBtn">
+                <button id="Guardarbtn3" class="BtnMdEditar">Guardar Cambios</button>
               </div>
             </div>
 
@@ -272,18 +328,21 @@
       const boton1 = document.getElementById('navbtnIP');
       const boton2 = document.getElementById('navbtnMD');
       const boton3 = document.getElementById('navbtnS');
+      const boton6 = document.getElementById('navbtnTC');
       const boton4 = document.getElementById('BtnSEditar2');
       const boton5 = document.getElementById('BtnSEditar1');
       const div1 = document.getElementById('IDDivIP');
       const div2 = document.getElementById('IDDivMD');
       const div3 = document.getElementById('IDDivS');
       const div4 = document.getElementById('IDDivS2');
+      const div5 = document.getElementById('IDDivTC');
 
       function changeContent1() {
         div1.style.display = "block"
         div2.style.display = "none"
         div3.style.display = "none"
         div4.style.display = "none"
+        div5.style.display = "none"
       }
 
       function changeContent2() {
@@ -291,6 +350,7 @@
         div2.style.display = "block"
         div3.style.display = "none"
         div4.style.display = "none"
+        div5.style.display = "none"
       }
 
       function changeContent3() {
@@ -298,6 +358,7 @@
         div2.style.display = "none"
         div3.style.display = "none"
         div4.style.display = "block"
+        div5.style.display = "none"
       }
 
       function changeContent4() {
@@ -308,6 +369,14 @@
       function changeContent5() {
         div3.style.display = "none"
         div4.style.display = "block"
+      }
+
+      function changeContent6() {
+        div1.style.display = "none"
+        div2.style.display = "none"
+        div3.style.display = "none"
+        div4.style.display = "none"
+        div5.style.display = "block"
       }
 
       function mostrarcontra1() {
@@ -333,6 +402,7 @@
       boton3.addEventListener('click', changeContent3);
       boton4.addEventListener('click', changeContent4);
       boton5.addEventListener('click', changeContent5);
+      boton6.addEventListener('click', changeContent6);
     </script>
 
 
@@ -394,6 +464,7 @@
     const getBtnC = document.getElementById('BtnSEditar1');
     const getBtn = document.getElementById('Guardarbtn');
     const getBtn2 = document.getElementById('Guardarbtn2');
+    const getBtn3 = document.getElementById('Guardarbtn3');
     const getBtnLO = document.getElementById('navbtnLO');
     const getNombre = document.getElementById("NombreInput");
     const getApellido = document.getElementById("ApellidoInput");
@@ -405,13 +476,21 @@
     const getCiudad = document.getElementById("CiudadInput");
     const getDireccion = document.getElementById("DireccionInput");
     const getNuevaContra = document.getElementById("C2Input");
+    const getEstado = document.getElementById("EstadoInput");
+    const getPostal = document.getElementById("PostalInput");
+    const getNomTarjeta = document.getElementById("NomTarjetaInput");
+    const getNumTarjeta = document.getElementById("NumTarjetaInput");
+    const getFechaExp = document.getElementById("FechaExpInput");
+    const getCodSeguridad = document.getElementById("CodSeguridadInput");
+    const getTipoTarjeta = document.getElementById("TarjetaSelect");
 
     getBtn.addEventListener('click', validar3);
     getBtn2.addEventListener('click', validar3);
+    getBtn3.addEventListener('click', validar3);
     getBtnC.addEventListener('click', BuscarContra);
     getBtnLO.addEventListener('click', CerrarSesion);
 
-    const baseUrl = 'https://grupolimpio-api.onrender.com';
+    const baseUrl = 'http://localhost:3001';
 
     function CerrarSesion() {
       fetch(baseUrl + '/logOut', {
@@ -426,6 +505,7 @@
             alert('Se ha cerrrado sesion');
             window.location.href = "index.html";
             localStorage.removeItem('correo');
+            localStorage.removeItem('usuario');
           } else {
 
           }
@@ -443,7 +523,9 @@
         },
         body: JSON.stringify({
           nombre: getNombre.value, apellido: getApellido.value, id: getId.value, telefono: getTelefono.value,
-          ciudad: getCiudad.value, correo: getCorreo.value, fechanacimiento: getNacimiento.value, genero: getGenero.value, direccion: getDireccion.value
+          ciudad: getCiudad.value, correo: getCorreo.value, fechanacimiento: getNacimiento.value, genero: getGenero.value, direccion: getDireccion.value,
+          estado: getEstado.value, postal: getPostal.value, nomtarjeta: getNomTarjeta.value, numtarjeta: getNumTarjeta.value, fechaexp: getFechaExp.value,
+          codseguridad: getCodSeguridad.value, tipotarjeta: getTipoTarjeta.value,
         }),
       })
         .then(response => response.json())
@@ -510,6 +592,7 @@
       })
         .then(response => response.json())
         .then(data => {
+          localStorage.setItem('usuario', JSON.stringify(data));
           getNombre.value = data.nombre;
           getApellido.value = data.apellido;
           getCorreo.value = data.correo;
@@ -519,6 +602,13 @@
           getGenero.value = data.genero;
           getCiudad.value = data.ciudad;
           getDireccion.value = data.direccion;
+          getEstado.value = data.estado;
+          getPostal.value = data.postal;
+          getNomTarjeta.value = data.nomtarjeta;
+          getNumTarjeta.value = data.numtarjeta;
+          getFechaExp.value = data.fechaexp;
+          getCodSeguridad.value = data.codseguridad;
+          getTipoTarjeta.value = data.tipotarjeta;
         })
         .catch(error => {
           alert('No han podido cargar los datos de su cuenta' + error);
@@ -565,6 +655,87 @@
       if (getCiudad.value.length == 0) {
         alert("Debe de llenar el campo de Ciudad");
       } else {
+        validar13();
+      }
+    }
+
+    function validar13(){
+      if (getPostal.value.length == 0 && getDireccion.value.length == 0 && getEstado.value.length == 0) {
+        Actualizar();
+      } else {
+        validar14();
+      }
+    }
+
+    function validar14(){
+      if (getDireccion.value.length == 0) {
+        alert("Una vez se empieza a llenar los campos de direccion, se debe de llenar el campo de direccion");
+      } else {
+        validar15();
+      }
+    }
+
+    function validar15(){
+      if (getEstado.value.length == 0) {
+        alert("Una vez se empieza a llenar los campos de direccion, se debe de llenar el campo de estado");
+      } else {
+        validar6();
+      }
+    }
+
+    function validar6() {
+      if (getPostal.value.length == 5) {
+        validar7();
+      } else {
+        alert("El codigo postal debe de tener 5 digitos");
+      }
+    }
+
+    function validar7() {
+      if (getNumTarjeta.value.length == 0 && getNomTarjeta.value.length == 0 && getFechaExp.value.length == 0 && 
+      getCodSeguridad.value.length == 0 && getTipoTarjeta.value.length == 0) {
+        Actualizar();
+      } else {
+        validar8();
+      }
+    }
+
+    function validar8() {
+      if (getNomTarjeta.value.length == 0) {
+        alert("El campo de nombre no debe estar vacio una vez empezada a llenar los campos de tarjeta");
+      } else {
+        validar9();
+      }
+    }
+
+    function validar9() {
+      if (getNumTarjeta.value.length == 16) {
+        validar10();
+      } else {
+        alert("La tarjeta de credito debe de tener 16 digitos");
+      }
+    }
+
+    function validar10() {
+      if (getFechaExp.value.length == 5) {
+        validar11();
+      } else {
+        alert("La fecha de expiracion debe ser del tipo MM/AA");
+      }
+    }
+
+    function validar11() {
+      if (getCodSeguridad.value.length == 3) {
+        validar12();
+      } else {
+        alert("El codigo de seguridad debe de tener 3 digitos");
+      }
+    }
+
+    function validar12() {
+      if (getTipoTarjeta.value.length == 0) {
+        alert("Debe de seleccionar un tipo de tarjeta una vez se ha empezado a llenar los campos de tarjeta");
+      } else {
         Actualizar();
       }
     }
@@ -592,6 +763,36 @@
     function validate5() {
       var element2 = document.getElementById('CiudadInput');
       element2.value = element2.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
+    };
+
+    function validate6() {
+      var element2 = document.getElementById('PostalInput');
+      element2.value = element2.value.replace(/[^0-9]+/, '');
+    };
+
+    function validate7() {
+      var element2 = document.getElementById('EstadoInput');
+      element2.value = element2.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
+    };
+
+    function validate8() {
+      var element2 = document.getElementById('NomTarjetaInput');
+      element2.value = element2.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
+    };
+
+    function validate9() {
+      var element2 = document.getElementById('NumTarjetaInput');
+      element2.value = element2.value.replace(/[^0-9]+/, '');
+    };
+
+    function validate10() {
+      var element2 = document.getElementById('CodSeguridadInput');
+      element2.value = element2.value.replace(/[^0-9]+/, '');
+    };
+
+    function validate11() {
+      var element2 = document.getElementById('FechaExpInput');
+      element2.value = element2.value.replace(/[^0-9/]+/, '');
     };
   </script>
 

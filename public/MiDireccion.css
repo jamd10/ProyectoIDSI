@@ -31,7 +31,19 @@
 }
 
 .DivMD {
-    height: 270px;
+    height: 400px;
+    display: none;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    width: 80%;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px gray;
+    border: none;
+}
+
+.DivTC {
+    height: 500px;
     display: none;
     margin: auto;
     margin-top: 20px;

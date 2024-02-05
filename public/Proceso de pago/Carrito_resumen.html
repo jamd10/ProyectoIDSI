@@ -17,25 +17,27 @@
 
     </div>
 
+    
     <nav class="form-steps">
-        <div class="form-steps__item form-steps__item--active">
+        <div class="form-steps__item form-steps__item--completed">
             <div class="form-steps__item-content">
                 <span class="form-steps__item-icon">1</span>
-                <span class="form-steps__item-text">Verificar carrito</span>
+                <span class="form-steps__item-text">Iniciar Sesion</span>
             </div>
+
         </div>
-        <div class="form-steps__item">
+        <div class="form-steps__item form-steps__item--completed">
             <div class="form-steps__item-content">
                 <span class="form-steps__item-icon">2</span>
                 <span class="form-steps__item-line"></span>
-                <span class="form-steps__item-text">Iniciar Sesión</span>
+                <span class="form-steps__item-text">Pago y Envio</span>
             </div>
         </div>
-        <div class="form-steps__item">
+        <div class="form-steps__item form-steps__item--active">
             <div class="form-steps__item-content">
                 <span class="form-steps__item-icon">3</span>
                 <span class="form-steps__item-line"></span>
-                <span class="form-steps__item-text">Pago y envio</span>
+                <span class="form-steps__item-text">Verificar Carrito</span>
             </div>
         </div>
         <div class="form-steps__item">
@@ -72,11 +74,11 @@
             <!-- Detalles -->
             <div class="details">
                 <h2 class="detalles">Detalles</h2>
-                <div class="discount-container">
+                <!-- <div class="discount-container">
                     <label for="discount-input">Aplicar Cupon:</label>
                     <input type="text" id="discount-input" placeholder="Ingrese el cupón">
                     <button onclick="applyDiscount()">Aceptar</button>
-                </div>
+                </div> -->
                 <p>Subtotal: <span id="subtotal">0.00</span></p>
                 <p>Costo de Envío: <span id="shipping">150.00</span></p>
                 <p>Impuesto: <span id="tax">0.00</span></p>
@@ -86,8 +88,8 @@
 
         <!-- Caja de botones de compra -->
         <div class="checkout-box">
-            <button onclick="checkout()">Seguir Comprando</button>
-            <button onclick="continueShopping()">Aceptar productos</button>
+            <button onclick="checkout()">Atras</button>
+            <button onclick="continueShopping()">Continuar</button>
         </div>
     </div>
 
@@ -97,15 +99,15 @@
             var table = document.getElementById("product-table");
             var rows = table.rows;
 
-            for (var i = 1; i < rows.length; i++) {
+            for (var i = 0; i < rows.length; i++) {
                 var price = parseFloat(rows[i].cells[2].textContent);
                 var quantity = parseInt(rows[i].cells[3].querySelector('input').value);
                 var rowTotal = price * quantity;
                 rows[i].cells[4].textContent = rowTotal.toFixed(2); // Actualizar total en la tabla
-                subtotal += rowTotal;
+                subtotal = subtotal + rowTotal;
             }
 
-            var discount = parseFloat(document.getElementById("discount-input").value);
+            var discount = 0;
             var shipping = 150; // Costo de envío
             var taxRate = 0.18; // Tasa de impuesto
 
@@ -130,33 +132,30 @@
 
         function addSampleProducts() {
             var table = document.getElementById("product-table");
-            var products = [
-                { name: "Coca Cola", price: 25.99, quantity: 1, image: "Imagenes/coca-cola.png" },
-                { name: "Sandía", price: 35.50, quantity: 2, image: "Imagenes/sandia.png" },
-                { name: "Melón", price: 49.99, quantity: 1, image: "Imagenes/melon.png" },
-                { name: "Manzana", price: 15.75, quantity: 1, image: "Imagenes/manzana.png" }
-            ];
+            var carritoGuardado2 = localStorage.getItem('carrito');
+            var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
 
-            products.forEach(function (product) {
+            carrito2.forEach(function (product) {
                 var row = table.insertRow();
                 var imgCell = row.insertCell(0);
                 var img = document.createElement('img');
-                img.src = product.image;
-                img.alt = product.name;
+                img.src = product.imagen;
+                img.alt = product.nombre;
+                img.style = "height: 60px;"
                 imgCell.appendChild(img);
 
-                row.insertCell(1).textContent = product.name;
-                row.insertCell(2).textContent = product.price.toFixed(2);
+                row.insertCell(1).textContent = product.nombre;
+                row.insertCell(2).textContent = product.precio.toFixed(2);
 
                 var quantityCell = row.insertCell(3);
                 var input = document.createElement('input');
                 input.type = 'number';
-                input.value = product.quantity;
+                input.value = product.cantidad;
                 input.onchange = calculateTotal;
                 quantityCell.appendChild(input);
 
                 var totalCell = row.insertCell(4);
-                var total = product.price * product.quantity;
+                var total = product.precio * product.cantidad;
                 totalCell.textContent = total.toFixed(2);
 
                 var actionCell = row.insertCell(5);
@@ -179,64 +178,15 @@
         window.onload = function () {
             addSampleProducts();
         };
+
+        function checkout(){
+            window.history.back();
+        }
+
+        function continueShopping(){
+            window.location.href="Confirmar.html";
+        }
     </script>
 </body>
-<footer>
-    <section class="footer">
-        <div class="footer-row">
-            <div class="footer-col">
-                <h4>Conocenos</h4>
-                <ul class="links">
-                    <li><a href="#">Acerca de Nosotros</a></li>
-                    <li><a href="#">Historia</a></li>
-                    <li><a href="#">Marcas</a></li>
-                    <li><a href="#">Catálogo en línea</a></li>
-                    <li><a href="#">Promociones</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Preguntas </h4>
-                <ul class="links">
-                    <li><a href="#">Formas de pago</a></li>
-                    <li><a href="#">Productos nuevos</a></li>
-                    <li><a href="PreguntasFrecCliente.html">Preguntas frecuentes</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Legal</h4>
-                <ul class="links">
-                    <li><a href="#">Politicas de seguridad</a></li>
-                    <li><a href="#">Envios</a></li>
-                    <li><a href="#">Pagos</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Contacto</h4>
-                <p>
-                    Suscribete a nuestro boletín de Promociones
-                    y recibe la información a través de tu
-                    correo electrónico.
-                </p>
-                <form action="#">
-                    <input type="text" placeholder="Ingrese su Email" required>
-                    <button type="submit">Enviar</button>
-                </form>
-                <div class="icons">
-                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-row" style="display: flex; align-items: center; justify-content: center;">
-            <div class="footer-col" style="text-align: center; margin-top: 20px; color: #fff;">
-                Derechos reservados © 2023 | Grupo + Limpio
-            </div>
-        </div>
-    </section>
-</footer>
 
 </html>
