@@ -151,6 +151,8 @@
                 var input = document.createElement('input');
                 input.type = 'number';
                 input.value = product.cantidad;
+                input.max = product.maxCantidad;
+                input.min = 1;
                 input.onchange = calculateTotal;
                 quantityCell.appendChild(input);
 
@@ -185,6 +187,7 @@
 
         function continueShopping(){
             window.location.href="Confirmar.html";
+            localStorage.removeItem('carrito');
         }
     </script>
 </body>

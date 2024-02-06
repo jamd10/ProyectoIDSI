@@ -1,5 +1,7 @@
 // actualizar el precio
 var precio = document.getElementById('precio');
+var detalleono = 0;
+var primeravez = 0;
 var precioSeleccionado = document.getElementById('precioSeleccionado');
 // Inicializa el precio seleccionado
 precioSeleccionado.innerHTML = "L. " + precio.value;
@@ -132,6 +134,7 @@ function cambiarCantidadDetalle(id, cambio, maxCantidadDetalle) {
 }
 
 function AgregarCarrito(id, nombre, imagen, precio, cantidad){
+    detalleono = 0;
     var carritoGuardado2 = localStorage.getItem('carrito');
     var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
     var cantidadActualizada = parseInt(document.getElementById('spinner' + id).textContent);
@@ -153,7 +156,7 @@ function AgregarCarrito(id, nombre, imagen, precio, cantidad){
             id: id,
             nombre: nombre,
             maxCantidad: cantidad,
-            cantidad: cantidadActualizada,
+            cantidad: 0,
             precio: precio,
             precioTotal: precio * cantidadActualizada,
             imagen: imagen
@@ -180,6 +183,7 @@ function AgregarCarrito(id, nombre, imagen, precio, cantidad){
 
     // Actualizar el carrito en el panel
     mostrarCarrito();
+    cambiarCantidadCarrito(id, cantidadActualizada, cantidad);
 }
 
 // Funciones para mostrar productos y detalles
@@ -290,6 +294,8 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
         </div>
     </div>
     `;
+
+    detalleono = 1;
 
     var carritoGuardado2 = localStorage.getItem('carrito');
     var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
@@ -433,6 +439,7 @@ function mostrarDetalle(id, nombre, imagen, precio, maxCantidad) {
 
         // Actualizar el carrito en el panel
         mostrarCarrito();
+        cambiarCantidadCarrito(id, 0, maxCantidad);
     };
 
     actualizarCantidadProductosEnCarrito();
@@ -473,7 +480,7 @@ function mostrarCarrito() {
                         <button class="btn btn-outline-success" type="button" onclick="cambiarCantidadCarrito('${producto.id}', 1, ${producto.maxCantidad})">+</button>
                     </div>
                     <p style="color: green; margin-bottom: 5px;">Precio total: L. ${producto.precioTotal.toFixed(2)}</p>
-                    <button class="btn btn-danger btn-block" onclick="eliminarProductoCarrito('${producto.id}')">Eliminar</button>
+                    <button class="btn btn-danger btn-block" onclick="eliminarProductoCarrito('${producto.id}');">Eliminar</button>
                 </div>
             </div>
         `;
@@ -532,6 +539,9 @@ function eliminarProductoCarrito(id) {
     var carritoGuardado2 = localStorage.getItem('carrito');
     var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
     carrito2 = carrito2.filter(producto => producto.id !== id);
+    if(detalleono == 1){
+        estadoCarrito[id].cantidad = 0;
+    }
 
     // Actualizar el carrito en el almacenamiento local
     localStorage.setItem('carrito', JSON.stringify(carrito2));
@@ -542,6 +552,7 @@ function eliminarProductoCarrito(id) {
     // Actualizar la cantidad de productos en el carrito
     actualizarCantidadProductosEnCarrito();
 }
+
 
 // Función para calcular y mostrar el total a pagar
 function calcularTotalPagar() {
