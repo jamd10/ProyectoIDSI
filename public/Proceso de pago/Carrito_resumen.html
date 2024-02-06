@@ -94,6 +94,9 @@
     </div>
 
     <script>
+        var totales = []
+        const baseUrl = 'http://localhost:3001';
+
         function calculateTotal() {
             var subtotal = 0;
             var table = document.getElementById("product-table");
@@ -153,12 +156,17 @@
                 input.value = product.cantidad;
                 input.max = product.maxCantidad;
                 input.min = 1;
+                input.id = 'spinner'+product.id;
                 input.onchange = calculateTotal;
                 quantityCell.appendChild(input);
 
                 var totalCell = row.insertCell(4);
                 var total = product.precio * product.cantidad;
-                totalCell.textContent = total.toFixed(2);
+                var input2 = document.createElement('input');
+                input2.value = total.toFixed(2);
+                input2.readOnly;
+                input2.id = 'tabla'+product.id;
+                totalCell.appendChild(input2);
 
                 var actionCell = row.insertCell(5);
                 var deleteButton = document.createElement("button");
@@ -170,6 +178,7 @@
                 deleteButton.appendChild(deleteIcon);
                 deleteButton.onclick = function () {
                     deleteProduct(row);
+                    eliminarProductoCarrito(product.id);
                 };
                 actionCell.appendChild(deleteButton);
             });
@@ -187,9 +196,53 @@
 
         function continueShopping(){
             window.location.href="Confirmar.html";
+            var carritoGuardado2 = localStorage.getItem('carrito');
+            var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
+            carrito2.forEach(function (product) {
+                var nuevacant = product.maxCantidad - document.getElementById('spinner'+product.id).value
+                Actualizar(product.id,nuevacant);
+                product.cantidad = document.getElementById('spinner'+product.id).value;
+                //product.precioTotal = document.getElementById('tabla'+product.id).value;
+            })
+            CrearFactura(carrito2);
             localStorage.removeItem('carrito');
         }
+
+        function Actualizar(inden, nuevacantidad) {
+            fetch(baseUrl + '/ActualizarProducto2', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ cantidad: nuevacantidad, id: inden}),
+            })
+            .then(response => response.json())
+            .then(data => {
+            })
+            .catch(error => {
+                //Tira error, pero lo hace de todas formas
+                //alert('No se ha podido actualizar su informacion'+error);
+            });
+        }
+
+        function CrearFactura(carro) {
+            fetch(baseUrl + '/CrearFactura', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ compra: carro, usuario: localStorage['correo']}),
+            })
+            .then(response => response.json())
+            .then(data => {
+            })
+            .catch(error => {
+                //Tira error, pero lo hace de todas formas
+                //alert('No se ha podido crear factura su informacion'+error);
+            });
+        }
     </script>
+    <script src="catalago.js"></script>
 </body>
 
 </html>

@@ -22,6 +22,8 @@
   <link rel="stylesheet" href="info.css">
   <link rel="stylesheet" href="btn.css">
   <link rel="stylesheet" href="catalago.css">
+  <link rel="stylesheet" href="Proceso de pago/Estilos/Barra.css" type="text/css" />
+  <link rel="stylesheet" href="Proceso de pago/Estilos/Informacion.css" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <!-- FONTS -->
@@ -140,6 +142,8 @@
                   role="tab" aria-controls="nav-MD" aria-selected="false">Direccion</button>
                 <button class="btnMD" id="navbtnTC" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
                   role="tab" aria-controls="nav-TC" aria-selected="false">Tajeta de Credito</button>
+                <button class="btnMD" id="navbtnH" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
+                  role="tab" aria-controls="nav-TC" aria-selected="false">Historial</button>
                 <button class="btnS" id="navbtnS" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button"
                   role="tab" aria-controls="nav-S" aria-selected="false">Seguridad</button>
                 <button class="btnLO" id="navbtnLO" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button"
@@ -277,6 +281,44 @@
               </div>
             </div>
 
+            <div id="IDDivH" class="DivH">
+              <link href="MiDireccion.css" rel="stylesheet" type="text/css" />
+              <div class="SubDivMD">
+                <span>Historial</span>
+              </div>
+              <div class="SubDivMD2">
+                <span>Factura</span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="SubDivMD3">
+                <select id="FacturaSelect" class="InputIP">
+                </select>
+                <span></span>
+              </div>
+              <div class="product-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-table">
+                        <!-- Aquí se generarán dinámicamente los productos -->
+                    </tbody>
+                </table>
+              </div>
+              <!-- <div class="details">
+                <h2 class="detalles">Detalles</h2>
+                <p>Total: <span id="totalHC">L 0.00</span></p>
+              </div> -->
+            </div>
+
             <div id="IDDivS2" class="DivS">
               <link href="Seguridad.css" rel="stylesheet" type="text/css" />
               <div class="SubDivS">
@@ -329,6 +371,7 @@
       const boton2 = document.getElementById('navbtnMD');
       const boton3 = document.getElementById('navbtnS');
       const boton6 = document.getElementById('navbtnTC');
+      const boton7 = document.getElementById('navbtnH');
       const boton4 = document.getElementById('BtnSEditar2');
       const boton5 = document.getElementById('BtnSEditar1');
       const div1 = document.getElementById('IDDivIP');
@@ -336,6 +379,7 @@
       const div3 = document.getElementById('IDDivS');
       const div4 = document.getElementById('IDDivS2');
       const div5 = document.getElementById('IDDivTC');
+      const div6 = document.getElementById('IDDivH');
 
       function changeContent1() {
         div1.style.display = "block"
@@ -343,6 +387,7 @@
         div3.style.display = "none"
         div4.style.display = "none"
         div5.style.display = "none"
+        div6.style.display = "none"
       }
 
       function changeContent2() {
@@ -351,6 +396,7 @@
         div3.style.display = "none"
         div4.style.display = "none"
         div5.style.display = "none"
+        div6.style.display = "none"
       }
 
       function changeContent3() {
@@ -359,6 +405,7 @@
         div3.style.display = "none"
         div4.style.display = "block"
         div5.style.display = "none"
+        div6.style.display = "none"
       }
 
       function changeContent4() {
@@ -377,6 +424,16 @@
         div3.style.display = "none"
         div4.style.display = "none"
         div5.style.display = "block"
+        div6.style.display = "none"
+      }
+
+      function changeContent7() {
+        div1.style.display = "none"
+        div2.style.display = "none"
+        div3.style.display = "none"
+        div4.style.display = "none"
+        div5.style.display = "none"
+        div6.style.display = "block"
       }
 
       function mostrarcontra1() {
@@ -403,6 +460,7 @@
       boton4.addEventListener('click', changeContent4);
       boton5.addEventListener('click', changeContent5);
       boton6.addEventListener('click', changeContent6);
+      boton7.addEventListener('click', changeContent7);
     </script>
 
 
@@ -483,14 +541,16 @@
     const getFechaExp = document.getElementById("FechaExpInput");
     const getCodSeguridad = document.getElementById("CodSeguridadInput");
     const getTipoTarjeta = document.getElementById("TarjetaSelect");
+    const getFactura = document.getElementById("FacturaSelect");
 
     getBtn.addEventListener('click', validar3);
     getBtn2.addEventListener('click', validar3);
     getBtn3.addEventListener('click', validar3);
     getBtnC.addEventListener('click', BuscarContra);
     getBtnLO.addEventListener('click', CerrarSesion);
+    getFactura.addEventListener('change', CargarHistorial2);
 
-    const baseUrl = 'https://grupolimpio-api.onrender.com';
+    const baseUrl = 'http://localhost:3001';
 
     function CerrarSesion() {
       fetch(baseUrl + '/logOut', {
@@ -574,6 +634,47 @@
         });
     }
 
+    function CargarHistorial() {
+      fetch(baseUrl + '/selectHistorial', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ correo: getCorreo.value }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('FacturaSelect').innerHTML = "";
+          for(var i=0; i<data.length; i++){
+            var opt = document.createElement('option');
+            opt.value = data[i].id;
+            opt.innerHTML = data[i].id;
+            document.getElementById('FacturaSelect').appendChild(opt);
+          }
+          addSampleProducts(data);
+        })
+        .catch(error => {
+          //alert('No se ha podido cerrar sesion');
+        });
+    }
+
+    function CargarHistorial2() {
+      fetch(baseUrl + '/selectHistorial', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ correo: getCorreo.value }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          addSampleProducts(data);
+        })
+        .catch(error => {
+          //alert('No se ha podido cerrar sesion');
+        });
+    }
+
     function VerificarContra(data) {
       if (document.getElementById("C1Input").value == data) {
         NuevaContra();
@@ -609,6 +710,7 @@
           getFechaExp.value = data.fechaexp;
           getCodSeguridad.value = data.codseguridad;
           getTipoTarjeta.value = data.tipotarjeta;
+          CargarHistorial();
         })
         .catch(error => {
           alert('No han podido cargar los datos de su cuenta' + error);
@@ -692,7 +794,7 @@
     }
 
     function validar7() {
-      if (getNumTarjeta.value.length == 0 && getNomTarjeta.value.length == 0 && getFechaExp.value.length == 0 && 
+      if (getNumTarjeta.value.length == 0 && getNomTarjeta.value.length == 0 && getFechaExp.value.length == 0 &&
       getCodSeguridad.value.length == 0 && getTipoTarjeta.value.length == 0) {
         Actualizar();
       } else {
@@ -794,6 +896,42 @@
       var element2 = document.getElementById('FechaExpInput');
       element2.value = element2.value.replace(/[^0-9/]+/, '');
     };
+
+
+    function addSampleProducts(carrito2) {
+      var table = document.getElementById("product-table");
+      table.innerHTML = "";
+      var num = 0;
+      for(var i=0; i<carrito2.length; i++){
+        if(document.getElementById('FacturaSelect').value == carrito2[i].id){
+          num = i;
+        }
+      }
+      //var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
+      var carrito3 = carrito2[num].compra;
+
+      var percioFinal = 0;
+
+      carrito3.forEach(function (product) {
+          var row = table.insertRow();
+          var imgCell = row.insertCell(0);
+          var img = document.createElement('img');
+          img.src = product.imagen;
+          img.alt = product.nombre;
+          img.style = "height: 60px;"
+          imgCell.appendChild(img);
+
+          row.insertCell(1).textContent = product.nombre;
+          row.insertCell(2).textContent = product.precio.toFixed(2);
+          percioFinal = percioFinal + product.precio.toFixed(2);
+          row.insertCell(3).textContent = product.cantidad;
+
+          var total = product.precio * product.cantidad;
+          row.insertCell(4).textContent = total.toFixed(2); 
+      });
+      document.getElementById("totalHC").textContent = precioFinal;
+      alert(":D")
+    }
   </script>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
