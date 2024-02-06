@@ -550,7 +550,7 @@
     getBtnLO.addEventListener('click', CerrarSesion);
     getFactura.addEventListener('change', CargarHistorial2);
 
-    const baseUrl = 'http://localhost:3001';
+    const baseUrl = 'https://grupolimpio-api.onrender.com';
 
     function CerrarSesion() {
       fetch(baseUrl + '/logOut', {
