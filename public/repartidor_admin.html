@@ -41,13 +41,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="servicios_admin.html" class="active">
+                        <a href="servicios_admin.html">
                             <span class="las la-clipboard-list"></span>
                             <small>Servicios</small>
                         </a>
                     </li>
                     <li>
-                        <a href="repartidor_admin.html">
+                        <a href="repartidor_admin.html" class="active">
                             <span class="las la-truck"></span>
                             <small>Repartidor</small>
                         </a>
@@ -85,8 +85,8 @@
 
         <main>
             <div class="page-header">
-                <h1>Servicios</h1>
-                <small>Panel / Servicios</small>
+                <h1>Repartidor</h1>
+                <small>Panel / Repartidor</small>
             </div>
             <div class="page-content">
                 <div class="records table-responsive">
@@ -164,13 +164,11 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>NOMBRE</th>
-                                    <th>DESCRIPCIÓN DE SERVICIO</th>
-                                    <th>BENEFICIOS </th>
-                                    <th>CARACTERÍSTICAS</th>
-                                    <th>IMAGEN 1</th>
-                                    <th>IMAGEN 2</th>
-                                    <th>IMAGEN 3</th>
-                                    <th>ESTADO</th>
+                                    <th>FECHA DE NACIMIENTO</th>
+                                    <th>CORREO</th>
+                                    <th>TELEFONO</th>
+                                    <th>TIPO DE VEHÍCULO</th>
+                                    <th>NUMERO DE PLACA</th>
                                     <th>OPCIONES</th>
                                 </tr>
                             </thead>
@@ -189,40 +187,37 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">×</span>
-            <h2>Agregar Servicio</h2>
+            <h2>Agregar repartidor</h2>
             <hr>
 
             <div class="form-container">
                 <div class="row">
                     <div class="column">
-                        <label for="nombre">Nombre del servicio:</label>
+                        <label for="nombre">Numero de Identidad:</label>
                         <input type="text" id="nombre" name="nombre">
 
-                        <label for="imagen1">Imagen 1:</label>
-                        <input type="text" id="imagen1" name="imagen1">
+                        <label for="nombre">Nombre completo:</label>
+                        <input type="text" id="nombre" name="nombre">
 
-                        <label for="imagen2">Imagen 2:</label>
-                        <input type="text" id="imagen2" name="imagen2">
+                        <label for="nombre">Fecha de Nacimiento:</label>
+                        <input type="text" id="nombre" name="nombre">
 
-                        <label for="imagen3">Imagen 3:</label>
-                        <input type="text" id="imagen3" name="imagen3">
+                        
                     </div>
 
                     <div class="column">
-                        <label for="descripcion">Descripción:</label>
+                        <label for="descripcion">Correo:</label>
                         <textarea id="descripcion" name="descripcion"></textarea>
       
-                        <label for="beneficios">Beneficios:</label>
+                        <label for="beneficios">Tipo de Vehiculo:</label>
                         <textarea id="beneficios" name="beneficios"></textarea>
 
-                        <label for="caracteristicas">Características:</label>
+                        <label for="caracteristicas">Numero de placa:</label>
                         <textarea id="caracteristicas" name="caracteristicas"></textarea>
 
-                        <label for="estado">Estado:</label>
-                        <select id="estado" name="estado">
-                            <option value="Activo">Activo</option>
-                            <option value="Desactivo">Desactivo</option>
-                        </select>
+                        <label for="caracteristicas">Numero de placa:</label>
+                        <textarea id="caracteristicas" name="caracteristicas"></textarea>
+                        
                     </div>
                 </div>
 
@@ -245,39 +240,36 @@
             <div class="form-container">
                 <div class="row">
                     <div class="column">
-                        <label for="nombre2">Nombre del servicio:</label>
-                        <input type="text" id="nombre2" name="nombre">
+                        <label for="nombre">Numero de Identidad:</label>
+                        <input type="text" id="nombre" name="nombre">
 
-                        <label for="imagen12">Imagen 1:</label>
-                        <input type="text" id="imagen12" name="imagen1">
+                        <label for="nombre">Nombre completo:</label>
+                        <input type="text" id="nombre" name="nombre">
 
-                        <label for="imagen22">Imagen 2:</label>
-                        <input type="text" id="imagen22" name="imagen22">
+                        <label for="nombre">Fecha de Nacimiento:</label>
+                        <input type="text" id="nombre" name="nombre">
 
-                        <label for="imagen32">Imagen 3:</label>
-                        <input type="text" id="imagen32" name="imagen32">
+                        
                     </div>
 
                     <div class="column">
-                        <label for="descripcion2">Descripción:</label>
-                        <textarea id="descripcion2" name="descripcion2"></textarea>
+                        <label for="descripcion">Correo:</label>
+                        <textarea id="descripcion" name="descripcion"></textarea>
       
-                        <label for="beneficios2">Beneficios:</label>
-                        <textarea type="text" id="beneficios2" name="beneficios2"></textarea>
+                        <label for="beneficios">Tipo de Vehiculo:</label>
+                        <textarea id="beneficios" name="beneficios"></textarea>
 
-                        <label for="caracteristicas2">Características:</label>
-                        <textarea type="text" id="caracteristicas2" name="caracteristicas2"></textarea>
+                        <label for="caracteristicas">Numero de placa:</label>
+                        <textarea id="caracteristicas" name="caracteristicas"></textarea>
 
-                        <label for="estado2">Estado:</label>
-                        <select id="estado2" name="estado2">
-                            <option value="Activo">Activo</option>
-                            <option value="Desactivo">Desactivo</option>
-                        </select>
+                        <label for="caracteristicas">Numero de placa:</label>
+                        <textarea id="caracteristicas" name="caracteristicas"></textarea>
+                        
                     </div>
                 </div>
 
                 <div class="buttons">
-                    <button id="ModificarAceptar">Aceptar</button>
+                    <button id="AgregarAceptar">Aceptar</button>
                     <button id="cancelar">Cancelar</button>
                 </div>
             </div>
