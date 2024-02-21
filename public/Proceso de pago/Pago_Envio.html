@@ -13,7 +13,7 @@
 
 </head>
 
-<body onload="Texto()">
+<body onload="Texto(); DireccionSiNo();">
     <div class="logo-container">
         <img class="logo" src="Imagenes/logo.png" alt="Logo de la empresa">
 
@@ -26,23 +26,30 @@
                 <span class="form-steps__item-text">Iniciar Sesion</span>
             </div>
         </div>
-        <div class="form-steps__item form-steps__item--active">
+        <div class="form-steps__item form-steps__item--completed">
             <div class="form-steps__item-content">
                 <span class="form-steps__item-icon">2</span>
+                <span class="form-steps__item-line"></span>
+                <span class="form-steps__item-text">Tipo de Entrega</span>
+            </div>
+        </div>
+        <div class="form-steps__item form-steps__item--active">
+            <div class="form-steps__item-content">
+                <span class="form-steps__item-icon">3</span>
                 <span class="form-steps__item-line"></span>
                 <span class="form-steps__item-text">Pago y Envio</span>
             </div>
         </div>
         <div class="form-steps__item">
             <div class="form-steps__item-content">
-                <span class="form-steps__item-icon">3</span>
+                <span class="form-steps__item-icon">4</span>
                 <span class="form-steps__item-line"></span>
                 <span class="form-steps__item-text">Verificar Carrito</span>
             </div>
         </div>
         <div class="form-steps__item">
             <div class="form-steps__item-content">
-                <span class="form-steps__item-icon">4</span>
+                <span class="form-steps__item-icon">5</span>
                 <span class="form-steps__item-line"></span>
                 <span class="form-steps__item-text">Confirmar</span>
             </div>
@@ -112,7 +119,7 @@
         </form>
     </div>
     <!-- Formulario de Domicilio -->
-    <div class="container mt-5">
+    <div class="container mt-5" id="DivDom">
         <h3>Información de Domicilio</h3>
         <form>
             <div class="form-row">
@@ -135,9 +142,12 @@
                     <input type="text" class="form-control" id="codigoPostal" placeholder="Código Postal" onkeyup="validate6();" maxlength="5" required>
                 </div>
             </div>
-            <button type="button" class="btn btn-success mt-3" onclick="validar5()">Confirmar</button>
-            <button type="button" class="btn btn-success mt-3" onclick="Atras()">Atras</button>
         </form>
+    </div>
+
+    <div class="container mt-5">
+        <button type="button" id="ConPE" class="btn btn-success mt-3" onclick="validar5()">Confirmar</button>
+        <button type="button" class="btn btn-success mt-3" onclick="Atras()">Atras</button>
     </div>
 
     <!-- Agregamos el enlace a Bootstrap JS y Popper.js -->
@@ -146,23 +156,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <script>
-
-        // document.getElementById('numeroTarjeta').addEventListener('input', function () {
-        //     var numeroTarjeta = this.value.replace(/\s/g, ''); // Eliminar espacios en blanco
-        //     var tipoTarjeta = '';
-
-        //     if (/^4/.test(numeroTarjeta)) {
-        //         tipoTarjeta = 'VISA';
-        //     } else if (/^5[1-5]/.test(numeroTarjeta)) {
-        //         tipoTarjeta = 'MASTERCARD';
-        //     } else if (/^3[47]/.test(numeroTarjeta)) {
-        //         tipoTarjeta = 'AMERICAN EXPRESS';
-        //     } else {
-        //         tipoTarjeta = 'Desconocido';
-        //     }
-
-        //     document.getElementById('tipoTarjeta').value = tipoTarjeta;
-        // });
 
         function showInfo() {
             // Obtener los valores de los campos del usuario
@@ -364,11 +357,31 @@
         }
 
         function siguiente(){
+            var arr = [document.getElementById("nombreUsuario").value, document.getElementById("numeroIdentidad").value,
+            document.getElementById("telefono").value, document.getElementById("correoUsuario").value, document.getElementById("nombreTarjeta").value,
+            document.getElementById("numeroTarjeta").value, document.getElementById("fechaExpiracion").value, 
+            document.getElementById("codigoSeguridad").value, document.getElementById("tipoTarjeta").value, document.getElementById("direccion").value,
+            document.getElementById("ciudad").value, document.getElementById("estado").value, document.getElementById("codigoPostal").value]
+            localStorage.setItem('FacturaDatos', JSON.stringify(arr));
             window.location.href="Carrito_resumen.html"
         }
 
         function Atras(){
             window.history.back();
+        }
+
+        function DireccionSiNo(){
+            if(localStorage["entrega"] == "Tienda"){
+                document.getElementById("DivDom").style.display = "none";
+                document.getElementById("ConPE").setAttribute("onclick","validar8()");
+                document.getElementById("direccion").value = "";
+                document.getElementById("ciudad").value = "";
+                document.getElementById("estado").value = "";
+                document.getElementById("codigoPostal").value = "";
+
+            }else{
+                document.getElementById("ConPE").setAttribute("onclick","validar5()");
+            }
         }
 
     </script>

@@ -9,6 +9,28 @@
     margin-bottom: 30px;
 }
 
+.SubDivMDCombo {
+    display: flex;
+    align-content: flex-start;
+    font-family: 'Monserrat', sans-serif;
+    padding: 10px;
+    font-size: 15px;
+    justify-content: space-between;
+    margin-left: 20px;
+    display: block;
+
+}
+
+.InputMD {
+    padding: 6px 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 40%;
+}
+
 .SubDivMD2 {
     display: flex;
     align-content: flex-start;
@@ -31,7 +53,7 @@
 }
 
 .DivMD {
-    height: 400px;
+    height: 500px;
     display: none;
     margin: auto;
     margin-top: 20px;
@@ -43,7 +65,7 @@
 }
 
 .DivTC {
-    height: 500px;
+    height: 600px;
     display: none;
     margin: auto;
     margin-top: 20px;
@@ -71,6 +93,21 @@
     align-content: flex-start;
     padding: 10px;
     justify-content: space-around;
+}
+
+.BtnMDDireccion {
+    display: flex;
+    align-content: flex-start;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+.SubDivMdBtn2 {
+    display: flex;
+    align-content: flex-start;
+    padding: 10px;
+    justify-content: space-around;
+    display: none;
 }
 
 .BtnMdEditar {

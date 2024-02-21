@@ -336,7 +336,7 @@
         // getBtn.addEventListener('click', submitData);
         getBtn.addEventListener('click', validar3);
 
-        const baseUrl = 'https://grupolimpio-api.onrender.com';
+        const baseUrl = 'http://localhost:3001';
 
         //Deberia de ser primero CrearUsuario y despues submitData
 
@@ -393,6 +393,9 @@
         }
 
         function submitData() {
+            var carrito = [];
+            var direcciones = [];
+            var tarjetas = [];
             fetch(baseUrl + '/submit', {
                 method: 'POST',
                 headers: {
@@ -400,8 +403,8 @@
                 },
                 body: JSON.stringify({
                     nombre: getNombre.value, apellido: getApellido.value, id: getId.value, telefono: getTelefono.value,
-                    ciudad: getCiudad.value, correo: getCorreo.value, password: getContra.value, fechanacimiento: '', genero: '', direccion: '',
-                    estado: '', postal: '', nomtarjeta: '', numtarjeta: '', fechaexp: '', codseguridad: '', tipotarjeta: '',
+                    ciudad: getCiudad.value, correo: getCorreo.value, password: getContra.value, fechanacimiento: '', genero: '',
+                    carrito: carrito, direcciones: direcciones, tarjetas: tarjetas
                 }),
             })
                 .then(response => response.json())
@@ -409,7 +412,7 @@
 
                 })
                 .catch(error => {
-                    alert('Error Creando Usuario' + error);
+                    //alert('Error Creando Usuario' + error);
                 });
         }
 

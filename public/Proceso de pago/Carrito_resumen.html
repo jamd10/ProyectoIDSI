@@ -30,19 +30,26 @@
             <div class="form-steps__item-content">
                 <span class="form-steps__item-icon">2</span>
                 <span class="form-steps__item-line"></span>
+                <span class="form-steps__item-text">Tipo de Entrega</span>
+            </div>
+        </div>
+        <div class="form-steps__item form-steps__item--completed">
+            <div class="form-steps__item-content">
+                <span class="form-steps__item-icon">3</span>
+                <span class="form-steps__item-line"></span>
                 <span class="form-steps__item-text">Pago y Envio</span>
             </div>
         </div>
         <div class="form-steps__item form-steps__item--active">
             <div class="form-steps__item-content">
-                <span class="form-steps__item-icon">3</span>
+                <span class="form-steps__item-icon">4</span>
                 <span class="form-steps__item-line"></span>
                 <span class="form-steps__item-text">Verificar Carrito</span>
             </div>
         </div>
         <div class="form-steps__item">
             <div class="form-steps__item-content">
-                <span class="form-steps__item-icon">4</span>
+                <span class="form-steps__item-icon">5</span>
                 <span class="form-steps__item-line"></span>
                 <span class="form-steps__item-text">Confirmar</span>
             </div>
@@ -79,10 +86,9 @@
                     <input type="text" id="discount-input" placeholder="Ingrese el cupón">
                     <button onclick="applyDiscount()">Aceptar</button>
                 </div> -->
-                <p>Subtotal: <span id="subtotal">0.00</span></p>
-                <p>Costo de Envío: <span id="shipping">150.00</span></p>
-                <p>Impuesto: <span id="tax">0.00</span></p>
-                <p>Total: <span id="total">0.00</span></p>
+                <p>Subtotal: <span id="subtotal"></span></p>
+                <p>Costo de Envío: <span id="shipping"></span></p>
+                <p>Total: <span id="total"></span></p>
             </div>
         </div>
 
@@ -95,7 +101,7 @@
 
     <script>
         var totales = []
-        const baseUrl = 'https://grupolimpio-api.onrender.com';
+        const baseUrl = 'http://localhost:3001';
 
         function calculateTotal() {
             var subtotal = 0;
@@ -110,17 +116,11 @@
                 subtotal = subtotal + rowTotal;
             }
 
-            var discount = 0;
-            var shipping = 150; // Costo de envío
-            var taxRate = 0.18; // Tasa de impuesto
-
-            var discountAmount = subtotal * (discount / 100);
-            var totalBeforeTax = subtotal + shipping - discountAmount;
-            var tax = totalBeforeTax * taxRate;
-            var total = totalBeforeTax + tax;
+            var shipping = +localStorage["ship"]; // Costo de envío
+            var total = subtotal + shipping;
 
             document.getElementById("subtotal").textContent = subtotal.toFixed(2);
-            document.getElementById("tax").textContent = tax.toFixed(2);
+            document.getElementById("shipping").textContent = shipping.toFixed(2);
             document.getElementById("total").textContent = total.toFixed(2);
         }
 
@@ -156,6 +156,7 @@
                 input.value = product.cantidad;
                 input.max = product.maxCantidad;
                 input.min = 1;
+                //input.onkeydown = e.preventDefault();
                 input.id = 'spinner'+product.id;
                 input.onchange = calculateTotal;
                 quantityCell.appendChild(input);
@@ -195,17 +196,33 @@
         }
 
         function continueShopping(){
-            window.location.href="Confirmar.html";
             var carritoGuardado2 = localStorage.getItem('carrito');
             var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
-            carrito2.forEach(function (product) {
-                var nuevacant = product.maxCantidad - document.getElementById('spinner'+product.id).value
-                Actualizar(product.id,nuevacant);
-                product.cantidad = document.getElementById('spinner'+product.id).value;
-                //product.precioTotal = document.getElementById('tabla'+product.id).value;
-            })
-            CrearFactura(carrito2);
-            localStorage.removeItem('carrito');
+            var siono = 0;
+            var table = document.getElementById("product-table");
+            if(table.rows.length == 0){
+                alert("No se puede realizar la compra sin productos en la lista");
+                location.reload();
+            } else{
+                carrito2.forEach(function (product) {
+                    if(document.getElementById('spinner'+product.id).value < 1){
+                        siono = 1; 
+                    }
+                })
+                if(siono == 1){
+                    alert("La cantidad tiene que ser mayor que 0");
+                } else{
+                    carrito2.forEach(function (product) {
+                        var nuevacant = product.maxCantidad - document.getElementById('spinner'+product.id).value
+                        Actualizar(product.id,nuevacant);
+                        product.cantidad = document.getElementById('spinner'+product.id).value;
+                        //product.precioTotal = document.getElementById('tabla'+product.id).value;
+                    })
+                    CrearFactura(carrito2);
+                    localStorage.removeItem('carrito');
+                    window.location.href="Confirmar.html";
+                }
+            }
         }
 
         function Actualizar(inden, nuevacantidad) {
@@ -226,19 +243,23 @@
         }
 
         function CrearFactura(carro) {
+            const myArray = JSON.parse(localStorage.getItem('FacturaDatos'));
             fetch(baseUrl + '/CrearFactura', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ compra: carro, usuario: localStorage['correo']}),
+                body: JSON.stringify({ compra: carro, usuario: localStorage['correo'], nombre: myArray[0], identidad: myArray[1], 
+                telefono: myArray[2], nombreTarjeta: myArray[4], numeroTarjeta: myArray[5], fechaExpiracion: myArray[6], 
+                codigoSeguridad: myArray[7], tipoTarjeta: myArray[8], direccion: myArray[9], ciudad: myArray[10], estado: myArray[11],
+                codigoPostal: myArray[12], tipoEntrega: localStorage["entrega"], fecha: new Date()})
             })
             .then(response => response.json())
             .then(data => {
             })
             .catch(error => {
                 //Tira error, pero lo hace de todas formas
-                //alert('No se ha podido crear factura su informacion'+error);
+                alert('Compra realizada');
             });
         }
     </script>

@@ -58,7 +58,7 @@
                 <span class="form-steps__item-text">Iniciar Sesion</span>
             </div>
         </div>
-        <div class="form-steps__item">
+        <div class="form-steps__item form-steps__item--completed">
             <div class="form-steps__item-content">
                 <span class="form-steps__item-icon">2</span>
                 <span class="form-steps__item-line"></span>
@@ -96,10 +96,10 @@
     <div class="container text-center custom-container">
         <div class="d-flex flex-column align-items-center custom-form-group">
             <!-- Botón "Iniciar Sesión" -->
-            <button class="btn btn-success mb-3 custom-button" onclick="openLoginWindow()">Iniciar Sesión</button>
+            <button class="btn btn-success mb-3 custom-button" onclick="openLoginWindow()">En Tienda</button>
 
             <!-- Botón "Registrarse" -->
-            <button class="btn btn-success mb-3 custom-button" onclick="openLoginWindow2()">Registrarse</button>
+            <button class="btn btn-success mb-3 custom-button" onclick="openLoginWindow2()">Por Envio</button>
 
 
             <button class="btn btn-success mb-3 custom-button" onclick="openLoginWindow3()">Atras</button>
@@ -115,11 +115,15 @@
     <script>
         function openLoginWindow() {
             // Abre una ventana nueva más pequeña
-            window.location.href = "../main.html"
+            localStorage["entrega"] = "Tienda";
+            localStorage["ship"] = 0;
+            window.location.href="Pago_Envio.html";
         }
         function openLoginWindow2() {
             // Abre una ventana nueva más pequeña
-            window.location.href = "../index1.html"
+            localStorage["entrega"] = "Envio";
+            localStorage["ship"] = 150;
+            window.location.href="Pago_Envio.html";
         }
         function openLoginWindow3() {
             // Abre una ventana nueva más pequeña

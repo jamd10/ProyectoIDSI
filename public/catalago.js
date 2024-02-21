@@ -541,6 +541,8 @@ function eliminarProductoCarrito(id) {
     carrito2 = carrito2.filter(producto => producto.id !== id);
     if(detalleono == 1){
         estadoCarrito[id].cantidad = 0;
+    }else{
+        estadoCarrito[id] = null;
     }
 
     // Actualizar el carrito en el almacenamiento local
@@ -568,10 +570,16 @@ function calcularTotalPagar() {
 }
 
 function realizarCompra(){
-    if(localStorage["correo"] == null){
-        window.location.href = "Proceso de pago/Iniciar_Sesion.html";
-    }else{
-        window.location.href = "Proceso de pago/Pago_Envio.html";
+    var carritoGuardado2 = localStorage.getItem('carrito');
+    var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
+    if(carrito2.length == 0){
+        alert("El carrito debe de contener productos antes de realizar la compra");
+    }else{ 
+        if(localStorage["correo"] == null){
+            window.location.href = "Proceso de pago/Iniciar_Sesion.html";
+        }else{
+            window.location.href = "Proceso de pago/Tipo_Entrega.html";
+        }
     }
 
 }
