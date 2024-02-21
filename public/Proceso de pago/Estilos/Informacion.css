@@ -14,6 +14,26 @@ body {
     overflow: hidden;
 }
 
+.InputMD {
+    padding: 6px 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+.SubDivMD3 {
+    display: flex;
+    align-content: flex-start;
+    font-family: 'Monserrat', sans-serif;
+    padding: 10px;
+    font-size: 15px;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+
 
 .title {
     background-color: #23c01e;

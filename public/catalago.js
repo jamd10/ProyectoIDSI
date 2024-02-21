@@ -572,9 +572,11 @@ function calcularTotalPagar() {
 function realizarCompra(){
     var carritoGuardado2 = localStorage.getItem('carrito');
     var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
-    if(carrito2.length == 0){
+    if(localStorage["Admin"] == "Admin"){
+        alert("Debe ingresar como usuario");
+    }else if(carrito2.length == 0){
         alert("El carrito debe de contener productos antes de realizar la compra");
-    }else{ 
+    }else { 
         if(localStorage["correo"] == null){
             window.location.href = "Proceso de pago/Iniciar_Sesion.html";
         }else{

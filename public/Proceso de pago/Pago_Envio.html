@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="Estilos/footer.css">
     <title>Pago y Envio</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="checkout.js" defer></script>
 
 
 </head>
 
-<body onload="Texto(); DireccionSiNo();">
+<body onload="Texto(); DireccionSiNo(); CargarSelects();">
     <div class="logo-container">
         <img class="logo" src="Imagenes/logo.png" alt="Logo de la empresa">
 
@@ -83,9 +85,18 @@
         </form>
     </div>
 
+    <!-- <div id="checkout">
+        
+    </div> -->
+
     <!-- Formulario de Tarjeta -->
     <div class="container mt-5">
         <h3>Información de Tarjeta</h3>
+        <div class="SubDivMD3">
+            <select id="TarjetaSelectPE" class="InputMD">
+            </select>
+            <span></span>
+        </div>
         <form>
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -118,9 +129,16 @@
             </div>
         </form>
     </div>
+
+
     <!-- Formulario de Domicilio -->
     <div class="container mt-5" id="DivDom">
         <h3>Información de Domicilio</h3>
+        <div class="SubDivMD3">
+            <select id="DireccionSelectPE" class="InputMD">
+            </select>
+            <span></span>
+        </div>
         <form>
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -156,6 +174,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <script>
+        const DireccionSelect = document.getElementById("DireccionSelectPE");
+        const TarjetaSelect = document.getElementById("TarjetaSelectPE");
+        DireccionSelect.addEventListener("change", DireccionesTexto);
+        TarjetaSelect.addEventListener("change", TarjetasTexto);
 
         function showInfo() {
             // Obtener los valores de los campos del usuario
@@ -238,15 +260,6 @@
             document.getElementById("numeroIdentidad").value = usuario.id;
             document.getElementById("telefono").value = usuario.telefono;
             document.getElementById("correoUsuario").value = usuario.correo;
-            document.getElementById("nombreTarjeta").value = usuario.nomtarjeta;
-            document.getElementById("numeroTarjeta").value = usuario.numtarjeta;
-            document.getElementById("fechaExpiracion").value = usuario.fechaexp;
-            document.getElementById("codigoSeguridad").value = usuario.codseguridad;
-            document.getElementById("tipoTarjeta").value = usuario.tipotarjeta;
-            document.getElementById("direccion").value = usuario.direccion;
-            document.getElementById("ciudad").value = usuario.ciudad;
-            document.getElementById("estado").value = usuario.estado;
-            document.getElementById("codigoPostal").value = usuario.postal;
         }
 
         function validate5() {
@@ -383,6 +396,54 @@
                 document.getElementById("ConPE").setAttribute("onclick","validar5()");
             }
         }
+
+        function CargarSelects(){
+            var us = localStorage.getItem('usuario');
+            var usuario = us ? JSON.parse(us) : [];
+            if(usuario.direcciones.length !=0 && usuario.tarjetas.length != 0){
+
+                document.getElementById('DireccionSelectPE').innerHTML = "";
+                for(var i=0; i<usuario.direcciones.length; i++){
+                    var opt = document.createElement('option');
+                    opt.value = usuario.direcciones[i].ciudad + ", " + usuario.direcciones[i].direccion;
+                    opt.innerHTML = usuario.direcciones[i].ciudad + ", " + usuario.direcciones[i].direccion;
+                    document.getElementById('DireccionSelectPE').appendChild(opt);
+                }
+                DireccionesTexto();
+
+                document.getElementById('TarjetaSelectPE').innerHTML = "";
+                for(var i=0; i<usuario.tarjetas.length; i++){
+                    var opt = document.createElement('option');
+                    var valor = usuario.tarjetas[i].numero_tarjeta.slice(-2)
+                    opt.value = "Tarjeta "+ usuario.tarjetas[i].tipo_tarjeta + " que termina en " +valor;
+                    opt.innerHTML = "Tarjeta "+ usuario.tarjetas[i].tipo_tarjeta + " que termina en " +valor;
+                    document.getElementById('TarjetaSelectPE').appendChild(opt);
+                }
+                TarjetasTexto();
+            }
+        }
+
+        function DireccionesTexto(){
+            var us = localStorage.getItem('usuario');
+            var usuario = us ? JSON.parse(us) : [];
+            var select = document.getElementById("DireccionSelectPE")
+            document.getElementById("ciudad").value = usuario.direcciones[select.selectedIndex].ciudad;
+            document.getElementById("direccion").value = usuario.direcciones[select.selectedIndex].direccion;
+            document.getElementById("estado").value = usuario.direcciones[select.selectedIndex].estado;
+            document.getElementById("codigoPostal").value = usuario.direcciones[select.selectedIndex].codigo_postal;
+        }
+
+        function TarjetasTexto(){
+            var us = localStorage.getItem('usuario');
+            var usuario = us ? JSON.parse(us) : [];
+            var select = document.getElementById("TarjetaSelectPE")
+            document.getElementById("nombreTarjeta").value = usuario.tarjetas[select.selectedIndex].nombre_tarjeta;
+            document.getElementById("numeroTarjeta").value = usuario.tarjetas[select.selectedIndex].numero_tarjeta;
+            document.getElementById("fechaExpiracion").value = usuario.tarjetas[select.selectedIndex].fecha_expiracion;
+            document.getElementById("codigoSeguridad").value = usuario.tarjetas[select.selectedIndex].codigo_seguridad;
+            document.getElementById("tipoTarjeta").value = usuario.tarjetas[select.selectedIndex].tipo_tarjeta;
+        }
+
 
     </script>
 

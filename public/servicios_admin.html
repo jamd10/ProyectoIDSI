@@ -53,6 +53,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="pedidos_admin.html">
+                            <span class="las la-clipboard-check"></span>
+                            <small>Pedidos</small>
+                        </a>
+                    </li>
+                    <li>
                         <a href="index.html">
                             <span class="las la-sign-out-alt"></span>
                             <small>Salir</small>
@@ -382,6 +388,8 @@
         .then(data => {
           if (data.msg == "log out") {
             alert('Se ha cerrrado sesion');
+            localStorage.removeItem('Admin');
+            localStorage.removeItem('correo');
             window.location.href = "index.html";
           } else {
 

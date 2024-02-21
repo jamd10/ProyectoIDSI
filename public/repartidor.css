@@ -1,0 +1,317 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #000000;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    background-color: #23c01e;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.profile-icon {
+    font-size: 80px;
+    margin-bottom: 10px;
+}
+
+.profile-greeting p {
+    font-size: 24px;
+}
+
+.menu {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-buttons {
+    flex-grow: 1;
+}
+
+.menu button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.menu button:hover {
+    background-color: #ffffff;
+    color: #23c01e;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+.profile-info h2 {
+    color: #23c01e;
+    font-family: 'Georgia', serif;
+}
+
+.deliveries {
+    margin-top: 20px;
+}
+
+.delivery-item {
+    margin-bottom: 10px;
+}
+
+.btn {
+    padding: 8px 16px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 10px;
+}
+
+.btn-success {
+    background-color: #23c01e;
+    color: #ffffff;
+}
+
+.btn-success:hover {
+    background-color: #ffffff;
+    color: #23c01e;
+}
+
+.btn-warning {
+    background-color: #ff9800;
+    color: #ffffff;
+}
+
+.btn-warning:hover {
+    background-color: #ffffff;
+    color: #ff9800;
+}
+
+.btn-info {
+    background-color: #2196f3;
+    color: #ffffff;
+}
+
+.btn-info:hover {
+    background-color: #ffffff;
+    color: #2196f3;
+}
+
+.logout-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.logout-message.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Estilos para la tabla de entregas */
+#deliveries-container h3,
+#profile-info-container h3 {
+    font-size: 2em;
+    color: #23c01e;
+}
+
+#delivered-container h3,
+#profile-info-container h3 {
+    font-size: 2em;
+    color: #23c01e;
+}
+
+#delivery-list,
+#profile-info-container table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #23c01e;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#delivery-list .delivery-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #23c01e;
+    padding: 10px 0;
+}
+
+#profile-info-container img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-edit {
+    display: none;
+}
+
+#edit-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #23c01e;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#edit-form tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #23c01e;
+    padding: 10px 0;
+}
+
+#edit-form label {
+    flex-basis: 30%;
+    text-align: right;
+    margin-right: 10px;
+}
+
+#edit-form input,
+#edit-form button {
+    flex-basis: 70%;
+}
+
+#edit-form button.btn-success {
+    background-color: #23c01e;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 220%;
+}
+
+/* Nuevos estilos */
+.delivery-status {
+    display: none;
+}
+
+#delivery-status-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #23c01e;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#delivery-status-list .delivery-status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #23c01e;
+    padding: 10px 0;
+}
+
+#delivery-status-container h3 {
+    font-size: 2em;
+    color: #23c01e;
+}
+
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .content {
+        padding: 20px;
+        text-align: left;
+    }
+
+    .menu {
+        align-items: center;
+    }
+
+    .menu button {
+        width: 80%;
+    }
+
+    #delivery-list .delivery-item,
+    #profile-info-container table tr {
+        flex-direction: column;
+    }
+}
+
+
+/* contraseña */
+.password-toggle {
+    position: relative;
+    display: inline-block;
+}
+
+.password-toggle input[type="password"],
+.password-toggle input[type="text"] {
+    width: 178px;
+    padding-right: 30px;
+    box-sizing: border-box;
+}
+
+.password-toggle .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-42%);
+    cursor: pointer;
+    transition: fill 0.3s ease;
+}
+
+.show-password {
+    fill: #4285f4;
+}

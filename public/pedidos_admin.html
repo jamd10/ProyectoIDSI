@@ -47,13 +47,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="repartidor_admin.html" class="active">
+                        <a href="repartidor_admin.html">
                             <span class="las la-truck"></span>
                             <small>Repartidor</small>
                         </a>
                     </li>
                     <li>
-                        <a href="pedidos_admin.html">
+                        <a href="pedidos_admin.html" class="active">
                             <span class="las la-clipboard-check"></span>
                             <small>Pedidos</small>
                         </a>
@@ -64,7 +64,6 @@
                             <small>Salir</small>
                         </a>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -91,24 +90,12 @@
 
         <main>
             <div class="page-header">
-                <h1>Repartidor</h1>
-                <small>Panel / Repartidor</small>
+                <h1>Pedidos</h1>
+                <small>Panel / Pedidos</small>
             </div>
             <div class="page-content">
                 <div class="records table-responsive">
                     <div class="record-header">
-                        <div class="add">
-
-                            <button id="openForm">Agregar</button>
-
-                        </div>
-
-                        <!-- <div class="browse">
-                            <input type="search" placeholder="Buscar" class="record-search">
-                            <select name="" id="">
-                                <option value="">Estado</option>
-                            </select>
-                        </div> -->
                     </div>
                     <div>
                         <table class="product-table" id="TablaServicios">
@@ -165,17 +152,23 @@
                                     margin-right: 10px;
                                     text-decoration: none;
                                 }
+
+                                .InputMD {
+                                    padding: 6px 12px;
+                                    margin: 8px 0;
+                                    display: inline-block;
+                                    border: 2px solid #ccc;
+                                    border-radius: 4px;
+                                    box-sizing: border-box;
+                                    width: 40%;
+                                }
                             </style>
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>NOMBRE</th>
-                                    <th>FECHA DE NACIMIENTO</th>
-                                    <th>CORREO</th>
-                                    <th>CONTRASEÑA</th>
-                                    <th>TELEFONO</th>
-                                    <th>TIPO DE VEHÍCULO</th>
-                                    <th>NUMERO DE PLACA</th>
+                                    <th>USUARIO</th>
+                                    <th>TIPO DE ENTREGA</th>
+                                    <th>ESTADO DE ENTREGA</th>
                                     <th>OPCIONES</th>
                                 </tr>
                             </thead>
@@ -216,9 +209,6 @@
                     <div class="column">
                         <label for="correo">Correo:</label>
                         <input id="correo" name="correo"></input>
-
-                        <label for="contra">Contraseña</label>
-                        <input type="text" id="contra" name="contra">
       
                         <label for="vehiculo">Tipo de Vehiculo:</label>
                         <textarea id="vehiculo" name="vehiculo"></textarea>
@@ -230,7 +220,7 @@
                 </div>
 
                 <div class="buttons">
-                    <button id="AgregarAceptar">Aceptar</button>
+                    <button id="AgregarAceptar">Asignar</button>
                 </div>
             </div>
         </div>
@@ -246,34 +236,8 @@
 
             <div class="form-container">
                 <div class="row">
-                    <div class="column">
-                        <label for="identidad2">Numero de Identidad:</label>
-                        <input type="text" id="identidad2" name="identidad2" onkeyup="validate2();" maxlength="13">
-
-                        <label for="nombre2">Nombre completo:</label>
-                        <input type="text" id="nombre2" name="nombre2" onkeyup="validate();">
-
-                        <label for="fecha2">Fecha de Nacimiento:</label>
-                        <input type="text" id="fecha2" name="fecha2" onkeyup="validate3();" maxlength="10">
-
-                        <label for="telefono2">Telefono:</label>
-                        <input type="text" id="telefono2" name="telefono2" onkeyup="validate4();" maxlength="8">
-                    </div>
-
-                    <div class="column">
-                        <label for="correo2">Correo:</label>
-                        <input id="correo2" name="correo2"></input>
-
-                        <label for="contra2">Contraseña</label>
-                        <input type="text" id="contra2" name="contra2">
-      
-                        <label for="vehiculo2">Tipo de Vehiculo:</label>
-                        <input id="vehiculo2" name="vehiculo2"></input>
-
-                        <label for="placa2">Numero de placa:</label>
-                        <input id="placa2" name="placa2" onkeyup="validate5();" maxlength="7"></input>
-                        
-                    </div>
+                    <select id="RepartidorSelect" class="InputIP">
+                      </select>
                 </div>
 
                 <div class="buttons">
@@ -328,7 +292,7 @@
     function openModificarModal(data) {
         var modalModificar = document.getElementById('myModal_Modificar');
         modalModificar.style.display = 'block';
-        leerModificar(data);
+        leerModificar();
         localStorage["idS"] = data;
     }
 
@@ -345,27 +309,11 @@
     const Eliminarbtn = document.getElementById('EliminarConfirmar');
     const Tabla = document.getElementById('TablaServicios');
 
-    const nombre = document.getElementById('nombre');
-    const identidad = document.getElementById('identidad'); 
-    const fecha = document.getElementById('fecha'); 
-    const telefono = document.getElementById('telefono'); 
-    const correo = document.getElementById('correo'); 
-    const vehiculo = document.getElementById('vehiculo');
-    const placa = document.getElementById('placa');
-    const contra = document.getElementById('contra');
-
-    const nombre2 = document.getElementById('nombre2');
-    const identidad2 = document.getElementById('identidad2'); 
-    const fecha2 = document.getElementById('fecha2'); 
-    const telefono2 = document.getElementById('telefono2'); 
-    const correo2 = document.getElementById('correo2'); 
-    const vehiculo2 = document.getElementById('vehiculo2');
-    const placa2 = document.getElementById('placa2');
-    const contra2 = document.getElementById('contra2');
+    const select = document.getElementById('RepartidorSelect')
 
     getBtnLO.addEventListener('click', CerrarSesion);
-    Agregarbtn.addEventListener('click', PreSubmitData);
-    Modificarbtn.addEventListener('click', PreActualizar);
+    Agregarbtn.addEventListener('click', submitData);
+    Modificarbtn.addEventListener('click', submitData);
     Eliminarbtn.addEventListener('click', Eliminar);
 
     const baseUrl = 'https://grupolimpio-api.onrender.com';
@@ -414,57 +362,21 @@
     }
 
     function Actualizar() {
-            fetch(baseUrl + '/ActualizarRepartidor', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ nombre: nombre2.value, identidad: identidad2.value, 
-                    fecha: fecha2.value, correo: correo2.value, telefono: telefono2.value,
-                    vehiculo: vehiculo2.value, placa: placa2.value, contra: contra2.value,
-                    id: localStorage["idS"]}),
+        fetch(baseUrl + '/ActualizarFactura', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id: localStorage["idS"],texto: "Asignado"}),
+        })
+        .then(response => response.json())
+        .then(data => {
             })
-            .then(response => response.json())
-            .then(data => {
-                alert('El repartidor a sido actualizado');
-                var modalModificar = document.getElementById('myModal_Modificar');
-                modalModificar.style.display = 'none';
-                location.reload();
-                })
-            .catch(error => {
-                alert('No se ha podido actualizar su informacion');
-            });
-        }
-
-    function PreSubmitData(){
-        if(nombre.value == ""){
-            alert("Ingrese el nombre del repartidor");
-        }
-        else if(identidad.value.length != 13){
-            alert("El numero de identidad del repartidor debe de ser de 13 numeros, sin espacios");
-        }
-        else if(correo.value == ""){
-            alert("Ingrese el correo del repartidor");
-        }
-        else if(contra.value == ""){
-            alert("Ingrese la contraseña");
-        }
-        else if(fecha.value.length != 10){
-            alert("Ingrese la fecha de nacimiento del repartidor, ex: 00/00/0000");
-        }
-        else if(telefono.value.length != 8){
-            alert("El numero de telefono debe de contener 8 numeros");
-        }
-        else if(vehiculo.value == ""){
-            alert("Ingrese la descipcion del vehiculo");
-        }
-        else if(placa.value.length != 7){
-            alert("La placa del vehiculo debe de contener 7 caracteres");
-        }
-        else{
-            CrearUsuario();
-        }
+        .catch(error => {
+            //alert('No se ha podido actualizar su informacion');
+        });
     }
+
 
     function PreActualizar(){
         if(nombre2.value == ""){
@@ -475,9 +387,6 @@
         }
         else if(correo2.value == ""){
             alert("Ingrese el correo del repartidor");
-        }
-        else if(contra2.value == ""){
-            alert("Ingrese la contraseña");
         }
         else if(fecha2.value.length != 10){
             alert("Ingrese la fecha de nacimiento del repartidor, ex: 00/00/0000");
@@ -497,76 +406,26 @@
     }
 
     function submitData() {
-        fetch(baseUrl + '/CrearRepartidor', {
+        fetch(baseUrl + '/CrearPedido', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ nombre: nombre.value, numero_identidad: identidad.value, 
-                fecha_nacimiento: fecha.value, correo: correo.value, vehiculo: vehiculo.value,
-                telefono: telefono.value, placa: placa.value, contra: contra.value, tipo: "Repartidor"}),
+            body: JSON.stringify({ repartidor: select.value, orden: localStorage["idS"]}),
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
-            Tabla.innerHTML += `
-            <tbody>
-                <tr>
-                    <td>`+identidad.value+`</td>
-                    <td>
-                        <h4>`+nombre.value+`</h4>
-                    </td>
-
-                    <td>
-                        <p>`+fecha.value+`</p>
-                    </td>
-                    <td>
-                        <p>`+correo.value+`</p>
-                    </td>
-                    <td>
-                        <p>`+contra.value+`</p>
-                    </td>
-                    <td>
-                        <p>`+telefono.value+`</p>
-                    </td>
-                    <td>
-                        `+vehiculo.value+`
-                    </td>
-                    <td>
-                        `+placa.value+`
-                    </td>
-                    <td>
-                        <div class="actions">
-                            <button id="openForm" onclick=openModificarModal("`+data.id+`")>
-                                <img src="img_admin/boton-editar.png" alt="Agregar">
-                            </button>
-
-                            <button id="openForm" onclick=openEliminarModal("`+data.id+`")>
-                                <img src="img_admin/basura.png" alt="Eliminar">
-                            </button>
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-            `
-            alert('Repartidor creado exitosamente');
-            nombre.value = "";
-            identidad.value = "";
-            fecha.value = ""; 
-            telefono.value = ""; 
-            correo.value = ""; 
-            vehiculo.value = "";
-            placa.value = "";
-            contra.value = "";
+            alert("Se asigno el pedido al repartido");
+            Actualizar();
+            location.reload();
         })
         .catch(error => {
-            alert('Error Creando Repartidor'+ error);
+            alert('Error asignando pedido'+ error);
         });
     }
 
     function leerServicio() {
-            fetch(baseUrl + '/selectRepartidores', {
+            fetch(baseUrl + '/selectFacturas', {
                 method: 'GET',
                 headers: {
                 'Content-Type': 'application/json',
@@ -577,49 +436,52 @@
                 Tabla.innerHTML += ``;
                 for(var i = 0; i < data.length; i++){
                     var idtb = data[i].id;
-                    Tabla.innerHTML += `
-                    <tbody>
-                        <tr>
-                            <td>`+data[i].numero_identidad+`</td>
-                            <td>
-                                <h4>`+data[i].nombre+`</h4>
-                            </td>
+                    if(data[i].tipoEntrega == "Envio" && data[i].estado_entrega == "Confirmado"){
+                        Tabla.innerHTML += `
+                        <tbody>
+                            <tr>
+                                <td>`+data[i].id+`</td>
+                                <td>
+                                    <h4>`+data[i].usuario+`</h4>
+                                </td>
 
-                            <td>
-                                <p>`+data[i].fecha_nacimiento+`</p>
-                            </td>
-                            <td>
-                                <p>`+data[i].correo+`</p>
-                            </td>
-                            <td>
-                                <p>`+data[i].contra+`</p>
-                            </td>
-                            <td>
-                                <p>`+data[i].telefono+`</p>
-                            </td>
+                                <td>
+                                    <p>`+data[i].tipoEntrega+`</p>
+                                </td>
+                                <td>
+                                    <p>`+data[i].estado_entrega+`</p>
+                                </td>
+                                <td>
+                                    <div class="actions">
+                                        <button id="openForm" onclick=openModificarModal("`+data[i].id+`")>
+                                            <img src="img_admin/boton-editar.png" alt="Agregar">
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        `
+                    }else{
+                        Tabla.innerHTML += `
+                        <tbody>
+                            <tr>
+                                <td>`+data[i].id+`</td>
+                                <td>
+                                    <h4>`+data[i].usuario+`</h4>
+                                </td>
 
-                            <td>
-                                <p>`+data[i].vehiculo+`</p>
-                            </td>
-
-                            <td>
-                                <p>`+data[i].placa+`</p>
-                            </td>
-                            <td>
-                                <div class="actions">
-                                    <button id="openForm" onclick=openModificarModal("`+data[i].id+`")>
-                                        <img src="img_admin/boton-editar.png" alt="Agregar">
-                                    </button>
-
-                                    <button id="openForm" onclick=openEliminarModal("`+data[i].id+`")>
-                                        <img src="img_admin/basura.png" alt="Eliminar">
-                                    </button>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                    `
+                                <td>
+                                    <p>`+data[i].tipoEntrega+`</p>
+                                </td>
+                                <td>
+                                    <p>`+data[i].estado_entrega+`</p>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                        `
+                    }
                 }
             })
             .catch(error => {
@@ -627,58 +489,26 @@
             });          
         }
 
-        function leerModificar(datas) {
-            fetch(baseUrl + '/selectRepartidor', {
-                method: 'POST',
+        function leerModificar() {
+            fetch(baseUrl + '/selectRepartidores', {
+                method: 'GET',
                 headers: {
                 'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id: datas}),
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                nombre2.value = data.nombre;
-                identidad2.value = data.numero_identidad;
-                fecha2.value = data.fecha_nacimiento;
-                correo2.value = data.correo;
-                telefono2.value = data.telefono;
-                vehiculo2.value = data.vehiculo;
-                placa2.value = data.placa;
-                contra2.value = data.contra;
+                document.getElementById('RepartidorSelect').innerHTML = "";
+                for(var i=0; i<data.length; i++){
+                    var opt = document.createElement('option');
+                    opt.value = data[i].correo;
+                    opt.innerHTML = data[i].nombre;
+                    document.getElementById('RepartidorSelect').appendChild(opt);
+                }
             })
             .catch(error => {
                 alert(':('+error);
             });
-        }
-    
-        function CrearUsuario() {
-            fetch(baseUrl + '/createUser', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ correo: correo.value, password: contra.value }),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.Error == "auth/missing-email") {
-                        alert('Ingrese un correo');
-                    } else if (data.Error == "auth/invalid-email") {
-                        alert('Ingrese un correo valido');
-                    } else if (data.Error == "auth/missing-password") {
-                        alert('Ingrese una contraseña');
-                    } else if (data.Error == "auth/weak-password") {
-                        alert('Ingrese una contraseña fuerte, utilize letras mayusculas, minusculas y numeros u otros caracteres');
-                    } else if (data.Error == "auth/email-already-in-use") {
-                        alert('Ya existe una cuenta con el correo que ingreso');
-                    } else {
-                        submitData();
-                    }
-                })
-                .catch(error => {
-                    alert('Error al crear usuario, su correo pueda ser que ya este en uso, o su contraseña puede ser muy debil' + error);
-                });
         }
 
     function validate2() {

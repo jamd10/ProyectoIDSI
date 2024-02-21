@@ -660,7 +660,7 @@
     ModificarTar.addEventListener('click', ModificarTarjeta);
     
 
-    const baseUrl = 'http://localhost:3001';
+    const baseUrl = 'https://grupolimpio-api.onrender.com';
 
     function CerrarSesion() {
       fetch(baseUrl + '/logOut', {
@@ -755,8 +755,12 @@
           document.getElementById('FacturaSelect').innerHTML = "";
           for(var i=0; i<data.length; i++){
             var opt = document.createElement('option');
-            opt.value = data[i].id;
-            opt.innerHTML = data[i].id;
+            var anio = data[i].fecha.substring(0,3);
+            var mes = data[i].fecha.substring(5,6);
+            var dia = data[i].fecha.substring(8,9);
+            var fecha = dia + "/" + mes + "/" + anio
+            opt.value = fecha + " - " +data[i].id;
+            opt.innerHTML = fecha + " - " +data[i].id;
             document.getElementById('FacturaSelect').appendChild(opt);
           }
           addSampleProducts(data);

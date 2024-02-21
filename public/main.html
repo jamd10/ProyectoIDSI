@@ -291,7 +291,6 @@
                 })
                 .catch(error => {
                     alert('Error al iniciar Sesion, revise sus credenciales');
-                    alert('Error');
                 });
         }
 
@@ -306,23 +305,48 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.tipo == "Admin") {
-                        aPerfil(datas, data.tipo);
+                        LogInRepartidor(datas, data.tipo);
                     } else {
-                        aPerfil(datas, data.tipo);
+                        LogInRepartidor(datas, data.tipo);
                     }
                 })
                 .catch(error => {
-                    aPerfil(datas, error);
+                    LogInRepartidor(datas, error);
                 });
         }
 
-        function aPerfil(data, admin) {
+        function LogInRepartidor(datas, tipo) {
+            fetch(baseUrl + '/selectRepartidor', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: getCorreo.value }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.tipo == "Repartidor") {
+                        aPerfil(datas, tipo, data.tipo);
+                    } else {
+                        aPerfil(datas, tipo, data.tipo);
+                    }
+                })
+                .catch(error => {
+                    aPerfil(datas, tipo, error);
+                });
+        }
+
+        function aPerfil(data, admin, repartidor) {
             if (data == 'Holas') {
                 if (admin == "Admin") {
                     alert('Se ha iniciado sesion exitosamente administrador!');
                     localStorage["Admin"] = "Admin";
                     window.location.href = "index_admin.html";
-                } else {
+                } else if (repartidor == "Repartidor"){
+                    alert('Se ha iniciado sesion exitosamente como repartidor!');
+                    localStorage["Repartidor"] = "Repartidor";
+                    window.location.href = "repartidor.html";
+                }else {
                     alert('Se ha iniciado sesion exitosamente!');
                     window.location.href = "PerfilUsuario.html";
                 }
