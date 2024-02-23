@@ -537,11 +537,11 @@
                     </td>
                     <td>
                         <div class="actions">
-                            <button id="openForm" onclick=openModificarModal("`+data.id+`")>
+                            <button id="openForm" onclick=openModificarModal("`+contra.value+`")>
                                 <img src="img_admin/boton-editar.png" alt="Agregar">
                             </button>
 
-                            <button id="openForm" onclick=openEliminarModal("`+data.id+`")>
+                            <button id="openForm" onclick=openEliminarModal("`+contra.value+`")>
                                 <img src="img_admin/basura.png" alt="Eliminar">
                             </button>
                             </a>
@@ -576,7 +576,7 @@
             .then(data => {
                 Tabla.innerHTML += ``;
                 for(var i = 0; i < data.length; i++){
-                    var idtb = data[i].id;
+                    var idtb = data[i].correo;
                     Tabla.innerHTML += `
                     <tbody>
                         <tr>
@@ -607,11 +607,11 @@
                             </td>
                             <td>
                                 <div class="actions">
-                                    <button id="openForm" onclick=openModificarModal("`+data[i].id+`")>
+                                    <button id="openForm" onclick=openModificarModal("`+data[i].correo+`")>
                                         <img src="img_admin/boton-editar.png" alt="Agregar">
                                     </button>
 
-                                    <button id="openForm" onclick=openEliminarModal("`+data[i].id+`")>
+                                    <button id="openForm" onclick=openEliminarModal("`+data[i].correo+`")>
                                         <img src="img_admin/basura.png" alt="Eliminar">
                                     </button>
                                     </a>

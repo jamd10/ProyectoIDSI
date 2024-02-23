@@ -36,7 +36,7 @@
 </head>
 
 
-<body onload="CargarDatos(); actualizarCantidadProductosEnCarrito(); loggedIn();">
+<body onload="CargarDatos(); actualizarCantidadProductosEnCarrito();">
   <div id="loader" class="loader">
     <div class="spinner"></div>
   </div>
@@ -699,7 +699,7 @@
         .then(response => response.json())
         .then(data => {
           alert('Su informacion a sido actualizada exitosamente!');
-          window.location.reload();
+          window.location.href = "PerfilUsuario.html";
         })
         .catch(error => {
           alert('No se ha podido actualizar su informacion');
@@ -915,6 +915,7 @@
         .then(response => response.json())
         .then(data => {
           localStorage.setItem('usuario', JSON.stringify(data));
+          loggedIn();
           getNombre.value = data.nombre;
           getApellido.value = data.apellido;
           getCorreo.value = data.correo;

@@ -164,15 +164,38 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
+  function CerrarSesion() {
+    fetch(baseUrl + '/logOut', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.msg == "log out") {
+          const logoutMessage = document.getElementById("logout-message");
+          logoutMessage.innerText = `Hasta luego, ${repartidor.nombre}`;
+          logoutMessage.classList.add("show");
+          localStorage.removeItem('Repartidor');
+          localStorage.removeItem('correo');
+          setTimeout(function () {
+            logoutMessage.classList.remove("show");
+            window.location.href = "index.html"; // Redirige al usuario a index.html
+          }, 2000);
+        } else {
+
+        }
+      })
+      .catch(error => {
+        alert('No se ha podido cerrar sesion');
+      });
+  }
+
   window.cerrarSesion = function () {
     // Aquí puedes agregar la lógica para cerrar la sesión si es necesario
-    const logoutMessage = document.getElementById("logout-message");
-    logoutMessage.innerText = `Hasta luego, ${repartidor.nombre}`;
-    logoutMessage.classList.add("show");
-    setTimeout(function () {
-      logoutMessage.classList.remove("show");
-      window.location.href = "index.html"; // Redirige al usuario a index.html
-    }, 2000);
+    CerrarSesion();
+
   }
 
   // Mostrar Entregas Pendientes por defecto
