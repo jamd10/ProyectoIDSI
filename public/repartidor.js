@@ -75,17 +75,17 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      const listItem = document.createElement("li");
-      listItem.classList.add("delivery-item");
-      listItem.innerHTML = `<strong>Entrega ${datas}:</strong> 
-                            Dirección: ${data.direccion} 
-                            <div>
-                              <button class="btn btn-success" onclick="tomarPedido(${datas})">Tomar</button>
-                              <button class="btn btn-warning" onclick="caminoALaEntrega(${datas})">Camino</button>
-                              <button class="btn btn-info" onclick="entregaRealizada(${datas})">Entregado</button>
-                            </div>`;
-      deliveryList.appendChild(listItem);
-      entre.push(data);
+        const listItem = document.createElement("li");
+        listItem.classList.add("delivery-item");
+        listItem.innerHTML = `<strong>Entrega ${datas}:</strong> 
+                              Dirección: ${data[0].direccion} 
+                              <div>
+                                <button class="btn btn-success" onclick="tomarPedido(${datas})">Tomar</button>
+                                <button class="btn btn-warning" onclick="caminoALaEntrega(${datas})">Camino</button>
+                                <button class="btn btn-info" onclick="entregaRealizada(${datas})">Entregado</button>
+                              </div>`;
+        deliveryList.appendChild(listItem);
+        entre.push(data);
     })
     .catch(error => {
         alert(':('+error);

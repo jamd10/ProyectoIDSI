@@ -418,6 +418,9 @@
                     opt.value = "Tarjeta "+ usuario.tarjetas[i].tipo_tarjeta + " que termina en " +valor;
                     opt.innerHTML = "Tarjeta "+ usuario.tarjetas[i].tipo_tarjeta + " que termina en " +valor;
                     document.getElementById('TarjetaSelectPE').appendChild(opt);
+                    if (i==0){
+                        localStorage.setItem('tarjetaNum', ""+valor);
+                    }
                 }
                 TarjetasTexto();
             }
