@@ -1,0 +1,254 @@
+.intro body {
+    font-family: 'Poppins', sans-serif;
+    color: #4a4a4e;
+    margin: 10px;
+}
+
+.max-w-sm {
+    max-height: 80vh;
+    /* Ajusta este valor según tus necesidades */
+}
+
+@media (max-width: 768px) {
+    .flex {
+        flex-direction: column;
+    }
+}
+
+/*divicion*/
+.relleno2 html,
+body,
+ul,
+li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+}
+
+.relleno2 html {
+    font-size: 10px;
+    font-family: "Open Sans";
+}
+
+.relleno2 body {
+    font-size: 14px;
+}
+
+.relleno2 .banner {
+    background-color: #23c01e;
+    margin: 3rem;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 2.5rem;
+    height: 12.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.relleno2 .banner li {
+    position: relative;
+}
+
+.relleno2 .banner li.item-1 {
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: item-1 0.5s ease forwards;
+    animation-delay: 0.1s;
+    position: absolute;
+    font-size: 2.1rem;
+    left: 50%;
+}
+
+.relleno2 .banner li.item-2 {
+    animation: item-2 0.5s ease forwards;
+    font-size: 2.1rem;
+    opacity: 0.75;
+}
+
+.banner li.item-3 {
+    animation: item-3 0.5s ease forwards;
+    font-size: 1.5rem;
+    opacity: 0.5;
+}
+
+.banner li.item-4 {
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: item-4 0.5s ease forwards;
+}
+
+.banner li:nth-child(n+5) {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+}
+
+@keyframes item-1 {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 0rem) scale(0.5);
+        top: 1rem;
+    }
+
+    30% {
+        transform: translate(-50%, -0.3rem);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translate(-50%, 0.4rem);
+        opacity: 1;
+        top: 3.4rem;
+    }
+}
+
+@keyframes item-2 {
+    0% {
+        opacity: 1;
+        transform: translateY(0rem);
+    }
+
+    100% {
+        transform: translateY(3rem) scale(0.71);
+        opacity: 0.75;
+    }
+}
+
+@keyframes item-3 {
+    0% {
+        opacity: 0.75;
+        transform: translateY(0.5rem);
+    }
+
+    100% {
+        opacity: 0.5;
+        transform: translateY(3rem) scale(0.8);
+    }
+}
+
+@keyframes item-4 {
+    0% {
+        opacity: 0.5;
+        transform: translateY(0.5rem);
+    }
+
+    100% {
+        transform: translateY(2rem);
+        opacity: 0;
+        filter: blur(2px);
+    }
+}
+
+/*mas diviciones*/
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
+
+.relleno3 {
+    box-sizing: border-box;
+}
+
+.relleno3 *::before,
+.relleno3 *::after {
+    box-sizing: inherit;
+}
+
+.relleno3 body {
+    margin: 0;
+    padding: 0;
+}
+
+.relleno3 main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.relleno3 .slider-wrapper {
+    font-size: 2.5rem;
+    font-family: 'Poppins', sans-serif;
+    color: #aaa;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.relleno3 .slider {
+    margin-left: 1rem;
+    font-weight: 700;
+    height: 5rem;
+}
+
+.relleno3 .slider-text {
+    height: 4.7rem;
+    padding: 0.7rem;
+    margin-bottom: 1.65rem;
+    background-color: #23c01e;
+    text-align: center;
+    border-radius: 1rem;
+    color: white;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: none;
+}
+
+.relleno3 .slider-text:first-child {
+    animation: slide 5s linear infinite;
+}
+
+@keyframes slide {
+    0% {
+        margin-top: -300px;
+    }
+
+    5% {
+        margin-top: -200px;
+    }
+
+    33% {
+        margin-top: -200px;
+    }
+
+    38% {
+        margin-top: -100px;
+    }
+
+    66% {
+        margin-top: -100px;
+    }
+
+    71% {
+        margin-top: 0px;
+    }
+
+    100% {
+        margin-top: 0px;
+    }
+}
+
+/*relleno 4*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.bannerRelleno {
+    background-color: #3498db;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    overflow: hidden; /* Para ocultar el desbordamiento de los textos */
+}
+
+

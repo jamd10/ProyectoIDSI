@@ -1,92 +1,253 @@
-.infocards .body {
-	color: white;
-	font-family: "Lato";
-	padding: 15px;
-	position: absolute;
-	bottom: 0;
+/*banner pequeño*/
+/* CSS Reset */
+.top-banner html {
+	box-sizing: border-box;
+}
+
+.top-banner *,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+.top-banner * {
+	margin: 0;
+	padding: 0;
+}
+
+/* (Just ignore)top banner style */
+.top-banner {
+	margin-bottom: 30px;
+	text-align: center;
+	background-color: #23c01e;
+}
+
+.top-banner a,
+.top-banner span {
+	display: inline-block;
+}
+
+.top-banner a {
 	width: 100%;
+	padding: 15px 0;
+	text-decoration: none;
+	color: #fff;
+	color: rgba(255, 255, 255, .8);
 }
 
-.infocards .media {
-	background-position: center;
-	background-size: cover;
-	height: 100%;
+.top-banner span {
+	width: 50px;
+	heigth: 28px;
+	line-height: 28px;
+	background-color: #ff6600;
+	border-radius: 20px;
+}
+
+.top-banner a:hover {
+	color: #fff9e0;
+}
+
+/*division*/
+
+h1.cardsServicios {
+	font-family: 'Raleway', sans-serif;
+	color: #FFF;
+	background-color: #1aac15;
+	letter-spacing: 1px;
+	padding: 25px 0;
+	margin: 0;
+	text-align: center;
+	font-size: 40px;
+}
+
+/*division*/
+.relleno .banner {
+	overflow: auto;
+	position: relative
+}
+
+.relleno .banner ul {
+	padding-left: 0;
+}
+
+.relleno .banner li {
+	list-style: none;
+}
+
+.relleno .banner ul li {
+	float: left;
+}
+
+.relleno .banner .dots {
 	position: absolute;
-	transition: all 0.3s ease;
-	width: 100%;
-	border-radius: 15px;
-}
-
-.infocards figure {
-	height: 370px;
-	overflow: hidden;
-	position: relative;
-	border-radius: 15px;
-	margin: 10px;
-}
-
-.infocards figure a {
-	height: 100%;
 	left: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	z-index: 3;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	text-align: center;
 }
 
-.infocards figure:hover .media {
-	transform: scale(1.25);
+.relleno .banner .dots li {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 0 4px;
+	text-indent: -999em;
+	border: 2px solid #555;
+	border-radius: 6px;
+	cursor: pointer;
+	opacity: .4;
+	-webkit-transition: background .5s, opacity .5s;
+	-moz-transition: background .5s, opacity .5s;
+	transition: background .5s, opacity .5s;
 }
 
-.infocards svg {
-	height: inherit;
-	width: 100%;
+.relleno .banner .dots li.active {
+	background: #aaa;
+	opacity: 1;
 }
 
-.infocards svg text {
-	text-anchor: middle;
+.relleno .banner .client {
+	background-size: 200px 200px !important;
+	height: 200px;
+	float: none;
+	position: relative;
+	margin: 0 auto;
+	transition: background 0.5s ease;
+	overflow: visible;
 }
 
-.infocards svg .title {
-	font-size: 24px;
+.relleno .banner h3,
+.relleno .banner h4 {
+	text-align: center;
+	font-family: 'montserrat', sans-serif;
+	text-transform: uppercase;
+	color: #555;
+}
+
+.relleno .banner h3 {
+	font-size: 42px;
+	font-weight: 400;
+	letter-spacing: 5px;
+}
+
+.relleno .banner h4 span {
+	text-transform: uppercase;
 	letter-spacing: 3px;
-	font-family: "Montserrat";
+	font-size: 22px;
 }
 
-.infocards svg #base1,
-.infocards svg #base2,
-.infocards svg #base3 {
-	fill: white;
-	-webkit-mask: url(#mask1);
-	mask: url(#mask1);
+.relleno .banner .client.va-logo {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/VA-GREY-lt.png") no-repeat center center;
 }
 
-.infocards svg #base2 {
-	-webkit-mask: url(#mask2);
-	mask: url(#mask2);
+.relleno .banner .client.disa-logo {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/DISA-GREY-lt.png") no-repeat center center;
 }
 
-.infocards svg #base3 {
-	-webkit-mask: url(#mask3);
-	mask: url(#mask3);
+.relleno .banner .client.centcom-logo {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/USCENTCOM-GREY-lt.png") no-repeat center center;
 }
 
-.infocards .body p {
-	font-size: 14px;
-	line-height: 1.2;
+.relleno .banner .client.dos-logo {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/DOS-GREY-lt.png") no-repeat center center;
 }
 
-/* Ajustes para pantallas pequeñas */
-@media only screen and (max-width: 600px) {
-	.infocards figure {
+.relleno .banner .client.va-logo:hover {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/VA-COLOR.png") no-repeat center center;
+}
+
+.relleno .banner .client.disa-logo:hover {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/DISA-COLOR.png") no-repeat center center;
+}
+
+.relleno .banner .client.centcom-logo:hover {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/USCENTCOM-COLOR.png") no-repeat center center;
+}
+
+.relleno .banner .client.dos-logo:hover {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/DOS-COLOR.png") no-repeat center center;
+}
+
+.relleno .banner .client.graham-holdings-logo {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/GRAHAM-HOLDINGS-GREY.png") no-repeat center center;
+}
+
+.relleno .banner .client.blackboard-logo {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/BLACKBOARD-GREY.png") no-repeat center center;
+}
+
+.relleno .banner .client.k12-logo {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/K12-GREY.png") no-repeat center center;
+}
+
+.relleno .banner .client.kaplan-university-logo {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/KAPLAN-GREY.png") no-repeat center center;
+}
+
+.relleno .banner .client.graham-holdings-logo:hover {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/GRAHAM-HOLDINGS-COLOR.png") no-repeat center center;
+}
+
+.relleno .banner .client.blackboard-logo:hover {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/BLACKBOARD-COLOR.png") no-repeat center center;
+}
+
+.relleno .banner .client.k12-logo:hover {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/K12-COLOR.png") no-repeat center center;
+}
+
+.relleno .banner .client.kaplan-university-logo:hover {
+	background: url("http://ms3.bareseo.com/wp-content/uploads/2015/04/KAPLAN-COLOR.png") no-repeat center center;
+}
+
+.relleno li:nth-child(1),
+.relleno li:nth-child(2) {
+	width: 100%;
+}
+
+.relleno .banner .client-group .one-fourth {
+	float: left;
+	margin-left: 2.564102564102564%;
+	width: 23.076923076923077%;
+}
+
+.relleno .banner .client-group .first {
+	clear: both;
+	margin-left: 0;
+}
+
+@media only screen and (max-width: 1200px) {
+	.relleno .banner .client {
+		background-size: 125px 125px !important;
+		height: 125px;
+	}
+}
+
+@media only screen and (max-width: 890px) {
+	.relleno .banner .client {
+		background-size: 200px 200px !important;
 		height: 200px;
 	}
 
-	.infocards svg .title {
-		font-size: 16px;
+	.relleno .banner .client-group .one-fourth {
+		float: left;
+		margin-left: 2.564102564102564%;
+		width: 48.717948717948715%;
 	}
 
-	.infocards .body p {
-		font-size: 12px;
+	.relleno .banner .client-group .first,
+	.relleno .banner .client-group .one-fourth:nth-child(4) {
+		clear: both;
+		margin-left: 0;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.relleno .banner .client-group .one-fourth {
+		width: 100%;
+		clear: both;
+		margin: 20px 0;
 	}
 }

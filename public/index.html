@@ -13,9 +13,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
         integrity="sha384-VmYTbvx1L4vf8H8PXTdaL4gZFjkDrMz/5zmRi+9e8n4ZtR83Lm2hz3FqCOf8w4qJ" crossorigin="anonymous">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <!-- Otros enlaces -->
     <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="serviciosSlider.css">
     <link rel="stylesheet" href="carrusel.css">
     <link rel="stylesheet" href="cards.css">
     <link rel="stylesheet" href="footer.css">
@@ -108,7 +115,8 @@
                 </ul>
             </div>
             <div class="flex items-center gap-6">
-                <a id="LogInMenuButton" class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="#">Iniciar
+                <a id="LogInMenuButton" class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]"
+                    href="#">Iniciar
                     Sesion</a>
                 <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
             </div>
@@ -129,53 +137,30 @@
                 </nav>
             </div>
         </section>
-        <section class="mi-carrusel">
-            <div class="deslizador-img">
-                <div class="diapositiva active">
-                    <img src="img/1.jpg" alt="">
-                    <div class="informacion">
-                    </div>
-                </div>
-                <div class="diapositiva">
-                    <img src="img/2.jpg" alt="">
-                    <div class="informacion">
-                    </div>
-                </div>
-                <div class="diapositiva">
-                    <img src="img/3.jpg" alt="">
-                    <div class="informacion">
-                    </div>
-                </div>
-                <div class="diapositiva">
-                    <img src="img/4.jpg" alt="">
-                    <div class="informacion">
-                    </div>
-                </div>
-                <div class="diapositiva">
-                    <img src="img/5.jpg" alt="">
-                    <div class="informacion">
-                    </div>
-                </div>
-                <div class="diapositiva">
-                    <img src="img/6.jpg" alt="">
-                    <div class="informacion">
-                    </div>
-                </div>
-                <div class="diapositiva">
-                    <img src="img/7.jpg" alt="">
-                    <div class="informacion">
-                    </div>
-                </div>
-                <div class="navegacion">
-                    <div class="boton active"></div>
-                    <div class="boton"></div>
-                    <div class="boton"></div>
-                    <div class="boton"></div>
-                    <div class="boton"></div>
-                    <div class="boton"></div>
-                    <div class="boton"></div>
-                </div>
-            </div>
+        <!--Carrusel-->
+        <section id="container-slider" class="mi-carrusel-personalizado">
+            <a href="javascript: fntExecuteSlide('prev');" class="arrowPrev"><i
+                    class="fas fa-chevron-circle-left"></i></a>
+            <a href="javascript: fntExecuteSlide('next');" class="arrowNext"><i
+                    class="fas fa-chevron-circle-right"></i></a>
+            <ul class="listslider">
+                <li><a itlist="itList_0" href="#" class="item-select-slid"></a></li>
+                <li><a itlist="itList_1" href="#"></a></li>
+                <li><a itlist="itList_2" href="#"></a></li>
+                <li><a itlist="itList_3" href="#"></a></li>
+                <li><a itlist="itList_4" href="#"></a></li>
+                <li><a itlist="itList_5" href="#"></a></li>
+                <li><a itlist="itList_6" href="#"></a></li>
+            </ul>
+            <ul id="slider">
+                <li style="background-image: url('img/1.jpg'); z-index:0; opacity: 1;"></li>
+                <li style="background-image: url('img/2.jpg'); z-index:0; opacity: 1;"></li>
+                <li style="background-image: url('img/3.jpg'); z-index:0; opacity: 1;"></li>
+                <li style="background-image: url('img/4.jpg'); z-index:0; opacity: 1;"></li>
+                <li style="background-image: url('img/5.jpg'); z-index:0; opacity: 1;"></li>
+                <li style="background-image: url('img/6.jpg'); z-index:0; opacity: 1;"></li>
+                <li style="background-image: url('img/7.jpg'); z-index:0; opacity: 1;"></li>
+            </ul>
         </section>
         <section>
             <div class="publicidad" onmouseover="detenerAnimacion()" onmouseout="reanudarAnimacion()">
@@ -239,6 +224,10 @@
                 </div>
             </div>
         </section>
+        <div class="bannerRelleno">
+            <p id="text2">¡Confía en Grupo + Limpio para mantener tus espacios impecables y saludables!</p>
+        </div>
+
         <section>
             <div class="productosDestacadosGML">
                 <h1>Productos Destacados</h1>
@@ -441,73 +430,170 @@
             </div>
         </section>
 
-        <!--Publicidad-->
-        <section>
-            <div class="infocards container-fluid">
-                <div class="row no-gutters">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <figure>
-                            <div class="media" style="background-image:url(img/1.jpg)">
-                            </div>
-                            <figcaption>
-                                <svg viewBox="0 0 200 200" version="1.1" preserveAspectRatio="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <defs>
-                                        <mask id="mask3" x="0" y="0" width="100%" height="100%">
-                                            <rect id="alpha3" x="0" y="0" width="100%" height="100%"></rect>
-                                        </mask>
-                                    </defs>
-                                    <rect id="base3" x="0" y="0" width="100%" height="100%"></rect>
-                                </svg>
-                                <div class="body"></div>
-                            </figcaption>
-                            <a href="javascript:void(0);"></a>
-                        </figure>
-                    </div>
-                </div>
-                <div class="row no-gutters">
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <figure>
-                            <div class="media" style="background-image:url(img/2.jpg)">
-                            </div>
-                            <figcaption>
-                                <svg viewBox="0 0 200 200" version="1.1" preserveAspectRatio="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <defs>
-                                        <mask id="mask1" x="0" y="0" width="100%" height="100%">
-                                            <rect id="alpha1" x="0" y="0" width="100%" height="100%"></rect>
-                                        </mask>
-                                    </defs>
-                                    <rect id="base1" x="0" y="0" width="100%" height="100%"></rect>
-                                </svg>
-                                <div class="body"></div>
-                            </figcaption>
-                            <a href="javascript:void(0);"></a>
-                        </figure>
-                    </div>
-                    <div class="col-lg-6 col-md-6 hidden-sm hidden-xs">
-                        <figure>
-                            <div class="media" style="background-image:url(img/4.jpg) ">
-                            </div>
-                            <figcaption>
-                                <svg viewBox="0 0 200 200" version="1.1" preserveAspectRatio="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <defs>
-                                        <mask id="mask2" x="0" y="0" width="100%" height="100%">
-                                            <rect id="alpha2" x="0" y="0" width="100%" height="100%"></rect>
-                                        </mask>
-                                    </defs>
-                                    <rect id="base2" x="0" y="0" width="100%" height="100%"></rect>
-                                </svg>
-                                <div class="body"></div>
-                            </figcaption>
-                            <a href="javascript:void(0);"></a>
-                        </figure>
-                    </div>
+        <!--Servicios destacados-->
+        <section class="relleno3">
+            <div class="slider-wrapper">
+                ¡Grupo mas limpio!
+                <div class="slider">
+                    <div class="slider-text">Calidad</div>
+                    <div class="slider-text">Responsabilidad</div>
+                    <div class="slider-text">Eficaz</div>
                 </div>
             </div>
         </section>
+        <section>
+            <h1 class="cardsServicios">Servicios Destacados</h1>
 
+            <section class="intro">
+                <div class="flex justify-center items-center h-auto gap-4 flex-wrap mt-2 mb-2">
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                        <img class="w-full" src="img/11.jpg" alt="Sunset in the mountains">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
+                                Maiores et perferendis eaque, exercitationem praesentium nihil.
+                            </p>
+                        </div>
+                        <a href="servicios.html"
+                            class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full text-center">
+                            Ver servicios
+                        </a>
+
+                    </div>
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                        <img class="w-full" src="img/12.jpg" alt="Sunset in the mountains">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
+                                Maiores et perferendis eaque, exercitationem praesentium nihil.
+                            </p>
+                        </div>
+                        <a href="servicios.html"
+                            class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full text-center">
+                            Ver servicios
+                        </a>
+
+                    </div>
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                        <img class="w-full" src="img/13.jpg" alt="Sunset in the mountains">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
+                                Maiores et perferendis eaque, exercitationem praesentium nihil.
+                            </p>
+                        </div>
+                        <a href="servicios.html"
+                            class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full text-center">
+                            Ver servicios
+                        </a>
+
+                    </div>
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                        <img class="w-full" src="img/17.jpg" alt="Sunset in the mountains">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
+                                Maiores et perferendis eaque, exercitationem praesentium nihil.
+                            </p>
+                        </div>
+                        <a href="servicios.html"
+                            class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full text-center">
+                            Ver servicios
+                        </a>
+
+                    </div>
+                </div>
+
+            </section>
+
+        </section>
+
+        <section>
+            <div class="top-banner">
+                <a href="ListadoMarcas.html">¡Ve nuestro listado de Marcas!<span>Go</span></a>
+
+            </div>
+        </section>
+        <!--Ultima publicidad-->
+        <section class="relleno">
+            <div class="banner">
+                <li>
+                    <div class="client-group commercial">
+                        <h3>Las Mejores Marcas Eligen Grupo + Limpio</h3>
+                    </div>
+                </li>
+                <ul>
+                    <li>
+                        <div class="client-group govt">
+                            <h3>Nuestra Confianza: La Piedra Angular de Nuestros Clientes</h3>
+                            <div class="one-fourth first">
+                                <div class="client va-logo"></div>
+                                <h4><span>Danlí</span><br>Centro Comercial La Cumbre</h4>
+                            </div>
+                            <div class="one-fourth">
+                                <div class="client disa-logo"></div>
+                                <h4><span>Calidad sin Igual</span><br>Variedad de Productos de Primera Calidad</h4>
+                            </div>
+                            <div class="one-fourth">
+                                <div class="client centcom-logo"></div>
+                                <h4><span>Nuestra Marca Exclusiva</span><br>Productos Hechos por Nosotros Mismos para un
+                                    Grupo Más Limpio</h4>
+                            </div>
+                            <div class="one-fourth">
+                                <div class="client dos-logo"></div>
+                                <h4><span>Servicios Personalizados</span><br>Una Gama de Servicios para Tu Comodidad
+                                </h4>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </section>
+
+
+        <section class="relleno2">
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700" rel="stylesheet"
+                preload="preload" />
+
+            <div class="banner">
+                <ul>
+                    <li class="item-1">¡Explora nuestra tienda y encuentra lo que necesitas!</li>
+                    <li class="item-2">¡Elige entre una amplia variedad de productos!</li>
+                    <li class="item-3">¡Vive una experiencia única con nosotros!</li>
+                    <li class="item-4">¡Disfruta de los mejores precios en nuestros productos!</li>
+                    <li class="item-5">¡Nuestros clientes están completamente satisfechos!</li>
+                    <li class="item-6">¡Te esperamos con entusiasmo, ven pronto!</li>
+                </ul>
+
+
+            </div>
+            <script>document.addEventListener("DOMContentLoaded", function (event) {
+
+                    var ul = document.querySelector(".relleno2 ul");
+
+                    var children = ul.children;
+
+
+                    var len = children.length;
+
+                    setInterval(function () {
+                        ul.insertBefore(children[len - 1], children[0]);
+                        for (var i = 0; i < len; i++) {
+                            children[i].classList = "";
+                            children[i].classList.add(`item-${i + 1}`);
+                            console.log(i);
+                        }
+                    }, 5000);
+
+
+
+                });</script>
+        </section>
         <section>
             <div class="marcas">
                 <div class="slider">
@@ -559,28 +645,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section>
-            <div class="contact-info">
-                <i class="fas fa-headset" style="color: #23c01e;"></i>
-                <span style="color: #000;">CONTACTO</span>
-                <span class="separator"></span>
-
-                <i class="far fa-envelope" style="color: #23c01e;"></i>
-                <span style="color: #000;">ESCRÍBENOS: grupomaslimpio39@gmail.com</span>
-                <span class="separator"></span>
-
-                <i class="fas fa-phone-alt" style="color: #23c01e;"></i>
-                <span style="color: #000;">SERVICIO AL CLIENTE: (+504) 9584-0792</span>
-                <span class="separator"></span>
-
-                <i class="fas fa-building" style="color: #23c01e;"></i>
-                <span style="color: #000;">OFICINA CORPORATIVA: (+504) 9584-0792</span>
-                <span class="separator"></span>
-
-                <i class="far fa-clock" style="color: #23c01e;"></i>
-                <span style="color: #000;">HORARIO DE ATENCIÓN EN LÍNEA 8:00 A.M. A 8:00 P.M.</span>
             </div>
         </section>
         <section>
@@ -651,8 +715,15 @@
     <script src="destacados.js"></script>
     <script src="catalago.js"></script>
     <script src="publicidad.js"></script>
+    <script src="serviciosSlider.js"></script>
     <script src="btn.js"></script>
+    <script src="info.js"></script>
     <script src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/TimelineLite.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/45137105.js"></script>

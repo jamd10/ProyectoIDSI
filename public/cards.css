@@ -5,7 +5,6 @@
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
-    /* Elimina el margen para que tenga el mismo ancho que la página */
     margin: 0;
 }
 
@@ -15,9 +14,6 @@
     width: 100%;
     margin: 0 auto;
 }
-
-/* El resto de tu código permanece igual */
-
 
 .ag-courses_box {
     display: grid;

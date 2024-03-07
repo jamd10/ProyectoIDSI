@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <title>Grupo + Limpio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enlaces de Bootstrap y jQuery -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha384-VmYTbvx1L4vf8H8PXTdaL4gZFjkDrMz/5zmRi+9e8n4ZtR83Lm2hz3FqCOf8w4qJ" crossorigin="anonymous">
+
+    <!-- Otros enlaces -->
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="carrusel.css">
+    <link rel="stylesheet" href="cards.css">
+    <link rel="stylesheet" href="listadoMarcas.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="destacados.css">
+    <link rel="stylesheet" href="marcas.css">
+    <link rel="stylesheet" href="info.css">
+    <link rel="stylesheet" href="btn.css">
+    <link rel="stylesheet" href="divisiones.css">
+    <link rel="stylesheet" href="catalago.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="publicidad.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <link rel="icon" href="img/logo1.png">
+</head>
+
+<body class="font-[Poppins] bg-white h-screen" onload="actualizarCantidadProductosEnCarrito(); loggedIn();">
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+    </div>
+    <header class="bg-white">
+        <nav class="flex justify-between items-center w-[92%]  mx-auto">
+            <div>
+                <a href="index.html">
+                    <img class="w-32 cursor-pointer" src="img/logo.png" alt="Logo">
+                </a>
+            </div>
+            <div
+                class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5">
+                <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
+                    <li>
+                        <a class="menu-link" href="index.html">Inicio</a>
+                    </li>
+                    <li>
+                        <a class="menu-link" href="catalogo.html">Catálogo</a>
+                    </li>
+                    <li>
+                        <a class="menu-link" href="servicios.html">Servicios</a>
+                    </li>
+                    <li>
+                        <a class="menu-link" href="about.html">Sobre Nosotros</a>
+                    </li>
+                    <li>
+                        <a class="menu-link" href="#" onclick="mostrarCarrito()">
+                            <ion-icon name="cart" class="text-black text-xl"></ion-icon>Carrito
+                            <span id="cantidadCarrito" class="badge badge-danger ml-1">0</span>
+                        </a>
+                    </li>
+                    <!-- Panel del carrito de compras -->
+                    <div id="carritoPanel" class="carrito-panel">
+                        <!-- Dentro del HTML del panel del carrito -->
+                        <div class="carrito-header">
+                            <h3>Carrito de compras</h3>
+                            <ion-icon name="close-circle" onclick="ocultarCarrito()"></ion-icon>
+                        </div>
+
+                        <div id="productosCarrito" class="productos-carrito">
+                            <!-- Aquí se mostrarán los productos en el carrito -->
+                        </div>
+                        <div class="carrito-footer">
+                            <p>Total a pagar: <span id="totalPagar">LPS.0</span></p>
+                            <button class="botonCarrito" onclick="realizarCompra()">Realizar compra</button>
+                        </div>
+                    </div>
+                    <li class="search-container">
+                        <form action="catalogo.html" method="get">
+                            <input name="nombre" class="search-bar" type="text" placeholder="Buscar...">
+                            <button type="submit" class="search-button"><ion-icon name="search"
+                                    class="search-icon"></ion-icon></button>
+                        </form>
+                        <script>document.querySelector('form').addEventListener('submit', function (event) {
+                                event.preventDefault(); // Prevenir la recarga de la página
+                                var busqueda = document.querySelector('.search-bar').value;
+                                // Redirigir al usuario a catalogo.html con la búsqueda como parámetro de la URL
+                                window.location.href = 'catalogo.html?nombre=' + encodeURIComponent(busqueda);
+                            });
+                        </script>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="flex items-center gap-6">
+                <a id="LogInMenuButton" class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]"
+                    href="#">Iniciar
+                    Sesion</a>
+                <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <div>
+                <nav class="my-submenu-nav">
+                    <a href="catalogo.html?categoria=Baños">Baños</a>
+                    <a href="catalogo.html?categoria=Lavandería">Lavandería</a>
+                    <a href="catalogo.html?categoria=Herramientas de limpieza">Herramientas de Limpieza</a>
+                    <a href="catalogo.html?categoria=Bioseguridad">Bioseguridad</a>
+                    <a href="catalogo.html?categoria=Desinfectante">Desinfectante</a>
+                    <a href="catalogo.html?categoria=Cuidado Personal">Cuidado Personal</a>
+                    <a href="catalogo.html?categoria=Productos Plásticos">Productos Plásticos</a>
+                    <div class="animation start-home"></div>
+                </nav>
+            </div>
+        </section>
+        <section>
+            <div class="listadoMarcas">
+                <h2>Listado de Marcas</h2>
+                <h1>En Grupo Más Limpio, tenemos grandes marcas que nos respaldan, para que las conozcas te contamos
+                    un
+                    poco
+                    sobre ellas.</h1>
+                <div class="botones">
+                    <button class="boton ronAbuelo">Ron Abuelo Panamá</button>
+                    <button class="boton premierValue">Premier Value</button>
+                    <button class="boton essentialEveryday">Essential Everyday</button>
+                    <button class="boton ahorroMax">Ahorro Max</button>
+                    <button class="boton panolini">Panolini</button>
+                    <button class="boton hollandia">Hollandia</button>
+                </div>
+                <div class="imagenMarca" id="imagenRonAbuelo">
+                    <img src="img/marca1.png" alt="Ron Abuelo Panamá">
+                    <div class="tituloDescripcion">
+                        <h3>Ron Abuelo Panamá</h3>
+                        <p>Descubre la calidad y tradición de Ron Abuelo Panamá, una destilería con años de
+                            experiencia
+                            en la producción de ron premium. Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit.
+                            Ipsam, alias porro fugit inventore totam assumenda beatae voluptates numquam doloribus,
+                            non
+                            tempora a quis consequuntur officiis, qui corrupti quod eos quasi!</p>
+                    </div>
+                </div>
+                <div class="imagenMarca" id="imagenPremierValue">
+                    <img src="img/marca2.png" alt="Premier Value">
+                    <div class="tituloDescripcion">
+                        <h3>Premier Value</h3>
+                        <p>Con Premier Value, obtén productos de alta calidad a precios accesibles. Descubre el
+                            valor en
+                            cada compra.</p>
+                    </div>
+                </div>
+                <div class="imagenMarca" id="imagenEssentialEveryday">
+                    <img src="img/marca3.png" alt="Essential Everyday">
+                    <div class="tituloDescripcion">
+                        <h3>Essential Everyday</h3>
+                        <p>Essential Everyday te ofrece productos esenciales para tu vida diaria, con calidad que
+                            puedes
+                            confiar todos los días.</p>
+                    </div>
+                </div>
+                <div class="imagenMarca" id="imagenAhorroMax">
+                    <img src="img/marca4.png" alt="Ahorro Max">
+                    <div class="tituloDescripcion">
+                        <h3>Ahorro Max</h3>
+                        <p>Maximiza tus ahorros con Ahorro Max. Encuentra productos de calidad a precios
+                            competitivos
+                            para tu bolsillo.</p>
+                    </div>
+                </div>
+                <div class="imagenMarca" id="imagenPanolini">
+                    <img src="img/marca5.png" alt="Panolini">
+                    <div class="tituloDescripcion">
+                        <h3>Panolini</h3>
+                        <p>Descubre la suavidad y comodidad de Panolini. Productos de cuidado personal para toda la
+                            familia.</p>
+                    </div>
+                </div>
+                <div class="imagenMarca" id="imagenHollandia">
+                    <img src="img/marca6.png" alt="Hollandia">
+                    <div class="tituloDescripcion">
+                        <h3>Hollandia</h3>
+                        <p>Con Hollandia, disfruta de productos lácteos de alta calidad. Sabor y nutrición para toda
+                            la
+                            familia.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <script>
+                const botones = document.querySelectorAll('.boton:not(.mi-carrusel .botonCarrusel)'); // Excluyendo los botones del carrusel
+                const imagenes = document.querySelectorAll('.imagenMarca');
+                document.getElementById('imagenRonAbuelo').classList.add('visible');
+                botones.forEach((boton, indice) => {
+                    boton.addEventListener('click', () => {
+                        imagenes.forEach((imagen) => {
+                            imagen.classList.remove('visible');
+                        });
+                        if (boton.classList.contains('ronAbuelo')) {
+                            document.getElementById('imagenRonAbuelo').classList.add('visible');
+                        } else if (boton.classList.contains('premierValue')) {
+                            document.getElementById('imagenPremierValue').classList.add('visible');
+                        } else if (boton.classList.contains('essentialEveryday')) {
+                            document.getElementById('imagenEssentialEveryday').classList.add('visible');
+                        } else if (boton.classList.contains('ahorroMax')) {
+                            document.getElementById('imagenAhorroMax').classList.add('visible');
+                        } else if (boton.classList.contains('panolini')) {
+                            document.getElementById('imagenPanolini').classList.add('visible');
+                        } else if (boton.classList.contains('hollandia')) {
+                            document.getElementById('imagenHollandia').classList.add('visible');
+                        }
+                    });
+                });
+
+            </script>
+        </section>
+        <section>
+            <div class="contact-info">
+                <i class="fas fa-headset" style="color: #23c01e;"></i>
+                <span style="color: #000;">CONTACTO</span>
+                <span class="separator"></span>
+
+                <i class="far fa-envelope" style="color: #23c01e;"></i>
+                <span style="color: #000;">ESCRÍBENOS: grupomaslimpio39@gmail.com</span>
+                <span class="separator"></span>
+
+                <i class="fas fa-phone-alt" style="color: #23c01e;"></i>
+                <span style="color: #000;">SERVICIO AL CLIENTE: (+504) 9584-0792</span>
+                <span class="separator"></span>
+
+                <i class="fas fa-building" style="color: #23c01e;"></i>
+                <span style="color: #000;">OFICINA CORPORATIVA: (+504) 9584-0792</span>
+                <span class="separator"></span>
+
+                <i class="far fa-clock" style="color: #23c01e;"></i>
+                <span style="color: #000;">HORARIO DE ATENCIÓN EN LÍNEA 8:00 A.M. A 8:00 P.M.</span>
+            </div>
+        </section>
+        <section>
+            <button id="scrollToTopBtn" onclick="scrollToTop()">
+                <i class="fa fa-arrow-up"></i>
+            </button>
+    </main>
+    <footer>
+        <section class="footer">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <h4>Conocenos</h4>
+                    <ul class="links">
+                        <li><a href="#">Acerca de Nosotros</a></li>
+                        <li><a href="#">Historia</a></li>
+                        <li><a href="#">Marcas</a></li>
+                        <li><a href="#">Catálogo en línea</a></li>
+                        <li><a href="#">Promociones</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Información </h4>
+                    <ul class="links">
+                        <li><a href="#">Formas de pago</a></li>
+                        <li><a href="#">Productos nuevos</a></li>
+                        <li><a href="PreguntasFrecCliente.html">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="links">
+                        <li><a href="Politicas.html">Politicas de seguridad</a></li>
+                        <li><a href="#">Envios</a></li>
+                        <li><a href="#">Pagos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul class="links">
+                        <li><a href="Contactarse.html">Contactar</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-row" style="display: flex; align-items: center; justify-content: center;">
+                <div class="footer-col" style="text-align: center; margin-top: 20px; color: #fff;">
+                    Derechos reservados © 2023 | Grupo + Limpio
+                    <div class="icons">
+                        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+    <script src="menu.js"></script>
+    <script src="carrusel.js"></script>
+    <script src="menu.js"></script>
+    <script src="destacados.js"></script>
+    <script src="catalago.js"></script>
+    <script src="publicidad.js"></script>
+    <script src="btn.js"></script>
+    <script src="info.js"></script>
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/45137105.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            coverflowEffect: {
+                depth: 500,
+                modifier: 1,
+                slidesShadows: true,
+                rotate: 0,
+                stretch: 0
+            }
+        });
+    </script>
+
+</body>
+
+</html>
