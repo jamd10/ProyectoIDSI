@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <title>Panel de administración</title>
     <link rel="stylesheet" href="admincss/styledashboard.css">
-    <link rel="stylesheet" href="productos.js" type="text/css" />
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
 
 </head>
 
-<body onload="leerProducto()">
+<body onload="leerServicio()">
     <input type="checkbox" id="menu-toggle">
     <div class="sidebar">
         <div class="side-header">
@@ -36,7 +35,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="productos_admin.html" class="active">
+                        <a href="productos_admin.html">
                             <span class="las la-shopping-cart"></span>
                             <small>Cátalogo</small>
                         </a>
@@ -60,7 +59,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="marcas_admin.html">
+                        <a href="marcas_admin.html" class="active">
                             <span class="las la-store"></span>
                             <small>Marcas propias</small>
                         </a>
@@ -86,8 +85,10 @@
                 </label>
                 <div class="header-menu">
                     <div class="user">
+                        <div class="bg-img" style="background-image: url(img/3.jpeg)"></div>
 
                         <button id="CSAdmin" class="logout-link" > Cerrar Sesión </button>
+
                     </div>
                 </div>
             </div>
@@ -96,15 +97,18 @@
 
         <main>
             <div class="page-header">
-                <h1>Productos</h1>
-                <small>Panel / Productos</small>
+                <h1>Marcas propias</h1>
+                <small>Panel / Marcas propias</small>
             </div>
             <div class="page-content">
                 <div class="records table-responsive">
                     <div class="record-header">
                         <div class="add">
+
                             <button id="openForm">Agregar</button>
+
                         </div>
+
                         <!-- <div class="browse">
                             <input type="search" placeholder="Buscar" class="record-search">
                             <select name="" id="">
@@ -113,7 +117,7 @@
                         </div> -->
                     </div>
                     <div>
-                        <table id="TablaProductos" class="product-table">
+                        <table class="product-table" id="TablaServicios">
                             <style>
                                 body {
                                     font-family: Arial, sans-serif;
@@ -171,96 +175,46 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>NOMBRE</th>
-                                    <th>PRECIO</th>
-                                    <th>MARCA</th>
-                                    <th>CATEGORIA</th>
-                                    <th>IMAGEN 1</th>
-                                    <th>IMAGEN 2</th>
-                                    <th>IMAGEN 3</th>
-                                    <th>DESCRIPCIÓN</th>
-                                    <th>FECHA</th>
-                                    <th>PRECIO VENTA</th>
-                                    <th>ESTADO</th>
-                                    <th>OPCIONES</th>
+                                    <th>IMAGEN</th>
+                                    <th>TITULO</th>
+                                    <th>DESCRIPCION</th>
                                 </tr>
                             </thead>
                             
                         </table>
+
                     </div>
+
                 </div>
+
             </div>
+
         </main>
+
     </div>
-
-
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">×</span>
-            <h2>Agregar Producto</h2>
+            <h2>Agregar marca propia</h2>
             <hr>
 
             <div class="form-container">
                 <div class="row">
                     <div class="column">
-                        <!-- <label for="id">ID:</label>
-                        <input type="text" id="id" name="id"> -->
-
-                        <label for="nombre">Nombre de Producto:</label>
+                        <label for="nombre">Nombre de la marca</label>
                         <input type="text" id="nombre" name="nombre">
-
-                        <label for="precio">Precio (en Lempiras):</label>
-                        <input type="number" id="precio" name="precio" placeholder="L. 00.00">
-
-                        <label for="marca">Marca:</label>
-                        <input type="text" id="marca" name="marca">
-
-                        <label for="categoria">Categoría:</label>
-                        <select id="categoria" name="categoria">
-                            <option value="Baño">Baños</option>
-                            <option value="Lavandería">Lavandería</option>
-                            <option value="Herramientas">Herramientas de Limpieza</option>
-                            <option value="Bioseguridad">Bioseguridad</option>
-                            <option value="Desinfectante">Desinfectante</option>
-                            <option value="Cuidado Personal">Cuidado Personal</option>
-                            <option value="Productos Plasticos">Productos Plasticos</option>
-                        </select>
 
                         <label for="imagen1">Imagen 1:</label>
                         <input type="text" id="imagen1" name="imagen1">
 
-                        <label for="imagen2">Imagen 2:</label>
-                        <input type="text" id="imagen2" name="imagen2">
-
-                    </div>
-
-                    <div class="column">
-
-                        <label for="imagen3">Imagen 3:</label>
-                        <input type="text" id="imagen3" name="imagen3">
-
-                        <label for="cantidad">Cantidad:</label>
-                        <input type="number" id="cantidad" name="cantidad">
-
                         <label for="descripcion">Descripción:</label>
                         <textarea id="descripcion" name="descripcion"></textarea>
-
-                        <label for="fecha">Fecha:</label>
-                        <input type="date" id="fecha" name="fecha">
-
-                        <label for="precioventa">Precio de Venta (L. 00.00):</label>
-                        <input type="number" id="precioventa" name="precioventa" placeholder="L. 00.00">
-
-                        <label for="estado">Estado:</label>
-                        <select id="estado" name="estado">
-                            <option value="Activo">Activo</option>
-                            <option value="Desactivo">Desactivo</option>
-                        </select>
                     </div>
                 </div>
 
                 <div class="buttons">
-                    <button id="aceptarAgregar">Aceptar</button>
+                    <button id="AgregarAceptar">Aceptar</button>
+                    <button id="cancelar">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -277,62 +231,20 @@
             <div class="form-container">
                 <div class="row">
                     <div class="column">
+                        <label for="nombre">Nombre de la marca</label>
+                        <input type="text" id="nombre" name="nombre">
 
-                        <label for="nombre2">Nombre de Producto:</label>
-                        <input type="text" id="nombre2" name="nombre2">
+                        <label for="imagen1">Imagen 1:</label>
+                        <input type="text" id="imagen1" name="imagen1">
 
-                        <label for="precio2">Precio (L. 00.00):</label>
-                        <input type="number" id="precio2" name="precio2" placeholder="L. 00.00">
-
-                        <label for="marca2">Marca:</label>
-                        <input type="text" id="marca2" name="marca2">
-
-                        <label for="categoria2">Categoría:</label>
-                        <select id="categoria2" name="categoria2">
-                            <option value="Baños">Baños</option>
-                            <option value="Lavandería">Lavandería</option>
-                            <option value="Herramientas de limpieza">Herramientas de Limpieza</option>
-                            <option value="Bioseguridad">Bioseguridad</option>
-                            <option value="Desinfectante">Desinfectante</option>
-                            <option value="Cuidado Personal">Cuidado Personal</option>
-                            <option value="Productos Plásticos">Productos Plasticos</option>
-                        </select>
-
-                        <label for="imagen12">Imagen 1:</label>
-                        <input type="text" id="imagen12" name="imagen12">
-
-                        <label for="imagen22">Imagen 2:</label>
-                        <input type="text" id="imagen22" name="imagen22">
-                    </div>
-
-                    <div class="column">
-
-                        <label for="imagen32">Imagen 3:</label>
-                        <input type="text" id="imagen32" name="imagen32">
-
-                        <label for="cantidad2">Cantidad:</label>
-                        <input type="number" id="cantidad2" name="cantidad2">
-
-                        <label for="descripcion2">Descripción:</label>
-                        <textarea id="descripcion2" name="descripcion2"></textarea>
-
-                        <label for="fecha2">Fecha:</label>
-                        <input type="date" id="fecha2" name="fecha2">
-
-                        <label for="precioventa2">Precio de Venta (L. 00.00):</label>
-                        <input type="number" id="precioventa2" name="precioventa2" placeholder="L. 00.00">
-
-                        <label for="estado2">Estado:</label>
-                        <select id="estado2" name="estado2">
-                            <option value="Activo">Activo</option>
-                            <option value="Desactivo">Desactivo</option>
-                        </select>
+                        <label for="descripcion">Descripción:</label>
+                        <textarea id="descripcion" name="descripcion"></textarea>
                     </div>
                 </div>
 
                 <div class="buttons">
-                    <button id="aceptarModificar">Aceptar</button>
-                    <button id="cancelar" onclick="closeModificarModal()">Cancelar</button>
+                    <button id="ModificarAceptar">Aceptar</button>
+                    <button id="cancelar">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -344,10 +256,10 @@
             <h2>Confirmación de Eliminación</h2>
             <hr>
 
-            <p>¿Está seguro de que desea eliminar este producto? Esta acción es permanente.</p>
+            <p>¿Está seguro de que desea eliminar este cambio? Esta acción es permanente.</p>
 
             <div class="buttons">
-                <button id="confirmarEliminar">Confirmar</button>
+                <button id="EliminarConfirmar">Confirmar</button>
                 <button id="cancelarEliminar" onclick="closeEliminarModal()">Cancelar</button>
             </div>
         </div>
@@ -355,11 +267,9 @@
 
     <script>
         function openEliminarModal(data) {
-
             var modalEliminar = document.getElementById('myModal_Eliminar');
             modalEliminar.style.display = 'block';
-            localStorage["idP"] = data;
-
+            localStorage["idS"] = data;
         }
 
         function closeEliminarModal() {
@@ -378,14 +288,15 @@
 
     <script src="producto.js"></script>
 
+
 </body>
+
 <script>
     function openModificarModal(data) {
-        console.log("Hola");
         var modalModificar = document.getElementById('myModal_Modificar');
         modalModificar.style.display = 'block';
-        localStorage["idP"] = data;
         leerModificar(data);
+        localStorage["idS"] = data;
     }
 
     function closeModificarModal() {
@@ -395,37 +306,29 @@
 </script>
 
 <script>
-    const Tabla = document.getElementById('TablaProductos');
     const getBtnLO = document.getElementById('CSAdmin');
-    const Agregarbtn = document.getElementById('aceptarAgregar');
-    const Modificarbtn = document.getElementById('aceptarModificar');
-    const Eliminarbtn = document.getElementById('confirmarEliminar');
+    const Agregarbtn = document.getElementById('AgregarAceptar');
+    const Modificarbtn = document.getElementById('ModificarAceptar');
+    const Eliminarbtn = document.getElementById('EliminarConfirmar');
+    const Tabla = document.getElementById('TablaServicios');
 
-    const category = document.getElementById('categoria');
-    const brand = document.getElementById('marca');
-    const productName = document.getElementById('nombre');
-    const productImage = document.getElementById('imagen1'); 
-    const productImage2 = document.getElementById('imagen2'); 
-    const productImage3 = document.getElementById('imagen3'); 
-    const productPrice = document.getElementById('precio');
-    const productPriceSale = document.getElementById('precioventa');
-    const productQuantity = document.getElementById('cantidad');
-    const productState = document.getElementById('estado');
-    const productDate = document.getElementById('fecha');
-    const productDescription = document.getElementById('descripcion');
+    const serviceName = document.getElementById('nombre');
+    const serviceImage = document.getElementById('imagen1'); 
+    const serviceImage2 = document.getElementById('imagen2'); 
+    const serviceImage3 = document.getElementById('imagen3'); 
+    const serviceState = document.getElementById('estado');
+    const serviceDescription = document.getElementById('descripcion');
+    const serviceBenefit = document.getElementById('beneficios');
+    const serviceCaracteristics = document.getElementById('caracteristicas');
 
-    const category2 = document.getElementById('categoria2');
-    const brand2 = document.getElementById('marca2');
-    const productName2 = document.getElementById('nombre2');
-    const productImage12 = document.getElementById('imagen12'); 
-    const productImage22 = document.getElementById('imagen22'); 
-    const productImage32 = document.getElementById('imagen32'); 
-    const productPrice2 = document.getElementById('precio2');
-    const productPriceSale2 = document.getElementById('precioventa2');
-    const productQuantity2 = document.getElementById('cantidad2');
-    const productState2 = document.getElementById('estado2');
-    const productDate2 = document.getElementById('fecha2');
-    const productDescription2 = document.getElementById('descripcion2');
+    const serviceName2 = document.getElementById('nombre2');
+    const serviceImage12 = document.getElementById('imagen12'); 
+    const serviceImage22 = document.getElementById('imagen22'); 
+    const serviceImage32 = document.getElementById('imagen32'); 
+    const serviceState2 = document.getElementById('estado2');
+    const serviceDescription2 = document.getElementById('descripcion2');
+    const serviceBenefit2 = document.getElementById('beneficios2');
+    const serviceCaracteristics2 = document.getElementById('caracteristicas2');
 
     getBtnLO.addEventListener('click', CerrarSesion);
     Agregarbtn.addEventListener('click', PreSubmitData);
@@ -433,133 +336,6 @@
     Eliminarbtn.addEventListener('click', Eliminar);
 
     const baseUrl = 'https://grupolimpio-api.onrender.com';
-
-    function Eliminar() {
-        fetch(baseUrl + '/EliminarProducto', {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ nombre: localStorage["idP"],}),
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert('El producto a sido eliminado');
-            var modalEliminar = document.getElementById('myModal_Eliminar');
-            modalEliminar.style.display = 'none';
-            location.reload();
-        })
-        .catch(error => {
-            alert('No se ha podido eliminar el producto');
-        });
-    }
-
-    function Actualizar() {
-            fetch(baseUrl + '/ActualizarProducto', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ nombre: productName2.value, categoria: category2.value, marca: brand2.value, imagen1: productImage12.value, 
-                    imagen2: productImage22.value, imagen3: productImage32.value, precio: +productPrice2.value, precioventa: +productPriceSale2.value,
-                    cantidad: +productQuantity2.value, estado: productState2.value, fecha: productDate2.value, descripcion: productDescription2.value,
-                    id: localStorage["idP"]}),
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('El producto a sido actualizado');
-                var modalModificar = document.getElementById('myModal_Modificar');
-                modalModificar.style.display = 'none';
-                location.reload();
-            })
-            .catch(error => {
-                alert('No se ha podido actualizar su informacion');
-            });
-        }
-    
-    function PreSubmitData(){
-        if(productName.value == ""){
-            alert("Ingrese el nombre del producto");
-        }
-        else if(+productPrice.value < 1){
-            alert("Ingrese el precio del producto");
-        }
-        else if(brand.value == ""){
-            alert("Ingrese la marca del producto");
-        }
-        else if(category.value == ""){
-            alert("Seleccione la categoria del producto");
-        }
-        else if(productImage.value == ""){
-            alert("Ingrese una imagen en el campo imagen1");
-        }
-        else if(productImage2.value == ""){
-            alert("Ingrese una imagen en el campo imagen2");
-        }
-        else if(productImage3.value == ""){
-            alert("Ingrese una imagen en el campo imagen3");
-        }
-        else if(+productQuantity.value < 1){
-            alert("Ingrese la cantidad del producto");
-        }
-        else if(productDescription.value == ""){
-            alert("Ingrese la descripcion del producto");
-        }
-        else if(productDate.value == ""){
-            alert("Ingrese la fecha del producto");
-        }
-        else if(+productPriceSale.value < 1){
-            alert("Ingrese el precio de venta del producto");
-        }
-        else if(productState.value == ""){
-            alert("Seleccione el estado del servicio");
-        }
-        else{
-            submitData();
-        }
-    }
-
-    function PreActualizar(){
-        if(productName2.value == ""){
-            alert("Ingrese el nombre del producto");
-        }
-        else if(+productPrice2.value < 1){
-            alert("Ingrese el precio del producto");
-        }
-        else if(brand2.value == ""){
-            alert("Ingrese la marca del producto");
-        }
-        else if(category2.value == ""){
-            alert("Seleccione la categoria del producto");
-        }
-        else if(productImage12.value == ""){
-            alert("Ingrese una imagen en el campo imagen1");
-        }
-        else if(productImage22.value == ""){
-            alert("Ingrese una imagen en el campo imagen2");
-        }
-        else if(productImage32.value == ""){
-            alert("Ingrese una imagen en el campo imagen3");
-        }
-        else if(+productQuantity2.value < 1){
-            alert("Ingrese la cantidad del producto");
-        }
-        else if(productDescription2.value == ""){
-            alert("Ingrese la descripcion del producto");
-        }
-        else if(productDate2.value == ""){
-            alert("Ingrese la fecha del producto");
-        }
-        else if(+productPriceSale2.value < 1){
-            alert("Ingrese el precio de venta del producto");
-        }
-        else if(productState2.value == ""){
-            alert("Seleccione el estado del producto");
-        }
-        else{
-            Actualizar();
-        }
-    }
 
     function CerrarSesion() {
       fetch(baseUrl + '/logOut', {
@@ -584,15 +360,118 @@
         });
     }
 
-    function submitData() {
-        fetch(baseUrl + '/submitProducto', {
+    function Eliminar() {
+        fetch(baseUrl + '/EliminarServicio', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ nombre: productName.value, categoria: category.value, marca: brand.value, imagen1: productImage.value, 
-                imagen2: productImage2.value, imagen3: productImage3.value, precio: +productPrice.value, cantidad: +productQuantity.value,
-                precioventa: +productPriceSale.value, fecha: productDate.value, descripcion: productDescription.value, estado: productState.value}),
+            body: JSON.stringify({ nombre: localStorage["idS"],}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('El servicio a sido eliminado');
+            location.reload();
+            var modalModificar = document.getElementById('myModal_Modificar');
+            modalModificar.style.display = 'none';
+        })
+        .catch(error => {
+            alert('No se ha podido eliminar el servicio');
+        });
+    }
+
+    function Actualizar() {
+            fetch(baseUrl + '/ActualizarServicio', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nombre: serviceName2.value, imagen1: serviceImage12.value, 
+                    imagen2: serviceImage22.value, imagen3: serviceImage32.value, beneficio: serviceBenefit2.value,
+                    estado: serviceState2.value, descripcion: serviceDescription2.value, caracteristicas: serviceCaracteristics2.value,
+                    id: localStorage["idS"]}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('El servicio a sido actualizado');
+                var modalModificar = document.getElementById('myModal_Modificar');
+                modalModificar.style.display = 'none';
+                location.reload();
+                })
+            .catch(error => {
+                alert('No se ha podido actualizar su informacion');
+            });
+        }
+
+    function PreSubmitData(){
+        if(serviceName.value == ""){
+            alert("Ingrese el nombre del servicio");
+        }
+        else if(serviceImage.value == ""){
+            alert("Ingrese una imagen en el campo imagen1");
+        }
+        else if(serviceImage2.value == ""){
+            alert("Ingrese una imagen en el campo imagen2");
+        }
+        else if(serviceImage3.value == ""){
+            alert("Ingrese una imagen en el campo imagen3");
+        }
+        else if(serviceState.value == ""){
+            alert("Seleccione un estado");
+        }
+        else if(serviceDescription.value == ""){
+            alert("Ingrese la descripcion del servicio");
+        }
+        else if(serviceBenefit.value == ""){
+            alert("Ingrese el beneficio del servicio");
+        }
+        else if(serviceCaracteristics.value == ""){
+            alert("Ingrese las caracteristicas del servicio");
+        }
+        else{
+            submitData();
+        }
+    }
+
+    function PreActualizar(){
+        if(serviceName2.value == ""){
+            alert("Ingrese el nombre del servicio");
+        }
+        else if(serviceImage12.value == ""){
+            alert("Ingrese una imagen en el campo imagen1");
+        }
+        else if(serviceImage22.value == ""){
+            alert("Ingrese una imagen en el campo imagen2");
+        }
+        else if(serviceImage32.value == ""){
+            alert("Ingrese una imagen en el campo imagen3");
+        }
+        else if(serviceState2.value == ""){
+            alert("Seleccione un estado");
+        }
+        else if(serviceDescription2.value == ""){
+            alert("Ingrese la descripcion del servicio");
+        }
+        else if(serviceBenefit2.value == ""){
+            alert("Ingrese el beneficio del servicio");
+        }
+        else if(serviceCaracteristics2.value == ""){
+            alert("Ingrese las caracteristicas del servicio");
+        }
+        else{
+            Actualizar();
+        }
+    }
+
+    function submitData() {
+        fetch(baseUrl + '/submitServicio', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ nombre: serviceName.value, imagen1: serviceImage.value, 
+                imagen2: serviceImage2.value, imagen3: serviceImage3.value, beneficio: serviceBenefit.value,
+                caracteristicas: serviceCaracteristics.value, descripcion: serviceDescription.value, estado: serviceState.value}),
         })
         .then(response => response.json())
         .then(data => {
@@ -602,81 +481,69 @@
                 <tr>
                     <td>`+data.id+`</td>
                     <td>
-                        <h4>`+productName.value+`</h4>
+                        <h4>`+serviceName.value+`</h4>
+                    </td>
+
+                    <td>
+                        <p>`+serviceDescription.value+`</p>
                     </td>
                     <td>
-                        L. `+productPrice.value+`
+                        <p>`+serviceBenefit.value+`</p>
                     </td>
+                    
                     <td>
-                        `+brand.value+`
-                    </td>
-                    <td>
-                        `+category.value+`
+                        <p>`+serviceCaracteristics.value+`</p>
                     </td>
                     <td>
                         <div class="client-img-catalogo bg-img-tabla"
-                            style="background-image: url(`+productImage.value+`)">
+                            style="background-image: url(`+serviceImage.value+`)">
                         </div>
                     </td>
                     <td>
                         <div class="client-img-catalogo bg-img-tabla"
-                            style="background-image: url(`+productImage2.value+`)">
+                            style="background-image: url(`+serviceImage2.value+`)">
                         </div>
                     </td>
                     <td>
                         <div class="client-img-catalogo bg-img-tabla"
-                            style="background-image: url(`+productImage3.value+`)">
+                            style="background-image: url(`+serviceImage3.value+`)">
                         </div>
                     </td>
                     <td>
-                        <p>`+productDescription.value+`</p>
-                    </td>
-                    <td>
-                        `+productDate.value+`
-                    </td>
-                    <td>
-                        L. `+productPriceSale.value+`
-                    </td>
-                    <td>
-                        `+productState.value+`
+                        `+serviceState.value+`
                     </td>
                     <td>
                         <div class="actions">
-
                             <button id="openForm" onclick=openModificarModal("`+data.id+`")>
                                 <img src="img_admin/boton-editar.png" alt="Agregar">
                             </button>
-                    
+
                             <button id="openForm" onclick=openEliminarModal("`+data.id+`")>
                                 <img src="img_admin/basura.png" alt="Eliminar">
                             </button>
-
+                            </a>
                         </div>
                     </td>
                 </tr>
             </tbody>
             `
-            alert('Producto creado exitosamente');
-            category.value = "";
-            brand.value = "";
-            productName.value = "";
-            productImage.value = "";
-            productImage2.value = ""; 
-            productImage3.value = ""; 
-            productPrice.value = "";
-            productPriceSale.value = "";
-            productQuantity.value = "";
-            productState.value = "";
-            productDate.value = "";
-            productDescription.value = "";
+            alert('Servicio creado exitosamente');
+            serviceName.value = "";
+            serviceImage.value = "";
+            serviceImage2.value = ""; 
+            serviceImage3.value = ""; 
+            serviceState.value = "";
+            serviceDescription.value = "";
+            serviceBenefit.value = "";
+            serviceCaracteristics.value = "";
         })
         .catch(error => {
-            alert('Error Creando Usuario'+ error);
+            alert('Error Creando Servicio'+ error);
         });
     }
 
-    function leerProducto() {
-            fetch(baseUrl + '/selectProductos', {
+    function leerServicio() {
+            fetch(baseUrl + '/selectServicios', {
                 method: 'GET',
                 headers: {
                 'Content-Type': 'application/json',
@@ -694,14 +561,16 @@
                             <td>
                                 <h4>`+data[i].nombre+`</h4>
                             </td>
+
                             <td>
-                                L. `+data[i].precio+`
+                                <p>`+data[i].descripcion+`</p>
                             </td>
                             <td>
-                                `+data[i].marca+`
+                                <p>`+data[i].beneficio+`</p>
                             </td>
+                            
                             <td>
-                                `+data[i].categoria+`
+                                <p>`+data[i].caracteristicas+`</p>
                             </td>
                             <td>
                                 <div class="client-img-catalogo bg-img-tabla"
@@ -719,28 +588,18 @@
                                 </div>
                             </td>
                             <td>
-                                <p>`+data[i].descripcion+`</p>
-                            </td>
-                            <td>
-                                `+data[i].fecha+`
-                            </td>
-                            <td>
-                                L. `+data[i].precioventa+`
-                            </td>
-                            <td>
                                 `+data[i].estado+`
                             </td>
                             <td>
                                 <div class="actions">
-
                                     <button id="openForm" onclick=openModificarModal("`+data[i].id+`")>
                                         <img src="img_admin/boton-editar.png" alt="Agregar">
                                     </button>
-                            
+
                                     <button id="openForm" onclick=openEliminarModal("`+data[i].id+`")>
                                         <img src="img_admin/basura.png" alt="Eliminar">
                                     </button>
-
+                                    </a>
                                 </div>
                             </td>
                         </tr>
@@ -754,7 +613,7 @@
         }
 
         function leerModificar(datas) {
-            fetch(baseUrl + '/selectProducto', {
+            fetch(baseUrl + '/selectServicio', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
@@ -764,23 +623,20 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                category2.value = data.categoria;
-                brand2.value = data.marca;
-                productName2.value = data.nombre;
-                productImage12.value = data.imagen1;
-                productImage22.value = data.imagen2;
-                productImage32.value = data.imagen3;
-                productPrice2.value = data.precio;
-                productQuantity2.value = data.cantidad;
-                productPriceSale2.value = data.precioventa;
-                productDate2.value = data.fecha;
-                productDescription2.value = data.descripcion;
-                productState2.value = data.estado;
+                serviceName2.value = data.nombre;
+                serviceImage12.value = data.imagen1;
+                serviceImage22.value = data.imagen2;
+                serviceImage32.value = data.imagen3;
+                serviceDescription2.value = data.descripcion;
+                serviceBenefit2.value = data.beneficio;
+                serviceCaracteristics2.value = data.caracteristicas;
+                serviceState2.value = data.estado;
             })
             .catch(error => {
                 alert(':('+error);
             });
         }
 </script>
+
 
 </html>
