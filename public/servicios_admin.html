@@ -381,7 +381,7 @@
     Modificarbtn.addEventListener('click', PreActualizar);
     Eliminarbtn.addEventListener('click', Eliminar);
 
-    const baseUrl = 'https://grupolimpio-api.onrender.com';
+    const baseUrl = 'http://localhost:3001';
 
     function CerrarSesion() {
       fetch(baseUrl + '/logOut', {
@@ -515,7 +515,7 @@
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ nombre: serviceName.value, imagen1: serviceImage.value, 
+            body: JSON.stringify({ nombre: serviceName.value, imagen1: serviceImage.value, id: '',
                 imagen2: serviceImage2.value, imagen3: serviceImage3.value, beneficio: serviceBenefit.value,
                 caracteristicas: serviceCaracteristics.value, descripcion: serviceDescription.value, estado: serviceState.value}),
         })

@@ -253,8 +253,6 @@
             <div class="form-container">
                 <div class="row">
                     <div class="column">
-                        <label for="identidad2">Numero de Identidad:</label>
-                        <input type="text" id="identidad2" name="identidad2" onkeyup="validate2();" maxlength="13">
 
                         <label for="nombre2">Nombre completo:</label>
                         <input type="text" id="nombre2" name="nombre2" onkeyup="validate();">
@@ -267,8 +265,6 @@
                     </div>
 
                     <div class="column">
-                        <label for="correo2">Correo:</label>
-                        <input id="correo2" name="correo2"></input>
 
                         <label for="contra2">Contraseña</label>
                         <input type="text" id="contra2" name="contra2">
@@ -361,10 +357,8 @@
     const contra = document.getElementById('contra');
 
     const nombre2 = document.getElementById('nombre2');
-    const identidad2 = document.getElementById('identidad2'); 
     const fecha2 = document.getElementById('fecha2'); 
     const telefono2 = document.getElementById('telefono2'); 
-    const correo2 = document.getElementById('correo2'); 
     const vehiculo2 = document.getElementById('vehiculo2');
     const placa2 = document.getElementById('placa2');
     const contra2 = document.getElementById('contra2');
@@ -425,8 +419,8 @@
                 headers: {
                 'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ nombre: nombre2.value, identidad: identidad2.value, 
-                    fecha: fecha2.value, correo: correo2.value, telefono: telefono2.value,
+                body: JSON.stringify({ nombre: nombre2.value,  
+                    fecha: fecha2.value, telefono: telefono2.value,
                     vehiculo: vehiculo2.value, placa: placa2.value, contra: contra2.value,
                     id: localStorage["idS"]}),
             })
@@ -475,12 +469,6 @@
     function PreActualizar(){
         if(nombre2.value == ""){
             alert("Ingrese el nombre del repartidor");
-        }
-        else if(identidad2.value.length != 13){
-            alert("El numero de identidad del repartidor debe de ser de 13 numeros, sin espacios");
-        }
-        else if(correo2.value == ""){
-            alert("Ingrese el correo del repartidor");
         }
         else if(contra2.value == ""){
             alert("Ingrese la contraseña");
@@ -543,11 +531,11 @@
                     </td>
                     <td>
                         <div class="actions">
-                            <button id="openForm" onclick=openModificarModal("`+contra.value+`")>
+                            <button id="openForm" onclick=openModificarModal("`+correo.value+`")>
                                 <img src="img_admin/boton-editar.png" alt="Agregar">
                             </button>
 
-                            <button id="openForm" onclick=openEliminarModal("`+contra.value+`")>
+                            <button id="openForm" onclick=openEliminarModal("`+correo.value+`")>
                                 <img src="img_admin/basura.png" alt="Eliminar">
                             </button>
                             </a>
@@ -645,9 +633,7 @@
             .then(data => {
                 console.log(data);
                 nombre2.value = data.nombre;
-                identidad2.value = data.numero_identidad;
                 fecha2.value = data.fecha_nacimiento;
-                correo2.value = data.correo;
                 telefono2.value = data.telefono;
                 vehiculo2.value = data.vehiculo;
                 placa2.value = data.placa;

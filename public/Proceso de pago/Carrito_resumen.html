@@ -264,11 +264,11 @@
                 body: JSON.stringify({ compra: carro, usuario: localStorage['correo'], nombre: myArray[0], identidad: myArray[1], 
                 telefono: myArray[2], nombreTarjeta: myArray[4], numeroTarjeta: myArray[5], fechaExpiracion: myArray[6], 
                 codigoSeguridad: myArray[7], tipoTarjeta: myArray[8], direccion: myArray[9], ciudad: myArray[10], estado: myArray[11],
-                codigoPostal: myArray[12], tipoEntrega: localStorage["entrega"], fecha: new Date(), estado_entrega: "Confirmado", id: ""})
+                codigoPostal: myArray[12], tipoEntrega: localStorage["entrega"], fecha: new Date(), estado_entrega: "Confirmado", id: "",
+                repartidor: ""})
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data.id)
                 alert('Compra realizada :D');
             })
             .catch(error => {

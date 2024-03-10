@@ -58,19 +58,15 @@
                 <table id="edit-form">
                     <tr>
                         <td><label for="edit-name">Nombre:</label></td>
-                        <td><input type="text" id="edit-name"></td>
-                    </tr>
-                    <tr>
-                        <td><label for="edit-correo">Correo:</label></td>
-                        <td><input type="email" id="edit-correo"></td>
+                        <td><input type="text" id="edit-name" onkeyup="validate();"></td>
                     </tr>
                     <tr>
                         <td><label for="edit-telefono">Teléfono:</label></td>
-                        <td><input type="tel" id="edit-telefono"></td>
+                        <td><input type="tel" id="edit-telefono" onkeyup="validate4();" maxlength="8"></td>
                     </tr>
                     <tr>
-                        <td><label for="edit-identidad">Identidad:</label></td>
-                        <td><input type="text" id="edit-identidad" disabled></td>
+                        <td><label for="edit-correo">Correo:</label></td>
+                        <td><input type="text" id="edit-correo" disabled></td>
                     </tr>
                     <tr>
                         <td><label for="edit-tipoVehiculo">Tipo de Vehículo:</label></td>
@@ -78,7 +74,7 @@
                     </tr>
                     <tr>
                         <td><label for="edit-numeroPlaca">Número de Placa:</label></td>
-                        <td><input type="text" id="edit-numeroPlaca"></td>
+                        <td><input type="text" id="edit-numeroPlaca" onkeyup="validate5();" maxlength="7"></td>
                     </tr>
                     <tr>
                         <td><label for="edit-password">Contraseña:</label></td>
@@ -95,7 +91,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center;"><button type="submit" class="btn-success">Guardar
+                        <td colspan="2" style="text-align: center;"><button type="submit" class="btn-success" id="GuardarCambios">Guardar
                                 Cambios</button></td>
                     </tr>
                 </table>
@@ -109,6 +105,7 @@
         <div id="logout-message" class="logout-message"></div>
     </div>
     <script src="repartidor.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 </body>
 
 </html>

@@ -175,6 +175,7 @@
                                     <th>USUARIO</th>
                                     <th>TIPO DE ENTREGA</th>
                                     <th>ESTADO DE ENTREGA</th>
+                                    <th>REPARTIDOR</th>
                                     <th>OPCIONES</th>
                                 </tr>
                             </thead>
@@ -315,14 +316,14 @@
     const Eliminarbtn = document.getElementById('EliminarConfirmar');
     const Tabla = document.getElementById('TablaServicios');
 
-    const select = document.getElementById('RepartidorSelect')
+    const select = document.getElementById('RepartidorSelect');
 
     getBtnLO.addEventListener('click', CerrarSesion);
     Agregarbtn.addEventListener('click', submitData);
     Modificarbtn.addEventListener('click', submitData);
     Eliminarbtn.addEventListener('click', Eliminar);
 
-    const baseUrl = 'https://grupolimpio-api.onrender.com';
+    const baseUrl = 'http://localhost:3001';
 
     function CerrarSesion() {
       fetch(baseUrl + '/logOut', {
@@ -348,6 +349,23 @@
     }
 
     function Eliminar() {
+        fetch(baseUrl + '/ActualizarFactura', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id: localStorage["idS"], texto: "Cancelado"}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            location.reload();
+        })
+        .catch(error => {
+            alert('No se ha podido eliminar el repartidor');
+        });
+    }
+
+    function Eliminar2() {
         fetch(baseUrl + '/EliminarRepartidor', {
             method: 'POST',
             headers: {
@@ -377,9 +395,10 @@
         })
         .then(response => response.json())
         .then(data => {
-            })
+
+        })
         .catch(error => {
-            alert('No se ha podido actualizar su informacion'+error);
+            //alert('No se ha podido actualizar su informacion'+error);
         });
     }
 
@@ -411,18 +430,21 @@
         }
     }
 
+    function HayPedido() {
+
+    }
+
     function submitData() {
-        fetch(baseUrl + '/CrearPedido', {
+        fetch(baseUrl + '/ActualizarFactura2', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ repartidor: select.value, orden: localStorage["idS"]}),
+            body: JSON.stringify({ repartidor: select.value, id: localStorage["idS"], texto: "Asignado"}),
         })
         .then(response => response.json())
         .then(data => {
             alert("Se asigno el pedido al repartido");
-            Actualizar();
             location.reload();
         })
         .catch(error => {
@@ -441,8 +463,10 @@
             .then(data => {
                 Tabla.innerHTML += ``;
                 for(var i = 0; i < data.length; i++){
-                    var idtb = data[i].id;
-                    if(data[i].tipoEntrega == "Envio" && data[i].estado_entrega == "Confirmado"){
+                    if(data[i].estado_entrega == "Entregado" || data[i].estado_entrega == "Cancelado"){
+
+                    }
+                    else if(data[i].tipoEntrega == "Tienda"){
                         Tabla.innerHTML += `
                         <tbody>
                             <tr>
@@ -458,15 +482,18 @@
                                     <p>`+data[i].estado_entrega+`</p>
                                 </td>
                                 <td>
+                                    <p>`+""+`</p>
+                                </td>
+                                <td>
                                     <div class="actions">
-                                        <button id="openForm" onclick=openModificarModal("`+data[i].id+`")>
-                                            <img src="img_admin/boton-editar.png" alt="Agregar">
+                                        <button id="openForm" onclick=openEliminarModal("`+data[i].id+`")>
+                                            <img src="img_admin/basura.png" alt="Eliminar">
                                         </button>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
-                        `
+                        `;
                     }else{
                         Tabla.innerHTML += `
                         <tbody>
@@ -483,10 +510,21 @@
                                     <p>`+data[i].estado_entrega+`</p>
                                 </td>
                                 <td>
+                                    <p>`+data[i].repartidor+`</p>
+                                </td>
+                                <td>
+                                    <div class="actions">
+                                        <button id="openForm" onclick=openModificarModal("`+data[i].id+`")>
+                                            <img src="img_admin/boton-editar.png" alt="Agregar">
+                                        </button>
+                                        <button id="openForm" onclick=openEliminarModal("`+data[i].id+`")>
+                                            <img src="img_admin/basura.png" alt="Eliminar">
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
-                        `
+                        `;
                     }
                 }
             })
