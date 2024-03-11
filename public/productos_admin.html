@@ -66,6 +66,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="modificarcarrusel.html">
+                            <span class="las la-store"></span>
+                            <small>Pagina</small>
+                        </a>
+                    </li>
+                    <li>
                         <a href="index.html">
                             <span class="las la-sign-out-alt"></span>
                             <small>Salir</small>
@@ -592,7 +598,8 @@
             },
             body: JSON.stringify({ nombre: productName.value, categoria: category.value, marca: brand.value, imagen1: productImage.value, id: '',
                 imagen2: productImage2.value, imagen3: productImage3.value, precio: +productPrice.value, cantidad: +productQuantity.value,
-                precioventa: +productPriceSale.value, fecha: productDate.value, descripcion: productDescription.value, estado: productState.value}),
+                precioventa: +productPriceSale.value, fecha: productDate.value, descripcion: productDescription.value, estado: productState.value,
+                carrusel: 'No'}),
         })
         .then(response => response.json())
         .then(data => {
@@ -651,6 +658,9 @@
                                 <img src="img_admin/basura.png" alt="Eliminar">
                             </button>
 
+                            <button id="openForm" onclick=openEliminarModal("`+data.id+`")>
+                                <img src="img_admin/boton-agregar.png" alt="Añadir">
+                            </button>
                         </div>
                     </td>
                 </tr>
@@ -686,7 +696,16 @@
             .then(data => {
                 Tabla.innerHTML += ``;
                 for(var i = 0; i < data.length; i++){
-                    var idtb = data[i].id;
+                    var idtb = ``;
+                    if(data[i].carrusel == "No"){
+                        idtb = `<button id="openForm" onclick="CambioCarrusel('`+data[i].id+`', 'Si')">
+                                        <img src="img_admin/NoCarrusel.png" alt="Añadir">
+                                    </button>`;
+                    }else{
+                        idtb = `<button id="openForm" onclick="CambioCarrusel('`+data[i].id+`', 'No')">
+                                        <img src="img_admin/SiCarrusel.png" alt="Añadir">
+                                    </button>`;
+                    }
                     Tabla.innerHTML += `
                     <tbody>
                         <tr>
@@ -740,7 +759,7 @@
                                     <button id="openForm" onclick=openEliminarModal("`+data[i].id+`")>
                                         <img src="img_admin/basura.png" alt="Eliminar">
                                     </button>
-
+                                    `+idtb+`
                                 </div>
                             </td>
                         </tr>
@@ -751,6 +770,29 @@
             .catch(error => {
                 alert(':('+error);
             });          
+        }
+
+        function CambioCarrusel(id, siono){
+            fetch(baseUrl + '/ActualizarProducto3', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ carrusel: siono,
+                    id: id}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(siono == "No"){
+                    alert('Se ha eliminado del carrusel');
+                }else{
+                    alert('Se ha añadido al carrusel');
+                }
+                location.reload();
+            })
+            .catch(error => {
+                alert('No se ha podido añadir al carrusel');
+            });
         }
 
         function leerModificar(datas) {

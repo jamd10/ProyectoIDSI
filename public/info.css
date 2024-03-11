@@ -31,6 +31,7 @@
 	width: 100%;
 	padding: 15px 0;
 	text-decoration: none;
+	font-size: 50px;
 	color: #fff;
 	color: rgba(255, 255, 255, .8);
 }
@@ -44,7 +45,8 @@
 }
 
 .top-banner a:hover {
-	color: #fff9e0;
+	color: black;
+	
 }
 
 /*division*/

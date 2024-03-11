@@ -65,6 +65,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="modificarcarrusel.html">
+                            <span class="las la-store"></span>
+                            <small>Pagina</small>
+                        </a>
+                    </li>
+                    <li>
                         <a href="index.html">
                             <span class="las la-sign-out-alt"></span>
                             <small>Salir</small>
@@ -174,10 +180,10 @@
                             </style>
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>IMAGEN</th>
-                                    <th>TITULO</th>
+                                    <th>NOMBRE</th>
                                     <th>DESCRIPCION</th>
+                                    <th>IMAGEN</th>
+                                    <th>OPCIONES</th>
                                 </tr>
                             </thead>
                             
@@ -204,7 +210,7 @@
                         <label for="nombre">Nombre de la marca</label>
                         <input type="text" id="nombre" name="nombre">
 
-                        <label for="imagen1">Imagen 1:</label>
+                        <label for="imagen1">Imagen:</label>
                         <input type="text" id="imagen1" name="imagen1">
 
                         <label for="descripcion">Descripción:</label>
@@ -231,14 +237,14 @@
             <div class="form-container">
                 <div class="row">
                     <div class="column">
-                        <label for="nombre">Nombre de la marca</label>
-                        <input type="text" id="nombre" name="nombre">
+                        <label for="nombre2">Nombre de la marca</label>
+                        <input type="text" id="nombre2" name="nombre2">
 
-                        <label for="imagen1">Imagen 1:</label>
-                        <input type="text" id="imagen1" name="imagen1">
+                        <label for="imagen12">Imagen:</label>
+                        <input type="text" id="imagen12" name="imagen12">
 
-                        <label for="descripcion">Descripción:</label>
-                        <textarea id="descripcion" name="descripcion"></textarea>
+                        <label for="descripcion2">Descripción:</label>
+                        <textarea id="descripcion2" name="descripcion2"></textarea>
                     </div>
                 </div>
 
@@ -314,25 +320,15 @@
 
     const serviceName = document.getElementById('nombre');
     const serviceImage = document.getElementById('imagen1'); 
-    const serviceImage2 = document.getElementById('imagen2'); 
-    const serviceImage3 = document.getElementById('imagen3'); 
-    const serviceState = document.getElementById('estado');
     const serviceDescription = document.getElementById('descripcion');
-    const serviceBenefit = document.getElementById('beneficios');
-    const serviceCaracteristics = document.getElementById('caracteristicas');
 
     const serviceName2 = document.getElementById('nombre2');
     const serviceImage12 = document.getElementById('imagen12'); 
-    const serviceImage22 = document.getElementById('imagen22'); 
-    const serviceImage32 = document.getElementById('imagen32'); 
-    const serviceState2 = document.getElementById('estado2');
     const serviceDescription2 = document.getElementById('descripcion2');
-    const serviceBenefit2 = document.getElementById('beneficios2');
-    const serviceCaracteristics2 = document.getElementById('caracteristicas2');
 
     getBtnLO.addEventListener('click', CerrarSesion);
-    Agregarbtn.addEventListener('click', PreSubmitData);
-    Modificarbtn.addEventListener('click', PreActualizar);
+    Agregarbtn.addEventListener('click', submitData);
+    Modificarbtn.addEventListener('click', Actualizar);
     Eliminarbtn.addEventListener('click', Eliminar);
 
     const baseUrl = 'https://grupolimpio-api.onrender.com';
@@ -361,7 +357,7 @@
     }
 
     function Eliminar() {
-        fetch(baseUrl + '/EliminarServicio', {
+        fetch(baseUrl + '/EliminarMarca', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -370,30 +366,28 @@
         })
         .then(response => response.json())
         .then(data => {
-            alert('El servicio a sido eliminado');
+            alert('La marca a sido eliminada');
             location.reload();
             var modalModificar = document.getElementById('myModal_Modificar');
             modalModificar.style.display = 'none';
         })
         .catch(error => {
-            alert('No se ha podido eliminar el servicio');
+            alert('No se ha podido eliminar la marca');
         });
     }
 
     function Actualizar() {
-            fetch(baseUrl + '/ActualizarServicio', {
+            fetch(baseUrl + '/ActualizarMarca', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ nombre: serviceName2.value, imagen1: serviceImage12.value, 
-                    imagen2: serviceImage22.value, imagen3: serviceImage32.value, beneficio: serviceBenefit2.value,
-                    estado: serviceState2.value, descripcion: serviceDescription2.value, caracteristicas: serviceCaracteristics2.value,
-                    id: localStorage["idS"]}),
+                descripcion: serviceDescription2.value, id:localStorage["idS"]}),
             })
             .then(response => response.json())
             .then(data => {
-                alert('El servicio a sido actualizado');
+                alert('La marca a sido actualizada');
                 var modalModificar = document.getElementById('myModal_Modificar');
                 modalModificar.style.display = 'none';
                 location.reload();
@@ -403,75 +397,14 @@
             });
         }
 
-    function PreSubmitData(){
-        if(serviceName.value == ""){
-            alert("Ingrese el nombre del servicio");
-        }
-        else if(serviceImage.value == ""){
-            alert("Ingrese una imagen en el campo imagen1");
-        }
-        else if(serviceImage2.value == ""){
-            alert("Ingrese una imagen en el campo imagen2");
-        }
-        else if(serviceImage3.value == ""){
-            alert("Ingrese una imagen en el campo imagen3");
-        }
-        else if(serviceState.value == ""){
-            alert("Seleccione un estado");
-        }
-        else if(serviceDescription.value == ""){
-            alert("Ingrese la descripcion del servicio");
-        }
-        else if(serviceBenefit.value == ""){
-            alert("Ingrese el beneficio del servicio");
-        }
-        else if(serviceCaracteristics.value == ""){
-            alert("Ingrese las caracteristicas del servicio");
-        }
-        else{
-            submitData();
-        }
-    }
-
-    function PreActualizar(){
-        if(serviceName2.value == ""){
-            alert("Ingrese el nombre del servicio");
-        }
-        else if(serviceImage12.value == ""){
-            alert("Ingrese una imagen en el campo imagen1");
-        }
-        else if(serviceImage22.value == ""){
-            alert("Ingrese una imagen en el campo imagen2");
-        }
-        else if(serviceImage32.value == ""){
-            alert("Ingrese una imagen en el campo imagen3");
-        }
-        else if(serviceState2.value == ""){
-            alert("Seleccione un estado");
-        }
-        else if(serviceDescription2.value == ""){
-            alert("Ingrese la descripcion del servicio");
-        }
-        else if(serviceBenefit2.value == ""){
-            alert("Ingrese el beneficio del servicio");
-        }
-        else if(serviceCaracteristics2.value == ""){
-            alert("Ingrese las caracteristicas del servicio");
-        }
-        else{
-            Actualizar();
-        }
-    }
-
     function submitData() {
-        fetch(baseUrl + '/submitServicio', {
+        fetch(baseUrl + '/submitMarca', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
             },
             body: JSON.stringify({ nombre: serviceName.value, imagen1: serviceImage.value, 
-                imagen2: serviceImage2.value, imagen3: serviceImage3.value, beneficio: serviceBenefit.value,
-                caracteristicas: serviceCaracteristics.value, descripcion: serviceDescription.value, estado: serviceState.value}),
+            descripcion: serviceDescription.value}),
         })
         .then(response => response.json())
         .then(data => {
@@ -479,38 +412,16 @@
             Tabla.innerHTML += `
             <tbody>
                 <tr>
-                    <td>`+data.id+`</td>
                     <td>
                         <h4>`+serviceName.value+`</h4>
                     </td>
-
                     <td>
                         <p>`+serviceDescription.value+`</p>
-                    </td>
-                    <td>
-                        <p>`+serviceBenefit.value+`</p>
-                    </td>
-                    
-                    <td>
-                        <p>`+serviceCaracteristics.value+`</p>
                     </td>
                     <td>
                         <div class="client-img-catalogo bg-img-tabla"
                             style="background-image: url(`+serviceImage.value+`)">
                         </div>
-                    </td>
-                    <td>
-                        <div class="client-img-catalogo bg-img-tabla"
-                            style="background-image: url(`+serviceImage2.value+`)">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="client-img-catalogo bg-img-tabla"
-                            style="background-image: url(`+serviceImage3.value+`)">
-                        </div>
-                    </td>
-                    <td>
-                        `+serviceState.value+`
                     </td>
                     <td>
                         <div class="actions">
@@ -527,23 +438,18 @@
                 </tr>
             </tbody>
             `
-            alert('Servicio creado exitosamente');
+            alert('Marca creada exitosamente');
             serviceName.value = "";
             serviceImage.value = "";
-            serviceImage2.value = ""; 
-            serviceImage3.value = ""; 
-            serviceState.value = "";
             serviceDescription.value = "";
-            serviceBenefit.value = "";
-            serviceCaracteristics.value = "";
         })
         .catch(error => {
-            alert('Error Creando Servicio'+ error);
+            alert('Error Creando Marca'+ error);
         });
     }
 
     function leerServicio() {
-            fetch(baseUrl + '/selectServicios', {
+            fetch(baseUrl + '/selectMarcas', {
                 method: 'GET',
                 headers: {
                 'Content-Type': 'application/json',
@@ -557,7 +463,6 @@
                     Tabla.innerHTML += `
                     <tbody>
                         <tr>
-                            <td>`+data[i].id+`</td>
                             <td>
                                 <h4>`+data[i].nombre+`</h4>
                             </td>
@@ -566,36 +471,15 @@
                                 <p>`+data[i].descripcion+`</p>
                             </td>
                             <td>
-                                <p>`+data[i].beneficio+`</p>
-                            </td>
-                            
-                            <td>
-                                <p>`+data[i].caracteristicas+`</p>
-                            </td>
-                            <td>
                                 <div class="client-img-catalogo bg-img-tabla"
                                     style="background-image: url(`+data[i].imagen1+`)">
                                 </div>
-                            </td>
-                            <td>
-                                <div class="client-img-catalogo bg-img-tabla"
-                                    style="background-image: url(`+data[i].imagen2+`)">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="client-img-catalogo bg-img-tabla"
-                                    style="background-image: url(`+data[i].imagen3+`)">
-                                </div>
-                            </td>
-                            <td>
-                                `+data[i].estado+`
                             </td>
                             <td>
                                 <div class="actions">
                                     <button id="openForm" onclick=openModificarModal("`+data[i].id+`")>
                                         <img src="img_admin/boton-editar.png" alt="Agregar">
                                     </button>
-
                                     <button id="openForm" onclick=openEliminarModal("`+data[i].id+`")>
                                         <img src="img_admin/basura.png" alt="Eliminar">
                                     </button>
@@ -613,7 +497,7 @@
         }
 
         function leerModificar(datas) {
-            fetch(baseUrl + '/selectServicio', {
+            fetch(baseUrl + '/selectMarca', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
@@ -622,15 +506,9 @@
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 serviceName2.value = data.nombre;
                 serviceImage12.value = data.imagen1;
-                serviceImage22.value = data.imagen2;
-                serviceImage32.value = data.imagen3;
                 serviceDescription2.value = data.descripcion;
-                serviceBenefit2.value = data.beneficio;
-                serviceCaracteristics2.value = data.caracteristicas;
-                serviceState2.value = data.estado;
             })
             .catch(error => {
                 alert(':('+error);

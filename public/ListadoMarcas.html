@@ -43,7 +43,7 @@
     <link rel="icon" href="img/logo1.png">
 </head>
 
-<body class="font-[Poppins] bg-white h-screen" onload="actualizarCantidadProductosEnCarrito(); loggedIn();">
+<body class="font-[Poppins] bg-white h-screen" onload="actualizarCantidadProductosEnCarrito(); loggedIn(); leerServicio();">
     <div id="loader" class="loader">
         <div class="spinner"></div>
     </div>
@@ -138,98 +138,88 @@
                     un
                     poco
                     sobre ellas.</h1>
-                <div class="botones">
-                    <button class="boton ronAbuelo">Ron Abuelo Panamá</button>
-                    <button class="boton premierValue">Premier Value</button>
-                    <button class="boton essentialEveryday">Essential Everyday</button>
-                    <button class="boton ahorroMax">Ahorro Max</button>
-                    <button class="boton panolini">Panolini</button>
-                    <button class="boton hollandia">Hollandia</button>
+            </div>
+            <div id="DivMarcasBotones" class="listadoMarcasBotones">
+                <div id="BotonesDiv" class="botones">
+
                 </div>
-                <div class="imagenMarca" id="imagenRonAbuelo">
-                    <img src="img/marca1.png" alt="Ron Abuelo Panamá">
-                    <div class="tituloDescripcion">
-                        <h3>Ron Abuelo Panamá</h3>
-                        <p>Descubre la calidad y tradición de Ron Abuelo Panamá, una destilería con años de
-                            experiencia
-                            en la producción de ron premium. Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit.
-                            Ipsam, alias porro fugit inventore totam assumenda beatae voluptates numquam doloribus,
-                            non
-                            tempora a quis consequuntur officiis, qui corrupti quod eos quasi!</p>
-                    </div>
-                </div>
-                <div class="imagenMarca" id="imagenPremierValue">
-                    <img src="img/marca2.png" alt="Premier Value">
-                    <div class="tituloDescripcion">
-                        <h3>Premier Value</h3>
-                        <p>Con Premier Value, obtén productos de alta calidad a precios accesibles. Descubre el
-                            valor en
-                            cada compra.</p>
-                    </div>
-                </div>
-                <div class="imagenMarca" id="imagenEssentialEveryday">
-                    <img src="img/marca3.png" alt="Essential Everyday">
-                    <div class="tituloDescripcion">
-                        <h3>Essential Everyday</h3>
-                        <p>Essential Everyday te ofrece productos esenciales para tu vida diaria, con calidad que
-                            puedes
-                            confiar todos los días.</p>
-                    </div>
-                </div>
-                <div class="imagenMarca" id="imagenAhorroMax">
-                    <img src="img/marca4.png" alt="Ahorro Max">
-                    <div class="tituloDescripcion">
-                        <h3>Ahorro Max</h3>
-                        <p>Maximiza tus ahorros con Ahorro Max. Encuentra productos de calidad a precios
-                            competitivos
-                            para tu bolsillo.</p>
-                    </div>
-                </div>
-                <div class="imagenMarca" id="imagenPanolini">
-                    <img src="img/marca5.png" alt="Panolini">
-                    <div class="tituloDescripcion">
-                        <h3>Panolini</h3>
-                        <p>Descubre la suavidad y comodidad de Panolini. Productos de cuidado personal para toda la
-                            familia.</p>
-                    </div>
-                </div>
-                <div class="imagenMarca" id="imagenHollandia">
-                    <img src="img/marca6.png" alt="Hollandia">
-                    <div class="tituloDescripcion">
-                        <h3>Hollandia</h3>
-                        <p>Con Hollandia, disfruta de productos lácteos de alta calidad. Sabor y nutrición para toda
-                            la
-                            familia.</p>
-                    </div>
-                </div>
+            </div>
+            <div id="DivMarcas" class="listadoMarcas">
             </div>
 
 
             <script>
-                const botones = document.querySelectorAll('.boton:not(.mi-carrusel .botonCarrusel)'); // Excluyendo los botones del carrusel
-                const imagenes = document.querySelectorAll('.imagenMarca');
-                document.getElementById('imagenRonAbuelo').classList.add('visible');
-                botones.forEach((boton, indice) => {
-                    boton.addEventListener('click', () => {
-                        imagenes.forEach((imagen) => {
-                            imagen.classList.remove('visible');
-                        });
-                        if (boton.classList.contains('ronAbuelo')) {
-                            document.getElementById('imagenRonAbuelo').classList.add('visible');
-                        } else if (boton.classList.contains('premierValue')) {
-                            document.getElementById('imagenPremierValue').classList.add('visible');
-                        } else if (boton.classList.contains('essentialEveryday')) {
-                            document.getElementById('imagenEssentialEveryday').classList.add('visible');
-                        } else if (boton.classList.contains('ahorroMax')) {
-                            document.getElementById('imagenAhorroMax').classList.add('visible');
-                        } else if (boton.classList.contains('panolini')) {
-                            document.getElementById('imagenPanolini').classList.add('visible');
-                        } else if (boton.classList.contains('hollandia')) {
-                            document.getElementById('imagenHollandia').classList.add('visible');
+                const baseUrl = 'https://grupolimpio-api.onrender.com';
+
+                const marcaslistadas = document.getElementById("DivMarcas");
+                const botoneslistados = document.getElementById("BotonesDiv");
+                var idactual = "";
+
+                // const botones = document.querySelectorAll('.boton:not(.mi-carrusel .botonCarrusel)'); // Excluyendo los botones del carrusel
+                // const imagenes = document.querySelectorAll('.imagenMarca');
+                // document.getElementById('imagenRonAbuelo').classList.add('visible');
+                // botones.forEach((boton, indice) => {
+                //     boton.addEventListener('click', () => {
+                //         imagenes.forEach((imagen) => {
+                //             imagen.classList.remove('visible');
+                //         });
+                //         if (boton.classList.contains('ronAbuelo')) {
+                //             document.getElementById('imagenRonAbuelo').classList.add('visible');
+                //         } else if (boton.classList.contains('premierValue')) {
+                //             document.getElementById('imagenPremierValue').classList.add('visible');
+                //         } else if (boton.classList.contains('essentialEveryday')) {
+                //             document.getElementById('imagenEssentialEveryday').classList.add('visible');
+                //         } else if (boton.classList.contains('ahorroMax')) {
+                //             document.getElementById('imagenAhorroMax').classList.add('visible');
+                //         } else if (boton.classList.contains('panolini')) {
+                //             document.getElementById('imagenPanolini').classList.add('visible');
+                //         } else if (boton.classList.contains('hollandia')) {
+                //             document.getElementById('imagenHollandia').classList.add('visible');
+                //         }
+                //     });
+                // });
+                function visibilidad(id){
+                    document.getElementById('imagen'+idactual).classList.remove('visible');
+                    idactual = id;
+                    document.getElementById('imagen'+id).classList.add('visible');
+                }
+
+                function leerServicio() {
+                    fetch(baseUrl + '/selectMarcas', {
+                        method: 'GET',
+                        headers: {
+                        'Content-Type': 'application/json',
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        marcaslistadas.innerHTML += ``;
+                        botoneslistados.innerHTML += ``;
+                        for(var i = 0; i < data.length; i++){
+                            marcaslistadas.innerHTML += `
+                            <div class="imagenMarca" id="imagen`+data[i].id+`">
+                                <div class="SetImagen">
+                                    <img src="`+data[i].imagen1+`" alt="imagen">
+                                </div>
+                                <div class="tituloDescripcion">
+                                    <h3>`+data[i].nombre+`</h3>
+                                    <p>`+data[i].descripcion+`</p>
+                                </div>
+                            </div>
+                            `
+                            botoneslistados.innerHTML += `
+                            <button onclick=visibilidad("`+data[i].id+`")>`+data[i].nombre+`</button>
+                            `
+                            if(i == 0){
+                                document.getElementById('imagen'+data[i].id).classList.add('visible');
+                                idactual = data[i].id;
+                            }
                         }
-                    });
-                });
+                    })
+                    .catch(error => {
+                        alert(':('+error);
+                    });          
+                }
 
             </script>
         </section>

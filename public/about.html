@@ -168,7 +168,7 @@
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="about-img position-relative overflow-hidden p-5 pe-0">
-                        <img class="img-fluid w-100" src="img/about.jpg">
+                        <img class="img-fluid w-100" id="imagen-about" src="img/about.jpg">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
@@ -190,6 +190,22 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Verificar si hay una nueva imagen en localStorage y actualizar la imagen si es necesario
+        window.addEventListener('DOMContentLoaded', function() {
+            const nuevaImagenAbout = localStorage.getItem('imagenAbout');
+            if (nuevaImagenAbout) {
+                // Actualizar la imagen de about.html
+                const imagenAbout = document.getElementById('imagen-about');
+                imagenAbout.src = nuevaImagenAbout;
+
+                // Limpiar la nueva imagen de localStorage
+                localStorage.removeItem('imagenAbout');
+            }
+        });
+    </script>
+
     <!-- About End -->
 
     <!-- Firm Visit Start -->

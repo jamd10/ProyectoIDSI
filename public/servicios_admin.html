@@ -65,6 +65,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="modificarcarrusel.html">
+                            <span class="las la-store"></span>
+                            <small>Pagina</small>
+                        </a>
+                    </li>
+                    <li>
                         <a href="index.html">
                             <span class="las la-sign-out-alt"></span>
                             <small>Salir</small>
@@ -381,7 +387,7 @@
     Modificarbtn.addEventListener('click', PreActualizar);
     Eliminarbtn.addEventListener('click', Eliminar);
 
-    const baseUrl = 'http://localhost:3001';
+    const baseUrl = 'https://grupolimpio-api.onrender.com';
 
     function CerrarSesion() {
       fetch(baseUrl + '/logOut', {
