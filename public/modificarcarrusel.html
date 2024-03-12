@@ -9,7 +9,7 @@
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
-<body onload="leerProducto()">
+<body onload="leerServicio()">
     <input type="checkbox" id="menu-toggle">
     <div class="sidebar">
         <div class="side-header">
@@ -78,79 +78,86 @@
         </div>
     </div>
     <div class="main-content">
-        <h1>Modificar Carrusel</h1>
+        <h1>Modificar Sobre Nosotros</h1>
 
         <form id="formulario-modificar" enctype="multipart/form-data">
-        <label for="imagen-a-modificar">Seleccione la imagen a modificar:</label>
-        <select id="imagen-a-modificar" name="imagen-a-modificar">
-            <option value="1">Imagen 1</option>
-            <option value="2">Imagen 2</option>
-            <option value="3">Imagen 3</option>
-            <option value="4">Imagen 4</option>
-            <option value="5">Imagen 5</option>
-            <option value="6">Imagen 6</option>
-            <option value="7">Imagen 7</option>
-            <option value="8">Imagen Sobre Nosotros</option>
-        </select>
+        <label for="imagen-a-modificar">Imagen Titulo Sobre Nosotros:</label>
 
-        <label for="enlace-nueva-imagen">Ingrese el enlace de la nueva imagen:</label>
-        <input type="text" id="enlace-nueva-imagen" name="enlace-nueva-imagen" placeholder="https://ruta-de-la-nueva-imagen.png">
+        <label for="imagen1">Ingrese el enlace de la nueva imagen:</label>
+        <input type="text" id="imagen1" name="imagen1" placeholder="https://ruta-de-la-nueva-imagen.png">
 
-        <button type="button" onclick="actualizarCarrusel()">Actualizar Imagen</button>
-    </form>
+        <button type="button1" onclick="Actualizar2()">Actualizar Imagen</button>
 
-    <h2>Modificar Imagen de Sobre Nosotros</h2>
-<form id="formulario-modificar-about" enctype="multipart/form-data">
-    <label for="enlace-nueva-imagen-about">Ingrese el enlace de la nueva imagen de about.html:</label>
-    <input type="text" id="enlace-nueva-imagen-about" name="enlace-nueva-imagen-about" placeholder="https://ruta-de-la-nueva-imagen-about.png">
-
-    <button type="button" onclick="actualizarImagenAbout()">Actualizar Imagen</button>
-</form>
+        <form id="formulario-modificar" enctype="multipart/form-data">
+            <label for="imagen-a-modificar">Imagen Tienda Sobre Nosotros:</label>
+    
+            <label for="imagen2">Ingrese el enlace de la nueva imagen:</label>
+            <input type="text" id="imagen2" name="imagen2" placeholder="https://ruta-de-la-nueva-imagen.png">
+    
+            <button type="button2" onclick="Actualizar1()">Actualizar Imagen</button>
+        </form>
 
     <script>
-        var array = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg','img/6.jpg','img/7.jpg','img/about.jpg']
-        localStorage["Carrusel"] = array;
+        const baseUrl = 'https://grupolimpio-api.onrender.com';
+        const imagen1 = document.getElementById("imagen1");
+        const imagen2 = document.getElementById("imagen2");
 
-        function actualizarCarrusel() {
-            const imagenAModificar = document.getElementById('imagen-a-modificar').value;
-            const enlaceNuevaImagen = document.getElementById('enlace-nueva-imagen').value;
-            if (imagenAModificar==1) {
-                array[0] = enlaceNuevaImagen;
-            } else if (imagenAModificar==2) {
-                array[1] = enlaceNuevaImagen;
-            } else if (imagenAModificar==3) {
-                array[2] = enlaceNuevaImagen;
-            } else if (imagenAModificar==4) {
-                array[3] = enlaceNuevaImagen;
-            } else if (imagenAModificar==5) {
-                array[4] = enlaceNuevaImagen;
-            } else if (imagenAModificar==6) {
-                array[5] = enlaceNuevaImagen;
-            } else if (imagenAModificar==7) {
-                array[6] = enlaceNuevaImagen;
-            }
-            localStorage["Carrusel"] = array;
-
+        function Actualizar1() {
+            fetch(baseUrl + '/ActualizarPagina1', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({imagen: imagen2.value}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('La imagen a sido actualizada');
+                location.reload();
+                })
+            .catch(error => {
+            });
         }
 
-        function actualizarImagenAbout() {
-            const enlaceNuevaImagenAbout = document.getElementById('enlace-nueva-imagen-about').value;
-            array[7] = enlaceNuevaImagen;
-            localStorage["Carrusel"] = array;
+        function Actualizar2() {
+            fetch(baseUrl + '/ActualizarPagina2', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({imagen: imagen1.value}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('La imagen a sido actualizada');
+                location.reload();
+                })
+            .catch(error => {
+            });
+        }
 
+        function leerServicio() {
+            fetch(baseUrl + '/selectPagina', {
+                method: 'GET',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                for(var i = 0; i < data.length; i++){
+                    if(data[i].tipo == "tienda"){
+                        imagen2.value = data[i].imagen;
+                    }else if(data[i].tipo == "titulo"){
+                        imagen1.value = data[i].imagen;
+                    }
+                }
+            })
+            .catch(error => {
+                alert(':('+error);
+            });          
         }
-    
-        function mostrarMensaje(mensaje, tipo) {
-            const mensajeElemento = document.createElement('div');
-            mensajeElemento.className = `mensaje-${tipo}`;
-            mensajeElemento.textContent = mensaje;
-    
-            document.body.appendChild(mensajeElemento);
-    
-            setTimeout(() => {
-                mensajeElemento.remove();
-            }, 3000);
-        }
+
     </script>
     
     </div>

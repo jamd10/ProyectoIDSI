@@ -53,7 +53,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="pedidos_admin.html" class="active">
+                        <a href="pedidos_admin.html">
                             <span class="las la-clipboard-check"></span>
                             <small>Pedidos</small>
                         </a>
@@ -65,7 +65,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="carrusel_admin.html">
+                        <a href="carrusel_admin.html" class="active">
                             <span class="las la-store"></span>
                             <small>Carrusel Inicial</small>
                         </a>
@@ -88,6 +88,7 @@
                             <small>Salir</small>
                         </a>
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -114,12 +115,24 @@
 
         <main>
             <div class="page-header">
-                <h1>Pedidos</h1>
-                <small>Panel / Pedidos</small>
+                <h1>Carrusel Inicial</h1>
+                <small>Panel / Carrusel Inicial</small>
             </div>
             <div class="page-content">
                 <div class="records table-responsive">
                     <div class="record-header">
+                        <div class="add">
+
+                            <button id="openForm">Agregar</button>
+
+                        </div>
+
+                        <!-- <div class="browse">
+                            <input type="search" placeholder="Buscar" class="record-search">
+                            <select name="" id="">
+                                <option value="">Estado</option>
+                            </select>
+                        </div> -->
                     </div>
                     <div>
                         <table class="product-table" id="TablaServicios">
@@ -176,24 +189,10 @@
                                     margin-right: 10px;
                                     text-decoration: none;
                                 }
-
-                                .InputMD {
-                                    padding: 6px 12px;
-                                    margin: 8px 0;
-                                    display: inline-block;
-                                    border: 2px solid #ccc;
-                                    border-radius: 4px;
-                                    box-sizing: border-box;
-                                    width: 40%;
-                                }
                             </style>
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>USUARIO</th>
-                                    <th>TIPO DE ENTREGA</th>
-                                    <th>ESTADO DE ENTREGA</th>
-                                    <th>REPARTIDOR</th>
+                                    <th>IMAGEN</th>
                                     <th>OPCIONES</th>
                                 </tr>
                             </thead>
@@ -212,40 +211,20 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">×</span>
-            <h2>Agregar repartidor</h2>
+            <h2>Agregar marca propia</h2>
             <hr>
 
             <div class="form-container">
                 <div class="row">
                     <div class="column">
-                        <label for="identidad">Numero de Identidad:</label>
-                        <input type="text" id="identidad" name="identidad" onkeyup="validate2();" maxlength="13">
-
-                        <label for="nombre">Nombre completo:</label>
-                        <input type="text" id="nombre" name="nombre" onkeyup="validate();">
-
-                        <label for="fecha">Fecha de Nacimiento:</label>
-                        <input type="text" id="fecha" name="fecha" onkeyup="validate3();" maxlength="10">
-
-                        <label for="telefono">Telefono:</label>
-                        <input type="text" id="telefono" name="telefono" onkeyup="validate4();" maxlength="8">
-                    </div>
-
-                    <div class="column">
-                        <label for="correo">Correo:</label>
-                        <input id="correo" name="correo"></input>
-      
-                        <label for="vehiculo">Tipo de Vehiculo:</label>
-                        <textarea id="vehiculo" name="vehiculo"></textarea>
-
-                        <label for="placa">Numero de placa:</label>
-                        <input id="placa" name="placa" onkeyup="validate5();" maxlength="7"></input>
-                        
+                        <label for="imagen1">Imagen:</label>
+                        <input type="text" id="imagen1" name="imagen1">
                     </div>
                 </div>
 
                 <div class="buttons">
-                    <button id="AgregarAceptar">Asignar</button>
+                    <button id="AgregarAceptar">Aceptar</button>
+                    <button id="cancelar">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -261,12 +240,15 @@
 
             <div class="form-container">
                 <div class="row">
-                    <select id="RepartidorSelect" class="InputIP">
-                      </select>
+                    <div class="column">
+                        <label for="imagen12">Imagen:</label>
+                        <input type="text" id="imagen12" name="imagen12">
+                    </div>
                 </div>
 
                 <div class="buttons">
                     <button id="ModificarAceptar">Aceptar</button>
+                    <button id="cancelar">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -317,7 +299,7 @@
     function openModificarModal(data) {
         var modalModificar = document.getElementById('myModal_Modificar');
         modalModificar.style.display = 'block';
-        leerModificar();
+        leerModificar(data);
         localStorage["idS"] = data;
     }
 
@@ -333,12 +315,15 @@
     const Modificarbtn = document.getElementById('ModificarAceptar');
     const Eliminarbtn = document.getElementById('EliminarConfirmar');
     const Tabla = document.getElementById('TablaServicios');
+    const Tabla2 = document.getElementById('TablaServicios2');
 
-    const select = document.getElementById('RepartidorSelect');
+    const serviceImage = document.getElementById('imagen1'); 
+
+    const serviceImage12 = document.getElementById('imagen12'); 
 
     getBtnLO.addEventListener('click', CerrarSesion);
     Agregarbtn.addEventListener('click', submitData);
-    Modificarbtn.addEventListener('click', submitData);
+    Modificarbtn.addEventListener('click', Actualizar);
     Eliminarbtn.addEventListener('click', Eliminar);
 
     const baseUrl = 'https://grupolimpio-api.onrender.com';
@@ -367,24 +352,7 @@
     }
 
     function Eliminar() {
-        fetch(baseUrl + '/ActualizarFactura', {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ id: localStorage["idS"], texto: "Cancelado"}),
-        })
-        .then(response => response.json())
-        .then(data => {
-            location.reload();
-        })
-        .catch(error => {
-            alert('No se ha podido eliminar el repartidor');
-        });
-    }
-
-    function Eliminar2() {
-        fetch(baseUrl + '/EliminarRepartidor', {
+        fetch(baseUrl + '/EliminarCarrusel', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -393,85 +361,79 @@
         })
         .then(response => response.json())
         .then(data => {
-            alert('El repartidor a sido eliminado');
+            alert('La imagen a sido eliminada');
             location.reload();
             var modalModificar = document.getElementById('myModal_Modificar');
             modalModificar.style.display = 'none';
         })
         .catch(error => {
-            alert('No se ha podido eliminar el repartidor');
+            alert('No se ha podido eliminar la imagen');
         });
     }
 
     function Actualizar() {
-        fetch(baseUrl + '/ActualizarFactura', {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ id: localStorage["idS"],texto: "Asignado"}),
-        })
-        .then(response => response.json())
-        .then(data => {
-
-        })
-        .catch(error => {
-            //alert('No se ha podido actualizar su informacion'+error);
-        });
-    }
-
-
-    function PreActualizar(){
-        if(nombre2.value == ""){
-            alert("Ingrese el nombre del repartidor");
+            fetch(baseUrl + '/ActualizarCarrusel', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({imagen: serviceImage12.value, id:localStorage["idS"]}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('La imagen a sido actualizada');
+                var modalModificar = document.getElementById('myModal_Modificar');
+                modalModificar.style.display = 'none';
+                location.reload();
+                })
+            .catch(error => {
+                alert('No se ha podido actualizar su informacion');
+            });
         }
-        else if(identidad2.value.length != 13){
-            alert("El numero de identidad del repartidor debe de ser de 13 numeros, sin espacios");
-        }
-        else if(correo2.value == ""){
-            alert("Ingrese el correo del repartidor");
-        }
-        else if(fecha2.value.length != 10){
-            alert("Ingrese la fecha de nacimiento del repartidor, ex: 00/00/0000");
-        }
-        else if(telefono2.value.length != 8){
-            alert("El numero de telefono debe de contener 8 numeros");
-        }
-        else if(vehiculo2.value == ""){
-            alert("Ingrese la descipcion del vehiculo");
-        }
-        else if(placa2.value.length != 7){
-            alert("La placa del vehiculo debe de contener 7 caracteres");
-        }
-        else{
-            Actualizar();
-        }
-    }
-
-    function HayPedido() {
-
-    }
 
     function submitData() {
-        fetch(baseUrl + '/ActualizarFactura2', {
+        fetch(baseUrl + '/submitCarrusel', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ repartidor: select.value, id: localStorage["idS"], texto: "Asignado"}),
+            body: JSON.stringify({imagen: serviceImage.value}),
         })
         .then(response => response.json())
         .then(data => {
-            alert("Se asigno el pedido al repartido");
-            location.reload();
+            Tabla.innerHTML += `
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="client-img-catalogo bg-img-tabla"
+                            style="background-image: url(`+serviceImage.value+`)">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="actions">
+                            <button id="openForm" onclick=openModificarModal("`+data.id+`")>
+                                <img src="img_admin/boton-editar.png" alt="Agregar">
+                            </button>
+
+                            <button id="openForm" onclick=openEliminarModal("`+data.id+`")>
+                                <img src="img_admin/basura.png" alt="Eliminar">
+                            </button>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            `
+            alert('Imagen creada exitosamente');
+            serviceImage.value = "";
         })
         .catch(error => {
-            alert('Error asignando pedido'+ error);
+            alert('Error Creando Marca'+ error);
         });
     }
 
     function leerServicio() {
-            fetch(baseUrl + '/selectFacturas', {
+            fetch(baseUrl + '/selectCarrusel', {
                 method: 'GET',
                 headers: {
                 'Content-Type': 'application/json',
@@ -481,69 +443,29 @@
             .then(data => {
                 Tabla.innerHTML += ``;
                 for(var i = 0; i < data.length; i++){
-                    if(data[i].estado_entrega == "Entregado" || data[i].estado_entrega == "Cancelado"){
-
-                    }
-                    else if(data[i].tipoEntrega == "Tienda"){
-                        Tabla.innerHTML += `
-                        <tbody>
-                            <tr>
-                                <td>`+data[i].id+`</td>
-                                <td>
-                                    <h4>`+data[i].usuario+`</h4>
-                                </td>
-
-                                <td>
-                                    <p>`+data[i].tipoEntrega+`</p>
-                                </td>
-                                <td>
-                                    <p>`+data[i].estado_entrega+`</p>
-                                </td>
-                                <td>
-                                    <p>`+""+`</p>
-                                </td>
-                                <td>
-                                    <div class="actions">
-                                        <button id="openForm" onclick=openEliminarModal("`+data[i].id+`")>
-                                            <img src="img_admin/basura.png" alt="Eliminar">
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        `;
-                    }else{
-                        Tabla.innerHTML += `
-                        <tbody>
-                            <tr>
-                                <td>`+data[i].id+`</td>
-                                <td>
-                                    <h4>`+data[i].usuario+`</h4>
-                                </td>
-
-                                <td>
-                                    <p>`+data[i].tipoEntrega+`</p>
-                                </td>
-                                <td>
-                                    <p>`+data[i].estado_entrega+`</p>
-                                </td>
-                                <td>
-                                    <p>`+data[i].repartidor+`</p>
-                                </td>
-                                <td>
-                                    <div class="actions">
-                                        <button id="openForm" onclick=openModificarModal("`+data[i].id+`")>
-                                            <img src="img_admin/boton-editar.png" alt="Agregar">
-                                        </button>
-                                        <button id="openForm" onclick=openEliminarModal("`+data[i].id+`")>
-                                            <img src="img_admin/basura.png" alt="Eliminar">
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        `;
-                    }
+                    var idtb = data[i].id;
+                    Tabla.innerHTML += `
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="client-img-catalogo bg-img-tabla"
+                                    style="background-image: url(`+data[i].imagen+`)">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="actions">
+                                    <button id="openForm" onclick=openModificarModal("`+data[i].id+`")>
+                                        <img src="img_admin/boton-editar.png" alt="Agregar">
+                                    </button>
+                                    <button id="openForm" onclick=openEliminarModal("`+data[i].id+`")>
+                                        <img src="img_admin/basura.png" alt="Eliminar">
+                                    </button>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    `
                 }
             })
             .catch(error => {
@@ -551,54 +473,23 @@
             });          
         }
 
-        function leerModificar() {
-            fetch(baseUrl + '/selectRepartidores', {
-                method: 'GET',
+        function leerModificar(datas) {
+            fetch(baseUrl + '/selectCarrusel2', {
+                method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
                 },
+                body: JSON.stringify({ id: datas}),
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('RepartidorSelect').innerHTML = "";
-                for(var i=0; i<data.length; i++){
-                    var opt = document.createElement('option');
-                    opt.value = data[i].correo;
-                    opt.innerHTML = data[i].nombre;
-                    document.getElementById('RepartidorSelect').appendChild(opt);
-                }
+                serviceImage12.value = data.imagen;
             })
             .catch(error => {
                 alert(':('+error);
             });
         }
-
-    function validate2() {
-      var element2 = document.getElementById('identidad');
-      element2.value = element2.value.replace(/[^0-9]+/, '');
-    };
-
-    function validate3() {
-      var element2 = document.getElementById('fecha');
-      element2.value = element2.value.replace(/[^0-9/]+/, '');
-    };
-
-    function validate() {
-      var element = document.getElementById('nombre');
-      element.value = element.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
-    };
-
-    function validate4() {
-      var element2 = document.getElementById('telefono');
-      element2.value = element2.value.replace(/[^0-9]+/, '');
-    };
-
-    function validate5() {
-      var element2 = document.getElementById('placa');
-      element2.value = element2.value.replace(/[^A-Z0-9]+/, '');
-    };
 </script>
-
 
 
 </html>

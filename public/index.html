@@ -49,7 +49,7 @@
     <link rel="icon" href="img/logo1.png">
 </head>
 
-<body class="font-[Poppins] bg-white h-screen" onload="actualizarCantidadProductosEnCarrito(); loggedIn(); leerProducto(); setCarrusel();">
+<body class="font-[Poppins] bg-white h-screen" onload="actualizarCantidadProductosEnCarrito(); loggedIn(); leerProducto(); leerCarrusel(); leerCarrusel2();">
     <div id="loader" class="loader">
         <div class="spinner"></div>
     </div>
@@ -138,77 +138,16 @@
             </div>
         </section>
 
-        <section class="mi-carrusel">
-            <div class="deslizador-img" id="deslizador">
-                <div class="diapositiva active">
-                    <img src="img/1.jpg" alt="" data-index="1">
-                    <div class="informacion"></div>
-                </div>
-                <div class="diapositiva">
-                    <img src="img/2.jpg" alt="" data-index="2">
-                    <div class="informacion"></div>
-                </div>
-                <div class="diapositiva">
-                    <img src="img/3.jpg" alt="" data-index="3">
-                    <div class="informacion"></div>
-                </div>
-                <div class="diapositiva">
-                    <img src="img/4.jpg" alt="" data-index="4">
-                    <div class="informacion"></div>
-                </div>
-                <div class="diapositiva">
-                    <img src="img/5.jpg" alt="" data-index="5">
-                    <div class="informacion"></div>
-                </div>
-                <div class="diapositiva">
-                    <img src="img/6.jpg" alt="" data-index="6">
-                    <div class="informacion"></div>
-                </div>
-                <div class="diapositiva">
-                    <img src="img/7.jpg" alt="" data-index="7">
-                    <div class="informacion"></div>
-                </div>
-            </div>
-            <div class="navegacion" id="navegacion">
-                <div class="boton active"></div>
-                <div class="boton"></div>
-                <div class="boton"></div>
-                <div class="boton"></div>
-                <div class="boton"></div>
-                <div class="boton"></div>
-                <div class="boton"></div>
-            </div>
+        <section id="container-slider" class="mi-carrusel-personalizado">
+            <a href="javascript: fntExecuteSlide('prev');" class="arrowPrev"><i
+                    class="fas fa-chevron-circle-left"></i></a>
+            <a href="javascript: fntExecuteSlide('next');" class="arrowNext"><i
+                    class="fas fa-chevron-circle-right"></i></a>
+            <ul id="slider2" class="listslider">
+            </ul>
+            <ul id="slider">
+            </ul>
         </section>
-    
-        <script>
-            function actualizarCarruselDesdeLocalStorage() {
-                // Verificar si hay información de imagen seleccionada en localStorage
-                const imagenSeleccionada = JSON.parse(localStorage.getItem('imagenSeleccionada'));
-        
-                if (imagenSeleccionada) {
-                    // Obtener la imagen seleccionada del carrusel
-                    const imagenCarrusel = document.querySelector(`.mi-carrusel .diapositiva img[data-index="${imagenSeleccionada.index}"]`);
-        
-                    // Actualizar la imagen del carrusel según la información almacenada
-                 if (imagenSeleccionada.enlaceNuevaImagen) {
-                        imagenCarrusel.src = imagenSeleccionada.enlaceNuevaImagen;
-                    }
-        
-                    // Limpiar localStorage después de actualizar el carrusel
-                    localStorage.removeItem('imagenSeleccionada');
-                }
-            }
-        
-            // Llamar a la función cuando la página se haya cargado completamente
-            document.addEventListener('DOMContentLoaded', actualizarCarruselDesdeLocalStorage);
-        
-            // Llamar a la función cuando se cargue la página desde otra página
-            window.addEventListener('pageshow', function(event) {
-                if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
-                    actualizarCarruselDesdeLocalStorage();
-                }
-            });
-        </script>
     
 
         <!--Carrusel-->
@@ -303,76 +242,6 @@
                 </div>
             </div>
         </section>
-        <section>
-            <h1 class="cardsServicios">Servicios Destacados</h1>
-
-            <section class="intro">
-                <div class="flex justify-center items-center h-auto gap-4 flex-wrap mt-2 mb-2">
-                    <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                        <img class="w-full" src="img/11.jpg" alt="Sunset in the mountains">
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
-                            <p class="text-gray-700 text-base">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
-                                Maiores et perferendis eaque, exercitationem praesentium nihil.
-                            </p>
-                        </div>
-                        <a href="servicios.html"
-                            class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full text-center">
-                            Ver servicios
-                        </a>
-
-                    </div>
-                    <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                        <img class="w-full" src="img/12.jpg" alt="Sunset in the mountains">
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
-                            <p class="text-gray-700 text-base">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
-                                Maiores et perferendis eaque, exercitationem praesentium nihil.
-                            </p>
-                        </div>
-                        <a href="servicios.html"
-                            class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full text-center">
-                            Ver servicios
-                        </a>
-
-                    </div>
-                    <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                        <img class="w-full" src="img/13.jpg" alt="Sunset in the mountains">
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
-                            <p class="text-gray-700 text-base">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
-                                Maiores et perferendis eaque, exercitationem praesentium nihil.
-                            </p>
-                        </div>
-                        <a href="servicios.html"
-                            class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full text-center">
-                            Ver servicios
-                        </a>
-
-                    </div>
-                    <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                        <img class="w-full" src="img/17.jpg" alt="Sunset in the mountains">
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
-                            <p class="text-gray-700 text-base">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
-                                Maiores et perferendis eaque, exercitationem praesentium nihil.
-                            </p>
-                        </div>
-                        <a href="servicios.html"
-                            class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full text-center">
-                            Ver servicios
-                        </a>
-
-                    </div>
-                </div>
-
-            </section>
-
-        </section>
 
         <section>
             <div class="top-banner">
@@ -454,52 +323,8 @@
         <section>
             <div class="marcas">
                 <div class="slider">
-                    <div class="slide-track">
-                        <div class="slide">
-                            <img src="img/Logo_1.png" height="100" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="img/Logo_2.png" height="100" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="img/Logo_3.png" height="100" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="img/Logo_4.png" height="100" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="img/Logo_5.png" height="100" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="img/Logo_1.png" height="100" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="img/Logo_2.png" height="100" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="img/Logo_3.png" height="100" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="img/Logo_4.png" height="100" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="img/Logo_5.png" height="100" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="img/Logo_1.png" height="100" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="img/Logo_2.png" height="100" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="img/Logo_3.png" height="100" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="img/Logo_4.png" height="100" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="img/Logo_5.png" height="100" width="250" alt="" />
-                        </div>
+                    <div id="CarruselMarcas" class="slide-track">
+                        
                     </div>
                 </div>
             </div>
@@ -607,6 +432,9 @@
     <script>
         const baseUrl = 'https://grupolimpio-api.onrender.com';
         const CarruselProductos = document.getElementById("CarruselProductos");
+        const Slider = document.getElementById("slider");
+        const Slider2 = document.getElementById("slider2");
+        const CarruselMarcas = document.getElementById("CarruselMarcas");
 
         function leerProducto() {
             fetch(baseUrl + '/selectProductos', {
@@ -638,17 +466,62 @@
                         </div>`;
                     }
                 }
-
             })
             .catch(error => {
                 alert(':('+error);
             });          
         }
 
-        function setCarrusel(){
-            var array = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg','img/6.jpg','img/7.jpg','img/about.jpg']
-            localStorage["Carrusel"] = array;
+        function leerCarrusel() {
+            fetch(baseUrl + '/selectCarrusel', {
+                method: 'GET',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                Slider.innerHTML += ``;
+                Slider2.innerHTML += ``;
+                for(var i = 0; i < data.length; i++){
+                    if(i == 0){
+                        Slider.innerHTML += `<li style="background-image: url('`+data[i].imagen+`'); z-index:0; opacity: 1;"></li>`
+                    }else{
+                        Slider.innerHTML += `<li style="background-image: url('`+data[i].imagen+`'); z-index:0; opacity: 1;"></li>`
+                    }
+                }
+                for(var i = 0; i < data.length; i++){
+                    if(i == 0){
+                        Slider2.innerHTML += `<li><a itlist="itList_`+i+`" href="#" class="item-select-slid"></a></li>`
+                    }else{
+                        Slider2.innerHTML += `<li><a itlist="itList_`+i+`" href="#"></a></li>`
+                    }
+                }
+            })
+            .catch(error => {
+                alert(':('+error);
+            });          
+        }
 
+        function leerCarrusel2() {
+            fetch(baseUrl + '/selectCarrusel3', {
+                method: 'GET',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                CarruselMarcas.innerHTML += ``;
+                for(var i = 0; i < data.length; i++){
+                    CarruselMarcas.innerHTML += `<div class="slide">
+                            <img src="`+data[i].imagen+`" height="100" width="250" alt="" />
+                        </div>`;
+                }
+            })
+            .catch(error => {
+                alert(':('+error);
+            });          
         }
     </script>
 

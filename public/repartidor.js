@@ -62,8 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
           listItem.innerHTML = `<strong>Entrega ${data[i].id}:</strong> 
           Dirección: ${data[i].direccion} 
           <div>
-            <button id="on-way-button-${data[i].id}" class="btn btn-warning" onclick="caminoALaEntrega('`+data[i].id+`', '`+data[i].direccion+`')">Camino</button>
-            <button id="delivered-button-${data[i].id}" class="btn btn-info" onclick="entregaRealizada('`+data[i].id+`', '`+data[i].direccion+`')">Entregado</button>
+            <button id="on-way-button-${data[i].id}" class="btn btn-warning" onclick="caminoALaEntrega('`+data[i].id+`', '`+data[i].direccion+`', '`+data[i].usuario+`')">Camino</button>
+            <button id="delivered-button-${data[i].id}" class="btn btn-info" onclick="entregaRealizada('`+data[i].id+`', '`+data[i].direccion+`', '`+data[i].usuario+`')">Entregado</button>
           </div>`;
           deliveryList.appendChild(listItem);
           const onWayButton = document.querySelector(`#on-way-button-${data[i].id}`);
@@ -237,7 +237,7 @@ function togglePassword() {
 // nuevo boton
 
 
-window.caminoALaEntrega = function (id, direccion) {
+window.caminoALaEntrega = function (id, direccion, usuario) {
   // Bloquear el botón "Camino" y mostrar un ícono de bloqueo
   const onWayButton = document.querySelector(`#on-way-button-${id}`);
   onWayButton.innerHTML = "Camino <span class='button-lock'>🔒</span>";
@@ -251,7 +251,7 @@ window.caminoALaEntrega = function (id, direccion) {
   // Imprimir la dirección asociada en la consola
 
   // Llamamos a la función de enviarCorreo con la dirección obtenida
-  sendEmail2(direccion);
+  sendEmail2(direccion, usuario);
   fetch(baseUrl + '/ActualizarFactura', {
       method: 'POST',
       headers: {
@@ -267,8 +267,8 @@ window.caminoALaEntrega = function (id, direccion) {
   });
 }
 
-window.entregaRealizada = function (id, direccion) {
-  sendEmail3(direccion);
+window.entregaRealizada = function (id, direccion, usuario) {
+  sendEmail3(direccion, usuario);
   // Bloquear el botón "Camino" y mostrar un ícono de bloqueo
   const deliveredButton = document.querySelector(`#delivered-button-${id}`);
   deliveredButton.innerHTML = "Entregado <span class='button-lock'>🔒</span>";
@@ -369,7 +369,7 @@ function validate5() {
   element2.value = element2.value.replace(/[^A-Z0-9]+/, '');
 };
 
-const sendEmail2 = (direccion) => {
+const sendEmail2 = (direccion, usuario) => {
   const templateHTML = `
   <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -729,7 +729,7 @@ display: inline-block;
     Host: 'smtp.elasticemail.com', // Reemplaza con el servidor SMTP que uses
     Username: 'grupomaslimpio39@gmail.com', // Reemplaza con tu nombre de usuario SMTP
     Password: '69E01DB91010FCA73CF620B5C721E5FD2B78', // Reemplaza con tu contraseña SMTP
-    To: 'felixomardominguez847@gmail.com', // Reemplaza con la dirección de correo del equipo de soporte
+    To: usuario, // Reemplaza con la dirección de correo del equipo de soporte
     From: 'grupomaslimpio39@gmail.com', // Reemplaza con tu dirección de correo
     Subject: 'Pedido Confirmado',
     Body: templateHTML,
@@ -744,7 +744,7 @@ display: inline-block;
   });
 };
 
-const sendEmail3 = (direccion) => {
+const sendEmail3 = (direccion, usuario) => {
   const templateHTML = `
   <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -1104,7 +1104,7 @@ display: inline-block;
     Host: 'smtp.elasticemail.com', // Reemplaza con el servidor SMTP que uses
     Username: 'grupomaslimpio39@gmail.com', // Reemplaza con tu nombre de usuario SMTP
     Password: '69E01DB91010FCA73CF620B5C721E5FD2B78', // Reemplaza con tu contraseña SMTP
-    To: 'felixomardominguez847@gmail.com', // Reemplaza con la dirección de correo del equipo de soporte
+    To: usuario, // Reemplaza con la dirección de correo del equipo de soporte
     From: 'grupomaslimpio39@gmail.com', // Reemplaza con tu dirección de correo
     Subject: 'Pedido Confirmado',
     Body: templateHTML,

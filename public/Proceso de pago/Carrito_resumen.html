@@ -100,7 +100,7 @@
     </div>
 
     <script>
-        var totales = []
+        var totales = [];
         const baseUrl = 'https://grupolimpio-api.onrender.com';
 
         function calculateTotal() {
@@ -231,8 +231,7 @@
                     })
                     CrearFactura(carrito2);
                     localStorage.removeItem('carrito');
-                    //window.location.href="Confirmar.html";
-                    window.location.href="stripe.html";
+                    window.location.href="Confirmar.html";
                 }
             }
         }
@@ -254,6 +253,44 @@
             });
         }
 
+        function ParaFactura(carrito2) {
+            fetch(baseUrl + '/SelectIDFactura', {
+                method: 'GET',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                // var cadena = String(data.id).padStart(10,'0');
+                // var idfactura = cadena;
+                // var numero = +data.id + 1;
+                ActualizarParaFactura("1", carrito2, "0");
+                alert('1');
+            })
+            .catch(error => {
+                alert(error+"1");
+            });
+        }
+
+        function ActualizarParaFactura(datas, carrito2, idfactura) {
+            fetch(baseUrl + '/ActualizarIDFactura', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id:datas })
+            })
+            .then(response => response.json())
+            .then(data => {
+                CrearFactura(carrito2, idfactura);
+                alert('2');
+            })
+            .catch(error => {
+                alert(error+"2");
+            });
+        }
+
         function CrearFactura(carro) {
             const myArray = JSON.parse(localStorage.getItem('FacturaDatos'));
             fetch(baseUrl + '/CrearFactura', {
@@ -269,11 +306,10 @@
             })
             .then(response => response.json())
             .then(data => {
-                alert('Compra realizada :D');
+                alert('Compra realizada');
             })
             .catch(error => {
-                //Tira error, pero lo hace de todas formas
-                alert('Compra realizada');
+                alert(error+"3");
             });
             for (i=0;i <productosDetallados.length;i++){
 
