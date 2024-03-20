@@ -87,6 +87,9 @@
                         <a class="menu-link" href="about.html">Sobre Nosotros</a>
                     </li>
                     <li>
+                        <a class="menu-link" href="ListadoMarcas.html">Listado de marcas</a>
+                    </li>
+                    <li>
                         <a class="menu-link" href="#" onclick="mostrarCarrito()">
                             <ion-icon name="cart" class="text-black text-xl"></ion-icon>Carrito
                             <span id="cantidadCarrito" class="badge badge-danger ml-1">0</span>
@@ -126,7 +129,8 @@
                 </ul>
             </div>
             <div class="flex items-center gap-6">
-                <a id="LogInMenuButton" class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]" href="#">Iniciar
+                <a id="LogInMenuButton" class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]"
+                    href="#">Iniciar
                     Sesion</a>
                 <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
             </div>
@@ -195,26 +199,26 @@
         const baseUrl = 'https://grupolimpio-api.onrender.com';
         const imagen1 = document.getElementById("imagen-about");
         const imagen2 = document.getElementById("TituloImagen");
-        function cargar1(){
+        function cargar1() {
             fetch(baseUrl + '/selectPagina', {
                 method: 'GET',
                 headers: {
-                'Content-Type': 'application/json',
+                    'Content-Type': 'application/json',
                 },
             })
-            .then(response => response.json())
-            .then(data => {
-                for(var i = 0; i < data.length; i++){
-                    if(data[i].tipo == "tienda"){
-                        imagen1.src = data[i].imagen;
-                    }else if(data[i].tipo == "titulo"){
-                        imagen2.style.background = "url('"+data[i].imagen+"') top right no-repeat";
+                .then(response => response.json())
+                .then(data => {
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].tipo == "tienda") {
+                            imagen1.src = data[i].imagen;
+                        } else if (data[i].tipo == "titulo") {
+                            imagen2.style.background = "url('" + data[i].imagen + "') top right no-repeat";
+                        }
                     }
-                }
-            })
-            .catch(error => {
-                alert(':('+error);
-            });          
+                })
+                .catch(error => {
+                    alert(':(' + error);
+                });
         }
     </script>
 

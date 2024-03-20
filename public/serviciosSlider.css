@@ -16,35 +16,35 @@
 }
 
 /*divicion*/
+/* Estilos generales */
 .relleno2 html,
-body,
-ul,
-li {
+.relleno2 body,
+.relleno2 ul,
+.relleno2 li {
     padding: 0;
     margin: 0;
     list-style: none;
-
+    font-family: "Open Sans";
 }
 
 .relleno2 html {
     font-size: 10px;
-    font-family: "Open Sans";
 }
 
 .relleno2 body {
     font-size: 14px;
 }
 
+/* Estilos del banner */
 .relleno2 .banner {
     background-color: #23c01e;
-    margin: 3rem;
-    border-radius: 0.8rem;
     padding: 1rem;
     color: #fff;
     font-size: 1.5rem;
     text-align: center;
     line-height: 2.5rem;
-    height: 12.8rem;
+    height: auto;
+    /* Ajustar la altura automáticamente */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,12 +55,12 @@ li {
     position: relative;
 }
 
+/* Animaciones */
 .relleno2 .banner li.item-1 {
     transform: translateX(-50%);
     opacity: 0;
     animation: item-1 0.5s ease forwards;
     animation-delay: 0.1s;
-    position: absolute;
     font-size: 2.1rem;
     left: 50%;
 }
@@ -69,6 +69,31 @@ li {
     animation: item-2 0.5s ease forwards;
     font-size: 2.1rem;
     opacity: 0.75;
+}
+
+/* Estilos específicos para pantallas pequeñas (hasta 768px) */
+@media only screen and (max-width: 768px) {
+    .relleno2 html {
+        font-size: 8px;
+        /* Reducir el tamaño de fuente para pantallas más pequeñas */
+    }
+
+    .relleno2 .banner {
+        font-size: 1.2rem;
+        /* Reducir el tamaño de fuente para pantallas más pequeñas */
+        height: auto;
+        /* Ajustar la altura automáticamente */
+        padding: 0.5rem;
+        /* Reducir el relleno para pantallas más pequeñas */
+        line-height: normal;
+        /* Ajustar la altura de línea para pantallas más pequeñas */
+    }
+
+    .relleno2 .banner li.item-1,
+    .relleno2 .banner li.item-2 {
+        font-size: 1.6rem;
+        /* Reducir el tamaño de fuente para pantallas más pequeñas */
+    }
 }
 
 .banner li.item-3 {
@@ -146,93 +171,140 @@ li {
 }
 
 /*mas diviciones*/
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
-
-.relleno3 {
-    box-sizing: border-box;
-}
-
-.relleno3 *::before,
-.relleno3 *::after {
-    box-sizing: inherit;
-}
-
-.relleno3 body {
-    margin: 0;
-    padding: 0;
-}
-
-.relleno3 main {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.relleno3 .slider-wrapper {
-    font-size: 2.5rem;
-    font-family: 'Poppins', sans-serif;
-    color: #aaa;
-    text-transform: uppercase;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.relleno3 .slider {
-    margin-left: 1rem;
-    font-weight: 700;
-    height: 5rem;
-}
-
-.relleno3 .slider-text {
-    height: 4.7rem;
-    padding: 0.7rem;
-    margin-bottom: 1.65rem;
-    background-color: #23c01e;
+/*relleno 3 */
+.relleno3 .game-designer {
+    padding: 4vh 0;
     text-align: center;
-    border-radius: 1rem;
-    color: white;
-    letter-spacing: 2px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: none;
 }
 
-.relleno3 .slider-text:first-child {
-    animation: slide 5s linear infinite;
+.relleno3 .game-designer-img {
+    width: 270px;
+    border-radius: 200px;
+    margin: 0 auto;
+    /* Centrar la imagen */
 }
 
-@keyframes slide {
-    0% {
-        margin-top: -300px;
-    }
+.relleno3 .game-designer-title-name {
+    margin: 30px auto;
+    /* Centrar el nombre del diseñador de juegos */
+}
 
-    5% {
-        margin-top: -200px;
-    }
+.relleno3 p.game-designer-para {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify;
+    /* Justificar el texto */
+}
 
-    33% {
-        margin-top: -200px;
-    }
+.relleno3 h3.designer-title {
+    margin-top: 20px;
+    color: #27292B;
+    text-align: center;
+    /* Centrar el título del diseñador */
+}
 
-    38% {
-        margin-top: -100px;
-    }
+.relleno3 .color-balls {
+    position: relative;
+    max-width: 400px;
+    height: 100%;
+    margin: 0 auto;
+}
 
-    66% {
-        margin-top: -100px;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Hind+Guntur:wght@300;700&family=Hind+Madurai:wght@400;700&family=Montserrat:ital,wght@0,700;1,700&display=swap');
 
-    71% {
-        margin-top: 0px;
-    }
+.relleno3 h1,
+.relleno3 h2,
+.relleno3 h3,
+.relleno3 p.date {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    /* Centrar el texto */
+}
 
-    100% {
-        margin-top: 0px;
-    }
+.relleno3 h2 {
+    font-size: 3em;
+    line-height: 1em;
+    margin: 0 auto;
+    /* Centrar la etiqueta h2 */
+    color: #23c01e;
+ 
+}
+
+.relleno3 p {
+    line-height: 1.5em;
+    font-size: 1em;
+    width: 100%;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+.relleno3 h3.designer-title {
+    color: #ff9100;
+}
+
+.circle-container-top-left {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: -60px;
+    left: -45px;
+}
+
+.blue-circle-1 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    background: #ff9100;
+    top: 0;
+    right: 0;
+}
+
+.red-circle-1 {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    background: #23c01e;
+    bottom: 0;
+    left: 0;
+}
+
+.circle-container-bottom-right-1 {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: -20px;
+    right: 40px;
+}
+
+.circle-container-bottom-right-2 {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 0px;
+    right: -20px;
+}
+
+.red-circle-2 {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 30px;
+    background: #23c01e;
+    top: 0;
+    right: 0;
+}
+
+.blue-circle-2 {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 20px;
+    background: #ff9100;
+    bottom: 0;
+    left: 0;
 }
 
 /*relleno 4*/
@@ -248,7 +320,6 @@ body {
     padding: 20px;
     text-align: center;
     font-size: 18px;
-    overflow: hidden; /* Para ocultar el desbordamiento de los textos */
+    overflow: hidden;
+    /* Para ocultar el desbordamiento de los textos */
 }
-
-

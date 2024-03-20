@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="marcas.css">
     <link rel="stylesheet" href="info.css">
     <link rel="stylesheet" href="btn.css">
-    <link rel="stylesheet" href="divisiones.css">
+
     <link rel="stylesheet" href="catalago.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -49,7 +49,8 @@
     <link rel="icon" href="img/logo1.png">
 </head>
 
-<body class="font-[Poppins] bg-white h-screen" onload="actualizarCantidadProductosEnCarrito(); loggedIn(); leerProducto(); leerCarrusel(); leerCarrusel2();">
+<body class="font-[Poppins] bg-white h-screen"
+    onload="actualizarCantidadProductosEnCarrito(); loggedIn(); leerProducto(); leerCarrusel(); leerCarrusel2();">
     <div id="loader" class="loader">
         <div class="spinner"></div>
     </div>
@@ -74,6 +75,9 @@
                     </li>
                     <li>
                         <a class="menu-link" href="about.html">Sobre Nosotros</a>
+                    </li>
+                    <li>
+                        <a class="menu-link" href="ListadoMarcas.html"> Listado de marcas</a>
                     </li>
                     <li>
                         <a class="menu-link" href="#" onclick="mostrarCarrito()">
@@ -148,7 +152,7 @@
             <ul id="slider">
             </ul>
         </section>
-    
+
 
         <!--Carrusel-->
         <section>
@@ -218,30 +222,39 @@
         </div>
 
         <section>
-            <div class="productosDestacadosGML">
-                <h1>Productos Destacados</h1>
-            </div>
+            <section class="relleno3">
+                <div class="content-wrap">
+                    <div class="game-designer">
+                        <div class="game-designer-title-name">
+                            <div class="color-balls mobile">
+                                <div class="circle-container-top-left">
+                                    <div class="blue-circle-1"></div>
+                                    <div class="red-circle-1"></div>
+                                </div>
+                                <h2>Productos Destacados<h2>
+                                        <h3 class="designer-title"> Grupo Más Limpio</h3>
+                                        <div class="circle-container-bottom-right-2">
+                                            <div class="blue-circle-2"></div>
+                                            <div class="red-circle-2"></div>
+                                        </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
 
             <div class="mi-seccion">
                 <div class="swiper mySwiper">
                     <div id="CarruselProductos" class="swiper-wrapper">
-                        
+
                     </div>
                 </div>
             </div>
         </section>
 
         <!--Servicios destacados-->
-        <section class="relleno3">
-            <div class="slider-wrapper">
-                ¡Grupo mas limpio!
-                <div class="slider">
-                    <div class="slider-text">Calidad</div>
-                    <div class="slider-text">Responsabilidad</div>
-                    <div class="slider-text">Eficaz</div>
-                </div>
-            </div>
-        </section>
+
 
         <section>
             <div class="top-banner">
@@ -250,36 +263,27 @@
             </div>
         </section>
         <!--Ultima publicidad-->
-        <section class="relleno">
-            <div class="banner">
-                <li>
-                    <div class="client-group commercial">
-                        <h3>Las Mejores Marcas Eligen Grupo + Limpio</h3>
-                    </div>
-                </li>
-                <ul>
-                    <li>
-                        <div class="client-group govt">
-                            <h3>Nuestra Confianza: La Piedra Angular de Nuestros Clientes</h3>
-                            <div class="one-fourth first">
-                                <h4><span>Danlí</span><br>Centro Comercial La Cumbre</h4>
-                            </div>
-                            <div class="one-fourth">
-                                <h4><span>Calidad sin Igual</span><br>Variedad de Productos de Primera Calidad</h4>
-                            </div>
-                            <div class="one-fourth">
-                                <h4><span>Nuestra Marca Exclusiva</span><br>Productos Hechos por Nosotros Mismos para un
-                                    Grupo Más Limpio</h4>
-                            </div>
-                            <div class="one-fourth">
-                                <h4><span>Servicios Personalizados</span><br>Una Gama de Servicios para Tu Comodidad
-                                </h4>
-                            </div>
-                        </div>
-                    </li>
+        <section>
+            <div class="relleno" id="cardsContainer"></div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const images = ["img/11.jpg", "img/12.jpg", "img/13.jpg", "img/14.jpg"];
 
-                </ul>
-            </div>
+                    const cardsContainer = document.getElementById("cardsContainer");
+
+                    images.forEach((image, index) => {
+                        const card = document.createElement("div");
+                        card.classList.add("card", "relleno");
+
+                        const img = document.createElement("img");
+                        img.src = image;
+
+                        card.appendChild(img);
+                        cardsContainer.appendChild(card);
+                    });
+                });
+
+            </script>
         </section>
 
 
@@ -324,7 +328,7 @@
             <div class="marcas">
                 <div class="slider">
                     <div id="CarruselMarcas" class="slide-track">
-                        
+
                     </div>
                 </div>
             </div>
@@ -440,88 +444,88 @@
             fetch(baseUrl + '/selectProductos', {
                 method: 'GET',
                 headers: {
-                'Content-Type': 'application/json',
+                    'Content-Type': 'application/json',
                 },
             })
-            .then(response => response.json())
-            .then(data => {
-                CarruselProductos.innerHTML += ``;
-                for(var i = 0; i < data.length; i++){
-                    if(data[i].carrusel == "Si"){
-                        CarruselProductos.innerHTML += `<div class="swiper-slide">
+                .then(response => response.json())
+                .then(data => {
+                    CarruselProductos.innerHTML += ``;
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].carrusel == "Si") {
+                            CarruselProductos.innerHTML += `<div class="swiper-slide">
                             <div class="icons">
                                 <img src="img/logo.png" alt=""></img>
                             </div>
                             <div class="product-content">
                                 <div class="product-txt">
-                                    <span> LPS. `+data[i].precio+`</span>
-                                    <h3>`+data[i].nombre+`</h3>
-                                    <p>`+data[i].descripcion+`</p>
+                                    <span> LPS. `+ data[i].precio + `</span>
+                                    <h3>`+ data[i].nombre + `</h3>
+                                    <p>`+ data[i].descripcion + `</p>
                                 </div>
                                 <div class="product-img">
-                                    <img src="`+data[i].imagen1+`" alt=""></img>
+                                    <img src="`+ data[i].imagen1 + `" alt=""></img>
                                 </div>
                             </div>
                             <a href="catalogo.html" class="btn-1">Catálogo</a>
                         </div>`;
+                        }
                     }
-                }
-            })
-            .catch(error => {
-                alert(':('+error);
-            });          
+                })
+                .catch(error => {
+                    alert(':(' + error);
+                });
         }
 
         function leerCarrusel() {
             fetch(baseUrl + '/selectCarrusel', {
                 method: 'GET',
                 headers: {
-                'Content-Type': 'application/json',
+                    'Content-Type': 'application/json',
                 },
             })
-            .then(response => response.json())
-            .then(data => {
-                Slider.innerHTML += ``;
-                Slider2.innerHTML += ``;
-                for(var i = 0; i < data.length; i++){
-                    if(i == 0){
-                        Slider.innerHTML += `<li style="background-image: url('`+data[i].imagen+`'); z-index:0; opacity: 1;"></li>`
-                    }else{
-                        Slider.innerHTML += `<li style="background-image: url('`+data[i].imagen+`'); z-index:0; opacity: 1;"></li>`
+                .then(response => response.json())
+                .then(data => {
+                    Slider.innerHTML += ``;
+                    Slider2.innerHTML += ``;
+                    for (var i = 0; i < data.length; i++) {
+                        if (i == 0) {
+                            Slider.innerHTML += `<li style="background-image: url('` + data[i].imagen + `'); z-index:0; opacity: 1;"></li>`
+                        } else {
+                            Slider.innerHTML += `<li style="background-image: url('` + data[i].imagen + `'); z-index:0; opacity: 1;"></li>`
+                        }
                     }
-                }
-                for(var i = 0; i < data.length; i++){
-                    if(i == 0){
-                        Slider2.innerHTML += `<li><a itlist="itList_`+i+`" href="#" class="item-select-slid"></a></li>`
-                    }else{
-                        Slider2.innerHTML += `<li><a itlist="itList_`+i+`" href="#"></a></li>`
+                    for (var i = 0; i < data.length; i++) {
+                        if (i == 0) {
+                            Slider2.innerHTML += `<li><a itlist="itList_` + i + `" href="#" class="item-select-slid"></a></li>`
+                        } else {
+                            Slider2.innerHTML += `<li><a itlist="itList_` + i + `" href="#"></a></li>`
+                        }
                     }
-                }
-            })
-            .catch(error => {
-                alert(':('+error);
-            });          
+                })
+                .catch(error => {
+                    alert(':(' + error);
+                });
         }
 
         function leerCarrusel2() {
             fetch(baseUrl + '/selectCarrusel3', {
                 method: 'GET',
                 headers: {
-                'Content-Type': 'application/json',
+                    'Content-Type': 'application/json',
                 },
             })
-            .then(response => response.json())
-            .then(data => {
-                CarruselMarcas.innerHTML += ``;
-                for(var i = 0; i < data.length; i++){
-                    CarruselMarcas.innerHTML += `<div class="slide">
-                            <img src="`+data[i].imagen+`" height="100" width="250" alt="" />
+                .then(response => response.json())
+                .then(data => {
+                    CarruselMarcas.innerHTML += ``;
+                    for (var i = 0; i < data.length; i++) {
+                        CarruselMarcas.innerHTML += `<div class="slide">
+                            <img src="`+ data[i].imagen + `" height="100" width="250" alt="" />
                         </div>`;
-                }
-            })
-            .catch(error => {
-                alert(':('+error);
-            });          
+                    }
+                })
+                .catch(error => {
+                    alert(':(' + error);
+                });
         }
     </script>
 
