@@ -62,19 +62,13 @@
                     <li>
                         <a href="marcas_admin.html">
                             <span class="las la-store"></span>
-                            <small>Marcas propias</small>
+                            <small>Marcas</small>
                         </a>
                     </li>
                     <li>
                         <a href="carrusel_admin.html">
                             <span class="las la-store"></span>
                             <small>Carrusel Inicial</small>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="carruselmarcas_admin.html">
-                            <span class="las la-store"></span>
-                            <small>Carrusel Marcas</small>
                         </a>
                     </li>
                     <li>
@@ -670,8 +664,8 @@
                                 <img src="img_admin/basura.png" alt="Eliminar">
                             </button>
 
-                            <button id="openForm" onclick=openEliminarModal("`+data.id+`")>
-                                <img src="img_admin/boton-agregar.png" alt="Añadir">
+                            <button id="openForm" onclick="CambioCarrusel('`+data.id+`', 'Si')">
+                                <img src="img_admin/NoCarrusel.png" alt="Añadir">
                             </button>
                         </div>
                     </td>

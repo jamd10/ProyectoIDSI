@@ -61,19 +61,13 @@
                     <li>
                         <a href="marcas_admin.html" class="active">
                             <span class="las la-store"></span>
-                            <small>Marcas propias</small>
+                            <small>Marcas</small>
                         </a>
                     </li>
                     <li>
                         <a href="carrusel_admin.html">
                             <span class="las la-store"></span>
                             <small>Carrusel Inicial</small>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="carruselmarcas_admin.html">
-                            <span class="las la-store"></span>
-                            <small>Carrusel Marcas</small>
                         </a>
                     </li>
                     <li>
@@ -115,8 +109,8 @@
 
         <main>
             <div class="page-header">
-                <h1>Marcas propias</h1>
-                <small>Panel / Marcas propias</small>
+                <h1>Marcas</h1>
+                <small>Panel / Marcas</small>
             </div>
             <div class="page-content">
                 <div class="records table-responsive">
@@ -343,7 +337,7 @@
     Modificarbtn.addEventListener('click', Actualizar);
     Eliminarbtn.addEventListener('click', Eliminar);
 
-    const baseUrl = 'https://grupolimpio-api.onrender.com';
+    const baseUrl = 'http://localhost:3001';
 
     function CerrarSesion() {
       fetch(baseUrl + '/logOut', {
@@ -416,7 +410,7 @@
             'Content-Type': 'application/json',
             },
             body: JSON.stringify({ nombre: serviceName.value, imagen1: serviceImage.value, 
-            descripcion: serviceDescription.value}),
+            descripcion: serviceDescription.value, carrusel: "No", propia: "No"}),
         })
         .then(response => response.json())
         .then(data => {
@@ -440,7 +434,12 @@
                             <button id="openForm" onclick=openModificarModal("`+data.id+`")>
                                 <img src="img_admin/boton-editar.png" alt="Agregar">
                             </button>
-
+                            <button id="openForm" onclick="CambioCarrusel('`+data.id+`', 'Si')">
+                                <img src="img_admin/NoCarrusel2.png" alt="Añadir">
+                            </button>
+                            <button id="openForm" onclick="CambioPagina('`+data.id+`', 'Si')">
+                                <img src="img_admin/NoPropia.png" alt="Añadir">
+                            </button>
                             <button id="openForm" onclick=openEliminarModal("`+data.id+`")>
                                 <img src="img_admin/basura.png" alt="Eliminar">
                             </button>
@@ -471,7 +470,25 @@
             .then(data => {
                 Tabla.innerHTML += ``;
                 for(var i = 0; i < data.length; i++){
-                    var idtb = data[i].id;
+                    var idtb = ``;
+                    if(data[i].carrusel == "No"){
+                        idtb += `<button id="openForm" onclick="CambioCarrusel('`+data[i].id+`', 'Si')">
+                                        <img src="img_admin/NoCarrusel2.png" alt="Añadir">
+                                    </button>`;
+                    }else{
+                        idtb += `<button id="openForm" onclick="CambioCarrusel('`+data[i].id+`', 'No')">
+                                        <img src="img_admin/SiCarrusel2.png" alt="Añadir">
+                                    </button>`;
+                    }
+                    if(data[i].pagina == "No"){
+                        idtb += `<button id="openForm" onclick="CambioPagina('`+data[i].id+`', 'Si')">
+                                        <img src="img_admin/NoPropia.png" alt="Añadir">
+                                    </button>`;
+                    }else{
+                        idtb += `<button id="openForm" onclick="CambioPagina('`+data[i].id+`', 'No')">
+                                        <img src="img_admin/SiPropia.png" alt="Añadir">
+                                    </button>`;
+                    }
                     Tabla.innerHTML += `
                     <tbody>
                         <tr>
@@ -492,6 +509,7 @@
                                     <button id="openForm" onclick=openModificarModal("`+data[i].id+`")>
                                         <img src="img_admin/boton-editar.png" alt="Agregar">
                                     </button>
+                                    `+idtb+`
                                     <button id="openForm" onclick=openEliminarModal("`+data[i].id+`")>
                                         <img src="img_admin/basura.png" alt="Eliminar">
                                     </button>
@@ -506,6 +524,52 @@
             .catch(error => {
                 alert(':('+error);
             });          
+        }
+
+        function CambioCarrusel(id, siono){
+            fetch(baseUrl + '/ActualizarMarca2', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ carrusel: siono,
+                    id: id}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(siono == "No"){
+                    alert('Se ha eliminado del carrusel');
+                }else{
+                    alert('Se ha añadido al carrusel');
+                }
+                location.reload();
+            })
+            .catch(error => {
+                alert('No se ha podido añadir al carrusel');
+            });
+        }
+
+        function CambioPagina(id, siono){
+            fetch(baseUrl + '/ActualizarMarca3', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ pagina: siono,
+                    id: id}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(siono == "No"){
+                    alert('Se ha eliminado de marcas propias');
+                }else{
+                    alert('Se ha añadido a marcas propias');
+                }
+                location.reload();
+            })
+            .catch(error => {
+                alert('No se ha podido añadir al carrusel');
+            });
         }
 
         function leerModificar(datas) {
