@@ -104,7 +104,7 @@
                     <div class="user">
                         <div class="bg-img" style="background-image: url(img/3.jpeg)"></div>
 
-                        <button id="CSAdmin" class="logout-link" > Cerrar Sesión </button>
+                        <button id="CSAdmin" class="logout-link"> Cerrar Sesión </button>
                     </div>
                 </div>
             </div>
@@ -124,64 +124,91 @@
 
                     <div class="card">
                         <div class="card-head">
-                            <h2>107,200</h2>
-                            <span class="las la-user-friends"></span>
+                            <h2></h2>
+                            <span class="las la-users"></span>
                         </div>
                         <div class="card-progress">
-                            <small>Usuarios Registrados</small>
+                            <small></small>
                             <div class="card-indicator">
-                                <div class="indicator one" style="width: 60%"></div>
+                                <div class="indicator one"></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="card">
                         <div class="card-head">
-                            <h2>340,230</h2>
-                            <span class="las la-eye"></span>
+                            <h2></h2>
+                            <span class="las la-truck"></span>
                         </div>
                         <div class="card-progress">
-                            <small>Productos disponibles</small>
+                            <small></small>
                             <div class="card-indicator">
-                                <div class="indicator two" style="width: 80%"></div>
+                                <div class="indicator two"></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="card">
                         <div class="card-head">
-                            <h2>$653,200</h2>
+                            <h2></h2>
                             <span class="las la-shopping-cart"></span>
                         </div>
                         <div class="card-progress">
-                            <small>Ventas y Ganancias</small>
+                            <small></small>
                             <div class="card-indicator">
-                                <div class="indicator three" style="width: 65%"></div>
+                                <div class="indicator three"></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="card">
                         <div class="card-head">
-                            <h2>47,500</h2>
-                            <span class="las la-envelope"></span>
+                            <h2></h2>
+                            <span class="las la-concierge-bell"></span>
                         </div>
                         <div class="card-progress">
-                            <small>Emails Recibidos</small>
+                            <small></small>
                             <div class="card-indicator">
-                                <div class="indicator four" style="width: 90%"></div>
+                                <div class="indicator four"></div>
                             </div>
                         </div>
                     </div>
 
                 </div>
-
 
                 <div class="records table-responsive">
 
                 </div>
 
+                <img src="img/5.jpg" style="width: 100%; object-fit: cover;">
+
             </div>
+
+            <script>
+                // Definir los datos
+                var datos = [
+                    { titulo: 'Usuarios Registrados', cantidad: 107200, porcentaje: 60 },
+                    { titulo: 'Repartidores Registrados', cantidad: 340230, porcentaje: 80 },
+                    { titulo: 'Productos Disponibles', cantidad: 653200, porcentaje: 65 },
+                    { titulo: 'Servicios Disponibles', cantidad: 47500, porcentaje: 90 }
+                ];
+
+                // Actualizar los valores e indicadores de progreso
+                datos.forEach(function (dato, index) {
+                    // Actualizar el valor
+                    document.querySelector('.card:nth-child(' + (index + 1) + ') h2').innerText = dato.cantidad;
+
+                    // Actualizar el título
+                    document.querySelector('.card:nth-child(' + (index + 1) + ') small').innerText = dato.titulo;
+
+                    // Actualizar el indicador de progreso
+                    document.querySelector('.card:nth-child(' + (index + 1) + ') .indicator').style.width = dato.porcentaje + '%';
+                });
+            </script>
+
+
+            </section>
+
 
         </main>
 
@@ -196,26 +223,26 @@
     const baseUrl = 'https://grupolimpio-api.onrender.com';
 
     function CerrarSesion() {
-      fetch(baseUrl + '/logOut', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.msg == "log out") {
-            alert('Se ha cerrrado sesion');
-            localStorage.removeItem('Admin');
-            localStorage.removeItem('correo');
-            window.location.href = "index.html";
-          } else {
-
-          }
+        fetch(baseUrl + '/logOut', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
         })
-        .catch(error => {
-          alert('No se ha podido cerrar sesion');
-        });
+            .then(response => response.json())
+            .then(data => {
+                if (data.msg == "log out") {
+                    alert('Se ha cerrrado sesion');
+                    localStorage.removeItem('Admin');
+                    localStorage.removeItem('correo');
+                    window.location.href = "index.html";
+                } else {
+
+                }
+            })
+            .catch(error => {
+                alert('No se ha podido cerrar sesion');
+            });
     }
 </script>
 
