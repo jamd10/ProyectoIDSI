@@ -120,7 +120,7 @@
             </div>
             <div class="flex items-center gap-6">
                 <a id="LogInMenuButton" class="bg-[#23c01e] text-white px-5 py-2 rounded-full hover:bg-[#1abc9c]"
-                    href="#">Iniciar
+                    href="main.html">Iniciar
                     Sesion</a>
                 <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
             </div>
@@ -508,7 +508,7 @@
         }
 
         function leerCarrusel2() {
-            fetch(baseUrl + '/selectCarrusel3', {
+            fetch(baseUrl + '/selectMarcas', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -518,9 +518,11 @@
                 .then(data => {
                     CarruselMarcas.innerHTML += ``;
                     for (var i = 0; i < data.length; i++) {
-                        CarruselMarcas.innerHTML += `<div class="slide">
-                            <img src="`+ data[i].imagen + `" height="100" width="250" alt="" />
-                        </div>`;
+                        if(data[i].carrusel=="Si"){
+                            CarruselMarcas.innerHTML += `<div class="slide">
+                                <img src="`+ data[i].imagen1 + `" height="100" width="250" alt="" />
+                            </div>`;
+                        }
                     }
                 })
                 .catch(error => {

@@ -6,12 +6,8 @@ function loggedIn(){
         var us = localStorage.getItem('usuario');
         var usuario = us ? JSON.parse(us) : [];
         if(localStorage["Admin"] == null && localStorage["Repartidor"] == null && usuario != null){
-            var str = usuario.nombre;
-            if(usuario.nombre.length > 20){
-                str = usuario.nombre.substring(0,20);
-            }
             document.getElementById("LogInMenuButton").href="PerfilUsuario.html";
-            document.getElementById("LogInMenuButton").textContent=str;
+            document.getElementById("LogInMenuButton").textContent=usuario.nombre;
         }else if(localStorage["Repartidor"] == "Repartidor"){
             document.getElementById("LogInMenuButton").href="repartidor.html";
             document.getElementById("LogInMenuButton").textContent="Perfil Repartidor";

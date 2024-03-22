@@ -198,24 +198,28 @@
                     .then(data => {
                         marcaslistadas.innerHTML += ``;
                         botoneslistados.innerHTML += ``;
+                        var num = 0;
                         for(var i = 0; i < data.length; i++){
-                            marcaslistadas.innerHTML += `
-                            <div class="imagenMarca" id="imagen`+data[i].id+`">
-                                <div class="SetImagen">
-                                    <img src="`+data[i].imagen1+`" alt="imagen">
+                            if(data[i].propia == "Si"){
+                                marcaslistadas.innerHTML += `
+                                <div class="imagenMarca" id="imagen`+data[i].id+`">
+                                    <div class="SetImagen">
+                                        <img src="`+data[i].imagen1+`" alt="imagen">
+                                    </div>
+                                    <div class="tituloDescripcion">
+                                        <h3>`+data[i].nombre+`</h3>
+                                        <p>`+data[i].descripcion+`</p>
+                                    </div>
                                 </div>
-                                <div class="tituloDescripcion">
-                                    <h3>`+data[i].nombre+`</h3>
-                                    <p>`+data[i].descripcion+`</p>
-                                </div>
-                            </div>
-                            `
-                            botoneslistados.innerHTML += `
-                            <button onclick=visibilidad("`+data[i].id+`")>`+data[i].nombre+`</button>
-                            `
-                            if(i == 0){
-                                document.getElementById('imagen'+data[i].id).classList.add('visible');
-                                idactual = data[i].id;
+                                `
+                                botoneslistados.innerHTML += `
+                                <button onclick=visibilidad("`+data[i].id+`")>`+data[i].nombre+`</button>
+                                `
+                                if(num == 0){
+                                    document.getElementById('imagen'+data[i].id).classList.add('visible');
+                                    idactual = data[i].id;
+                                }
+                                num++;
                             }
                         }
                     })

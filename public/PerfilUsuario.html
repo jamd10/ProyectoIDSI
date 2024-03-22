@@ -143,8 +143,6 @@
                   role="tab" aria-controls="nav-IP" aria-selected="true">Info Personal</button>
                 <button class="btnMD" id="navbtnMD" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
                   role="tab" aria-controls="nav-MD" aria-selected="false">Direccion</button>
-                <button class="btnMD" id="navbtnTC" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
-                  role="tab" aria-controls="nav-TC" aria-selected="false">Tajeta de Credito</button>
                 <button class="btnMD" id="navbtnH" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
                   role="tab" aria-controls="nav-TC" aria-selected="false">Historial</button>
                 <button class="btnS" id="navbtnS" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button"
@@ -396,7 +394,6 @@
       const boton1 = document.getElementById('navbtnIP');
       const boton2 = document.getElementById('navbtnMD');
       const boton3 = document.getElementById('navbtnS');
-      const boton6 = document.getElementById('navbtnTC');
       const boton7 = document.getElementById('navbtnH');
       const boton4 = document.getElementById('BtnSEditar2');
       const boton5 = document.getElementById('BtnSEditar1');
@@ -404,7 +401,6 @@
       const div2 = document.getElementById('IDDivMD');
       const div3 = document.getElementById('IDDivS');
       const div4 = document.getElementById('IDDivS2');
-      const div5 = document.getElementById('IDDivTC');
       const div6 = document.getElementById('IDDivH');
       const comboMD = document.getElementById('DireccionSelect');
       const MDBtn2 = document.getElementById('Guardarbtn2');
@@ -412,19 +408,12 @@
       const MDEli = document.getElementById('EliminarbtnMD');
       const MDBtn22 = document.getElementById('Guardarbtn22');
       const MDAtras = document.getElementById('RegresarMD');
-      const comboTC = document.getElementById('TarjetaSelect');
-      const TCBtn3 = document.getElementById('Guardarbtn3');
-      const TCMod = document.getElementById('ModificarbtnTC');
-      const TCEli = document.getElementById('EliminarbtnTC');
-      const TCBtn33 = document.getElementById('Guardarbtn33');
-      const TCAtras = document.getElementById('RegresarTC');
 
       function changeContent1() {
         div1.style.display = "block"
         div2.style.display = "none"
         div3.style.display = "none"
         div4.style.display = "none"
-        div5.style.display = "none"
         div6.style.display = "none"
       }
 
@@ -433,7 +422,6 @@
         div2.style.display = "block"
         div3.style.display = "none"
         div4.style.display = "none"
-        div5.style.display = "none"
         div6.style.display = "none"
         changeContent9();
       }
@@ -443,7 +431,6 @@
         div2.style.display = "none"
         div3.style.display = "none"
         div4.style.display = "block"
-        div5.style.display = "none"
         div6.style.display = "none"
       }
 
@@ -457,22 +444,11 @@
         div4.style.display = "block"
       }
 
-      function changeContent6() {
-        div1.style.display = "none"
-        div2.style.display = "none"
-        div3.style.display = "none"
-        div4.style.display = "none"
-        div5.style.display = "block"
-        div6.style.display = "none"
-        changeContent11();
-      }
-
       function changeContent7() {
         div1.style.display = "none"
         div2.style.display = "none"
         div3.style.display = "none"
         div4.style.display = "none"
-        div5.style.display = "none"
         div6.style.display = "block"
       }
 
@@ -500,16 +476,6 @@
         MDAtras.style.display = "block";
       }
 
-      function changeContent11() {
-        comboTC.style.display = "block";
-        getBtn33.style.display = "none";
-        TCAtras.style.display = "none";
-        TCMod.style.display = "block";
-        TCEli.style.display = "block";
-        getBtn3.style.display = "block";
-        CargarTarjetas();
-        TarjetasTexto();
-      }
 
       function changeContent12() {
         getNomTarjeta.value = "";
@@ -517,12 +483,8 @@
         getFechaExp.value  = "";
         getCodSeguridad.value = "";
         getTipoTarjeta.selectedIndex = "0";
-        comboTC.style.display = "none";
-        TCMod.style.display = "none";
-        TCEli.style.display = "none";
         getBtn3.style.display = "none";
         getBtn33.style.display = "block";
-        TCAtras.style.display = "block";
       }
 
       function mostrarcontra1() {
@@ -548,12 +510,9 @@
       boton3.addEventListener('click', changeContent3);
       boton4.addEventListener('click', changeContent4);
       boton5.addEventListener('click', changeContent5);
-      boton6.addEventListener('click', changeContent6);
       boton7.addEventListener('click', changeContent7);
       MDBtn2.addEventListener('click', changeContent10);
       MDAtras.addEventListener('click', changeContent9);
-      TCBtn3.addEventListener('click', changeContent12);
-      TCAtras.addEventListener('click', changeContent11);
     </script>
 
 

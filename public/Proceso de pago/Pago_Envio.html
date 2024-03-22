@@ -39,7 +39,7 @@
             <div class="form-steps__item-content">
                 <span class="form-steps__item-icon">3</span>
                 <span class="form-steps__item-line"></span>
-                <span class="form-steps__item-text">Pago y Envio</span>
+                <span class="form-steps__item-text">Envio</span>
             </div>
         </div>
         <div class="form-steps__item">
@@ -85,50 +85,9 @@
         </form>
     </div>
 
-    <div id="checkout">
+    <!-- <div id="checkout">
         
-    </div>
-
-    <!-- Formulario de Tarjeta -->
-    <div class="container mt-5">
-        <h3>Información de Tarjeta</h3>
-        <div class="SubDivMD3">
-            <select id="TarjetaSelectPE" class="InputMD">
-            </select>
-            <span></span>
-        </div>
-        <form>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="nombreTarjeta">Nombre en la Tarjeta</label>
-                    <input type="text" class="form-control" id="nombreTarjeta" placeholder="Nombre completo"  onkeyup="validate8();"required>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="numeroTarjeta">Número de Tarjeta</label>
-                    <input type="text" class="form-control" id="numeroTarjeta" placeholder="1234 5678 9101 1121"
-                    onkeyup="validate9();" maxlength="16" required>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="fechaExpiracion">Fecha de Expiración</label>
-                    <input type="text" class="form-control" id="fechaExpiracion" placeholder="MM/YY" onkeyup="validate11();" maxlength="5" required>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="codigoSeguridad">Código de Seguridad</label>
-                    <input type="text" class="form-control" id="codigoSeguridad" placeholder="CVC" onkeyup="validate10();" maxlength="3" required>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="tipoTarjeta">Tipo de Tarjeta</label>
-                    <select id="tipoTarjeta" class="InputIP">
-                        <option value=""></option>
-                        <option value="visa">Visa</option>
-                        <option value="mastercard">Mastercard</option>
-                    </select>
-                </div>
-            </div>
-        </form>
-    </div>
+    </div> -->
 
 
     <!-- Formulario de Domicilio -->
@@ -175,9 +134,7 @@
 
     <script>
         const DireccionSelect = document.getElementById("DireccionSelectPE");
-        const TarjetaSelect = document.getElementById("TarjetaSelectPE");
         DireccionSelect.addEventListener("change", DireccionesTexto);
-        TarjetaSelect.addEventListener("change", TarjetasTexto);
 
         function showInfo() {
             // Obtener los valores de los campos del usuario
@@ -186,11 +143,7 @@
             var telefono = document.getElementById('telefono').value;
             var correoUsuario = document.getElementById('correoUsuario').value;
 
-            // Obtener los valores de los campos de tarjeta y dirección
-            var nombreTarjeta = document.getElementById('nombreTarjeta').value;
-            var numeroTarjeta = document.getElementById('numeroTarjeta').value;
-            var fechaExpiracion = document.getElementById('fechaExpiracion').value;
-            var codigoSeguridad = document.getElementById('codigoSeguridad').value;
+            // Obtener los valores de los campos de dirección
             var direccion = document.getElementById('direccion').value;
             var ciudad = document.getElementById('ciudad').value;
             var estado = document.getElementById('estado').value;
@@ -198,10 +151,6 @@
 
             // Validar que los campos no estén vacíos
             if (
-                nombreTarjeta.trim() === '' ||
-                numeroTarjeta.trim() === '' ||
-                fechaExpiracion.trim() === '' ||
-                codigoSeguridad.trim() === '' ||
                 direccion.trim() === '' ||
                 ciudad.trim() === '' ||
                 estado.trim() === '' ||
@@ -215,25 +164,6 @@
                 return;
             }
 
-            // Validar que el número de tarjeta contenga solo números
-            if (!/^\d+$/.test(numeroTarjeta)) {
-                alert("El número de tarjeta solo puede contener números.");
-                return;
-            }
-
-            // Validar el formato de fecha de expiración (MM/YY)
-            var expiracionRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
-            if (!expiracionRegex.test(fechaExpiracion)) {
-                alert("El formato de fecha de expiración debe ser MM/YY.");
-                return;
-            }
-
-            // Validar que el código de seguridad contenga solo números
-            if (!/^\d+$/.test(codigoSeguridad)) {
-                alert("El código de seguridad solo puede contener números.");
-                return;
-            }
-
             // Si pasa todas las validaciones, mostrar la información
             alert("Información Recopilada:\n" +
                 "Usuario:\n" +
@@ -241,11 +171,6 @@
                 "Número de Identidad: " + numeroIdentidad + "\n" +
                 "Teléfono: " + telefono + "\n" +
                 "Correo Electrónico: " + correoUsuario + "\n\n" +
-                "Tarjeta:\n" +
-                "Nombre en la Tarjeta: " + nombreTarjeta + "\n" +
-                "Número de Tarjeta: " + numeroTarjeta + "\n" +
-                "Fecha de Expiración: " + fechaExpiracion + "\n" +
-                "Código de Seguridad: " + codigoSeguridad + "\n\n" +
                 "Dirección:\n" +
                 "Dirección: " + direccion + "\n" +
                 "Ciudad: " + ciudad + "\n" +
@@ -277,25 +202,6 @@
             element2.value = element2.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
         };
 
-        function validate8() {
-            var element2 = document.getElementById('nombreTarjeta');
-            element2.value = element2.value.replace(/[^a-zA-Z ñÑáéíóúÁÉÍÓÚ]+/, '');
-        };
-
-        function validate9() {
-            var element2 = document.getElementById('numeroTarjeta');
-            element2.value = element2.value.replace(/[^0-9]+/, '');
-        };
-
-        function validate10() {
-            var element2 = document.getElementById('codigoSeguridad');
-            element2.value = element2.value.replace(/[^0-9]+/, '');
-        };
-
-        function validate11() {
-            var element2 = document.getElementById('fechaExp');
-            element2.value = element2.value.replace(/[^0-9/]+/, '');
-        };
 
         function validar5() {
             if (document.getElementById('ciudad').value.length == 0) {
@@ -323,57 +229,16 @@
 
         function validar6() {
             if (document.getElementById('codigoPostal').value.length == 5) {
-                validar8();
+                siguiente();
             } else {
                 alert("Debe de llenar el campo de codigo postal");
             }
         }
 
-        function validar8() {
-            if (document.getElementById('nombreTarjeta').value.length == 0) {
-                alert("Debe de llenar el campode nombre de tarjeta");
-            } else {
-                validar9();
-            }
-        }
-
-        function validar9() {
-            if (document.getElementById('numeroTarjeta').value.length == 16) {
-                validar10();
-            } else {
-                alert("La tarjeta de credito debe de tener 16 digitos");
-            }
-        }
-
-        function validar10() {
-            if (document.getElementById('fechaExpiracion').value.length == 5) {
-                validar11();
-            } else {
-                alert("La fecha de expiracion debe ser del tipo MM/AA");
-            }
-        }
-
-        function validar11() {
-            if (document.getElementById('codigoSeguridad').value.length == 3) {
-                validar12();
-            } else {
-                alert("El codigo de seguridad debe de tener 3 digitos");
-            }
-        }
-
-        function validar12() {
-            if (document.getElementById('tipoTarjeta').value.length == 0) {
-                alert("Debe de seleccionar un tipo de tarjeta");
-            } else {
-                siguiente();
-            }
-        }
 
         function siguiente(){
             var arr = [document.getElementById("nombreUsuario").value, document.getElementById("numeroIdentidad").value,
-            document.getElementById("telefono").value, document.getElementById("correoUsuario").value, document.getElementById("nombreTarjeta").value,
-            document.getElementById("numeroTarjeta").value, document.getElementById("fechaExpiracion").value, 
-            document.getElementById("codigoSeguridad").value, document.getElementById("tipoTarjeta").value, document.getElementById("direccion").value,
+            document.getElementById("telefono").value, document.getElementById("correoUsuario").value, document.getElementById("direccion").value,
             document.getElementById("ciudad").value, document.getElementById("estado").value, document.getElementById("codigoPostal").value]
             localStorage.setItem('FacturaDatos', JSON.stringify(arr));
             window.location.href="Carrito_resumen.html"
@@ -384,23 +249,20 @@
         }
 
         function DireccionSiNo(){
-            if(localStorage["entrega"] == "Tienda"){
-                document.getElementById("DivDom").style.display = "none";
-                document.getElementById("ConPE").setAttribute("onclick","validar8()");
+            if(localStorage["entrega"] == "Envio"){
+                document.getElementById("DivDom").style.display = "block";
+                document.getElementById("ConPE").setAttribute("onclick","validar5()");
                 document.getElementById("direccion").value = "";
                 document.getElementById("ciudad").value = "";
                 document.getElementById("estado").value = "";
                 document.getElementById("codigoPostal").value = "";
-
-            }else{
-                document.getElementById("ConPE").setAttribute("onclick","validar5()");
             }
         }
 
         function CargarSelects(){
             var us = localStorage.getItem('usuario');
             var usuario = us ? JSON.parse(us) : [];
-            if(usuario.direcciones.length !=0 && usuario.tarjetas.length != 0){
+            if(usuario.direcciones.length !=0){
 
                 document.getElementById('DireccionSelectPE').innerHTML = "";
                 for(var i=0; i<usuario.direcciones.length; i++){
@@ -410,19 +272,6 @@
                     document.getElementById('DireccionSelectPE').appendChild(opt);
                 }
                 DireccionesTexto();
-
-                document.getElementById('TarjetaSelectPE').innerHTML = "";
-                for(var i=0; i<usuario.tarjetas.length; i++){
-                    var opt = document.createElement('option');
-                    var valor = usuario.tarjetas[i].numero_tarjeta.slice(-2)
-                    opt.value = "Tarjeta "+ usuario.tarjetas[i].tipo_tarjeta + " que termina en " +valor;
-                    opt.innerHTML = "Tarjeta "+ usuario.tarjetas[i].tipo_tarjeta + " que termina en " +valor;
-                    document.getElementById('TarjetaSelectPE').appendChild(opt);
-                    if (i==0){
-                        localStorage.setItem('tarjetaNum', ""+valor);
-                    }
-                }
-                TarjetasTexto();
             }
         }
 
@@ -436,16 +285,6 @@
             document.getElementById("codigoPostal").value = usuario.direcciones[select.selectedIndex].codigo_postal;
         }
 
-        function TarjetasTexto(){
-            var us = localStorage.getItem('usuario');
-            var usuario = us ? JSON.parse(us) : [];
-            var select = document.getElementById("TarjetaSelectPE")
-            document.getElementById("nombreTarjeta").value = usuario.tarjetas[select.selectedIndex].nombre_tarjeta;
-            document.getElementById("numeroTarjeta").value = usuario.tarjetas[select.selectedIndex].numero_tarjeta;
-            document.getElementById("fechaExpiracion").value = usuario.tarjetas[select.selectedIndex].fecha_expiracion;
-            document.getElementById("codigoSeguridad").value = usuario.tarjetas[select.selectedIndex].codigo_seguridad;
-            document.getElementById("tipoTarjeta").value = usuario.tarjetas[select.selectedIndex].tipo_tarjeta;
-        }
 
 
     </script>

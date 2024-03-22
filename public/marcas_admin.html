@@ -66,13 +66,13 @@
                     </li>
                     <li>
                         <a href="carrusel_admin.html">
-                            <span class="las la-store"></span>
+                            <span class="lab la-slideshare"></span>
                             <small>Carrusel Inicial</small>
                         </a>
                     </li>
                     <li>
                         <a href="modificarcarrusel.html">
-                            <span class="las la-store"></span>
+                            <span class="las la-tv"></span>
                             <small>Pagina</small>
                         </a>
                     </li>
@@ -121,12 +121,10 @@
 
                         </div>
 
-                        <!-- <div class="browse">
+                        <div class="browse">
                             <input type="search" placeholder="Buscar" class="record-search">
-                            <select name="" id="">
-                                <option value="">Estado</option>
-                            </select>
-                        </div> -->
+                            <button onclick="searchRecords()">Buscar</button>
+                        </div>
                     </div>
                     <div>
                         <table class="product-table" id="TablaServicios">
@@ -170,8 +168,7 @@
                                 }
 
                                 .client-img-catalogo {
-                                    width: 50px;
-                                    height: 50px;
+                                    
                                     background-size: cover;
                                 }
 
@@ -207,7 +204,7 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">×</span>
-            <h2>Agregar marca propia</h2>
+            <h2>Agregar marca</h2>
             <hr>
 
             <div class="form-container">
@@ -268,7 +265,7 @@
             <h2>Confirmación de Eliminación</h2>
             <hr>
 
-            <p>¿Está seguro de que desea eliminar este cambio? Esta acción es permanente.</p>
+            <p>¿Está seguro de que desea eliminar este cambio? Todos los productos de esta marca seran eliminados tambien.</p>
 
             <div class="buttons">
                 <button id="EliminarConfirmar">Confirmar</button>
@@ -337,7 +334,7 @@
     Modificarbtn.addEventListener('click', Actualizar);
     Eliminarbtn.addEventListener('click', Eliminar);
 
-    const baseUrl = 'http://localhost:3001';
+    const baseUrl = 'https://grupolimpio-api.onrender.com';
 
     function CerrarSesion() {
       fetch(baseUrl + '/logOut', {
@@ -376,9 +373,27 @@
             location.reload();
             var modalModificar = document.getElementById('myModal_Modificar');
             modalModificar.style.display = 'none';
+            Eliminar2(data.nombre);
         })
         .catch(error => {
             alert('No se ha podido eliminar la marca');
+        });
+    }
+
+    function Eliminar2(mar) {
+        fetch(baseUrl + '/eliminarProductosXMarca', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ marca: mar,}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            
+        })
+        .catch(error => {
+            
         });
     }
 
@@ -480,7 +495,7 @@
                                         <img src="img_admin/SiCarrusel2.png" alt="Añadir">
                                     </button>`;
                     }
-                    if(data[i].pagina == "No"){
+                    if(data[i].propia== "No"){
                         idtb += `<button id="openForm" onclick="CambioPagina('`+data[i].id+`', 'Si')">
                                         <img src="img_admin/NoPropia.png" alt="Añadir">
                                     </button>`;
@@ -555,7 +570,7 @@
                 headers: {
                 'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ pagina: siono,
+                body: JSON.stringify({ propia: siono,
                     id: id}),
             })
             .then(response => response.json())
@@ -570,6 +585,31 @@
             .catch(error => {
                 alert('No se ha podido añadir al carrusel');
             });
+        }
+
+        function searchRecords() {
+            var searchTerm = document.querySelector('.record-search').value.toLowerCase();
+            var rows = Tabla.getElementsByTagName('tr');
+
+            for (var i = 0; i < rows.length; i++) {
+                var cells = rows[i].getElementsByTagName('td');
+                var found = false;
+                for (var j = 0; j < cells.length; j++) {
+                    var cellValue = cells[j].textContent || cells[j].innerText;
+                    if (cellValue.toLowerCase().indexOf(searchTerm) > -1) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+                if (i == 0) {
+                    rows[i].style.display = '';
+                }
+            }
         }
 
         function leerModificar(datas) {

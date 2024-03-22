@@ -398,7 +398,6 @@
         function submitData() {
             var carrito = [];
             var direcciones = [];
-            var tarjetas = [];
             fetch(baseUrl + '/submit', {
                 method: 'POST',
                 headers: {
@@ -407,7 +406,7 @@
                 body: JSON.stringify({
                     nombre: getNombre.value, apellido: getApellido.value, id: getId.value, telefono: getTelefono.value,
                     ciudad: getCiudad.value, correo: getCorreo.value, password: getContra.value, fechanacimiento: '', genero: '',
-                    carrito: carrito, direcciones: direcciones, tarjetas: tarjetas
+                    carrito: carrito, direcciones: direcciones
                 }),
             })
                 .then(response => response.json())
