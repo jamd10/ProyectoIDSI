@@ -897,19 +897,6 @@
             }
             DireccionesTexto();
           }
-          if(data.tarjetas.length!=0){
-            tarjetasarr = [];
-            document.getElementById('TarjetaSelect').innerHTML = "";
-            for(var i=0; i<data.tarjetas.length; i++){
-              var opt = document.createElement('option');
-              tarjetasarr.push(data.tarjetas[i]);
-              var valor = data.tarjetas[i].numero_tarjeta.slice(-2)
-              opt.value = "Tarjeta "+ data.tarjetas[i].tipo_tarjeta + " que termina en " +valor;
-              opt.innerHTML = "Tarjeta "+ data.tarjetas[i].tipo_tarjeta + " que termina en " +valor;
-              document.getElementById('TarjetaSelect').appendChild(opt);
-            }
-            TarjetasTexto();
-          }
           CargarHistorial();
         })
         .catch(error => {

@@ -7,8 +7,14 @@ initialize();
 
 // Create a Checkout Session as soon as the page loads
 async function initialize() {
+  var carritoGuardado2 = localStorage.getItem('carrito');
+  var carrito2 = carritoGuardado2 ? JSON.parse(carritoGuardado2) : [];
   const response = await fetch("https://grupolimpio-api.onrender.com/create-checkout-session", {
     method: "POST",
+    headers: {
+    'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ carro: carrito2}),
   });
 
   const { clientSecret } = await response.json();
