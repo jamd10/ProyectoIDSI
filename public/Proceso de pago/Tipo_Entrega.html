@@ -117,6 +117,13 @@
             // Abre una ventana nueva más pequeña
             localStorage["entrega"] = "Tienda";
             localStorage["ship"] = 0;
+            var us = localStorage.getItem('usuario');
+            var usuario = us ? JSON.parse(us) : [];
+            var arr = [usuario.nombre, usuario.id,
+            usuario.telefono, usuario.correo, "",
+            "", "", ""]
+            localStorage.setItem('FacturaDatos', JSON.stringify(arr));
+
             window.location.href="Carrito_resumen.html";
         }
         function openLoginWindow2() {

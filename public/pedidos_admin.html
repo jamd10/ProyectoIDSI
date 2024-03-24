@@ -339,7 +339,7 @@
     Modificarbtn.addEventListener('click', submitData);
     Eliminarbtn.addEventListener('click', Eliminar);
 
-    const baseUrl = 'https://grupolimpio-api.onrender.com';
+    const baseUrl = 'http://localhost:3001';
 
     function CerrarSesion() {
       fetch(baseUrl + '/logOut', {
@@ -376,10 +376,9 @@
         .then(data => {
             alert("Se ha cancelado el pedido");
             sendEmail(data.usuario);
-            location.reload();
         })
         .catch(error => {
-            alert('No se ha podido cancelar el pedido'+error);
+            alert('No se ha podido cancelar el pedido '+error);
         });
     }
 
@@ -547,7 +546,7 @@
                 }
             })
             .catch(error => {
-                alert(':('+error);
+                alert(error);
             });          
         }
 
@@ -594,7 +593,7 @@
                 }
             })
             .catch(error => {
-                alert(':('+error);
+                alert(error);
             });
         }
 
@@ -979,23 +978,25 @@
     </body>
 </html>
   `;
-  Email.send({
-    Host: 'smtp.elasticemail.com', // Reemplaza con el servidor SMTP que uses
-    Username: 'grupomaslimpio39@gmail.com', // Reemplaza con tu nombre de usuario SMTP
-    Password: '69E01DB91010FCA73CF620B5C721E5FD2B78', // Reemplaza con tu contraseña SMTP
-    To: usuario, // Reemplaza con la dirección de correo del equipo de soporte
-    From: 'grupomaslimpio39@gmail.com', // Reemplaza con tu dirección de correo
-    Subject: 'Pedido Cancelado',
-    Body: templateHTML,
-    ContentType: 'text/html; charset=utf-8' // Indica que el cuerpo es HTML
-  })
-    
-  .then(function (message) {
-      console.log('Correo enviado correctamente:');
-  })
-  .catch(function (error) {
-      console.log(error);
-  });
+    Email.send({
+        Host: 'smtp.elasticemail.com', // Reemplaza con el servidor SMTP que uses
+        Username: 'grupomaslimpio39@gmail.com', // Reemplaza con tu nombre de usuario SMTP
+        Password: '69E01DB91010FCA73CF620B5C721E5FD2B78', // Reemplaza con tu contraseña SMTP
+        To: usuario, // Reemplaza con la dirección de correo del equipo de soporte
+        From: 'grupomaslimpio39@gmail.com', // Reemplaza con tu dirección de correo
+        Subject: 'Pedido Cancelado',
+        Body: templateHTML,
+        ContentType: 'text/html; charset=utf-8' // Indica que el cuerpo es HTML
+    })
+        
+    .then(function (message) {
+        console.log('Correo enviado correctamente:');
+        location.reload();
+    })
+    .catch(function (error) {
+        console.log(error);
+        location.reload();
+    });
 };
 </script>
 
